@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import { bannedRegex } from "@/lib/banned";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
@@ -8,22 +6,31 @@ import { claim, e32Sentence } from "@/lib/data";
 
 vi.mock("next/link", () => ({ default: ({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) => <a href={href} className={className}>{children}</a> }));
 vi.mock("./components/HeroScene", () => ({ default: () => <svg data-testid="hero-scene" /> }));
+vi.mock("./components/HeroSpace", () => ({ default: () => <div data-testid="hero-space" /> }));
 
 describe("landing page", () => {
-  const decisions = fs.readFileSync(path.join(process.cwd(), "docs/DECISIONS_SITE.md"), "utf-8");
-  const locked = (label: string) => decisions.match(new RegExp(`^${label}: \\*\\*(.+?)\\*\\*`, "m"))![1];
-
-  it("uses the headline in docs/DECISIONS_SITE.md and a data-scale subline from claims", () => {
+  it("opens with GSOP and a one-line description, centred, over the space backdrop", () => {
     render(<Home />);
-    expect(screen.getByRole("heading", { level: 1 }).textContent).toBe(locked("Headline"));
-    expect(document.body.textContent).toContain(claim("landing.n_sites"));
-    expect(document.body.textContent).toContain(claim("landing.n_sources"));
+    const h1 = screen.getByRole("heading", { level: 1 });
+    expect(h1.textContent).toBe("GSOP");
+    const hero = h1.closest("section")!;
+    expect(hero.querySelectorAll("p")).toHaveLength(1);
+    expect(h1.parentElement!.className).toMatch(/text-center/);
     expect(screen.getByTestId("hero-scene")).toBeInTheDocument();
+    expect(screen.getByTestId("hero-space")).toBeInTheDocument();
+    expect(hero.querySelector("svg:not([data-testid])")).toBeNull();
   });
 
-  it("has the five sections in order", () => {
+  it("has no icon svgs and the numbers section reads from claims", () => {
+    const { container } = render(<Home />);
+    expect(container.querySelectorAll("svg").length).toBe(1); // only the mocked hero scene
+    expect(document.body.textContent).toContain(claim("landing.n_sites"));
+    expect(document.body.textContent).toContain(claim("landing.n_sources"));
+  });
+
+  it("has the sections in order", () => {
     render(<Home />);
-    const names = ["Data at a glance", "How it works", "Gate results, as reported", "Local ground data, starting with India", "Open the dashboard"];
+    const names = ["Data at a glance", "Four things to know before you read a score", "Gate results, as reported", "The same results, drawn", "Local ground data, starting with India", "Built in the open"];
     const els = names.map((n) => (n === "Data at a glance" ? screen.getByLabelText(n) : screen.getByRole("heading", { name: n })));
     for (let i = 1; i < els.length; i++) expect(els[i - 1].compareDocumentPosition(els[i]) & Node.DOCUMENT_POSITION_FOLLOWING, names[i]).toBeTruthy();
   });
@@ -44,7 +51,7 @@ describe("landing page", () => {
 
   it("links to the dashboard and the other results pages", () => {
     render(<Home />);
-    for (const href of ["/dashboard", "/ledger", "/map", "/sites", "/gates", "/contribute"]) expect(document.querySelector(`a[href="${href}"]`), href).not.toBeNull();
+    for (const href of ["/dashboard", "/ledger", "/gates", "/contribute", "/mission", "/method", "/data-sources", "/docs/data-access"]) expect(document.querySelector(`a[href="${href}"]`), href).not.toBeNull();
   });
 
   it("uses none of the banned words and renders no NaN or undefined", () => {

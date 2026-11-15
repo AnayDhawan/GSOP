@@ -19,7 +19,7 @@
   overflow: visible;
   touch-action: pan-y;
 }
-[data-theme="light"] .hero-scene {
+[data-theme="light"] .hero-scene:not([data-space]) {
   --hero-star: 23 28 32;
   --hero-star-alpha: 0.38;
   --hero-ring: 23 28 32;
@@ -75,3 +75,20 @@
   .hero-scene .hero-scan { transform: translateX(40px); }
   .hero-layer { transform: none !important; }
 }
+
+/* Landing hero backdrop (HeroSpace.tsx): nebula glows and a vignette over near-black. */
+.space-nebula {
+  background:
+    radial-gradient(60% 50% at 18% 30%, rgb(66 40 140 / 0.42), transparent 70%),
+    radial-gradient(55% 45% at 82% 24%, rgb(26 90 170 / 0.36), transparent 70%),
+    radial-gradient(50% 40% at 62% 82%, rgb(150 55 40 / 0.26), transparent 70%),
+    radial-gradient(40% 35% at 40% 70%, rgb(20 110 120 / 0.18), transparent 70%);
+  animation: nebula-drift 40s ease-in-out infinite alternate;
+  will-change: transform;
+}
+@keyframes nebula-drift {
+  from { transform: scale(1.02) translate3d(-1%, 0, 0); }
+  to { transform: scale(1.1) translate3d(1.5%, -1%, 0); }
+}
+.space-vignette { background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgb(0 0 0 / 0.65) 100%); }
+@media (prefers-reduced-motion: reduce) { .space-nebula { animation: none !important; } }
