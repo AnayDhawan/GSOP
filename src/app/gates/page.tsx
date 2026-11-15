@@ -234,7 +234,7 @@ export default function Page() {
         </h2>
         <ol className="grid gap-4 md:grid-cols-2">
           {r.limitations.map((l, i) => (
-            <li key={l.id} className={`space-y-2 border-border p-5 ${i % 3 === 0 ? "border-y border-l-4 border-r bg-surface" : "border bg-surface-raised"}`}>
+            <li key={l.id} className={`space-y-2 border-border p-5 ${i % 3 === 0 ? "border bg-surface" : "border bg-surface-raised"}`}>
               <p className="font-display text-lg">
                 {i + 1}. {l.title}
               </p>

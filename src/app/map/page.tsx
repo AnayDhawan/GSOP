@@ -22,15 +22,15 @@ export default function Page() {
       <PageHero title="Honest Map" lede="Where v1 produced a similarity score for one lunar or Martian target, drawn over a satellite picture of Earth. The places that should have scored low are marked in red." />
 
       <div className="grid gap-6 md:grid-cols-3">
-        <p className="border-l-4 border-control pl-4">
+        <p className="border-t-4 border-control pt-3">
           Two negative controls scored high on the Moon run. Read the{" "}
           <Link href="/ledger" className={link}>
             Failure-First Ledger
           </Link>{" "}
           before you trust a colour.
         </p>
-        <p className="border-l-4 border-positive pl-4">Regions and tiles are candidates not in our reference list. They are unreviewed.</p>
-        <p className="border-l-4 border-border pl-4">The Moon score is effectively terrain only. Mars is a low-confidence secondary result. The ranking has not been checked against independent data.</p>
+        <p className="border-t-4 border-positive pt-3">Regions and tiles are candidates not in our reference list. They are unreviewed.</p>
+        <p className="border-t-4 border-border pt-3">The Moon score is effectively terrain only. Mars is a low-confidence secondary result. The ranking has not been checked against independent data.</p>
       </div>
 
       <div className="mt-10">
