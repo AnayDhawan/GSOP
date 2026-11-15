@@ -7,12 +7,12 @@
 - **Controls on the Honest Map:** Martian red (`--gsop-martian-red`, utility `text-control`).
 - **Wording (decision E32):** say "candidates not in our reference list". Never "validated", "discovered", "undiscovered" or "new sites". Mars is a low-confidence secondary result. The failed negative-control test is shown openly. The ranking is not validated.
 
-## Headline (locked by Anay, 2026-11-15)
+## Headline (locked by Anay, 2026-11-15; changed in the final-sprint brief, W3, to say what the system does; Anay to confirm)
 Direction from E32: a transparent, reproducible screening method with an India focus, and what it can and cannot tell us.
 
-Headline: **A transparent screening method for Earth places that resemble the Moon and Mars.**
+Headline: **Screening Earth locations as analogs for Moon base and Mars operations**
 
-Support line: **Open data, open method, and a plain account of what it cannot tell you.**
+Support line: **Open data, open method, and a plain account of what it cannot tell you.** (The landing hero prints a data-scale subline built from claims instead; this line is kept for the page description.)
 
 Change these two lines here only; C4 (landing page) follows this file.
 

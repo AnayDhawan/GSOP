@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import { NAV, isActive } from "./nav";
+import { FOOTER_LEGAL, FOOTER_QUICK, NAV, RESULTS, isActive } from "./nav";
 
 describe("nav", () => {
   it("lists each route once", () => {
@@ -10,7 +10,7 @@ describe("nav", () => {
   });
 
   it("has a page file for every route", () => {
-    for (const n of NAV) {
+    for (const n of [...NAV, ...RESULTS, ...FOOTER_QUICK, ...FOOTER_LEGAL]) {
       expect(fs.existsSync(path.join(process.cwd(), "src/app", n.href, "page.tsx")), n.href).toBe(true);
     }
   });
@@ -19,6 +19,6 @@ describe("nav", () => {
     expect(isActive("/sites", "/sites")).toBe(true);
     expect(isActive("/sites/askja-caldera", "/sites")).toBe(true);
     expect(isActive("/siteseeing", "/sites")).toBe(false);
-    expect(isActive("/", "/map")).toBe(false);
+    expect(isActive("/", "/dashboard")).toBe(false);
   });
 });
