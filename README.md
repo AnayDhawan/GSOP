@@ -199,7 +199,12 @@ If this is useful, a star helps others find it.
 
 ## Team
 
-[Anay Dhawan](https://github.com/AnayDhawan) and [Yash](https://github.com/yakew7), with Vihaan, Shiven and Shaurya.
+- [Anay Dhawan](https://github.com/AnayDhawan)
+- [Yash Kewlani](https://github.com/yakew7)
+- Vihaan Bhagwat
+- Shiven Sood
+- Shaurya Jani
+- Shaurya Gangrade
 
 ## How AI was used
 

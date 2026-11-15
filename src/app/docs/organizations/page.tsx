@@ -8,7 +8,7 @@ import { CONTACT_EMAIL } from "@/lib/nav";
 import GateStatuses from "../GateStatuses";
 
 export const metadata: Metadata = {
-  title: "For research organizations",
+  title: "For research organisations",
   description: "How an institution can use the exported GSOP files as a candidate pre-filter, how to read PASS, FAIL and NOT TESTED, and how to get in touch about collaboration.",
 };
 
@@ -26,7 +26,7 @@ const MARS_POSITIVES = [
 export default function Page() {
   return (
     <>
-      <PageHero title="For research organizations" lede="GSOP can shorten a long list of Earth places before a team spends field time. It cannot do the team's own review." />
+      <PageHero title="For research organisations" lede="GSOP can shorten a long list of Earth places before a team spends field time. It cannot do the team's own review." />
 
       <Band tone="grid" labelledBy="bulk">
         <h2 id="bulk" className="mb-5 text-2xl">

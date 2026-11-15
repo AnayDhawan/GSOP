@@ -15,7 +15,7 @@ const DASHES = new RegExp(`[${String.fromCharCode(0x2014)}${String.fromCharCode(
 const PAGES: [string, ComponentType, string][] = [
   ["docs index", DocsIndex, "Docs"],
   ["researchers", Researchers, "For independent researchers"],
-  ["organizations", Organizations, "For research organizations"],
+  ["organizations", Organizations, "For research organisations"],
   ["data access", DataAccess, "Data file access"],
 ];
 

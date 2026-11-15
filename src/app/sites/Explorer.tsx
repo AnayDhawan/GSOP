@@ -37,7 +37,6 @@ function Card({ r, view }: { r: ExplorerRow; view: string }) {
         <p className="text-sm text-secondary-foreground">{r.place ?? r.country ?? "Country not provided"}</p>
         <p className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1 pt-1 text-sm">
           <span className={r.list === "known" ? "font-medium" : "text-secondary-foreground"}>{r.list === "known" ? "Reference site" : "Candidate, not in our reference list"}</span>
-          {r.lowConfidence ? <span className="border border-border px-2 py-0.5 text-xs text-secondary-foreground">Low confidence</span> : null}
         </p>
         <p className="text-sm text-secondary-foreground">
           {scored ? (

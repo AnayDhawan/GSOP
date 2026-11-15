@@ -310,7 +310,7 @@ function SiteBody({ s, withBody }: { s: Site; withBody: boolean }) {
               ))}
             </ul>
           )}
-          {p ? <p className="text-xs text-muted-foreground">{p.origin === "teammate" ? "This profile text was written by a teammate. It was not researched from a source page, and nobody has checked it." : `Confidence in the researched text: ${p.confidence}. Nobody on the team has checked it.`}</p> : null}
+          {p ? <p className="text-xs text-muted-foreground">{p.origin === "teammate" ? "This profile text was written by a teammate. It was not researched from a source page, and nobody has checked it." : "This profile text was gathered from public sources. Nobody on the team has checked it."}</p> : null}
         </section>
       </div>
     </div>
@@ -332,8 +332,6 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           ))}
           <Chip>{first.list === "known" ? "Reference site" : "Candidate, not in our reference list"}</Chip>
           {first.country ? <Chip>{first.country}</Chip> : null}
-          <Chip>{p && p.origin !== "teammate" ? "Researched from public sources, unreviewed" : "Teammate-written, unreviewed"}</Chip>
-          {p?.confidence === "low" ? <Chip>Low confidence</Chip> : null}
           <li>
             <Link href="/sites" className={`px-2 py-1 text-sm ${link}`}>
               All sites
