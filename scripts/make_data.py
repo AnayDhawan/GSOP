@@ -14,7 +14,6 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 
 from gsop_data import fmt  # noqa: E402
-from gsop_data.v1 import V1  # noqa: E402
 
 REPO = os.path.dirname(HERE)
 V1_ZIP_SHA256 = "0c634823629cb3e1719feafd053f99cc3eea1aabc974316fa1a7fefcf7a4076a"  # recorded in docs/DATA_NOTES.md
@@ -142,6 +141,8 @@ def main(argv=None):
             file=sys.stderr,
         )
         return 2
+    from gsop_data.v1 import V1  # imported here: it needs pyarrow, which the missing-zip message must not depend on
+
     v1 = V1(a.zip)
     ctx = Ctx(v1, a.csv, a.root)
     if not a.skip_verify:
