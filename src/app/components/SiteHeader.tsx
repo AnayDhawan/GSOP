@@ -52,6 +52,15 @@ function DocsMenu({ pathname }: { pathname: string }) {
 export default function SiteHeader() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Transparent at the top of the page, solid once the reader scrolls.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   // Close the menu after navigating and on Escape.
   useEffect(() => {
@@ -65,8 +74,18 @@ export default function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
+  const home = pathname === "/";
+  const solid = scrolled || open;
+  // On the landing page the header floats over the dark hero, so at the top it uses the dark tokens whatever the theme.
+  const overHero = home && !solid;
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75">
+    <header
+      data-theme={overHero ? "dark" : undefined}
+      data-solid={solid ? "true" : "false"}
+      className={`top-0 z-50 w-full border-b transition-colors duration-300 ${home ? "fixed inset-x-0" : "sticky"} ${
+        solid ? "border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75" : "border-transparent bg-transparent"
+      }`}
+    >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3">
         <Link href="/" aria-label="GSOP home" className="relative flex shrink-0 items-center before:absolute before:-inset-2 before:content-['']">
           <Logo />
