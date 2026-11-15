@@ -118,6 +118,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
+        {satellite && (
+          <p className="absolute bottom-4 right-4 z-10 max-w-[11rem] text-right text-xs text-secondary-foreground md:max-w-none">Satellite image: AI-generated illustration</p>
+        )}
         <a href="#glance" className="hero-cue absolute bottom-4 left-1/2 z-10 -translate-x-1/2 p-3 text-secondary-foreground hover:text-foreground max-md:hidden" aria-label="Scroll to the data">
           <span aria-hidden className="block h-3 w-3 rotate-45 border-b-2 border-r-2 border-current" />
         </a>
