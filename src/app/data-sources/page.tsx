@@ -67,10 +67,9 @@ export default function Page() {
           Quality and coverage caveat
         </h2>
         <p>
-          The Earth thermal layer has a valid value for {claim("v2.result.coverage_pct")}% of land tiles between {claim("v2.result.cov.band_south")} S and {claim("v2.result.cov.band_north")} N: {claim("v2.result.g1.coverage")} against a required {claim("v2.result.g1.required")}. Gate G1 is{" "}
-          <strong>{v2.results?.gate_statuses.G1 ?? "not available"}</strong>.
+          Coverage share {claim("v2.result.g1.coverage")} against a required {claim("v2.result.g1.required")}. Gate G1 is <strong>{v2.results?.gate_statuses.G1 ?? "not available"}</strong>.
         </p>
-        {cov ? <p className="text-secondary-foreground">{cov.text}</p> : null}
+        {cov ? <p>{cov.text}</p> : null}
         <p className="text-secondary-foreground">
           Tiles with no thermal value are not scored, so a place in an excluded region has no v2 score. Skin temperature at satellite overpass is not air temperature, and cloud gaps remain.
         </p>
