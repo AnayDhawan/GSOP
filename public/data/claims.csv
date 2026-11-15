@@ -13135,6 +13135,13 @@ v2.result.own.namib.after,5.1,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312
 v2.result.own.namib.before,41.9,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
 v2.result.own.rak.after,3.4,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
 v2.result.own.rak.before,11.5,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
+v2.result.own_tile.mars.atacama_salars,31.2,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
+v2.result.own_tile.mars.haughton,27.8,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
+v2.result.own_tile.mars.ladakh_puga,8.1,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
+v2.result.own_tile.mars.mdrs_utah,24.7,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
+v2.result.own_tile.moon.haughton,65.4,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
+v2.result.own_tile.moon.namib_sand_sea,5.1,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
+v2.result.own_tile.moon.rub_al_khali,3.4,data/v2/runs/v2/metrics.json,b0d0390bb9ba005d9e312ca3b0f754077ffc120b6f89a0f0d61004a8dfc4410e
 v2.result.qc.bit_first,0,data/v2/runs/v2/ledger.json,159883e961cf932717c8cbf36a28fb6d36f1ead64344b9bb38870480ad58af88
 v2.result.qc.bit_second,1,data/v2/runs/v2/ledger.json,159883e961cf932717c8cbf36a28fb6d36f1ead64344b9bb38870480ad58af88
 v2.result.qc.bit_value,0,data/v2/runs/v2/ledger.json,159883e961cf932717c8cbf36a28fb6d36f1ead64344b9bb38870480ad58af88

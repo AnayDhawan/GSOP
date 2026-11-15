@@ -204,3 +204,19 @@ h1, h2, h3, h4, .gsop-display {
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+/* Dashboard: on md and up the page is exactly one window tall, so the map and the ranking fill the space under the header. */
+@media (min-width: 48rem) {
+  body:has([data-dashboard-root]) { height: 100dvh; }
+}
+
+/* Leaflet controls in the brand tokens, both themes. */
+.leaflet-container { background: var(--gsop-surface-raised); font-family: var(--gsop-font-body); }
+.leaflet-bar { border: 1px solid var(--gsop-border) !important; box-shadow: none !important; }
+.leaflet-bar a, .leaflet-bar a:hover { background: var(--gsop-surface); color: var(--gsop-text); border-bottom-color: var(--gsop-border); width: 40px; height: 40px; line-height: 40px; }
+.leaflet-bar a:hover { background: var(--gsop-surface-raised); }
+.leaflet-control-attribution { background: color-mix(in srgb, var(--gsop-surface) 85%, transparent) !important; color: var(--gsop-text-secondary) !important; }
+.leaflet-control-attribution a { color: var(--gsop-text) !important; }
+.leaflet-tooltip { background: var(--gsop-surface); color: var(--gsop-text); border: 1px solid var(--gsop-border); border-radius: 0; box-shadow: none; }
+.leaflet-tooltip-top::before { border-top-color: var(--gsop-border); }
+.leaflet-interactive:focus-visible { outline: 2px solid var(--gsop-focus-ring); }

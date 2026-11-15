@@ -180,6 +180,8 @@ export type V2Results = {
   gate_reasons: Record<string, string>;
   g2b_sites: { slug: string; name: string; scorable: boolean; stored_status: string; claim?: string }[];
   g3_targets: { target: string; n_supported: number }[];
+  /** Own-tile percentile of the v2 headline run, one row per site the run reports. `claim` is the claims.csv id. */
+  own_tile: { body: "moon" | "mars"; slug: string; claim: string }[];
   d_track_present: boolean;
   positive_finding: { text: string; model_note: string; caveats: string[] } | null;
   limitations: { id: string; title: string; text: string }[];

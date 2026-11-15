@@ -258,6 +258,15 @@ def build(base, v2dir):
         F.add(f"v2.result.own.{site}.before", a(f"desc.baseline.moon.{slug}.mean_own_tile_pct")["display"], A_SRC, A_SHA)
         F.add(f"v2.result.own.{site}.after", a(f"desc.H.moon.{slug}.mean_own_tile_pct")["display"], A_SRC, A_SHA)
 
+    # ---- own-tile percentile of the v2 headline run (thermal weight 0.5) for every site the run reports; the dashboard shows these
+    own_tile = []
+    for eid in sorted(by):
+        m = re.fullmatch(r"desc\.H\.(moon|mars)\.([a-z_0-9]+)\.mean_own_tile_pct", eid)
+        if m:
+            cid = f"v2.result.own_tile.{m.group(1)}.{m.group(2)}"
+            F.add(cid, by[eid]["display"], A_SRC, A_SHA)
+            own_tile.append({"body": m.group(1), "slug": m.group(2), "claim": cid})
+
     # ---- stored values read by pattern from the documents
     audit_raw = _read(base, "docs/ENGINE_AUDIT.md")
     audit = audit_raw.decode("utf-8") if audit_raw else None
@@ -414,6 +423,7 @@ def build(base, v2dir):
             "gate_sources": sources,
             "gate_reasons": reasons,
             "g2b_sites": sites,
+            "own_tile": own_tile,
             "g3_targets": g3,
             "d_track_present": d_present,
             "positive_finding": positive,

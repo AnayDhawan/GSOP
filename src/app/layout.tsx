@@ -3,6 +3,8 @@ import "./globals.css";
 import ThemeProvider from "./components/ThemeProvider";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import SiteMain from "./components/SiteMain";
+import ChromeGate from "./components/ChromeGate";
 import { Analytics } from "@vercel/analytics/next";
 
 const title = "GSOP: Geospatial Similarity Observation Platform";
@@ -57,10 +59,10 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             Skip to content
           </a>
           <SiteHeader />
-          <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
-            {children}
-          </main>
-          <SiteFooter />
+          <SiteMain>{children}</SiteMain>
+          <ChromeGate>
+            <SiteFooter />
+          </ChromeGate>
         </ThemeProvider>
         <Analytics />
       </body>
