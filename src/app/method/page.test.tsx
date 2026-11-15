@@ -30,7 +30,7 @@ describe("methods and limits page", () => {
 
   it("shows the v2 status and the thermal limits, and says what is not available yet", () => {
     render(<Page />);
-    expect(screen.getByText("v2 run complete")).toBeInTheDocument();
+    expect(screen.getByText(/v2 run complete/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "gates page" })).toHaveAttribute("href", "/gates");
     expect(screen.getByText(/Reference thermal layers: where each one cannot match Earth/)).toBeInTheDocument();
     expect(screen.getByText(/Site evidence limits: not available yet/)).toBeInTheDocument();
@@ -58,7 +58,9 @@ describe("methods and limits page", () => {
     expect(screen.getByText("Scored tiles per view")).toBeInTheDocument();
     expect(screen.getByText("Moon negative controls")).toBeInTheDocument();
     expect(container.querySelectorAll("figure").length).toBeGreaterThanOrEqual(4);
-    for (const img of container.querySelectorAll("img")) expect(img.getAttribute("alt")).toBeTruthy();
+    // The Blue Marble basemap under the score overlay is decorative: empty alt and aria-hidden.
+    for (const img of container.querySelectorAll("img:not([aria-hidden])")) expect(img.getAttribute("alt")).toBeTruthy();
+    expect(container.querySelector("img[aria-hidden]")?.getAttribute("alt")).toBe("");
     expect(container.querySelector("svg")).toBeNull();
   });
 

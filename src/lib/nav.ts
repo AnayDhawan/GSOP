@@ -25,7 +25,10 @@ export const RESULTS: NavItem[] = [
   { href: "/map", label: "Honest Map", description: "Where v1 scores high, with the controls that failed in red" },
 ];
 
-export const FOOTER_QUICK: NavItem[] = NAV.slice(0, 4);
+/** The plan after the hackathon. Linked from the footer, the landing page and the methodology page. */
+export const ROADMAP: NavItem = { href: "/roadmap", label: "After the hackathon", description: "The plan: a proper build, a month of simulation, a check against ground data" };
+
+export const FOOTER_QUICK: NavItem[] = [...NAV.slice(0, 4), ROADMAP];
 
 export const FOOTER_LEGAL: NavItem[] = [
   { href: "/license", label: "License", description: "The repository licence, verbatim" },

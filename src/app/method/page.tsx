@@ -70,40 +70,46 @@ export default function Page() {
     <>
       <PageHero title="Methods and limits" lede="How GSOP scores Earth tiles against a lunar or Martian target, and the long list of things that score cannot see." />
 
-      <div className="grid items-start gap-10 md:grid-cols-2">
-        <div className="space-y-4">
-          <p className="text-lg">GSOP scores every land tile on Earth by how closely its terrain matches a lunar or Martian target, then ranks the tiles. It tells you where to look, not where to go.</p>
-          <ul className={`${ul} text-secondary-foreground`}>
-            <li>The Moon score is effectively terrain only. Mars is a low-confidence secondary result.</li>
-            <li>
-              The method failed its own pre-registered negative-control test. The{" "}
-              <Link href="/ledger" className={link}>
-                Failure-First Ledger
-              </Link>{" "}
-              lists every failure first, and so does this page.
-            </li>
-            <li>The ranking has not been checked against independent data.</li>
-          </ul>
+      <div className="max-w-3xl space-y-4">
+        <p className="text-lg">GSOP scores every land tile on Earth by how closely its terrain matches a lunar or Martian target, then ranks the tiles. It tells you where to look, not where to go.</p>
+        <ul className={`${ul} text-secondary-foreground`}>
+          <li>The Moon score is effectively terrain only. Mars is a low-confidence secondary result.</li>
+          <li>
+            The method failed its own pre-registered negative-control test. The{" "}
+            <Link href="/ledger" className={link}>
+              Failure-First Ledger
+            </Link>{" "}
+            lists every failure first, and so does this page.
+          </li>
+          <li>The ranking has not been checked against independent data.</li>
+        </ul>
+      </div>
+
+      <figure className="mt-10 space-y-3">
+        {/* The overlay sits on the NASA Blue Marble picture, so land with no score still shows as land. */}
+        <div className="relative w-full overflow-hidden border border-border bg-[#000a30]" style={{ aspectRatio: "3600 / 1383" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/img/maps/blue-marble-crop.jpg" alt="" aria-hidden width={2048} height={787} className="absolute inset-0 h-full w-full brightness-[0.55] saturate-[0.7]" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/data/overlays/shackleton_rim.png" alt="World map in which land tiles that have a v1 score for the Shackleton rim target are coloured from purple (low) to yellow (high). Land with no score shows as the satellite picture." width={3600} height={1383} className="absolute inset-0 h-full w-full" />
         </div>
-        <figure className="space-y-2">
-          <div className="border border-border bg-[#000a30] p-1">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/data/overlays/shackleton_rim.png" alt="World map in which land tiles that have a v1 score for the Shackleton rim target are coloured from purple (low) to yellow (high). Large regions have no score." width={3600} height={1383} className="h-auto w-full" />
-          </div>
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/data/overlays/legend.png" alt="Colour scale from a low score (dark purple) to a high score (yellow)" width={512} height={64} className="h-auto w-64 max-w-full" />
-          <figcaption className="text-sm text-secondary-foreground">Where v1 produced a score for the Shackleton rim target. Blank land was gated out or had no data, which is not the same as a low score.</figcaption>
-        </figure>
-      </div>
+          <figcaption className="max-w-2xl text-sm text-secondary-foreground">Where v1 produced a score for the Shackleton rim target, on the NASA Blue Marble picture. Land that shows the satellite picture was gated out or had no data, which is not the same as a low score.</figcaption>
+        </div>
+      </figure>
 
       <section className="mt-12 grid gap-8 md:grid-cols-[1fr_2fr]" aria-labelledby="question">
         <h2 id="question" className={h2}>
           The question
         </h2>
-        <div className="space-y-3">
-          <p>The challenge asks for Earth places that could stand in for candidate Moon-base locations or Mars landing and exploration sites. It also asks what makes a place analogous, where the analogy breaks down, and how studying it could help.</p>
-          <p className="text-secondary-foreground">GSOP answers one narrow part: which Earth places have terrain like a lunar or Martian target, using open data. It does not say what to test at a place. An analog is useful only for the properties that match, and the ones that do not are on the ledger and in the limits below.</p>
-        </div>
+        <ul className={ul}>
+          <li>The challenge asks for Earth places that could stand in for candidate Moon-base locations or Mars landing and exploration sites.</li>
+          <li>It also asks what makes a place analogous, where the analogy breaks down, and how studying it could help.</li>
+          <li className="text-secondary-foreground">GSOP answers one narrow part: which Earth places have terrain like a lunar or Martian target, using open data.</li>
+          <li className="text-secondary-foreground">It does not say what to test at a place. An analog is useful only for the properties that match. The ones that do not are on the ledger and in the limits below.</li>
+        </ul>
       </section>
 
       <Band tone="raised" labelledBy="limits">
@@ -210,14 +216,18 @@ export default function Page() {
         </ol>
       </Band>
 
-      <section className="grid items-start gap-10 md:grid-cols-2" aria-labelledby="gated">
-        <div className="space-y-3">
+      <section className="space-y-6" aria-labelledby="gated">
+        <div className="max-w-3xl space-y-3">
           <h2 id="gated" className={h2}>
             How many tiles survive the gates
           </h2>
-          <p className="text-secondary-foreground">Each view is one target and one purpose profile. The count is the tiles that passed the gates and got a score. Bars are drawn to one scale, so the differences between profiles look small. The numbers beside the bars are exact.</p>
+          <ul className={`${ul} text-secondary-foreground`}>
+            <li>Each view is one target and one purpose profile.</li>
+            <li>The count is the tiles that passed the gates and got a score.</li>
+            <li>Bars share one scale, so profiles look alike. The numbers beside the bars are exact.</li>
+          </ul>
         </div>
-        <div className="border border-border bg-surface p-5">
+        <div className="border border-border bg-surface p-5 md:p-6">
           <BarChart
             title="Scored tiles per view"
             rows={gated.map((g) => ({ label: viewName(g.v), value: Number(g.display), display: group(g.display), tone: g.v.startsWith("jezero") ? "mars" : "moon" }))}
@@ -276,37 +286,44 @@ export default function Page() {
       </section>
 
       <Band tone="raised" labelledBy="v2">
-        <div className="max-w-4xl space-y-4">
+        <div className="max-w-4xl space-y-5">
           <h2 id="v2" className={h2}>
-            The v2 limits
+            The v2 run
           </h2>
-          <p className={v2.run_completed ? "" : "text-control"}>{v2.status_text}</p>
-          {v2.results && (
-            <p className="text-secondary-foreground">
-              The v2 gate results and the limitations of the v2 run are on the{" "}
-              <Link href="/gates" className={link}>
-                gates page
+          <ul className={ul}>
+            <li className={v2.run_completed ? "" : "text-control"}>Status: {v2.status_text}.</li>
+            {v2.results && (
+              <li>
+                Gate results and the limitations of the run:{" "}
+                <Link href="/gates" className={link}>
+                  gates page
+                </Link>
+                .
+              </li>
+            )}
+            <li>
+              What we do next, and what would change our mind:{" "}
+              <Link href="/roadmap" className={link}>
+                after the hackathon
               </Link>
               .
-            </p>
-          )}
+            </li>
+            <li className="text-secondary-foreground">The reference thermal layers give context for the Moon and Mars targets. Each note below says where a layer cannot match Earth. Open one to read it.</li>
+          </ul>
           {refs ? (
-            <>
-              <p className="text-secondary-foreground">The reference thermal layers give context for the Moon and Mars targets. This is where each layer cannot match Earth, as written with the data.</p>
-              <details className="border border-border bg-surface p-4" open>
-                <summary className="cursor-pointer font-display text-lg">{refs.title}</summary>
-                <div className="mt-3">
-                  <LimitsDoc blocks={refs.blocks} />
-                </div>
-              </details>
-            </>
+            <details className="border border-border bg-surface p-4">
+              <summary className="cursor-pointer font-display text-lg">{refs.title}</summary>
+              <div className="mt-3">
+                <LimitsDoc blocks={refs.blocks} />
+              </div>
+            </details>
           ) : (
             <p className="text-muted-foreground">The thermal reference limits are not available.</p>
           )}
           {(["evidence_limits", "data_resources"] as const).map((id) => {
             const d = doc(id);
             return d ? (
-              <details key={id} className="border border-border bg-surface p-4" open>
+              <details key={id} className="border border-border bg-surface p-4">
                 <summary className="cursor-pointer font-display text-lg">{d.title}</summary>
                 <div className="mt-3">
                   <LimitsDoc blocks={d.blocks} />

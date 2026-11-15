@@ -284,4 +284,5 @@ h1, h2, h3, h4, .gsop-display {
 /* Colour for TEXT in the control red and the Earth blue. The brand colours stay as they are for borders, dots and fills. */
 [data-theme="dark"] .text-control { color: #E8806E; }
 [data-theme="dark"] .text-earth { color: #5AAEE6; }
+[data-theme="dark"] .text-positive { color: #43BD8B; }
 [data-theme="light"] .text-earth { color: #1F6EA3; }
