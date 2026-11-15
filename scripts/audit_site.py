@@ -84,7 +84,8 @@ def audit_page(route, page, rx, e32, is_site_page):
         p.append(f"banned word '{m.group(0)}'")
     if "—" in text:
         p.append("em dash in text")
-    low = body.lower()
+    # A source name in a photo credit is a proper noun, not filler.
+    low = body.lower().replace("national map seamless server", "")
     for w in SLOP:
         if re.search(rf"\b{re.escape(w)}\b", low):
             p.append(f"filler word '{w}'")

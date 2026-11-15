@@ -4,7 +4,7 @@ export type NavItem = { href: string; label: string; description: string };
 /** The three guides under the Docs menu in the header. */
 export const DOCS: NavItem[] = [
   { href: "/docs/researchers", label: "For independent researchers", description: "Claim files, score trails, citation and what the data does not support" },
-  { href: "/docs/organizations", label: "For research organizations", description: "Using the exports as a candidate pre-filter" },
+  { href: "/docs/organizations", label: "For research organisations", description: "Using the exports as a candidate pre-filter" },
   { href: "/docs/data-access", label: "Data file access", description: "Every static file, with path and schema" },
 ];
 
@@ -31,7 +31,7 @@ export const ROADMAP: NavItem = { href: "/roadmap", label: "After the hackathon"
 export const FOOTER_QUICK: NavItem[] = [...NAV.slice(0, 4), ROADMAP];
 
 export const FOOTER_LEGAL: NavItem[] = [
-  { href: "/license", label: "License", description: "The repository licence, verbatim" },
+  { href: "/license", label: "Licence", description: "The repository licence, verbatim" },
   { href: "/data-sources", label: "Data sources", description: "Every source, what it gave us, and its caveats" },
   { href: "/disclaimers", label: "Disclaimers", description: "What this site is not" },
   { href: "/privacy", label: "Privacy", description: "What the site stores and which third parties it loads" },

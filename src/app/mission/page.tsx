@@ -39,6 +39,41 @@ const PRACTICE = [
   },
 ];
 
+// What a Moon and Mars analog finder should do, what GSOP does about it today, and what is still missing.
+// Plain words only: any number on this page would need a claims row.
+const FIT = [
+  {
+    goal: "Find places that resemble a Moon or Mars target",
+    does: "Ranks Earth land tiles against Moon and Mars targets, and stores a percentile for every listed site.",
+    gap: "The pre-registered checks failed, and the ranking has not been checked against independent data. It is a screening aid, not a finding.",
+  },
+  {
+    goal: "Describe a place well enough to compare it",
+    does: "Each site has a photo, a short profile, facts, and open Earth data summarised around its coordinates.",
+    gap: "Profiles are short and unreviewed, and no source has been checked. There are no full case studies yet.",
+  },
+  {
+    goal: "Cover more than terrain",
+    does: "Terrain and, in the second run, surface temperature. Water and ice appear in profiles as notes.",
+    gap: "Nothing on biology, caves and lava tubes, dust or wind, and no Earth place has lunar gravity, vacuum or radiation.",
+  },
+  {
+    goal: "Use data from space agencies",
+    does: "Open data from NASA, USGS and ESA, with Natural Earth for place names.",
+    gap: "Data from other space agencies is not used yet. The Moon is compared mostly on terrain.",
+  },
+  {
+    goal: "Make it open and repeatable",
+    does: "Code and data files are public, every number has a claims row, and pass marks were written before the run.",
+    gap: "A full rebuild needs the v1 results archive, which is not in the repository.",
+  },
+  {
+    goal: "Put India first",
+    does: "Indian sites sit in the list and have their own dashboard view. We ask for ground measurements.",
+    gap: "We hold no ground measurements from India yet.",
+  },
+];
+
 export default function Page() {
   return (
     <>
@@ -108,6 +143,30 @@ export default function Page() {
           />
         </div>
       </Band>
+
+      <section className="space-y-6" aria-labelledby="fit">
+        <div className="space-y-2">
+          <h2 id="fit" className="text-2xl">
+            How far GSOP gets
+          </h2>
+          <p className="mx-auto max-w-2xl text-secondary-foreground">Measured against what a Moon and Mars analog finder should do. The gaps are listed on purpose.</p>
+        </div>
+        <ul data-left className="grid gap-4 md:grid-cols-2">
+          {FIT.map((f) => (
+            <li key={f.goal} className="space-y-3 border border-border bg-surface p-5">
+              <h3 className="font-display text-lg">{f.goal}</h3>
+              <p className="text-sm text-secondary-foreground">
+                <span className="gsop-label mr-2 text-foreground">Does</span>
+                {f.does}
+              </p>
+              <p className="text-sm text-secondary-foreground">
+                <span className="gsop-label mr-2 text-foreground">Gap</span>
+                {f.gap}
+              </p>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <Band tone="raised" labelledBy="next">
         <h2 id="next" className="mb-3 text-2xl">

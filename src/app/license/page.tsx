@@ -5,7 +5,7 @@ import { licenseText } from "@/lib/pages-data";
 import { REPO_URL } from "@/lib/nav";
 
 export const metadata: Metadata = {
-  title: "License",
+  title: "Licence",
   description: "The licence the GSOP code and data build are released under, shown exactly as committed in the repository.",
 };
 
@@ -14,7 +14,7 @@ const link = "underline underline-offset-4";
 export default function Page() {
   return (
     <>
-      <PageHero title="License" lede="The LICENSE file from the repository, unchanged." />
+      <PageHero title="Licence" lede="The LICENSE file from the repository, unchanged." />
       <div className="grid items-start gap-10 md:grid-cols-[1.6fr_1fr]">
         <pre className="overflow-x-auto whitespace-pre-wrap border border-border bg-surface p-5 font-mono text-sm leading-relaxed" data-testid="license-text">
           {licenseText()}

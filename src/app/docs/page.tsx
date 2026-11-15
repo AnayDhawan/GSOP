@@ -6,12 +6,12 @@ import PagePhoto from "../components/PagePhoto";
 
 export const metadata: Metadata = {
   title: "Docs",
-  description: "Guides for researchers and organizations who want to use the GSOP data files, and the list of files you can fetch.",
+  description: "Guides for researchers and organisations who want to use the GSOP data files, and the list of files you can fetch.",
 };
 
 const DOCS = [
   { href: "/docs/researchers", title: "For independent researchers", edge: "border-earth", body: "What the claims files hold, how to follow one score back to its source, how to cite us, and what the data does not support." },
-  { href: "/docs/organizations", title: "For research organizations", edge: "border-moon", body: "How to use the exported files as a candidate pre-filter, how to read PASS, FAIL and NOT TESTED, and how to work with us." },
+  { href: "/docs/organizations", title: "For research organisations", edge: "border-moon", body: "How to use the exported files as a candidate pre-filter, how to read PASS, FAIL and NOT TESTED, and how to work with us." },
   { href: "/docs/data-access", title: "Data file access", edge: "border-mars", body: "Every static file we serve, with its path, schema, example URL, update cadence and terms." },
 ];
 

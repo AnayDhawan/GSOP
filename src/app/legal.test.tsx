@@ -19,7 +19,7 @@ vi.mock("next/link", () => ({ default: ({ href, children, ...r }: { href: string
 const BANNED = bannedRegex();
 const DASHES = new RegExp(`[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}]`);
 const PAGES: [string, ComponentType, string][] = [
-  ["license", LicensePage, "License"],
+  ["license", LicensePage, "Licence"],
   ["data-sources", DataSourcesPage, "Data sources"],
   ["disclaimers", DisclaimersPage, "Disclaimers"],
   ["contact", ContactPage, "Contact"],

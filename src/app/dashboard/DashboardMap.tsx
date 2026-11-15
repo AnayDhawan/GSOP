@@ -157,7 +157,7 @@ export default function DashboardMap({
       <InvalidateSize dep={resizeKey} />
       <FlyToLocation at={me} />
       <FlyToSelected site={selected} />
-      <MapAccessibleName label={`Map of ${bodyKey} analog sites, colored by similarity score`} />
+      <MapAccessibleName label={`Map of ${bodyKey} analog sites, coloured by similarity score`} />
     </MapContainer>
   );
 }
