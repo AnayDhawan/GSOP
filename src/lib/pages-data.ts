@@ -22,7 +22,7 @@ export function licenseText(): string {
   return readRepoText("LICENSE").replace(/\r\n/g, "\n");
 }
 
-export type PublicDataFile = { path: string; bytes: number; label: string | null };
+export type PublicDataFile = { path: string; bytes: number; label: string | null; schema: string };
 
 /** Every file under public/data, sorted by path, with the meta.label of each JSON file. */
 export function publicDataFiles(): PublicDataFile[] {
@@ -37,15 +37,21 @@ export function publicDataFiles(): PublicDataFile[] {
       }
       const rel = path.relative(base, full).split(path.sep).join("/");
       let label: string | null = null;
+      let schema = "";
       if (rel.endsWith(".json")) {
         try {
-          const doc = JSON.parse(fs.readFileSync(full, "utf-8")) as { meta?: { label?: string } };
+          const doc = JSON.parse(fs.readFileSync(full, "utf-8")) as { meta?: { label?: string } } & Record<string, unknown>;
           label = doc.meta?.label ?? null;
+          schema = `JSON; top-level keys: ${Object.keys(doc).join(", ")}`;
         } catch {
-          label = null;
+          schema = "JSON";
         }
+      } else if (rel.endsWith(".csv")) {
+        schema = `CSV; columns: ${csvColumns(`public/data/${rel}`).join(", ")}`;
+      } else if (rel.endsWith(".png")) {
+        schema = "PNG image";
       }
-      out.push({ path: rel, bytes: fs.statSync(full).size, label });
+      out.push({ path: rel, bytes: fs.statSync(full).size, label, schema });
     }
   };
   walk(base);
@@ -63,13 +69,18 @@ export function csvColumns(rel: string): string[] {
   return readRepoText(rel).split("\n", 1)[0].replace(/\r$/, "").split(",");
 }
 
+/** The track A file was written by Python and holds bare NaN values, which strict JSON rejects. They read as null here. */
+function lenientJson(text: string): string {
+  return text.replace(/:\s*-?(NaN|Infinity)\b/g, ": null");
+}
+
 type V2Entry = { id: string; label?: string; display?: string };
 
 /** One entry of the v2 track A metrics file, by id. Null when the file or the entry is absent. */
 export function v2MetricEntry(id: string): V2Entry | null {
   const rel = "data/v2/runs/v2/metrics.json";
   if (!repoFileExists(rel)) return null;
-  const doc = JSON.parse(readRepoText(rel)) as { entries: V2Entry[] };
+  const doc = JSON.parse(lenientJson(readRepoText(rel))) as { entries: V2Entry[] };
   return doc.entries.find((e) => e.id === id) ?? null;
 }
 
@@ -77,7 +88,7 @@ export function v2MetricEntry(id: string): V2Entry | null {
 export function v2MetricLimits(): string[] {
   const rel = "data/v2/runs/v2/metrics.json";
   if (!repoFileExists(rel)) return [];
-  const doc = JSON.parse(readRepoText(rel)) as { meta: { limits?: string[] } };
+  const doc = JSON.parse(lenientJson(readRepoText(rel))) as { meta: { limits?: string[] } };
   return doc.meta.limits ?? [];
 }
 
