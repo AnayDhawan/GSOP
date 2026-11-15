@@ -30,8 +30,8 @@ export default function ThemeToggle() {
             aria-pressed={pressed}
             onClick={() => setTheme(o.value)}
             className={cn(
-              "gsop-label px-2 py-1 text-xs",
-              pressed ? "bg-surface-raised text-foreground" : "text-muted-foreground hover:text-foreground",
+              "px-2 py-1 font-mono text-xs uppercase tracking-wider",
+              pressed ? "bg-surface-raised text-foreground" : "text-secondary-foreground hover:text-foreground",
             )}
           >
             {o.label}

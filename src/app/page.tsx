@@ -45,7 +45,7 @@ function Gate({ name, status, children }: { name: string; status: GateStatus | u
     <li className={`flex flex-col gap-2 border p-4 ${GATE_TONE[s].box}`}>
       <div className="flex items-baseline justify-between gap-3">
         <span className="font-display text-lg">{name}</span>
-        <span className={`gsop-label !text-sm font-semibold ${GATE_TONE[s].text}`}>{s}</span>
+        <span className={`font-mono text-sm font-semibold uppercase tracking-wider ${GATE_TONE[s].text}`}>{s}</span>
       </div>
       <p className="text-sm text-secondary-foreground">{children}</p>
     </li>
@@ -240,7 +240,7 @@ export default function Home() {
               .
             </p>
           </div>
-          <Link href="/dashboard" className="inline-flex min-h-12 shrink-0 items-center gap-2 whitespace-nowrap bg-primary px-6 font-display text-lg text-white hover:opacity-90">
+          <Link href="/dashboard" className="inline-flex min-h-12 shrink-0 items-center gap-2 whitespace-nowrap bg-primary px-6 font-display text-xl font-semibold text-white hover:opacity-90">
             Open the dashboard
             <ArrowRight className="h-5 w-5" aria-hidden />
           </Link>

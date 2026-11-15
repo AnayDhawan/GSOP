@@ -15,6 +15,7 @@ export const RESULTS: NavItem[] = [
   { href: "/gates", label: "Gate results", description: "Which pre-registered gates failed, with the one positive result" },
   { href: "/ledger", label: "Failure-First Ledger", description: "What failed and where the analogy breaks down" },
   { href: "/sites", label: "Sites", description: "Reference sites and candidates, with the stored score at each" },
+  { href: "/docs", label: "Docs", description: "Guides for researchers and organizations, and the static data files" },
   { href: "/map", label: "Honest Map", description: "Where v1 scores high, with the controls that failed in red" },
 ];
 
@@ -24,6 +25,7 @@ export const FOOTER_LEGAL: NavItem[] = [
   { href: "/license", label: "License", description: "The repository licence, verbatim" },
   { href: "/data-sources", label: "Data sources", description: "Every source, what it gave us, and its caveats" },
   { href: "/disclaimers", label: "Disclaimers", description: "What this site is not" },
+  { href: "/privacy", label: "Privacy", description: "What the site stores and which third parties it loads" },
 ];
 
 export const REPO_URL = "https://github.com/AnayDhawan/GSOP";
