@@ -1,0 +1,36 @@
+name: Bug report
+description: Something on the site is broken or shows a wrong value
+labels: ["bug"]
+body:
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: The address where you saw it
+      placeholder: https://gsoplatform.vercel.app/gates
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What is wrong
+      description: What you saw, and what you expected instead. For a wrong number, say which one and where it should come from.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the dashboard
+        2. Choose Mars, then India
+        3. Click a site
+    validations:
+      required: false
+  - type: input
+    id: browser
+    attributes:
+      label: Browser and screen size
+      placeholder: Chrome 130, 360 px wide phone
+    validations:
+      required: false

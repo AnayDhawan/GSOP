@@ -1,0 +1,47 @@
+name: Field data or source correction
+description: Send a measurement from an analog site, or correct a source or coordinate
+labels: ["data"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Nothing sent here appears as a result until it has a source and a row in the claims file. Public data and your own logger data are both welcome.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What are you sending
+      options:
+        - Field measurement
+        - Source correction
+        - Coordinate correction
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: site
+    attributes:
+      label: Site
+      description: The site name as it appears on the dashboard
+    validations:
+      required: true
+  - type: textarea
+    id: data
+    attributes:
+      label: The data or the correction
+      description: For a measurement give the value, unit, date and time, place (latitude and longitude) and the instrument. For a correction say what is wrong and what it should be.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source or link
+      description: A paper, dataset or page that supports it. Leave blank for your own measurements.
+    validations:
+      required: false
+  - type: checkboxes
+    id: licence
+    attributes:
+      label: Licence
+      options:
+        - label: I am allowed to share this and agree it can be published under an open licence
+          required: true
