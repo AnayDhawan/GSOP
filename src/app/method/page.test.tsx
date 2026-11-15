@@ -1,3 +1,4 @@
+import { bannedRegex } from "@/lib/banned";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import Page from "./page";
@@ -47,7 +48,7 @@ describe("methods and limits page", () => {
   it("has no banned words and no dashes used as punctuation", () => {
     const { container } = render(<Page />);
     const text = container.textContent ?? "";
-    expect(text).not.toMatch(/\b(validated|discovered|undiscovered|new sites)\b/i);
+    expect(text).not.toMatch(bannedRegex());
     expect(text).not.toMatch(/—/);
   });
 

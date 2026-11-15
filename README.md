@@ -2,7 +2,7 @@
 
 Website for GSOP, a screening method that scores every 6 km land tile on Earth by how much it resembles a lunar or Martian target. Built for NASA Space Apps Challenge 2026.
 
-The ranking is a screening aid, not a validated result. Limits are stated on the site.
+The ranking is a screening aid, not a result that has been checked against independent data. Limits are stated on the site.
 
 ## Run it
 

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { bannedRegex } from "@/lib/banned";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import Home from "./page";
@@ -48,7 +49,7 @@ describe("landing page", () => {
 
   it("uses none of the banned words and renders no NaN or undefined", () => {
     const { container } = render(<Home />);
-    expect(container.textContent).not.toMatch(/\b(validated|discovered|undiscovered|new sites)\b/i);
+    expect(container.textContent).not.toMatch(bannedRegex());
     expect(container.textContent).not.toMatch(/NaN|undefined/);
   });
 });
