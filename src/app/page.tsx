@@ -125,11 +125,11 @@ export default function Home() {
         </a>
       </section>
 
-      {/* The short version, in plain words, for a visitor with one minute: what was built, what was tested, what was found. */}
+      {/* Project summary, in plain words, for a visitor with one minute: what was built, what was tested, what was found. */}
       <section aria-labelledby="short" className={`${container} py-14 md:py-20`}>
         <Reveal className="space-y-8">
           <h2 id="short" className="text-3xl md:text-4xl">
-            The short version
+            Project summary
           </h2>
           <ul className="grid gap-4 md:grid-cols-3">
             <li className="space-y-2 border border-border bg-surface p-5">
