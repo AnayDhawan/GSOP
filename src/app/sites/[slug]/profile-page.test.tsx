@@ -21,7 +21,7 @@ describe("site profile data", () => {
         const v = p[k];
         if (v === null) continue;
         expect(v, `${slug}.${k}`).not.toMatch(/\d/);
-        expect(v, `${slug}.${k}`).not.toMatch(/[—–]/);
+        expect(v, `${slug}.${k}`).not.toMatch(/[\u2014\u2013]/);
         expect(v, `${slug}.${k}`).not.toMatch(bannedRegex());
       }
       if (p.image) {
@@ -47,7 +47,7 @@ describe("site detail page", () => {
     if (p.image) expect(container.textContent).toContain(p.image.credit);
     for (const img of container.querySelectorAll("img")) expect(img.hasAttribute("alt")).toBe(true);
     expect(container.querySelector("svg")).toBeNull();
-    expect(container.textContent).not.toMatch(/[—–]/);
+    expect(container.textContent).not.toMatch(/[\u2014\u2013]/);
     expect(container.textContent).not.toMatch(bannedRegex());
     expect(container.textContent).not.toMatch(/NaN|undefined/);
   });
