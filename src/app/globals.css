@@ -228,9 +228,9 @@ h1, h2, h3, h4, .gsop-display {
 /* Page title band and section bands (see PageHero.tsx and Band.tsx) */
 .page-hero {
   background-color: var(--gsop-surface);
-  background-image: var(--gsop-pattern-topographic);
-  background-size: 640px auto;
-  background-position: right center;
+  background-image: linear-gradient(to right, var(--gsop-surface) 30%, transparent 78%), var(--gsop-pattern-topographic);
+  background-size: 100% 100%, 760px auto;
+  background-position: 0 0, right center;
   background-repeat: no-repeat;
 }
 .band-grid {
