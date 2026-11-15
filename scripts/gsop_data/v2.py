@@ -6,7 +6,9 @@ missing and nothing is filled in. Numbers are never computed here: values are re
 fixed display rule.
 
 Writes:
-  public/data/v2.json               status, input list with hashes, pre-registration check, thermal references
+  public/data/v2.json               status, input list with hashes, pre-registration check, thermal references, and
+                                    (when the role A and D result files exist) gate statuses, limitations and run ledgers
+                                    (built by v2_results.py)
   public/data/site_measurements.json  only when data/evidence/site_measurements.csv is present
   public/img/sites/*                only when image chips are present
 """
@@ -20,6 +22,7 @@ import shutil
 from decimal import ROUND_HALF_EVEN, Decimal
 
 from .fmt import NOT_IN_V1, make_meta, write_json
+from . import v2_results
 
 V2_DIR = "data/v2"
 RUN_NOT_COMPLETED = "v2 run not completed"
@@ -30,6 +33,15 @@ EXPECTED = [
     "runs/v2/ledger.json",
     "runs/v2/claims_v2.csv",
     "runs/v2/claims_c.csv",
+    "runs/v2/metrics_d.json",
+    "runs/v2/ledger_d.json",
+    "runs/v2/claims_d.csv",
+    "runs/v2/negative_set_d.csv",
+    "runs/v2/results_a.md",
+    "runs/v2/results_d.md",
+    "runs/v2/STATUS_A.md",
+    "runs/v2/STATUS_D.md",
+    "docs/ENGINE_AUDIT.md",
     "data/reference/thermal_refs.csv",
     "data/reference/thermal_refs_files.csv",
     "data/evidence/site_measurements.csv",
@@ -94,7 +106,8 @@ def recorded_hash(sha_text, doc_name):
         if line.lstrip().startswith("#"):
             continue
         m = re.search(r"\b([0-9a-f]{64})\b", line)
-        if m and (doc_name in line or line.strip().lower().startswith("sha256")):
+        first = line.split()[0].lower() if line.split() else ""
+        if m and (doc_name in line or first.startswith("sha256") or first == doc_name.lower().replace(".", "_") + "_sha256"):
             found = m.group(1)
     return found
 
@@ -105,7 +118,7 @@ def preregistrations(base):
     if not os.path.isdir(d):
         return out
     for f in sorted(os.listdir(d)):
-        m = re.fullmatch(r"PREREG_([A-Za-z0-9]+)\.md", f)
+        m = re.fullmatch(r"PREREG_([A-Za-z0-9]+(?:_addendum[0-9]+)?)\.md", f)
         if not m:
             continue
         key = m.group(1)
@@ -288,6 +301,7 @@ def build(ctx):
     docs = limits_docs(base)
     meas = measurements(base, ctx.sites)
     chips = copy_chips(base, ctx.root)
+    results, facts = v2_results.build(base, V2_DIR)
     done = all(i["present"] for i in inputs if i["path"] in ("runs/v2/metrics.json", "runs/v2/ledger.json"))
     sources = [{"source_file": f"{V2_DIR}/{i['path']}", "sha256": i["sha256"]} for i in inputs if i["present"]]
     sources += [{"source_file": f"{V2_DIR}/{p['file']}", "sha256": p["actual_sha256"]} for p in pre]
@@ -297,6 +311,7 @@ def build(ctx):
         "Optional v2 sim outputs: status, input hashes, pre-registrations and thermal reference layers.",
         V2_LIMITS,
         sources,
+        facts=facts,
     )
     doc = {
         "meta": meta,
@@ -308,6 +323,7 @@ def build(ctx):
         "limits_docs": docs,
         "has_site_measurements": meas is not None,
         "n_chip_files": len([c for c in chips if c.endswith(".jpg")]),
+        "results": results,
     }
     write_json(os.path.join(ctx.root, "public/data/v2.json"), doc)
     sm_path = os.path.join(ctx.root, "public/data/site_measurements.json")

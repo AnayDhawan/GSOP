@@ -95,14 +95,30 @@ Data files keep 4 decimals for scores and coordinates (6 for metric values), whi
 ### `v2.json`, `site_measurements.json` and `public/img/sites/` (optional, issues B16 and C8)
 - Serves (b), (c), (d). Read by the Ledger page (v2 section) and the per-site pages (measured evidence). Every input is optional: the build and the site work with all of them absent, with some present and with all present (tests: `python3 -m unittest discover -s scripts/tests`, run in CI).
 - Inputs come from `AnayDhawan/sim`: `python3 scripts/sync_v2.py` copies whatever exists on `main`, `data/thermal-refs` and `data/site-evidence` into `data/v2/` with the same paths, and records branch, commit and sha256 in `data/v2/SOURCES.csv`. Nothing is edited or invented. Every file under `data/v2/` is in `data/MANIFEST.csv`.
-- Expected inputs: `runs/v2/metrics.json`, `ledger.json`, `claims_v2.csv`, `claims_c.csv`; `PREREG_*.md` with `prereg_*.sha256`; `data/reference/thermal_refs.csv` and `thermal_refs_files.csv`; `data/evidence/site_measurements.csv`, `ledger_c.json`; `public/img/sites/` (JPEG chips and `credits.json`); `docs/refs_limits.md`, `evidence_limits.md`, `data_resources.md`.
+- Expected inputs: `runs/v2/metrics.json`, `ledger.json`, `claims_v2.csv`, `claims_c.csv`; the track D files `metrics_d.json`, `ledger_d.json`, `claims_d.csv`, `negative_set_d.csv`; the reports `results_a.md`, `results_d.md`, `STATUS_A.md`, `STATUS_D.md`; `PREREG_*.md` (including `PREREG_A_addendum1.md`) with `prereg_*.sha256`; `docs/ENGINE_AUDIT.md`; `data/reference/thermal_refs.csv` and `thermal_refs_files.csv`; `data/evidence/site_measurements.csv`, `ledger_c.json`; `public/img/sites/` (JPEG chips and `credits.json`); `docs/refs_limits.md`, `evidence_limits.md`, `data_resources.md`.
 - `v2.json`: `run_completed` (true only when both `runs/v2/metrics.json` and `ledger.json` exist), `status_text` ("v2 run not completed" otherwise), `inputs` (every expected file with present flag, bytes and sha256), `preregistrations` (per `PREREG_X.md`: title, sha256 of the LF-normalised document, the hash recorded in `prereg_x.sha256`, whether they match, and a deviations file when present), `thermal_refs` (rows from `thermal_refs.csv`, or `null`), `limits_docs`, `has_site_measurements`, `n_chip_files`.
 - Thermal rows carry `status`: `value` (with `display`), `not_covered`, `empty` or `label`. Display rule: four significant digits, counts as integers. A `not_covered` row has no number. Claims ids are `v2.thermal.<site>.<layer>.<stat>`.
 - The `claims_v2.csv` and `claims_c.csv` files are copied but not merged: this build writes its own claims rows from the data it shows, so each shown number still has one row in `claims.csv`.
-- Gate results and v2 metrics are not shown yet. When the v2 ledger arrives its literal statuses (PASS, FAIL, NOT TESTED) will be shown; until then the page says "v2 run not completed". Nothing is estimated.
+- Gate results: see "v2 results block" below. When the result files are absent the pages say "v2 run not completed" and show nothing. Nothing is estimated.
 - `site_measurements.json` exists only when `site_measurements.csv` is present, in the layout fixed by `runs/v2/PREREG_C.md` section 4 (a missing required column stops the build). Rows are grouped by site id, matched on site name and body. A null stays as a null with its note and reads "not measured" on the page. Rows with `page_ok` false are never shown (approximate coordinates keep only the larger radius, with a caveat). Display rule: three significant digits. Claims ids are `v2.evidence.<site id>.r<radius>.<dataset>.<variable>.<stat>`, plus `v2.evidence.radius.<radius>`.
 - Chips are copied to `public/img/sites/<slug>.jpg`; the page shows the chip with the credit string from `credits.json`. A stale output is removed when its input is removed.
 - The limits documents (`docs/refs_limits.md`, `evidence_limits.md`, `data_resources.md`) are stored in `v2.json` under `limits_docs` as blocks (headings, nested bullets, paragraphs, inline code), when they exist. The Methods page shows them. Every number in them gets a claims row, `v2.doc.<id>.b<block>.n<index>`, that cites the document and its hash. A missing document is reported as "not available yet".
+
+### v2 results block (issue W1)
+- Source of the v2 files: the handoff zip from Anay (`gsop_yash_handoff_v2results.zip`), not `sync_v2.py`: the files are on the unmerged branches `v2/a-scoring` (head `92910dca2cf51c29000dbf11de239b4ed88bdf0d`) and `v2/d-fitted` (head `997a881c223b5be9816771fcd9d24d367e1f8e7f`) of `AnayDhawan/sim`, not on `main`. Branch and commit per file are in `data/v2/SOURCES.csv`. The engine commit `a7d96d9` is local to Anay and not on the public repository; the repeat run needs it pushed.
+- Paths: the contract's path wins over the handoff's. Files sit in `data/v2/runs/v2/`, with the same names as in the sim repo, except `claims_a.csv`, which is stored as `claims_v2.csv` as this contract expects. `ENGINE_AUDIT.md` (sent separately) sits in `data/v2/docs/`.
+- Bytes: text files are stored with LF line endings (CRLF from the zip is converted). The `PREREG_*.md` files and `prereg_*.sha256` files are stored as the exact original bytes, because their hashes were registered before the results. The three registered hashes are pinned in `scripts/tests/test_v2_results.py`.
+- Two shapes, one block. Track A `metrics.json` is `{meta, gates, entries}`. Track D `metrics_d.json` is `{meta, metrics}`. The contract had no slot for track D, so this is a minimal extension: `v2.json` gets a `results` block (`null` when the track A files are absent) that holds both. Track D is optional inside it (`d_track_present`).
+- `results` fields: `gate_statuses` (`G1`, `G2`, `G2a`, `G2b`, `G2c`, `G2_moon_layer2`, `G3` from track A; `D1`, `D2`, `moon_recall` from track D), `gate_sources`, `gate_reasons`, `g2b_sites`, `g3_targets`, `d_track_present`, `positive_finding`, `limitations`, `runs` (branch, commit, engine commit, last updated, stage), `ledger` (track A and D entries, each with the source file and hash of its ledger), `engine_audit`.
+- Statuses are the literal strings `PASS`, `FAIL` or `NOT TESTED`. The build stops on a boolean, lowercase or any other value, and when an entry disagrees with the `gates` object.
+- A positive in `g2b_sites` counts as scorable only when its stored status reads `scored`. A row with another status (`gated_out`, `no_gated_tile`) can carry a placeholder value such as `0.0`; the build never shows or counts it.
+- G2(c) values are shown with two decimals (so the match with v1's stored 90.2, 75.6 and 61.3 is visible); coverage keeps the stored four decimals; shares written as a percentage use one decimal.
+- Text in `limitations` and `positive_finding` is written by the build with no typed numbers. Each number in it is read from a stored field, or by a fixed pattern from `results_a.md`, `ledger.json`, `ledger_d.json`, `negative_set_d.csv` or `ENGINE_AUDIT.md`, and is listed in `meta.facts` as `v2.result.*` with its source and hash. A pattern that is not found stops the build.
+- The track A and D ledger entries are copied with `source_file` and `sha256` pointing at the ledger file in `data/v2`. Numbers inside their text get claims `v2.ledger.<track>.<id>.<field>.text<i>`.
+- One wording rewrite for decision E32: the track D ledger says "cross-validated", and the published copy says "checked on held-out data". The source file is unchanged.
+- `commit`, `engine_commit`, `updated_ist` and `branch` are identifier keys: the claims check does not read numbers in them.
+- Slide text: `submission/slide5_template.md` builds `docs/demo/SLIDE5.md` (the text for the fifth slide of the demo deck, issue E10) with `python3 scripts/build_submission.py`. Placeholders `{{status:KEY}}` and `{{v2:KEY}}` read from the results block. The check fails when the file is stale or the template holds a typed number. The deck itself is not in this repository.
+- Known data issues in the handoff, kept as received: the hash that `metrics.json` records for `results_a.md` matches neither the CRLF nor the LF bytes of the file in the zip, and the handoff notes say "Antarctica 100% missing", while the report shows 100% missing only for the 90 S to 80 S band. The site uses the report's figure.
 
 ### `metrics.json`
 - Serves (c), (d). Read by results, failures and home pages. 146 entries, 74 KB, limit 100 KB.
@@ -145,6 +161,7 @@ Not excluded from the scan: everything site-facing. Excluded: `data/banned_words
 | `tiles_top.json`, `overlays/*` | candidates, map |
 | `regions.json` | regions, map |
 | `metrics.json`, `ledger.json` | results, failures, method, home |
+| `v2.json` | gates, ledger (v2 section), method (v2 limits) |
 | `claims.csv`, `MANIFEST.csv` | CI only |
 
 ## Size budget
@@ -158,7 +175,7 @@ Not excluded from the scan: everything site-facing. Excluded: `data/banned_words
 | `regions.json` | 150 KB | 25 KB |
 | `metrics.json` | 100 KB | 74 KB |
 | `ledger.json` | 60 KB | 23 KB |
-| `v2.json` | 250 KB | 134 KB |
+| `v2.json` | 250 KB | 164 KB |
 | `site_measurements.json` | 2 MB | absent |
 | `claims.csv` | 3 MB | 2.1 MB |
 | all of `public/data/` | 8 MB | 3.9 MB |
