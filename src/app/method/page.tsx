@@ -195,6 +195,15 @@ export default function Page() {
           The v2 limits
         </h2>
         <p className={v2.run_completed ? "" : "text-control"}>{v2.status_text}</p>
+        {v2.results && (
+          <p className="text-secondary-foreground">
+            The v2 gate results and the limitations of the v2 run are on the{" "}
+            <Link href="/gates" className={link}>
+              gates page
+            </Link>
+            .
+          </p>
+        )}
         {refs ? (
           <>
             <p className="text-secondary-foreground">

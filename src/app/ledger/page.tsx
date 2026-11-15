@@ -17,6 +17,17 @@ const CRITERIA = [
   { key: "controls_below_max", label: "Negative controls" },
   { key: "gate_tests_all_rejected", label: "Gate tests" },
 ];
+const GATES = [
+  { key: "G1", label: "G1 data coverage" },
+  { key: "G2", label: "G2 scoring" },
+  { key: "G2a", label: "G2(a) Moon controls" },
+  { key: "G2b", label: "G2(b) Mars analog recall" },
+  { key: "G2c", label: "G2(c) baseline reproduces v1" },
+  { key: "G3", label: "G3 supported regions" },
+  { key: "D1", label: "D1 held-out false-positive rate" },
+  { key: "D2", label: "D2 Mars leave-one-out recall" },
+  { key: "moon_recall", label: "Moon recall" },
+] as const;
 const CONTROLS = [
   { id: "namib_sand_sea", label: "Namib sand sea" },
   { id: "rub_al_khali", label: "Rub' al Khali" },
@@ -265,9 +276,70 @@ export default function Page() {
         <p className={v2.run_completed ? "" : "text-control"}>{v2.status_text}</p>
         <p className="text-secondary-foreground">
           {v2.run_completed
-            ? "The v2 result files are present. Their hashes are in the data manifest. Gate results are not shown on this page yet."
+            ? "The v2 result files are present. Their hashes are in the data manifest. The gate statuses are below and in full on the gates page."
             : "Gate results for v2 are not shown because the run has no result files here. Nothing is filled in."}
         </p>
+        {v2.results && (
+          <div className="space-y-4">
+            <ul className="grid gap-x-8 gap-y-1 text-sm sm:grid-cols-2">
+              {GATES.filter((k) => v2.results?.gate_statuses[k.key]).map((k) => {
+                const st = v2.results?.gate_statuses[k.key];
+                return (
+                  <li key={k.key} className="flex justify-between gap-4 border-b border-border py-1">
+                    <span>{k.label}</span>
+                    <span className={`font-medium ${st === "FAIL" ? "text-control" : ""}`}>{st}</span>
+                  </li>
+                );
+              })}
+            </ul>
+            <p>
+              <Link href="/gates" className="underline underline-offset-4">
+                Read the full gate results, the limitations and the one positive result
+              </Link>
+              .
+            </p>
+            <h3 className="text-lg">Run record</h3>
+            <ul className="space-y-2 text-sm">
+              {v2.results.runs.map((run) => (
+                <li key={run.track} className="border border-border p-3">
+                  <p className="font-medium">{run.label}</p>
+                  <p className="text-secondary-foreground">
+                    Branch <span className="gsop-mono">{run.branch}</span>, commit <span className="gsop-mono">{shortHash(run.commit)}</span>
+                    {run.engine_commit ? (
+                      <>
+                        , engine commit <span className="gsop-mono">{run.engine_commit}</span> (not on the public repository)
+                      </>
+                    ) : null}
+                    . Last updated {run.updated_ist}. Stage: {run.stage}.
+                  </p>
+                  <Source file={run.source_file} sha={run.sha256} />
+                </li>
+              ))}
+            </ul>
+            <h3 className="text-lg">v2 ledger entries</h3>
+            <p className="text-secondary-foreground">Sources used, limits and unscored properties, as recorded by each track. Statements are quoted from the track ledgers.</p>
+            {(["A", "D"] as const).map((track) => {
+              const rows = v2.results?.ledger.filter((e) => e.track === track) ?? [];
+              if (rows.length === 0) return null;
+              return (
+                <div key={track} className="space-y-2">
+                  <h4 className="font-medium">{track === "A" ? "Track A: Earth thermal layer and gates" : "Track D: fitted thermal terms"}</h4>
+                  <ul className="space-y-3">
+                    {rows.map((e) => (
+                      <li key={`${e.track}-${e.id}`} className="space-y-1 border border-border p-3 text-sm">
+                        <p>{e.statement}</p>
+                        {e.note && <p className="text-secondary-foreground">{e.note}</p>}
+                        <p className="gsop-label">
+                          {statusLabel(e.status)} | {e.type.replace(/_/g, " ")}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+        )}
         {v2.preregistrations.length > 0 && (
           <ul className="space-y-2 text-sm">
             {v2.preregistrations.map((p) => (

@@ -29,7 +29,8 @@ describe("methods and limits page", () => {
 
   it("shows the v2 status and the thermal limits, and says what is not available yet", () => {
     render(<Page />);
-    expect(screen.getByText("v2 run not completed")).toBeInTheDocument();
+    expect(screen.getByText("v2 run complete")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "gates page" })).toHaveAttribute("href", "/gates");
     expect(screen.getByText(/Reference thermal layers: where each one cannot match Earth/)).toBeInTheDocument();
     expect(screen.getByText(/Site evidence limits: not available yet/)).toBeInTheDocument();
     expect(screen.getByText(/Data resource table: not available yet/)).toBeInTheDocument();

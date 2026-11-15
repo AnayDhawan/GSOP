@@ -17,7 +17,8 @@ SITES_CSV = "data/reference/sites.csv"
 # Keys whose string values are identifiers, paths, hashes or citations, not statements with numbers.
 SKIP_KEYS = {"id", "claim", "source_file", "sha256", "file", "image", "legend", "hex", "nearest_reference_site", "unit", "source", "group", "crs", "colour_scale", "limits_source", "slug", "site_id",
              "version", "product", "source_url", "doi_or_url", "date_range", "product_id", "units", "path", "url", "doi", "deviations_file",
-             "recorded_sha256", "actual_sha256", "source_sha256", "preregistration_hashes"}
+             "recorded_sha256", "actual_sha256", "source_sha256", "preregistration_hashes",
+             "commit", "engine_commit", "updated_ist", "branch"}  # commit hashes and the sim's own timestamps are identifiers
 SKIP_META = {"sources", "facts"}
 NUM_RE = re.compile(r"(?<![\w.])-?\d[\d,]*(?:\.\d+)?")
 YEAR_RE = re.compile(r"^(19|20)\d\d$")  # citation years are not statistics
@@ -149,6 +150,11 @@ def build_claims(root):
             for i, blk in enumerate(d_["blocks"]):
                 for j, n in enumerate(text_numbers(blk["text"])):
                     add(f"v2.doc.{d_['id']}.b{i}.n{j}", n, d_["path"], d_["sha256"])
+    if v2 and v2.get("results"):
+        for e in v2["results"].get("ledger", []):
+            for field in ("statement", "note"):
+                for i, n in enumerate(text_numbers(e.get(field, ""))):
+                    add(f"v2.ledger.{e['track']}.{e['id']}.{field}.text{i}", n, e["source_file"], e["sha256"])
     sm = docs.get("site_measurements.json")
     if sm:
         src = sm["meta"]["sources"][0]
@@ -282,32 +288,33 @@ def jsx_text(src):
 
 
 def submission_problems(root, rx, e32_text):
-    """Checks on the submission text (E7): hand-written template, generated text, same rules as the site."""
+    """Checks on the submission text (E7) and the slide 5 text (W1): hand-written templates, generated files, same rules as the site."""
     v = []
-    if not os.path.exists(os.path.join(root, "submission/template.md")):
-        return v
     from . import submission
 
-    with open(os.path.join(root, "submission/template.md"), encoding="utf-8") as fh:
-        tmpl = fh.read()
-    for n in submission.typed_numbers(tmpl):
-        v.append(f"number {n} typed in submission/template.md; use a {{{{claim:ID}}}} placeholder instead")
-    try:
-        want = submission.render(root)
-    except submission.SubmissionError as e:
-        v.append(f"submission text cannot be built: {e}")
-        want = None
-    out_path = os.path.join(root, "submission/SUBMISSION.md")
-    have = None
-    if os.path.exists(out_path):
-        with open(out_path, encoding="utf-8") as fh:
-            have = fh.read()
-    if want is not None and have != want:
-        v.append("submission/SUBMISSION.md is stale or missing: run python3 scripts/build_submission.py")
-    for m in rx.finditer((have or "").replace(e32_text, "")):
-        v.append(f"banned word '{m.group(0)}' in submission/SUBMISSION.md")
-    if KEY_PREFIX in (have or "") and e32_text not in (have or ""):
-        v.append("E32 sentence altered in submission/SUBMISSION.md")
+    for tmpl_rel, out_rel in submission.PAIRS:
+        if not os.path.exists(os.path.join(root, tmpl_rel)):
+            continue
+        with open(os.path.join(root, tmpl_rel), encoding="utf-8") as fh:
+            tmpl = fh.read()
+        for n in submission.typed_numbers(tmpl):
+            v.append(f"number {n} typed in {tmpl_rel}; use a {{{{claim:ID}}}} placeholder instead")
+        try:
+            want = submission.render(root, tmpl_rel)
+        except submission.SubmissionError as e:
+            v.append(f"{out_rel} cannot be built: {e}")
+            want = None
+        out_path = os.path.join(root, out_rel)
+        have = None
+        if os.path.exists(out_path):
+            with open(out_path, encoding="utf-8") as fh:
+                have = fh.read()
+        if want is not None and have != want:
+            v.append(f"{out_rel} is stale or missing: run python3 scripts/build_submission.py")
+        for m in rx.finditer((have or "").replace(e32_text, "")):
+            v.append(f"banned word '{m.group(0)}' in {out_rel}")
+        if KEY_PREFIX in (have or "") and e32_text not in (have or ""):
+            v.append(f"E32 sentence altered in {out_rel}")
     return v
 
 

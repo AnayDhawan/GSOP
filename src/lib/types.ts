@@ -171,6 +171,23 @@ export type V2ThermalRow = {
   text?: string;
 };
 
+// Gate statuses are literal strings, never booleans (decision W1).
+export type GateStatus = "PASS" | "FAIL" | "NOT TESTED";
+
+export type V2Results = {
+  gate_statuses: Record<"G1" | "G2" | "G2a" | "G2b" | "G2c" | "G2_moon_layer2" | "G3", GateStatus> & Partial<Record<"D1" | "D2" | "moon_recall", GateStatus>>;
+  gate_sources: Record<string, { source_file: string; sha256: string }>;
+  gate_reasons: Record<string, string>;
+  g2b_sites: { slug: string; name: string; scorable: boolean; stored_status: string; claim?: string }[];
+  g3_targets: { target: string; n_supported: number }[];
+  d_track_present: boolean;
+  positive_finding: { text: string; model_note: string; caveats: string[] } | null;
+  limitations: { id: string; title: string; text: string }[];
+  runs: { track: "A" | "D"; label: string; branch: string; commit: string; engine_commit?: string; updated_ist: string; stage: string; source_file: string; sha256: string }[];
+  ledger: { track: "A" | "D"; id: string; type: string; status: string; statement: string; note?: string; source_file: string; sha256: string }[];
+  engine_audit: { path: string; sha256: string };
+};
+
 export type V2File = {
   meta: Meta;
   run_completed: boolean;
@@ -181,6 +198,7 @@ export type V2File = {
   limits_docs: { id: string; path: string; sha256: string; title: string; blocks: { type: "h2" | "h3" | "h4" | "li" | "p"; level: number; text: string }[] }[];
   has_site_measurements: boolean;
   n_chip_files: number;
+  results: V2Results | null;
 };
 
 export type Measurement = {
