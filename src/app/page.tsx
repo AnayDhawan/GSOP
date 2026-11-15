@@ -33,10 +33,10 @@ function Step({ icon: Icon, title, children }: { icon: typeof Grid3x3; title: st
   );
 }
 
-const GATE_TONE: Record<GateStatus, { box: string; text: string }> = {
-  FAIL: { box: "border-control", text: "text-control" },
-  PASS: { box: "border-positive", text: "text-positive" },
-  "NOT TESTED": { box: "border-dashed border-border", text: "text-secondary-foreground" },
+const GATE_TONE: Record<GateStatus, { box: string; dot: string }> = {
+  FAIL: { box: "border-control", dot: "bg-control" },
+  PASS: { box: "border-positive", dot: "bg-positive" },
+  "NOT TESTED": { box: "border-dashed border-border", dot: "border border-dashed border-muted-foreground" },
 };
 
 function Gate({ name, status, children }: { name: string; status: GateStatus | undefined; children: React.ReactNode }) {
@@ -45,7 +45,10 @@ function Gate({ name, status, children }: { name: string; status: GateStatus | u
     <li className={`flex flex-col gap-2 border p-4 ${GATE_TONE[s].box}`}>
       <div className="flex items-baseline justify-between gap-3">
         <span className="font-display text-lg">{name}</span>
-        <span className={`font-mono text-sm font-semibold uppercase tracking-wider ${GATE_TONE[s].text}`}>{s}</span>
+        <span className="inline-flex items-center gap-2 font-mono text-sm font-semibold uppercase tracking-wider text-foreground">
+          <span aria-hidden className={`h-2.5 w-2.5 ${GATE_TONE[s].dot}`} />
+          {s}
+        </span>
       </div>
       <p className="text-sm text-secondary-foreground">{children}</p>
     </li>
@@ -240,7 +243,7 @@ export default function Home() {
               .
             </p>
           </div>
-          <Link href="/dashboard" className="inline-flex min-h-12 shrink-0 items-center gap-2 whitespace-nowrap bg-primary px-6 font-display text-xl font-semibold text-white hover:opacity-90">
+          <Link href="/dashboard" className="inline-flex min-h-12 shrink-0 items-center gap-2 whitespace-nowrap bg-[color-mix(in_srgb,var(--gsop-earth-blue)_80%,black)] px-6 font-display text-xl font-semibold text-white hover:opacity-90">
             Open the dashboard
             <ArrowRight className="h-5 w-5" aria-hidden />
           </Link>
