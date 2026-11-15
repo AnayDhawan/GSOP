@@ -99,7 +99,9 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
               India highlight: public sources, not scored
             </p>
           )}
-          <div className="absolute left-1/2 top-3 z-[1000] flex max-w-[calc(100%-1.5rem)] -translate-x-1/2 items-center gap-0.5 rounded-full border border-border bg-surface/95 p-1 shadow-sm backdrop-blur-sm">
+          {/* The bar sits in a full-width row and is centred in it. A left-1/2 box shrinks to half the map and the last button spills out of the pill. */}
+          <div className="pointer-events-none absolute inset-x-3 top-3 z-[1000] flex justify-center">
+          <div className="pointer-events-auto flex max-w-full items-center gap-0.5 rounded-full border border-border bg-surface/95 p-1 shadow-sm backdrop-blur-sm">
             <div role="group" aria-label="Reference body" className="flex items-center gap-0.5">
               {BODIES.map((b) => (
                 <button
@@ -150,6 +152,7 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
             >
               {fullscreen ? "Exit" : "Fullscreen"}
             </button>
+          </div>
           </div>
           {selected && <SiteCard site={selected} radiusKm={radiusKm} onClose={() => setSelected(null)} />}
           {locateError && (
