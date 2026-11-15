@@ -95,11 +95,11 @@ export default function Page() {
     <>
       <PageHero title="After the hackathon" lede="A plan to find out whether the idea works: build the simulation properly, run it for a month, then check it against ground data." />
 
+      <h2 id="stand" className={h2}>
+        Where we stand
+      </h2>
       <div className="grid items-start gap-10 md:grid-cols-2">
         <section className="space-y-4" aria-labelledby="stand">
-          <h2 id="stand" className={h2}>
-            Where we stand
-          </h2>
           <ul className={ul}>
             <li>The hackathon build is a prototype, written fast from scripts.</li>
             <li>

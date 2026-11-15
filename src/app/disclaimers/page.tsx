@@ -31,11 +31,11 @@ export default function Page() {
         </p>
       </Band>
 
+      <h2 id="results" className="text-2xl">
+        What the results can and cannot tell you
+      </h2>
       <div className="grid gap-10 md:grid-cols-2">
         <section aria-labelledby="results" className="space-y-4">
-          <h2 id="results" className="text-2xl">
-            What the results can and cannot tell you
-          </h2>
           <p>The ranking has not been checked against independent data.</p>
           <p className="text-secondary-foreground">
             The gates were set before the second run and are published as stored: G1 {g?.G1 ?? na}, G2 {g?.G2 ?? na}, G2(c) {g?.G2c ?? na}, G3 {g?.G3 ?? na}. D1 {g?.D1 ?? na}, D2 {g?.D2 ?? na}. Details are on the{" "}

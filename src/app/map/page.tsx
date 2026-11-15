@@ -38,11 +38,11 @@ export default function Page() {
       </div>
 
       <Band tone="grid" labelledBy="map-numbers">
+        <h2 id="map-numbers" className="text-3xl">
+          What the red markers mean in numbers
+        </h2>
         <div className="grid gap-10 md:grid-cols-2">
           <div className="space-y-3">
-            <h2 id="map-numbers" className="text-3xl">
-              What the red markers mean in numbers
-            </h2>
             <p className="text-secondary-foreground">
               A negative control is a place that should look nothing like a lunar target. The pre-registered limit was percentile {controlMax}. On the Moon run both controls landed far above it, and the Mars primary sites landed below the minimum we wanted.
             </p>

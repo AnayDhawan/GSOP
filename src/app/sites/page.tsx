@@ -50,9 +50,9 @@ export default function Page() {
       <Explorer rows={rows} views={views} />
 
       <Band tone="grid">
+        <h2 className="text-3xl">How the listed sites scored</h2>
         <div className="grid gap-10 lg:grid-cols-[1fr_1.3fr] lg:items-center">
           <div className="space-y-3">
-            <h2 className="text-3xl">How the listed sites scored</h2>
             <p className="text-secondary-foreground">
               Median stored percentile for the sites v1 used and the sites it left out. Both groups land in the same high range, because the v1 site percentile takes the best tile within the match radius. A place with random features would score about {claim("v2.result.audit.chance_best")} that way.
             </p>

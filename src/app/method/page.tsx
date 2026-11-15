@@ -183,11 +183,11 @@ export default function Page() {
         </div>
       </Band>
 
+      <h2 id="control-chart" className={h2}>
+        The two tests v1 failed
+      </h2>
       <section className="grid items-start gap-10 md:grid-cols-2" aria-labelledby="control-chart">
         <div className="space-y-3">
-          <h2 id="control-chart" className={h2}>
-            The two tests v1 failed
-          </h2>
           <p className="text-secondary-foreground">
             Before any result existed, v1 set a ceiling for the negative controls and a floor for the Mars primary sites. The bars show where they landed. The vertical line is the limit we wrote down.
           </p>
