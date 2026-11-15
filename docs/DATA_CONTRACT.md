@@ -92,6 +92,14 @@ Data files keep 4 decimals for scores and coordinates (6 for metric values), whi
 - Source: `results/<run>/validation.json`. Claims rows exist for latitude, longitude and each stored percentile.
 - Two controls scored far above the pre-registered maximum on the Moon run. The map shows controls in red.
 
+### `site_profiles.json` and `public/img/places/` (optional, issue W8)
+- Serves the site pages and the sites gallery. Built by `scripts/gsop_data/profiles.py` from `data/reference/site_enrichment.json`, which was written once from public web pages and is unreviewed. The step copies and checks; it computes nothing. It is skipped when the enrichment file is absent.
+- Shape: `profiles[slug]` with `place`, `summary`, `terrain_geology`, `climate`, `access_and_facilities`, `hazards` (text or null), `facts` (`label`, `value`, `unit`, `source_url`), `image` (`file`, `title`, `author`, `license`, `source_url`, `credit`) or null, `source_urls`, `confidence` (`high`, `medium`, `low`). Keyed by site slug, so a place listed under both bodies shares one profile.
+- Rules the build enforces: prose fields hold no digits (every measurement is a fact); no banned word; no em or en dash; every slug is in `sites.json`; an image file exists in `public/img/places` and its licence is CC0, public domain, CC BY or CC BY-SA. A violation stops the build.
+- Claims: each number in a fact value or label gets a row `profiles.<slug>.f<index>.n<j>` citing the enrichment file. Pages print the value string as stored.
+- Photos live in `public/img/places/<slug>.jpg`, not in `public/img/sites/`, which the v2 step rebuilds for satellite chips. The credit line is shown beside every photo.
+- Limit 600 KB.
+
 ### `v2.json`, `site_measurements.json` and `public/img/sites/` (optional, issues B16 and C8)
 - Serves (b), (c), (d). Read by the Ledger page (v2 section) and the per-site pages (measured evidence). Every input is optional: the build and the site work with all of them absent, with some present and with all present (tests: `python3 -m unittest discover -s scripts/tests`, run in CI).
 - Inputs come from `AnayDhawan/sim`: `python3 scripts/sync_v2.py` copies whatever exists on `main`, `data/thermal-refs` and `data/site-evidence` into `data/v2/` with the same paths, and records branch, commit and sha256 in `data/v2/SOURCES.csv`. Nothing is edited or invented. Every file under `data/v2/` is in `data/MANIFEST.csv`.

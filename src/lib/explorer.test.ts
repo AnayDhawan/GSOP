@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { defaultFilters, filterRows, type ExplorerRow } from "./explorer";
+import { countryKey, countryOptions, defaultFilters, filterRows, type ExplorerRow } from "./explorer";
 
 const V = "shackleton_rim__base";
 const row = (o: Partial<ExplorerRow> & { id: string; name: string }): ExplorerRow => ({
@@ -27,6 +27,13 @@ describe("filterRows", () => {
   });
   it("filters by entry type", () => {
     expect(filterRows(rows, { ...defaultFilters(), list: "candidate" }).map((r) => r.id)).toEqual(["c"]);
+  });
+  it("filters by country, ignoring the region in brackets", () => {
+    const withRegion = [...rows, row({ id: "e", name: "Arkaroola", country: "India (Ladakh)" })];
+    expect(countryKey("India (Ladakh)")).toBe("India");
+    expect(countryKey(null)).toBe("Not provided");
+    expect(filterRows(withRegion, { ...defaultFilters(), country: "India" }).map((r) => r.id)).toEqual(["e", "c"]);
+    expect(countryOptions(withRegion, "Moon")).toEqual(["Antarctica", "Iceland", "India"]);
   });
   it("filters by v1 used, keeping unknown separate", () => {
     expect(filterRows(rows, { ...defaultFilters(), v1: "yes" }).map((r) => r.id)).toEqual(["b"]);

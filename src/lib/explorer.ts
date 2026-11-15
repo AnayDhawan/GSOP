@@ -13,12 +13,16 @@ export type ExplorerRow = {
   v1_used: boolean | null;
   cells: Record<string, Cell>; // by view, strings come from claims.csv
   pct: Record<string, number>; // by view, used only to sort
+  photo?: { src: string; credit: string; title?: string } | null; // from site_profiles.json
+  place?: string | null; // researched one-line place name, when there is one
+  lowConfidence?: boolean; // the researched text is marked low confidence
 };
 
 export type Filters = {
   body: "Moon" | "Mars";
   view: string;
   list: "all" | "known" | "candidate";
+  country: string; // "all" or a countryKey()
   v1: "all" | "yes" | "no" | "unknown";
   result: "all" | "scored" | "unscored";
   flaggedOnly: boolean;
@@ -29,7 +33,17 @@ export type Filters = {
 export const DEFAULT_VIEW: Record<"Moon" | "Mars", string> = { Moon: "shackleton_rim__base", Mars: "jezero__base" };
 
 export function defaultFilters(): Filters {
-  return { body: "Moon", view: DEFAULT_VIEW.Moon, list: "all", v1: "all", result: "all", flaggedOnly: false, q: "", sort: "name" };
+  return { body: "Moon", view: DEFAULT_VIEW.Moon, list: "all", country: "all", v1: "all", result: "all", flaggedOnly: false, q: "", sort: "name" };
+}
+
+/** The country without its region in brackets, so "Australia (South Australia)" and "Australia" group together. */
+export function countryKey(country: string | null): string {
+  const c = (country ?? "").split("(")[0].trim();
+  return c || "Not provided";
+}
+
+export function countryOptions(rows: ExplorerRow[], body: "Moon" | "Mars"): string[] {
+  return [...new Set(rows.filter((r) => r.body === body).map((r) => countryKey(r.country)))].sort((a, b) => a.localeCompare(b));
 }
 
 export function viewOptions(views: string[]): { value: string; label: string }[] {
@@ -43,6 +57,7 @@ export function filterRows(rows: ExplorerRow[], f: Filters): ExplorerRow[] {
   const out = rows.filter((r) => {
     if (r.body !== f.body) return false;
     if (f.list !== "all" && r.list !== f.list) return false;
+    if (f.country !== "all" && countryKey(r.country) !== f.country) return false;
     if (f.v1 !== "all") {
       const v = r.v1_used === true ? "yes" : r.v1_used === false ? "no" : "unknown";
       if (v !== f.v1) return false;

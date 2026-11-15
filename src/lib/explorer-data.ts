@@ -1,5 +1,5 @@
 // Server side: build the explorer rows from sites.json, site_lookup.json and claims.csv.
-import { claim, lookupFile, sitesFile } from "./data";
+import { claim, lookupFile, photoFor, profileFor, sitesFile } from "./data";
 import type { Cell, ExplorerRow } from "./explorer";
 
 export function explorerData(): { rows: ExplorerRow[]; views: { Moon: string[]; Mars: string[] } } {
@@ -26,7 +26,8 @@ export function explorerData(): { rows: ExplorerRow[]; views: { Moon: string[]; 
         cells[view] = { status: e.status, reason: e.reason };
       }
     }
-    return { id: s.id, slug: s.slug, name: s.name, body: s.body, list: s.list, country: s.country, v1_used: s.v1_used, cells, pct };
+    const ph = photoFor(s.slug);
+    return { id: s.id, slug: s.slug, name: s.name, body: s.body, list: s.list, country: s.country, v1_used: s.v1_used, cells, pct, photo: ph ? { src: ph.src, credit: ph.credit, title: ph.alt } : null, place: profileFor(s.slug)?.place ?? null, lowConfidence: profileFor(s.slug)?.confidence === "low" };
   });
   return { rows, views };
 }
