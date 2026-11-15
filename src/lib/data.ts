@@ -49,6 +49,12 @@ export function photoFor(slug: string): { src: string; alt: string; credit: stri
   return { src: `/img/places/${p.image.file}`, alt: p.image.title, credit: p.image.credit, sourceUrl: p.image.source_url };
 }
 
+/** Small thumbnail for lists (scripts/make_thumbs.py), when the site has an image. */
+export function thumbFor(slug: string): string | null {
+  const p = profileFor(slug);
+  return p?.image && exists(`public/img/places/thumb/${p.image.file}`) ? `/img/places/thumb/${p.image.file}` : null;
+}
+
 /** Site measurements from the optional v2 evidence run. Null when the file is absent, and the page then shows nothing. */
 export function measurementsFile(): { meta: Meta; by_site: Record<string, Measurement[]> } | null {
   return exists("public/data/site_measurements.json") ? readJson("public/data/site_measurements.json") : null;

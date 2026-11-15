@@ -233,5 +233,9 @@ export type Profile = {
   facts: ProfileFact[];
   image: ProfileImage | null;
   source_urls: string[];
-  confidence: "high" | "medium" | "low";
+  confidence: "high" | "medium" | "low" | "teammate";
+  /** "teammate" when the text was written by a team member instead of researched from a page. */
+  origin?: "researched" | "teammate";
+  /** A teammate's qualitative desk assessment per body: which v2 parameters match strongly, partly or weakly. Not a computed result. */
+  parameters?: Partial<Record<"Moon" | "Mars", { strong: string[]; partial: string[]; weak: string[] }>>;
 };

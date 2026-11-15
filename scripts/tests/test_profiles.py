@@ -106,6 +106,18 @@ class Profiles(unittest.TestCase):
         with self.assertRaises(SystemExit):
             profiles.build(Ctx(self.root))
 
+    def test_teammate_text_may_hold_numbers_and_each_gets_a_claim(self):
+        e = good(summary="Drove about 200 km in 1997.", origin="teammate", confidence="teammate", facts=[], parameters={"Moon": {"strong": ["slope"], "partial": [], "weak": ["illumination"]}})
+        self.assertEqual(self.check(e), [])
+        # the same sentence on a researched entry is refused
+        self.assertTrue(any("holds a digit" in p for p in self.check(good(summary="Drove about 200 km in 1997."))))
+
+    def test_parameters_must_be_lists_for_a_known_body(self):
+        bad = good(parameters={"Venus": {"strong": [], "partial": [], "weak": []}})
+        self.assertTrue(any("unknown body" in p for p in self.check(bad)))
+        bad = good(parameters={"Moon": {"strong": "slope", "partial": [], "weak": []}})
+        self.assertTrue(any("must be a list" in p for p in self.check(bad)))
+
     def test_build_skips_without_a_file(self):
         ctx = Ctx(self.root)
         profiles.build(ctx)

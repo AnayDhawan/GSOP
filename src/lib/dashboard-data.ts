@@ -4,7 +4,7 @@
 // Score rule (one score per site): the Moon list is compared with both Moon targets and the Mars list with Jezero,
 // all on the base profile. When a Moon site has a stored score for both targets, the higher one is shown and its view is
 // named in the row's title. A site with a score for one target shows that one.
-import { chipFor, claim, hasClaim, lookupFile, sitesFile, v2File } from "./data";
+import { chipFor, thumbFor, claim, hasClaim, lookupFile, sitesFile, v2File } from "./data";
 import { formatRunDate, rankSites, type DashBody, type DashSite, type DashboardData } from "./dashboard";
 import { e32Sentence } from "./data";
 import { viewName } from "./names";
@@ -55,7 +55,7 @@ export function dashboardData(): DashboardData {
       body: s.body,
       list: s.list,
       country: s.country ?? "",
-      photo: chipFor(s.slug)?.src ?? null,
+      photo: thumbFor(s.slug) ?? chipFor(s.slug)?.src ?? null,
       lat: s.lat,
       lon: s.lon,
       elevationText: hasClaim(`sites.${s.id}.elevation_m`) ? `${claim(`sites.${s.id}.elevation_m`)} m` : null,

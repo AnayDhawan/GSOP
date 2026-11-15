@@ -74,7 +74,7 @@ describe("dashboard data", () => {
 
   it("gives each site a photo path only when the file exists", () => {
     for (const s of data.sites) {
-      if (s.photo !== null) expect(s.photo).toBe(`/img/sites/${s.slug}.jpg`);
+      if (s.photo !== null) expect([`/img/sites/${s.slug}.jpg`, `/img/places/thumb/${s.slug}.jpg`]).toContain(s.photo);
     }
   });
 
