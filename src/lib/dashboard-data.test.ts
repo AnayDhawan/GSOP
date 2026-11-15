@@ -48,11 +48,11 @@ describe("dashboard data", () => {
     for (const s of data.sites) {
       if (s.tagKind === "gated") {
         expect(s.scoreText).toBeNull();
-        expect(s.tag.startsWith("gated: ")).toBe(true);
+        expect(s.tag.startsWith("No score: ")).toBe(true);
       } else if (s.tagKind === "own-tile") {
-        expect(s.tag).toMatch(/^own-tile \d+\.\d$/);
+        expect(s.tag).toMatch(/^Own-tile percentile \d+\.\d$/);
       } else if (s.tagKind === "best-of-radius") {
-        expect(s.tag).toMatch(/^v1 best-of-radius \d+\.\d$/);
+        expect(s.tag).toMatch(/^Best nearby tile, percentile \d+\.\d$/);
       }
       expect(s.tag).not.toMatch(/±|confidence|interval/i);
     }
@@ -68,7 +68,13 @@ describe("dashboard data", () => {
       const site = sitesFile().sites.find((x) => x.id === s.id)!;
       const key = `${s.body.toLowerCase()}/${site.v1_match.site_id.replace("primary/", "")}`;
       expect(reported.has(key)).toBe(true);
-      expect(s.tag).toBe(`own-tile ${claim(`v2.result.own_tile.${key.replace("/", ".")}`)}`);
+      expect(s.tag).toBe(`Own-tile percentile ${claim(`v2.result.own_tile.${key.replace("/", ".")}`)}`);
+    }
+  });
+
+  it("gives each site a photo path only when the file exists", () => {
+    for (const s of data.sites) {
+      if (s.photo !== null) expect(s.photo).toBe(`/img/sites/${s.slug}.jpg`);
     }
   });
 
@@ -84,8 +90,8 @@ describe("dashboard data", () => {
 
 describe("dashboard helpers", () => {
   const row = (over: Partial<DashSite>): DashSite => ({
-    id: "a", slug: "a", name: "Alpha", body: "Moon", list: "known", country: "Chile", lat: 0, lon: 0,
-    scoreText: "10.0", scoreValue: 10, viewLabel: "X", tagKind: "best-of-radius", tag: "v1 best-of-radius 50.0", tagTitle: "", ...over,
+    id: "a", slug: "a", name: "Alpha", body: "Moon", list: "known", country: "Chile", photo: null, lat: 0, lon: 0,
+    scoreText: "10.0", scoreValue: 10, viewLabel: "X", tagKind: "best-of-radius", tag: "Best nearby tile, percentile 50.0", tagTitle: "", ...over,
   });
 
   it("colours the ends of the ramp and gives unscored sites grey", () => {
@@ -101,7 +107,7 @@ describe("dashboard helpers", () => {
   });
 
   it("filters on name, country and tag, and keeps all rows for an empty query", () => {
-    const rows = [row({ id: "a", name: "Alpha", country: "Chile" }), row({ id: "b", name: "Beta", country: "India", tag: "gated: vegetated" })];
+    const rows = [row({ id: "a", name: "Alpha", country: "Chile" }), row({ id: "b", name: "Beta", country: "India", tag: "No score: vegetated" })];
     expect(filterSites(rows, "")).toHaveLength(2);
     expect(filterSites(rows, "india").map((r) => r.id)).toEqual(["b"]);
     expect(filterSites(rows, "VEGETATED").map((r) => r.id)).toEqual(["b"]);

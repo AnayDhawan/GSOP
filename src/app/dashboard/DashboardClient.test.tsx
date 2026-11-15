@@ -8,19 +8,18 @@ vi.mock("next/dynamic", () => ({
   default: () => (props: { sites: DashSite[]; bodyKey: string }) => <div data-testid="map" data-body={props.bodyKey} data-count={props.sites.length} />,
 }));
 vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }));
-vi.mock("next-themes", () => ({ useTheme: () => ({ resolvedTheme: "dark" }) }));
 vi.mock("next/link", () => ({ default: ({ href, children, ...rest }: { href: string; children: React.ReactNode }) => <a href={href} {...rest}>{children}</a> }));
 
 const mk = (over: Partial<DashSite>): DashSite => ({
-  id: "x", slug: "x", name: "X", body: "Moon", list: "known", country: "", lat: 1, lon: 2,
-  scoreText: null, scoreValue: null, viewLabel: null, tagKind: "gated", tag: "gated: vegetated", tagTitle: "", ...over,
+  id: "x", slug: "x", name: "X", body: "Moon", list: "known", country: "", photo: null, lat: 1, lon: 2,
+  scoreText: null, scoreValue: null, viewLabel: null, tagKind: "gated", tag: "No score: vegetated", tagTitle: "", ...over,
 });
 const data: DashboardData = {
   sites: [
-    mk({ id: "a-moon", slug: "askja", name: "Askja caldera", country: "Iceland", scoreText: "30.2", scoreValue: 30.2, viewLabel: "Shackleton rim, Base", tagKind: "own-tile", tag: "own-tile 65.4" }),
-    mk({ id: "b-moon", slug: "etna", name: "Etna", country: "Italy", scoreText: "20.0", scoreValue: 20, viewLabel: "Shackleton rim, Base", tagKind: "best-of-radius", tag: "v1 best-of-radius 81.0" }),
+    mk({ id: "a-moon", slug: "askja", name: "Askja caldera", country: "Iceland", scoreText: "30.2", scoreValue: 30.2, viewLabel: "Shackleton rim, Base", tagKind: "own-tile", tag: "Own-tile percentile 65.4", photo: "/img/sites/askja.jpg" }),
+    mk({ id: "b-moon", slug: "etna", name: "Etna", country: "Italy", scoreText: "20.0", scoreValue: 20, viewLabel: "Shackleton rim, Base", tagKind: "best-of-radius", tag: "Best nearby tile, percentile 81.0" }),
     mk({ id: "c-moon", slug: "lonar", name: "Lonar crater", country: "India" }),
-    mk({ id: "d-mars", slug: "dallol", name: "Dallol", body: "Mars", country: "Ethiopia", scoreText: "40.1", scoreValue: 40.1, viewLabel: "Jezero, Base", tagKind: "best-of-radius", tag: "v1 best-of-radius 50.0" }),
+    mk({ id: "d-mars", slug: "dallol", name: "Dallol", body: "Mars", country: "Ethiopia", scoreText: "40.1", scoreValue: 40.1, viewLabel: "Jezero, Base", tagKind: "best-of-radius", tag: "Best nearby tile, percentile 50.0" }),
   ],
   viewsByBody: { Moon: ["Shackleton rim, Base"], Mars: ["Jezero, Base"] },
   refreshed: "15 Nov 2026",
@@ -42,11 +41,11 @@ describe("DashboardClient", () => {
     render(<DashboardClient data={data} />);
     const link = screen.getByRole("link", { name: /Askja caldera/ });
     expect(link).toHaveAttribute("href", "/sites/askja");
-    expect(within(link).getByText("own-tile 65.4")).toBeInTheDocument();
+    expect(within(link).getByText("Own-tile percentile 65.4")).toBeInTheDocument();
     expect(within(link).getByText("30.2")).toBeInTheDocument();
     expect(within(link).getByLabelText("Rank 1")).toBeInTheDocument();
     const gated = screen.getByRole("link", { name: /Lonar crater/ });
-    expect(within(gated).getByText("gated: vegetated")).toBeInTheDocument();
+    expect(within(gated).getByText("No score: vegetated")).toBeInTheDocument();
     expect(within(gated).getByLabelText("Not ranked")).toBeInTheDocument();
   });
 
@@ -79,13 +78,19 @@ describe("DashboardClient", () => {
     expect(document.body.textContent).not.toMatch(/NaN|undefined/);
   });
 
-  it("stars a site and keeps its real rank", () => {
-    render(<DashboardClient data={data} />);
-    fireEvent.click(screen.getByRole("button", { name: "Star Etna" }));
-    const items = screen.getAllByRole("listitem");
-    expect(within(items[0]).getByRole("link", { name: /Etna/ })).toBeInTheDocument();
-    expect(within(items[0]).getByLabelText("Rank 2")).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Unstar Etna" }));
-    localStorage.clear();
+  it("shows a thumbnail only for sites that have a photo", () => {
+    const { container } = render(<DashboardClient data={data} />);
+    const imgs = [...container.querySelectorAll("li img")];
+    expect(imgs.map((i) => i.getAttribute("src"))).toEqual(["/img/sites/askja.jpg"]);
+  });
+
+  it("has no icons, no star buttons and no em or en dashes", () => {
+    const { container } = render(<DashboardClient data={data} />);
+    expect(container.querySelector("svg")).toBeNull();
+    expect(screen.queryByRole("button", { name: /star/i })).toBeNull();
+    expect(container.textContent).not.toMatch(/[\u2013\u2014]/);
+    expect(screen.getByRole("button", { name: "Locate" })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Fullscreen" }));
+    expect(screen.getByRole("button", { name: "Exit fullscreen" })).toBeInTheDocument();
   });
 });

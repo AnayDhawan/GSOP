@@ -1,10 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
-import { useTheme } from "next-themes";
-import { Loader2, LocateFixed, Maximize2, Minimize2 } from "lucide-react";
 import DashboardPanel from "./DashboardPanel";
 import { filterSites, LEGEND_TITLE, RAMP_CSS, type DashBody, type DashboardData } from "@/lib/dashboard";
 import { cn } from "@/lib/utils";
@@ -22,37 +20,11 @@ const DashboardMap = dynamic(() => import("./DashboardMap"), { ssr: false, loadi
 
 const BODIES: DashBody[] = ["Moon", "Mars"];
 
-// Starred sites live in this browser only (localStorage). A read or write that fails is ignored.
-const STAR_KEY = "gsop-dashboard-stars";
-const starListeners = new Set<() => void>();
-function readStars(): string {
-  try {
-    return localStorage.getItem(STAR_KEY) ?? "[]";
-  } catch {
-    return "[]";
-  }
-}
-function writeStars(ids: string[]) {
-  try {
-    localStorage.setItem(STAR_KEY, JSON.stringify(ids));
-  } catch {
-    // Storage can be blocked. The star then lasts until the page closes only if the store is read again, which it is not.
-  }
-  starListeners.forEach((l) => l());
-}
-function subscribeStars(cb: () => void) {
-  starListeners.add(cb);
-  return () => {
-    starListeners.delete(cb);
-  };
-}
-
-const iconButton =
-  "flex size-10 shrink-0 items-center justify-center text-secondary-foreground hover:bg-surface-raised hover:text-foreground disabled:opacity-60 md:size-9";
+const barButton =
+  "flex min-h-10 shrink-0 items-center justify-center px-3 text-sm text-secondary-foreground hover:bg-surface-raised hover:text-foreground disabled:opacity-60 md:min-h-9";
 
 export default function DashboardClient({ data }: { data: DashboardData }) {
   const router = useRouter();
-  const { resolvedTheme } = useTheme();
   const [body, setBody] = useState<DashBody>("Moon");
   const [query, setQuery] = useState("");
   const [hovered, setHovered] = useState<string | null>(null);
@@ -61,17 +33,6 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
   const [locating, setLocating] = useState(false);
   const [locateError, setLocateError] = useState<string | null>(null);
 
-  const starsRaw = useSyncExternalStore(subscribeStars, readStars, () => "[]");
-  const stars = useMemo<string[]>(() => {
-    try {
-      const v = JSON.parse(starsRaw);
-      return Array.isArray(v) ? v.filter((x): x is string => typeof x === "string") : [];
-    } catch {
-      return [];
-    }
-  }, [starsRaw]);
-
-  const theme: "light" | "dark" = resolvedTheme === "light" ? "light" : "dark";
   const bodySites = useMemo(() => data.sites.filter((s) => s.body === body), [data.sites, body]);
   const rankOf = useMemo(() => {
     const m = new Map<string, number>();
@@ -80,17 +41,8 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
     return m;
   }, [bodySites]);
   const rows = useMemo(() => {
-    const f = filterSites(bodySites, query);
-    // Starred sites float to the top, each group keeps the ranked order, and the rank number stays the real rank.
-    return [...f].sort((a, b) => Number(stars.includes(b.id)) - Number(stars.includes(a.id)));
-  }, [bodySites, query, stars]);
-
-  const toggleStar = useCallback(
-    (id: string) => {
-      writeStars(stars.includes(id) ? stars.filter((x) => x !== id) : [...stars, id]);
-    },
-    [stars],
-  );
+    return filterSites(bodySites, query);
+  }, [bodySites, query]);
 
   const open = useCallback((slug: string) => router.push(`/sites/${slug}`), [router]);
 
@@ -123,7 +75,7 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [fullscreen]);
 
-  const helperTitle = `Each site shows its higher stored v1 score among: ${data.viewsByBody[body].join(", ")}. Hover a row for the target used.`;
+  const helperTitle = `Each site shows its higher stored v1 score against ${data.viewsByBody[body].join(" and ")}. Hover a row to see which target it came from.`;
   const note = body === "Mars" ? "Mars is a low-confidence secondary result. Sites are compared with the Jezero target only." : null;
 
   return (
@@ -134,7 +86,7 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
       <div className="flex min-h-0 flex-1 flex-col md:flex-row">
         <section aria-label="Map" className="relative isolate min-h-[60vh] flex-1 md:min-h-0">
           <div className="absolute inset-0">
-            <DashboardMap sites={bodySites} bodyKey={body} theme={theme} hoveredSlug={hovered} onOpen={open} me={me} resizeKey={fullscreen} />
+            <DashboardMap sites={bodySites} bodyKey={body} hoveredSlug={hovered} onOpen={open} me={me} resizeKey={fullscreen} />
           </div>
           <div className="absolute left-1/2 top-3 z-[1000] flex max-w-[calc(100%-1.5rem)] -translate-x-1/2 items-center gap-0.5 rounded-full border border-border bg-surface/95 p-1 shadow-sm backdrop-blur-sm">
             <div role="group" aria-label="Reference body" className="flex items-center gap-0.5">
@@ -157,17 +109,16 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
               ))}
             </div>
             <span className="mx-1 h-5 w-px shrink-0 bg-border" aria-hidden />
-            <button type="button" onClick={locate} disabled={locating} className={cn(iconButton, "rounded-full")} aria-label={locating ? "Finding your location" : "Show my location"} title="Show my location">
-              {locating ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <LocateFixed className="h-4 w-4" aria-hidden />}
+            <button type="button" onClick={locate} disabled={locating} className={cn(barButton, "rounded-full")} title="Show my location on the map">
+              {locating ? "Locating..." : "Locate"}
             </button>
             <button
               type="button"
               onClick={() => setFullscreen((v) => !v)}
-              className={cn(iconButton, "rounded-full")}
-              aria-label={fullscreen ? "Exit fullscreen" : "View fullscreen"}
-              title={fullscreen ? "Exit fullscreen (Esc)" : "View fullscreen"}
+              className={cn(barButton, "rounded-full")}
+              title={fullscreen ? "Exit fullscreen (Esc)" : "View the map fullscreen"}
             >
-              {fullscreen ? <Minimize2 className="h-4 w-4" aria-hidden /> : <Maximize2 className="h-4 w-4" aria-hidden />}
+              {fullscreen ? "Exit fullscreen" : "Fullscreen"}
             </button>
           </div>
           {locateError && (
@@ -193,8 +144,6 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
             rankOf={rankOf}
             query={query}
             onQuery={setQuery}
-            stars={stars}
-            onToggleStar={toggleStar}
             onHover={setHovered}
             helperTitle={helperTitle}
             note={note}

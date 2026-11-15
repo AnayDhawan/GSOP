@@ -11,6 +11,8 @@ export type DashSite = {
   body: DashBody;
   list: "known" | "candidate";
   country: string;
+  /** Public path of the site photo when the file exists at build time (public/img/sites/<slug>.jpg), otherwise null. */
+  photo: string | null;
   lat: number;
   lon: number;
   /** Display string from claims.csv (1 decimal), or null when the site has no score. */
