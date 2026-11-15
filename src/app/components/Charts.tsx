@@ -27,15 +27,13 @@ export function BarChart({ title, caption, rows, max = 100, reference }: { title
     <Figure title={title} caption={caption}>
       <ul className="space-y-3">
         {rows.map((r) => (
-          <li key={r.label} className="grid grid-cols-[minmax(7rem,12rem)_1fr_auto] items-center gap-3 text-sm">
-            <span className="truncate" title={r.label}>
-              {r.label}
-            </span>
+          <li key={r.label} className="grid grid-cols-[minmax(7rem,14rem)_1fr_auto] items-center gap-3 text-sm">
+            <span className="break-words leading-snug">{r.label}</span>
             <span className="relative block h-3 bg-surface-raised">
               <span className={`absolute inset-y-0 left-0 ${FILL[r.tone ?? "earth"]}`} style={{ width: `${Math.max(0, Math.min(100, (r.value / max) * 100))}%` }} />
               {reference ? <span aria-hidden className="absolute -inset-y-1 w-px bg-foreground" style={{ left: `${(reference.value / max) * 100}%` }} /> : null}
             </span>
-            <span className="w-14 text-right font-mono tabular-nums">{r.display}</span>
+            <span className="min-w-[5.5rem] whitespace-nowrap text-right font-mono tabular-nums">{r.display}</span>
           </li>
         ))}
       </ul>

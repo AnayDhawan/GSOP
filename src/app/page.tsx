@@ -261,6 +261,9 @@ export default function Home() {
             <Link href="/method" className="border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
               How the method works
             </Link>
+            <Link href="/roadmap" className="border border-white/60 px-5 py-3 text-sm font-semibold text-white hover:bg-white/10">
+              After the hackathon
+            </Link>
           </div>
         </Reveal>
       </section>
