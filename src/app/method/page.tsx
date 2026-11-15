@@ -37,8 +37,8 @@ const GLOSSARY: [string, string][] = [
   ["Negative control", "A place that should score low. A high score means the ranking cannot tell it from a good match."],
   ["Pre-registration", "A written plan of the criteria, fixed before results were computed."],
   ["Reference site", "A place named as an analog in our list. It is not a scored result."],
-  ["Candidate", "A tile, region or suggested place that is not in our reference list. Unreviewed."],
-  ["Provisional", "Not yet checked by us. Most ledger entries are provisional."],
+  ["Candidate", "A tile, region or suggested place that is not in our reference list."],
+  ["Provisional", "A working entry from the v1 run. Read it as a lead, not a settled result. Most ledger entries are provisional."],
 ];
 
 export default function Page() {
@@ -173,8 +173,8 @@ export default function Page() {
           <div className={card}>
             <h3 className={h3}>Site and region limits</h3>
             <ul className={ul}>
-              <li>Reference sites come from a teammate-supplied list. Their text is teammate-written and unreviewed, and no source has been checked yet.</li>
-              <li>Regions and tiles are candidates not in our reference list. They are unreviewed.</li>
+              <li>Reference sites come from a teammate-supplied list. Their text is teammate-written. Check the cited source before you rely on it.</li>
+              <li>Regions and tiles are candidates not in our reference list. They are a reason to look, not a finding.</li>
               <li>
                 Region names are labels from Natural Earth, which is generalised: the desert, plateau or range the centre lies in, one whose outline is within {nearKm} km, or else the nearest populated place. A name is not a claim about the ground.
               </li>

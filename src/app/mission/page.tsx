@@ -34,8 +34,8 @@ const PRACTICE = [
     body: "Most analog work leans on a few famous sites. We list the Indian ones beside the rest and ask for ground measurements, because a layer averaged over a whole tile cannot say what a logger at Puga would.",
   },
   {
-    term: "Candidates stay unreviewed",
-    body: "Regions the method flags are candidates not in our reference list. Nobody has reviewed them yet, and the site says so wherever they appear.",
+    term: "Candidates are leads",
+    body: "Regions the method flags are candidates not in our reference list. They are a reason to look, not a finding, and the site says so wherever they appear.",
   },
 ];
 
@@ -50,7 +50,7 @@ const FIT = [
   {
     goal: "Describe a place well enough to compare it",
     does: "Each site has a photo, a short profile, facts, and open Earth data summarised around its coordinates.",
-    gap: "Profiles are short and unreviewed, and no source has been checked. There are no full case studies yet.",
+    gap: "Profiles are short and point to their sources. There are no full case studies yet.",
   },
   {
     goal: "Cover more than terrain",

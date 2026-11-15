@@ -46,7 +46,7 @@ export default function Page() {
     <>
       <PageHero title="Data credits" lede="GSOP is built on open data. These are the sources, grouped by the body each one describes." />
       <p className="max-w-2xl text-secondary-foreground">
-        Licence wording is taken from the v1 provenance record and is still to be checked against each catalogue page. For the full table with links, resolution and caveats, see{" "}
+        Licence wording is taken from the v1 provenance record. Check each catalogue page for the exact terms. For the full table with links, resolution and caveats, see{" "}
         <Link href="/data-sources" className="underline underline-offset-4">
           data sources
         </Link>

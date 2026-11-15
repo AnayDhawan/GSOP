@@ -58,7 +58,7 @@ export default function Page() {
           <li>
             Read the gate statuses in <code className={code}>v2.json</code> first and copy them into your own notes.
           </li>
-          <li>Use flagged regions as a pre-filter only. They are candidates not in our reference list, and they are unreviewed.</li>
+          <li>Use flagged regions as a pre-filter only. They are candidates not in our reference list.</li>
           <li>Drop any region outside the thermal coverage, since it has no v2 score. Coverage is {claim("v2.result.coverage_pct")}% of land tiles in the band.</li>
           <li>Review what is left with your own local data: terrain, access, permits and field measurements.</li>
           <li>Write down the outcome. A candidate that fails your review is a normal result.</li>

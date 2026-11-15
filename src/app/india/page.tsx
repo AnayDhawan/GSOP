@@ -83,7 +83,7 @@ export default function Page() {
         <ul className="mx-auto max-w-2xl list-disc space-y-2 pl-6">
           <li>We hold no ground measurements from any of these places.</li>
           <li>The places outside our reference list have no v1 score, because the score lookup was built from the list.</li>
-          <li>The match to the Moon or Mars is each source&apos;s claim, not ours. Nobody on the team has checked the sources yet.</li>
+          <li>The match to the Moon or Mars is each source&apos;s claim, not ours. Check each source before you rely on it.</li>
         </ul>
         <p className="flex flex-wrap justify-center gap-x-8 gap-y-2 font-display text-lg">
           <Link href="/dashboard" className={link}>

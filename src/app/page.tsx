@@ -363,7 +363,7 @@ export default function Home() {
             <ul className="list-disc space-y-2 pl-6">
               <li>
                 {c("landing.n_india_known")} India entries are in our reference list, and {regions.length === 1 ? "one" : "some"} of the {c("regions.count")} candidate regions overlap the India outline
-                {regions.length ? `: ${regions.map((r) => `${r.id} (${c(`regions.${r.id.replace(" ", "_")}.n_tiles_in_india`)} tiles)`).join(", ")}` : ""}. Regions are unreviewed candidates.
+                {regions.length ? `: ${regions.map((r) => `${r.id} (${c(`regions.${r.id.replace(" ", "_")}.n_tiles_in_india`)} tiles)`).join(", ")}` : ""}. Regions are candidates not in our reference list.
               </li>
               <li>
                 Ladakh (Puga) scored {c("v2.result.g2b.ladakh_puga")} in the Mars thermal run, the lowest of the {c("v2.result.g2b.n_scorable")} scorable Mars positives. We do not know why. Field data is how we would find out.
@@ -425,7 +425,7 @@ export default function Home() {
               ))}
             </ul>
             <p className="mx-auto max-w-2xl text-sm text-secondary-foreground">
-              Gathered from public sources, unreviewed, and not scored. The dashboard marks them on the India map. We hold no ground measurements for them yet.
+              Gathered from public sources and not scored. The dashboard marks them on the India map. We hold no ground measurements for them yet.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link href="/india" className={primaryBtn}>

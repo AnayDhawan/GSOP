@@ -11,6 +11,6 @@ diviner_prp,Moon,LRO Diviner South Polar Resource Product,NASA PDS Geosciences N
 mola,Mars,MOLA elevation,USGS Astrogeology Science Center,https://astrogeology.usgs.gov/,Martian target terrain,Global grid,v1 Mars target
 tes_thermal_inertia,Mars,MGS TES thermal inertia map,NASA PDS Geosciences Node,https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-5-timap-v1/mgst_9001/data/global_ti_day_2007.img,Martian thermal reference values at Jezero,Global map,v2 thermal layer
 mars_models,Mars,NASA Mars fact sheet and Glenn Mars atmosphere model,NASA,https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html,Solar constant and atmosphere values for the Mars run,Fact sheet values,v1 Mars target
-sites_list,Earth,Reference site list,GSOP team (unreviewed),https://github.com/AnayDhawan/GSOP,The reference sites and candidates shown on the dashboard,One row per site,Dashboard and site pages
+sites_list,Earth,Reference site list,GSOP team,https://github.com/AnayDhawan/GSOP,The reference sites and candidates shown on the dashboard,One row per site,Dashboard and site pages
 basemap,Display,"Esri World Street Map basemap, with OpenStreetMap contributors","Esri, HERE, Garmin, FAO, NOAA, USGS",https://www.esri.com/en-us/legal/terms/data-attributions,Basemap tiles on the dashboard (display only),Web map tiles,Dashboard
 blue_marble,Display,NASA Blue Marble Earth picture,NASA Earth Observatory,https://visibleearth.nasa.gov/collection/1484/blue-marble,Satellite basemap behind the score overlay on the Honest Map (display only),Cropped to the overlay grid,Honest Map

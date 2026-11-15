@@ -64,7 +64,7 @@ export default function Page() {
             Sites: <code className={code}>sites.json</code> is the reference list with its candidates, and <code className={code}>site_lookup.json</code> holds the stored score at each site, one entry per view. A site with no score says nothing about how good an analog it is.
           </li>
           <li>
-            Candidates: <code className={code}>tiles_top.json</code> holds the top tiles for each target and <code className={code}>regions.json</code> groups neighbouring tiles. Both are candidates not in our reference list, and both are unreviewed.
+            Candidates: <code className={code}>tiles_top.json</code> holds the top tiles for each target and <code className={code}>regions.json</code> groups neighbouring tiles. Both are candidates not in our reference list, a reason to look and not a finding.
           </li>
           <li>
             Results: <code className={code}>metrics.json</code>, <code className={code}>controls.json</code> and <code className={code}>ledger.json</code> cover the first run and what failed. <code className={code}>v2.json</code> covers the second: gate statuses, input hashes and thermal reference rows.

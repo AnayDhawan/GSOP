@@ -30,11 +30,11 @@ export default function Page() {
   );
   return (
     <>
-      <PageHero title="Sites" lede="Places people have used as Moon or Mars analogs, plus candidates we have not reviewed. Open one for a photo, a short profile and the score we stored for it." />
+      <PageHero title="Sites" lede="Places people have used as Moon or Mars analogs, plus candidates not in our reference list. Open one for a photo, a short profile and the score we stored for it." />
 
       <div className="mx-auto max-w-3xl space-y-3 pb-6 text-secondary-foreground">
         <p>
-          Profiles and photos were gathered from public sources and nobody on the team has reviewed them yet. The score on each card is a value v1 already stored, looked up at the site. It is not a test, and the ranking has not been checked against
+          Profiles and photos were gathered from public sources. Check the cited source before you rely on one. The score on each card is a value v1 already stored, looked up at the site. It is not a test, and the ranking has not been checked against
           independent data.
         </p>
         <details className="text-sm">

@@ -32,9 +32,9 @@ describe("india page", () => {
     expect(container.querySelector("a[href='/sites/lonar-crater']")).not.toBeNull();
   });
 
-  it("says the places are unreviewed and not scored", () => {
+  it("says the places are not scored and tells the reader to check the source", () => {
     const { container } = render(<Page />);
-    expect(container.textContent).toMatch(/unreviewed/);
+    expect(container.textContent).toMatch(/Check each source before you rely on it/);
     expect(container.textContent).toMatch(/Not scored/);
     expect(container.textContent).toMatch(/no ground measurements/);
   });
