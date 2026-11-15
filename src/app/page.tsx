@@ -187,15 +187,15 @@ export default function Home() {
       {/* 3. Transparency strip: the gate results as printed on /gates. */}
       <section aria-labelledby="transparency" className="band-grid border-y border-border bg-surface py-20 md:py-28">
         <div className={`${container} space-y-10`}>
-          <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-3xl space-y-4">
+          <Reveal className="space-y-6">
+            <div className="mx-auto max-w-3xl space-y-4">
               <Kicker n="02">Self-audit</Kicker>
               <h2 id="transparency" className="text-3xl md:text-4xl">
                 Gate results, as reported
               </h2>
               <p className="text-lg">We pre-registered our thresholds and publish every result, including failures.</p>
             </div>
-            <p className="flex gap-6 font-mono text-sm uppercase tracking-wider text-secondary-foreground" aria-label="Gate tally">
+            <p className="flex justify-center gap-6 font-mono text-sm uppercase tracking-wider text-secondary-foreground" aria-label="Gate tally">
               <span>
                 <span className="text-control">{gateCount("FAIL")}</span> fail
               </span>
@@ -315,12 +315,15 @@ export default function Home() {
 
       {/* 6. Local impact: India */}
       <section aria-labelledby="local" className="border-t border-border bg-surface py-20 md:py-28">
-        <div className={`${container} grid gap-12 lg:grid-cols-2 lg:gap-16`}>
+        <div className={`${container} space-y-12`}>
           <Reveal className="space-y-5">
             <Kicker n="04">Local ground data</Kicker>
             <h2 id="local" className="text-3xl md:text-4xl">
               Local ground data, starting with India
             </h2>
+          </Reveal>
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+          <Reveal className="space-y-5">
             <p className="leading-relaxed text-secondary-foreground">
               A satellite layer averages a big area. Ours starts from {c("landing.src.modis_lst.res.n0")} km land surface temperature and averages it to {c("landing.tile_km")} km tiles, so Puga in Ladakh (about {group(c("sites.ladakh-tso-kar-and-puga-mars.elevation_m"))} m above sea level) is scored from a coarse view of a cold desert. A logger on the ground
               would show whether that view holds.
@@ -375,13 +378,14 @@ export default function Home() {
             </div>
             <p className="text-sm text-secondary-foreground">Stored v1 values, looked up, not tested. A site with no score says nothing about how good an analog it is.</p>
           </Reveal>
+          </div>
         </div>
       </section>
 
       {/* 7. Built in the open, then the way in. On the brand ribbon. */}
       <section aria-labelledby="open" className="band-ribbon border-t border-border bg-background py-20 md:py-24">
-        <div className={`${container} flex flex-col items-start justify-between gap-8 md:flex-row md:items-center`}>
-          <Reveal className="max-w-2xl space-y-3">
+        <div className={`${container} space-y-8`}>
+          <Reveal className="mx-auto max-w-2xl space-y-3">
             <Kicker n="05">Open by default</Kicker>
             <h2 id="open" className="text-3xl md:text-4xl">
               Built in the open
@@ -398,9 +402,11 @@ export default function Home() {
               . This is a research prototype, not a NASA tool.
             </p>
           </Reveal>
-          <Link href="/dashboard" className={`${primaryBtn} text-xl`}>
-            Open the dashboard
-          </Link>
+          <div className="flex justify-center">
+            <Link href="/dashboard" className={`${primaryBtn} text-xl`}>
+              Open the dashboard
+            </Link>
+          </div>
         </div>
       </section>
     </>

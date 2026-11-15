@@ -22,11 +22,11 @@ export default function Page() {
     <>
       <PageHero title="Data file access" lede="GSOP has no server-side interface. The data is a set of static files that you fetch by URL, and nothing is queried or filtered on our side." />
 
+      <h2 id="terms" className="text-2xl">
+        Terms of access
+      </h2>
       <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
         <section aria-labelledby="terms" className="space-y-3">
-          <h2 id="terms" className="text-2xl">
-            Terms of access
-          </h2>
           <ul className="list-disc space-y-2 pl-6">
             <li>
               Base URL: <code className={code}>{SITE_ORIGIN}/data/</code>. Add a path from the table below.

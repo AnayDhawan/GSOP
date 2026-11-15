@@ -34,11 +34,11 @@ export default function Page() {
       </ul>
 
       <Band tone="grid" labelledBy="where">
+        <h2 id="where" className="text-2xl">
+          Static files, no interface
+        </h2>
         <div className="grid items-center gap-8 md:grid-cols-2">
           <div className="space-y-3">
-            <h2 id="where" className="text-2xl">
-              Static files, no interface
-            </h2>
             <p className="text-secondary-foreground">Everything is served as a plain file, so any language can read it. There is nothing to sign up for.</p>
           </div>
           <PagePhoto src="/brand/motifs/gsop-planetary-comparison-dark.webp" alt="The Moon, Earth and Mars side by side" width={1920} height={900} dark />

@@ -287,22 +287,17 @@ h1, h2, h3, h4, .gsop-display {
 [data-theme="dark"] .text-positive { color: #43BD8B; }
 [data-theme="light"] .text-earth { color: #1F6EA3; }
 
-/* ---- Page text (Anay, 2026-11-15): section titles and text are centred. Tables, code, charts, forms and the long
-   reference notes stay left-aligned, because data reads better that way. The dashboard is an app and is left alone. ---- */
-main:not([data-app]) { text-align: center; }
-main:not([data-app]) :is(table, pre, details, form, [data-left], [role="search"], input, select, textarea, label) { text-align: left; }
-main:not([data-app]) :is([class*="max-w-xl"], [class*="max-w-2xl"], [class*="max-w-3xl"], [class*="max-w-4xl"]) { margin-inline: auto; }
-/* Lists keep their bullets, set inline so a centred line does not leave the marker stranded at the edge. */
-main:not([data-app]) :is(ul, ol) { list-style-position: inside; padding-left: 0; }
-main:not([data-app]) :is(table, pre, details, form, [data-left]) :is(ul, ol) { list-style-position: outside; padding-left: 1.5rem; }
+/* ---- Page text (Anay, 2026-11-15): page and section titles, their kicker and lede, the button rows under them, and the blocks
+   themselves are centred. Everything else reads as normal text: left-aligned paragraphs, lists with their own bullets, tables,
+   cards, code, charts and forms. The dashboard is an app and is left alone. ---- */
+main:not([data-app]) { text-align: left; }
+
+/* Blocks with a width cap sit in the middle of the page; the text inside them stays normal. */
+main:not([data-app]) :is([class*="max-w-xl"], [class*="max-w-2xl"], [class*="max-w-3xl"], [class*="max-w-4xl"], [class*="max-w-5xl"]) { margin-inline: auto; }
 
 /* A section title: Space Grotesk, centred, with a short accent rule under it and room before the body. */
-main:not([data-app]) h2 {
-  font-family: var(--gsop-font-display);
-  text-align: center;
-  margin-inline: auto;
-  margin-bottom: 1.5rem;
-}
+main:not([data-app]) :is(h1, h2) { font-family: var(--gsop-font-display); text-align: center; margin-inline: auto; }
+main:not([data-app]) h2 { margin-bottom: 1.5rem; }
 main:not([data-app]) h2::after {
   content: "";
   display: block;
@@ -311,4 +306,21 @@ main:not([data-app]) h2::after {
   margin: 0.9rem auto 0;
   background: var(--gsop-earth-blue);
 }
-main:not([data-app]) details h2::after, main:not([data-app]) [data-left] h2::after { margin-inline: 0; }
+main:not([data-app]) :is(details, [data-left]) h2 { text-align: left; margin-inline: 0; }
+main:not([data-app]) :is(details, [data-left]) h2::after { margin-inline: 0; }
+
+/* The small label above a title is centred with it. The text under a title is normal text, so it is not. */
+main:not([data-app]) :is(p, div, span):not(.flex):has(+ :is(h1, h2)):not(:has(> *)) { text-align: center; margin-inline: auto; }
+main:not([data-app]) :is(p, div).flex:has(+ :is(h1, h2)) { justify-content: center; }
+
+/* A heading inside a card or aside belongs to that card: left, no accent rule. */
+main:not([data-app]) :is(li, a, aside, [class*="border"][class*="p-5"], [class*="border"][class*="p-6"]) :is(h2) { text-align: left; margin-inline: 0; margin-bottom: 0.75rem; }
+main:not([data-app]) :is(li, a, aside, [class*="border"][class*="p-5"], [class*="border"][class*="p-6"]) h2::after { display: none; }
+
+/* A row of buttons under a title or lede: centred. Rows inside a card or list item stay where they are. */
+main:not([data-app]) :not(li):not([class*="border"]) > :is(h1, h2, p) + .flex.flex-wrap { justify-content: center; }
+
+/* Page title band: everything in it is centred, chips and buttons included. */
+.page-hero { text-align: center; }
+.page-hero :is(.flex, ul.flex) { justify-content: center; }
+.page-hero :is(p, h1) { margin-inline: auto; }

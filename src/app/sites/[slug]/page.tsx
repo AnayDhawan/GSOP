@@ -164,11 +164,11 @@ function SiteBody({ s, withBody }: { s: Site; withBody: boolean }) {
     <div aria-label={withBody ? `${s.name}, ${label}` : undefined}>
       {withBody && <h2 className="mb-6 mt-4 font-display text-3xl">Listed for the {label}</h2>}
 
+      <h2 id={`sum-${s.id}`} className="text-3xl">
+        About this place
+      </h2>
       <div className="grid gap-8 lg:grid-cols-[1.35fr_1fr]">
         <section className="space-y-4" aria-labelledby={`sum-${s.id}`}>
-          <h2 id={`sum-${s.id}`} className="text-3xl">
-            About this place
-          </h2>
           <p className="text-lg leading-relaxed">{p?.summary ?? s.summary ?? s.why_analog ?? NONE}</p>
           <p className="text-xs text-muted-foreground">{p?.summary && p.origin !== "teammate" ? "Researched from public sources, unreviewed." : "Teammate-written, unreviewed."}</p>
           {s.list === "candidate" && <p className="border-l-2 border-border pl-3 text-secondary-foreground">This is a candidate: a suggestion that is not in our reference list.</p>}

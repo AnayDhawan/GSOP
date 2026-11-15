@@ -59,7 +59,7 @@ export default function Page() {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={g.image} alt={g.alt} width={600} height={600} loading="lazy" className="mx-auto aspect-square w-48 rounded-full object-cover md:w-56" />
             </figure>
-            <div className="space-y-3">
+            <div data-left className="space-y-3">
               <h2 id={`credits-${g.title}`} className="text-3xl">
                 {g.title}
               </h2>

@@ -44,9 +44,9 @@ export default function Page() {
     <>
       <PageHero title="Contribute" lede="GSOP is open. If you hold ground data for an analog site, or can show where the screening goes wrong, this page says how to send it." />
 
+      <h2 className="text-2xl">Field measurements for analog sites</h2>
       <div className="grid items-start gap-10 md:grid-cols-[1.3fr_1fr]">
         <div className="space-y-4">
-          <h2 className="text-2xl">Field measurements for analog sites</h2>
           <p className="text-secondary-foreground">
             This is the most useful thing you can send. A satellite layer averaged over a tile hides what a logger on the ground records, and for Indian sites such as Ladakh we have almost nothing but the satellite view.
           </p>
@@ -78,11 +78,11 @@ export default function Page() {
       </Band>
 
       <Band tone="accent" labelledBy="how">
+        <h2 id="how" className="text-2xl">
+          How to send it
+        </h2>
         <div className="grid gap-8 md:grid-cols-2">
           <div className="space-y-3">
-            <h2 id="how" className="text-2xl">
-              How to send it
-            </h2>
             <p>
               Open an issue on{" "}
               <a href={REPO_URL} className={link} rel="noopener noreferrer">

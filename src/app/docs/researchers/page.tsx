@@ -55,11 +55,11 @@ export default function Page() {
         </ul>
       </Band>
 
+      <h2 id="trail" className="text-2xl">
+        Follow one score
+      </h2>
       <div className="grid items-start gap-10 md:grid-cols-[1.3fr_1fr]">
         <section aria-labelledby="trail" className="space-y-3">
-          <h2 id="trail" className="text-2xl">
-            Follow one score
-          </h2>
           <p className="text-secondary-foreground">Take the Namib sand sea, a Moon negative control, and its own-tile percentile before and after the thermal layer.</p>
           <ol className="list-decimal space-y-3 pl-6">
             <li>

@@ -189,11 +189,11 @@ export default function Page() {
       </Band>
 
       <Band tone="accent" labelledBy="track-d">
+        <h2 id="track-d" className={h2}>
+          Fitted-model gates (track D)
+        </h2>
         <div className="grid gap-10 md:grid-cols-2">
           <div className="space-y-4">
-            <h2 id="track-d" className={h2}>
-              Fitted-model gates (track D)
-            </h2>
             {r.d_track_present ? (
               <GateTable caption="Track D gate statuses">
                 <Row gate="D1" status={g.D1}>
@@ -253,11 +253,11 @@ export default function Page() {
 
       {r.positive_finding && (
         <Band tone="raised" labelledBy="positive">
+          <h2 id="positive" className={h2}>
+            The one positive result
+          </h2>
           <div className="grid gap-10 md:grid-cols-2">
             <div className="space-y-4">
-              <h2 id="positive" className={h2}>
-                The one positive result
-              </h2>
               <p>{r.positive_finding.text}</p>
               <p className="text-secondary-foreground">{r.positive_finding.model_note}</p>
               <ul className="list-disc space-y-1 pl-6 text-secondary-foreground">

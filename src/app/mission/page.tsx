@@ -82,9 +82,9 @@ export default function Page() {
         lede="People who plan Moon and Mars missions need somewhere on Earth to try their rovers, drills and habitats first. GSOP ranks Earth land tiles by how closely they resemble a lunar or Martian target, so a team can decide where to look first."
       />
 
+      <h2 className="text-2xl">A starting list</h2>
       <div className="grid items-center gap-10 md:grid-cols-[1.2fr_1fr]">
         <div className="space-y-4">
-          <h2 className="text-2xl">A starting list</h2>
           <p className="text-secondary-foreground">
             The ranking uses terrain and, in the second run, surface temperature. It says nothing about gravity, dust, radiation or air. A person still has to go and look, and this site is built to make that first look cheaper.
           </p>
