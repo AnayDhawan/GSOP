@@ -48,7 +48,20 @@ export function dashboardData(): DashboardData {
       .filter((x) => x.e!.status === "scored")
       .map((x) => ({ view: x.view, e: x.e as Extract<NonNullable<typeof x.e>, { status: "scored" }> }))
       .sort((a, b) => b.e.score - a.e.score || a.view.localeCompare(b.view));
-    const base = { id: s.id, slug: s.slug, name: s.name, body: s.body, list: s.list, country: s.country ?? "", photo: chipFor(s.slug)?.src ?? null, lat: s.lat, lon: s.lon };
+    const base = {
+      id: s.id,
+      slug: s.slug,
+      name: s.name,
+      body: s.body,
+      list: s.list,
+      country: s.country ?? "",
+      photo: chipFor(s.slug)?.src ?? null,
+      lat: s.lat,
+      lon: s.lon,
+      elevationText: hasClaim(`sites.${s.id}.elevation_m`) ? `${claim(`sites.${s.id}.elevation_m`)} m` : null,
+      whyAnalog: s.why_analog ?? null,
+      experiments: s.experiments_possible ?? null,
+    };
 
     if (scored.length > 0) {
       const best = scored[0];
@@ -98,5 +111,6 @@ export function dashboardData(): DashboardData {
     refreshed: refreshedDate(),
     window: `${years ? `MODIS land surface temperature ${years}, ` : ""}v1 6 km tiles`,
     e32: e32Sentence(),
+    matchRadiusKm: Number(claim("lookup.match_radius_km")),
   };
 }
