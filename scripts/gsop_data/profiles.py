@@ -21,7 +21,7 @@ ENRICH = "data/reference/site_enrichment.json"
 IMG_DIR = "public/img/places"
 OUT = "public/data/site_profiles.json"
 PROSE = ("place", "summary", "terrain_geology", "climate", "access_and_facilities", "hazards")
-CONFIDENCE = {"high", "medium", "low"}
+CONFIDENCE = {"high", "medium", "low", "teammate"}  # "teammate": text written by a team member, not researched from a page
 LICENSE = re.compile(r"^(CC0(?: \d\.\d)?|CC BY(?:-SA)?(?: \d\.\d)?(?: [A-Za-z]{2,3})?|PD(?:-[\w-]+)?|Public domain.*)$", re.I)
 DASH = re.compile("[—–−]")
 URL = re.compile(r"^https?://\S+$")
@@ -53,7 +53,8 @@ def problems(entries, site_slugs, root):
             if not isinstance(v, str) or not v.strip():
                 out.append(f"{slug}.{k}: must be text or null")
                 continue
-            if re.search(r"\d", v):
+            # Researched prose keeps its numbers in facts. Teammate prose may hold numbers; each one gets a claims row (see build).
+            if re.search(r"\d", v) and e.get("origin") != "teammate":
                 out.append(f"{slug}.{k}: holds a digit; put measurements in facts")
             texts.append((k, v))
         for i, f in enumerate(e.get("facts") or []):
@@ -71,6 +72,17 @@ def problems(entries, site_slugs, root):
                 out.append(f"{slug}.{k}: banned word")
             if DASH.search(v):
                 out.append(f"{slug}.{k}: dash character")
+        for body, par in (e.get("parameters") or {}).items():
+            if body not in ("Moon", "Mars"):
+                out.append(f"{slug}.parameters: unknown body {body!r}")
+            for key in ("strong", "partial", "weak"):
+                items = (par or {}).get(key)
+                if not isinstance(items, list) or not all(isinstance(i, str) and i.strip() for i in items):
+                    out.append(f"{slug}.parameters.{body}.{key}: must be a list of text")
+                else:
+                    for i in items:
+                        if rx.search(i) or DASH.search(i):
+                            out.append(f"{slug}.parameters.{body}.{key}: banned word or dash in {i!r}")
         if e.get("confidence") not in CONFIDENCE:
             out.append(f"{slug}.confidence: must be one of {sorted(CONFIDENCE)}")
         for u in e.get("sources") or []:
@@ -110,6 +122,12 @@ def build(ctx):
             p["facts"].append({"label": f["label"], "value": f["value"], "unit": f["unit"], "source_url": f["source_url"]})
             for j, n in enumerate(text_numbers(f["value"]) + text_numbers(f["label"])):
                 facts.append({"claim": f"profiles.{slug}.f{i}.n{j}", "number": n, "source_file": ENRICH, "sha256": sha})
+        if e.get("origin") == "teammate":
+            for k in PROSE:
+                for j, n in enumerate(text_numbers(e.get(k) or "")):
+                    facts.append({"claim": f"profiles.{slug}.{k}.n{j}", "number": n, "source_file": ENRICH, "sha256": sha})
+        p["origin"] = e.get("origin", "researched")
+        p["parameters"] = e.get("parameters") or {}
         p["image"] = e.get("image")
         p["source_urls"] = list(e.get("sources") or [])
         p["confidence"] = e["confidence"]

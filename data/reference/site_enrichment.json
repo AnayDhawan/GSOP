@@ -46,7 +46,26 @@
       "https://www.marssociety.org.au/sites/default/files/library/Arkaroola_geology_information_leaflet.pdf",
       "https://data.environment.sa.gov.au/Content/Publications/14815_SSHP_BHI_ParalanaHotSprings_5-SEP-2024.pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "askja-caldera",
@@ -105,7 +124,63 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Askja"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "composition"
+        ],
+        "partial": [
+          "illumination",
+          "temperature",
+          "thermal inertia"
+        ],
+        "weak": []
+      }
+    }
+  },
+  {
+    "slug": "atacama-desert-cmu-nomad-rover-traverse",
+    "place": null,
+    "summary": "The hyper-arid Chilean desert where Carnegie Mellon's Nomad rover drove ~200 km in 1997 to rehearse lunar exploration.",
+    "terrain_geology": "Gravel plains, salt flats and low hills of volcanic and sedimentary debris.",
+    "climate": "Hyper-arid; almost no rain; large day-night temperature swing.",
+    "access_and_facilities": "Public and mining-company land in northern Chile; road access from Antofagasta.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "atacama-desert-cmu-nomad-rover-traverse.jpg",
+      "title": "Satellite view of Atacama Desert (CMU Nomad rover traverse), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-70.2,-23.15,-69.60000000000001,-22.85",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "atacama-desert-yungay-core",
@@ -164,7 +239,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Atacama_Desert"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "atacama-maria-elena-south",
@@ -206,11 +300,37 @@
         "source_url": "https://en.wikipedia.org/wiki/Atacama_Desert"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "atacama-maria-elena-south.jpg",
+      "title": "Satellite view of Atacama - Maria Elena South, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-69.89999999999999,-22.45,-69.3,-22.150000000000002",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Atacama_Desert"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "roughness"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "axel-heiberg-gypsum-hill-and-lost-hammer-springs",
@@ -278,7 +398,26 @@
       "https://www.nature.com/articles/s41396-022-01233-8.pdf",
       "https://sciencedaily.com/releases/2010/06/100604132041.htm"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "temperature"
+        ],
+        "partial": [
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "sunlight/thermal latitude",
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "barranco-del-jaroso-sierra-almagrera",
@@ -314,14 +453,40 @@
         "source_url": "https://en.wikipedia.org/wiki/Sierra_Almagrera"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "barranco-del-jaroso-sierra-almagrera.jpg",
+      "title": "Satellite view of Barranco del Jaroso (Sierra Almagrera), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-2.11,37.15,-1.51,37.449999999999996",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Sierra_Almagrera",
       "https://docta.ucm.es/entities/publication/b0823316-4dfe-4d01-a76d-f9cb15af793e/full",
       "https://wikipedia.com/wiki/Jarosite",
       "https://www.jstage.jst.go.jp/article/eps1998/56/7/56_7_v/_article/-char/en"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "slope",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "beacon-valley-and-university-valley-dry-valleys",
@@ -377,7 +542,65 @@
       "https://ntrs.nasa.gov/api/citations/20100003844/downloads/20100003844.pdf",
       "https://cambridge.org/core/services/aop-cambridge-core/content/view/S0954102022000025"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "water-ice/aridity",
+          "slope",
+          "temperature"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "air density (elev.)"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "black-point-lava-flow",
+    "place": null,
+    "summary": "A Pleistocene basalt flow north of Flagstaff where NASA's Desert RATS tested pressurised rovers and crew procedures.",
+    "terrain_geology": "Flat-topped basalt flow capping softer Moenkopi sedimentary rocks; rubbly flow margins; scattered cinder cones.",
+    "climate": "Semi-arid desert; hot summers, cold windy winters.",
+    "access_and_facilities": "Navajo Nation and federal land near the Little Colorado River; permits needed; dirt roads off US-89.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "black-point-lava-flow.jpg",
+      "title": "Satellite view of Black Point Lava Flow, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.67999999999999,35.54,-111.08,35.839999999999996",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "bockfjord-volcanic-complex-amase",
@@ -433,7 +656,26 @@
       "https://en.wikipedia.org/wiki/Bockfjorden",
       "https://www.space.com/376-expedition-turns-life-pseudo-mars.html"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "roughness",
+          "temperature"
+        ],
+        "partial": [
+          "slope",
+          "thermal inertia/dust",
+          "relief"
+        ],
+        "weak": [
+          "sunlight/thermal latitude",
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "bodele-depression-diatomite-deflation-basin",
@@ -475,11 +717,37 @@
         "source_url": "https://en.wikipedia.org/wiki/Bod%C3%A9l%C3%A9_Depression"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "bodele-depression-diatomite-deflation-basin.jpg",
+      "title": "Satellite view of Bodele Depression (diatomite deflation basin), centred on the listed coordinates (VIIRS true colour, one day in 2023)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=VIIRS_SNPP_CorrectedReflectance_TrueColor&v=17.5,16.85,18.1,17.15",
+      "credit": "Imagery: NASA GIBS, VIIRS true colour, one day in 2023, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Bod%C3%A9l%C3%A9_Depression"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "roughness"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "bunge-land-zemlya-bunge",
@@ -521,11 +789,36 @@
         "source_url": "https://en.wikipedia.org/wiki/Bunge_Land"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "bunge-land-zemlya-bunge.jpg",
+      "title": "Satellite view of Bunge Land (Zemlya Bunge), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=140.714,75.26899999999999,141.31400000000002,75.569",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Bunge_Land"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "cold-dry ground",
+          "temperature",
+          "thermal inertia"
+        ],
+        "partial": [
+          "illumination"
+        ],
+        "weak": [
+          "roughness",
+          "relief",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "channeled-scablands-dry-falls",
@@ -579,7 +872,26 @@
       "https://en.wikipedia.org/wiki/Channeled_Scablands",
       "https://en.wikipedia.org/wiki/Dry_Falls"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude"
+        ],
+        "partial": [
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "chott-el-djerid",
@@ -632,7 +944,65 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Chott_el_Djerid"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "cinder-lake-crater-field",
+    "place": null,
+    "summary": "Hundreds of explosive craters blasted into volcanic cinder in 1967-68 to copy an Apollo landing site, used to train astronauts.",
+    "terrain_geology": "Flat basaltic cinder (tephra) blanket from Sunset Crater; artificial craters a few metres to ~25 m across.",
+    "climate": "Semi-arid, cool high plateau; snow in winter; monsoon storms in late summer.",
+    "access_and_facilities": "Coconino National Forest (US Forest Service); open public land with off-highway vehicle area nearby; road access from Flagstaff.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "cinder-lake-crater-field.jpg",
+      "title": "Satellite view of Cinder Lake Crater Field, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.8,35.160000000000004,-111.2,35.46",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition",
+          "thermal inertia"
+        ],
+        "partial": [
+          "relief"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "concordia-station-dome-c",
@@ -697,7 +1067,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Concordia_Station"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "cold-dry ground",
+          "temperature"
+        ],
+        "partial": [
+          "illumination"
+        ],
+        "weak": [
+          "roughness",
+          "relief",
+          "composition",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "craters-of-the-moon-basalt",
@@ -739,13 +1127,39 @@
         "source_url": "https://www.nasa.gov/missions/analog-field-testing/what-is-basalt/"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "craters-of-the-moon-basalt.jpg",
+      "title": "Satellite view of Craters of the Moon (BASALT), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-113.82,43.27,-113.22,43.57",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Craters_of_the_Moon_National_Monument_and_Preserve",
       "https://www.nasa.gov/missions/analog-field-testing/what-is-basalt/",
       "https://ntrs.nasa.gov/api/citations/20170000363/downloads/20170000363.pdf"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope",
+          "roughness"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "thermal inertia/dust",
+          "relief",
+          "temperature"
+        ],
+        "weak": [
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "craters-of-the-moon-national-monument",
@@ -810,7 +1224,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Craters_of_the_Moon_National_Monument_and_Preserve"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "cold-dry ground",
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "cuatro-cienegas",
@@ -860,7 +1292,26 @@
       "https://astrobiology.nasa.gov/nai/annual-reports/2012/asu/stoichiometry-of-life-task-2b-field-studies-cuatro-cienegas/index.html",
       "https://mexiconewsdaily.com/mexicolife/cuatro-cienegas-and-its-secret"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "composition/alteration",
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "dallol",
@@ -927,7 +1378,66 @@
       "https://en.wikipedia.org/wiki/Dallol_(ghost_town)",
       "https://kwx.liehendr.com/content/wikivoyage_en_all_maxi_2025-02/A/Danakil_Depression"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "roughness"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "dasht-e-lut-kalut-yardang-field",
+    "place": null,
+    "summary": "A field of giant wind-carved ridges in Iran's Lut Desert, one of the hottest surfaces on Earth.",
+    "terrain_geology": "Mega-yardangs in playa clays, with mega-ripples and dunes.",
+    "climate": "Extremely hot hyper-arid.",
+    "access_and_facilities": "World Heritage site; Iranian permits; access from Shahdad.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "dasht-e-lut-kalut-yardang-field.jpg",
+      "title": "Satellite view of Dasht-e Lut - Kalut yardang field, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=57.800000000000004,30.25,58.4,30.549999999999997",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust",
+          "roughness"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "death-valley-ubehebe-crater-and-basin-floor",
@@ -994,7 +1504,26 @@
       "https://astrobiology.nasa.gov/news/death-valley-celestial-centennial-marsfest-symposium/",
       "https://www.space.com/25621-marsfest-death-valley-mars-exploration.html"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "dhofar-desert-amadee-18",
@@ -1030,13 +1559,39 @@
         "source_url": "https://en.wikipedia.org/wiki/Dhofar_Governorate"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "dhofar-desert-amadee-18.jpg",
+      "title": "Satellite view of Dhofar desert (AMADEE-18), centred on the listed coordinates (VIIRS true colour, one day in 2023)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=VIIRS_SNPP_CorrectedReflectance_TrueColor&v=55.2,18.75,55.8,19.049999999999997",
+      "credit": "Imagery: NASA GIBS, VIIRS true colour, one day in 2023, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://mission.oewf.org/archive/bin/view/AMADEE-18/",
       "https://spacewatchme.com/2017/04/amadee-18-mars-analog-field-simulation-held-dhofar-oman/",
       "https://en.wikipedia.org/wiki/Dhofar_Governorate"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "roughness"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "don-juan-pond",
@@ -1095,7 +1650,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Don_Juan_Pond"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "slope",
+          "temperature"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "sunlight/thermal latitude",
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "dumont-dunes",
@@ -1144,7 +1718,26 @@
       "https://www.jpl.nasa.gov/news/mojave-desert-tests-prepare-for-nasa-mars-roving/",
       "https://www.jpl.nasa.gov/news/nasa-tests-drones-in-death-valley-preps-for-martian-sands-and-skies/"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "water-ice/aridity"
+        ],
+        "weak": [
+          "composition/alteration",
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "dunhuang-yardang-national-geopark",
@@ -1186,7 +1779,66 @@
       "https://en.wikipedia.org/wiki/Dunhuang_Yardang_National_Geopark",
       "https://en.wikipedia.org/wiki/Yardang"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "roughness"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "el-tatio-geyser-field",
+    "place": null,
+    "summary": "A high-altitude geyser field in Chile whose silica matches deposits found by the Spirit rover.",
+    "terrain_geology": "Hydrothermal opaline silica sinter mounds and terraces.",
+    "climate": "Cold high-altitude desert; strong UV.",
+    "access_and_facilities": "Community-managed site; entry fee; road from San Pedro de Atacama.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "el-tatio-geyser-field.jpg",
+      "title": "Satellite view of El Tatio geyser field, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-68.31,-22.479999999999997,-67.71000000000001,-22.18",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "temperature"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "emi-koussi-volcano-tibesti",
@@ -1245,7 +1897,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Emi_Koussi"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "roughness",
+          "relief"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "erfoud-merzouga-mars2013",
@@ -1293,14 +1964,40 @@
         "source_url": "https://en.wikipedia.org/wiki/Merzouga"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "erfoud-merzouga-mars2013.jpg",
+      "title": "Satellite view of Erfoud / Merzouga (MARS2013), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-4.52,31.28,-3.92,31.58",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Erfoud",
       "https://en.wikipedia.org/wiki/Merzouga",
       "https://exploration.esa.int/web/mars/-/50537-mars2013-mars-analog-field-simulation",
       "https://iafastro.directory/iac/archive/browse/IAC-13/A3/3B/19513/"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "roughness"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "esa-caves-site-sa-grutta-sardinia",
@@ -1324,13 +2021,37 @@
         "source_url": "https://www.esa.int/Our_Activities/Human_Spaceflight/Going_underground"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "esa-caves-site-sa-grutta-sardinia.jpg",
+      "title": "Satellite view of ESA CAVES site (Sa Grutta, Sardinia), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=9.27,40.1,9.870000000000001,40.4",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://www.esa.int/Our_Activities/Human_Spaceflight/Going_underground",
       "https://m.esa.int/Our_Activities/Human_and_Robotic_Exploration/Caves/CAVES_exploring_inner_space_for_outer_space",
       "https://phys.org/news/2012-09-astronauts-underground.html"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Moon": {
+        "strong": [],
+        "partial": [
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "slope",
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "composition",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "fiskenaesset-anorthosite-complex-qeqertarsuatsiaq",
@@ -1354,14 +2075,39 @@
         "source_url": "https://en.wikipedia.org/wiki/Qeqertarsuatsiaat"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "fiskenaesset-anorthosite-complex-qeqertarsuatsiaq.jpg",
+      "title": "Satellite view of Fiskenaesset anorthosite complex (Qeqertarsuatsiaq), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-50.98,62.93,-50.38,63.23",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://confit.atlas.jp/guide/event/jpgu2025/subject/SMP26-03/date",
       "https://experts.arizona.edu/en/publications/rare-earth-element-abundances-in-rocks-and-minerals-from-the-fisk/",
       "https://en.wikipedia.org/wiki/Qeqertarsuatsiaat",
       "https://tidsskrift.dk/meddrgroenland/article/download/147794/190848/324905"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "cold-dry ground",
+          "temperature",
+          "composition"
+        ],
+        "partial": [
+          "slope",
+          "illumination",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "fukushima-robot-test-field-lunar-analog-moon-mars-garden",
@@ -1397,13 +2143,78 @@
         "source_url": "https://meetingorganizer.copernicus.org/EPSC-DPS2025/EPSC-DPS2025-207.html"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "fukushima-robot-test-field-lunar-analog-moon-mars-garden.jpg",
+      "title": "Satellite view of Fukushima Robot Test Field lunar analog ('Moon/Mars Garden'), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=140.7,37.480000000000004,141.3,37.78",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://meetingorganizer.copernicus.org/EPSC-DPS2025/EPSC-DPS2025-207.html",
       "https://u-aizu.ac.jp/en/information/post-20240159.html",
       "https://u-aizu.ac.jp/en/information/post-20260528.html"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "gilf-kebir-plateau-and-wadis",
+    "place": null,
+    "summary": "A sandstone plateau in Egypt cut by branching dry valleys.",
+    "terrain_geology": "Nubian sandstone plateau with dendritic wadis.",
+    "climate": "Hyper-arid.",
+    "access_and_facilities": "Remote southwest Egypt; military permit; expedition logistics.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "gilf-kebir-plateau-and-wadis.jpg",
+      "title": "Satellite view of Gilf Kebir plateau and wadis, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=25.599999999999998,23.150000000000002,26.2,23.45",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "thermal inertia/dust",
+          "relief"
+        ],
+        "partial": [
+          "slope",
+          "roughness"
+        ],
+        "weak": [
+          "composition/alteration",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "gosses-bluff-crater",
@@ -1457,7 +2268,25 @@
       "https://en.wikipedia.org/wiki/Gosses_Bluff_impact_structure",
       "https://ecat.ga.gov.au/geonetwork/srv/api/records/fae9173a-7191-71e4-e044-00144fdd4fa6"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "relief"
+        ],
+        "partial": [
+          "slope",
+          "roughness",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "grand-canyon-south-rim-and-inner-canyon",
@@ -1505,12 +2334,36 @@
         "source_url": "https://scisoc.confex.com/scisoc/2008am/webprogramschedule/Paper49101.html"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "grand-canyon-south-rim-and-inner-canyon.jpg",
+      "title": "Satellite view of Grand Canyon (South Rim and inner canyon), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-112.41,35.95,-111.81,36.25",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Grand_Canyon",
       "https://scisoc.confex.com/scisoc/2008am/webprogramschedule/Paper49101.html"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [],
+        "partial": [
+          "roughness"
+        ],
+        "weak": [
+          "slope",
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature",
+          "composition",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "harrat-khaybar-and-umm-jirsan-lava-tube",
@@ -1569,7 +2422,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Harrat_Khaybar"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "haughton-crater-devon-island",
@@ -1630,7 +2501,25 @@
       "https://marsinstitute.no/hmp",
       "https://science.nasa.gov/?p=933909"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "cold-dry ground",
+          "relief",
+          "temperature"
+        ],
+        "partial": [
+          "illumination",
+          "roughness",
+          "thermal inertia"
+        ],
+        "weak": [
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "haughton-crater-hmp-and-fmars",
@@ -1685,7 +2574,65 @@
       "https://www.space.com/month-on-mars-haughton-mars-project-pascal-lee",
       "https://www.marsinstitute.no/hmp"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "water-ice/aridity",
+          "slope",
+          "relief",
+          "temperature"
+        ],
+        "partial": [
+          "composition/alteration",
+          "thermal inertia/dust",
+          "roughness"
+        ],
+        "weak": [
+          "sunlight/thermal latitude",
+          "air density (elev.)"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "henbury-craters",
+    "place": null,
+    "summary": "A cluster of 13 small young meteorite craters in central Australia.",
+    "terrain_geology": "Small simple craters (up to ~180 m) in sandstone and shale with iron meteorite fragments.",
+    "climate": "Hot arid desert.",
+    "access_and_facilities": "Henbury Meteorites Conservation Reserve; dirt road south of Alice Springs; no sampling without permit.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "henbury-craters.jpg",
+      "title": "Satellite view of Henbury craters, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=132.85,-24.72,133.45000000000002,-24.42",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [
+          "roughness",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "hi-seas-habitat-mauna-loa",
@@ -1727,11 +2674,53 @@
         "source_url": "https://en.wikipedia.org/wiki/HI-SEAS"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "hi-seas-habitat-mauna-loa.jpg",
+      "title": "Satellite view of HI-SEAS habitat (Mauna Loa), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-155.788,19.452,-155.188,19.752",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/HI-SEAS"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature"
+        ]
+      },
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope",
+          "roughness"
+        ],
+        "partial": [
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "holuhraun-lava-field",
@@ -1778,7 +2767,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Holuhraun"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "temperature"
+        ],
+        "partial": [],
+        "weak": [
+          "sunlight/thermal latitude",
+          "relief",
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "hopi-buttes-volcanic-field",
@@ -1827,7 +2834,25 @@
       "https://www.nasa.gov/wp-content/uploads/static/history/alsj/of2005-1190_figs_040-059.pdf",
       "https://www.phoenixnewtimes.com/arts/arizona-prepared-apollo-astronauts-for-moon-50th-anniversary-11328808"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [
+          "roughness",
+          "relief",
+          "composition",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "huailai-lunar-landing-test-site",
@@ -1857,13 +2882,77 @@
         "source_url": "https://www.scmp.com/news/china/science/article/3321150/china-completes-key-lanyue-lander-test-preparation-crewed-moon-mission-2030"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "huailai-lunar-landing-test-site.jpg",
+      "title": "Satellite view of Huailai lunar landing test site, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=115.22,40.25,115.82,40.55",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://english.www.gov.cn/news/topnews/201911/14/content_WS5dccf8c9c6d0bcf8c4c17146.html",
       "https://www.scmp.com/news/china/science/article/3321150/china-completes-key-lanyue-lander-test-preparation-crewed-moon-mission-2030",
       "https://english.spacechina.com/n17212/c4399581/content.html"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "thermal inertia"
+        ],
+        "partial": [
+          "roughness",
+          "composition"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "isro-challakere-lunar-terrain-test-facility",
+    "place": null,
+    "summary": "Artificial lunar craters built by ISRO near Challakere to test Chandrayaan lander sensors.",
+    "terrain_geology": "Dug and shaped craters on flat granitic-gneiss terrain covered with simulant soil.",
+    "climate": "Semi-arid tropical; hot, with monsoon rains.",
+    "access_and_facilities": "ISRO/DRDO research campus at Challakere, Chitradurga; restricted, official access only.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "isro-challakere-lunar-terrain-test-facility.jpg",
+      "title": "Satellite view of ISRO Challakere lunar terrain test facility, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=76.3,14.049999999999999,76.89999999999999,14.35",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "thermal inertia"
+        ],
+        "partial": [
+          "roughness"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "kamchatka-lunokhod-chassis-trials-tolbachik-area",
@@ -1919,7 +3008,25 @@
       "https://www.brown.edu/Departments/Engineering/Workshops/Microrover/slides/Lunokhod_talk_Microrover_workshop.pdf",
       "https://eugene.kaspersky.com/2021/10/26/some-do-politics-i-prefer-the-tolbachiks/"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "cold-dry ground",
+          "relief",
+          "temperature",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination"
+        ]
+      }
+    }
   },
   {
     "slug": "kamil-crater",
@@ -1973,11 +3080,35 @@
         "source_url": "https://en.wikipedia.org/wiki/Kamil_Crater"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "kamil-crater.jpg",
+      "title": "Satellite view of Kamil crater, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=25.7878,21.8683,26.387800000000002,22.1683",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Kamil_Crater"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "thermal inertia"
+        ],
+        "partial": [],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "karakul-impact-structure-pamir",
@@ -2030,7 +3161,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Karakul_(Tajikistan)"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "cold-dry ground",
+          "relief",
+          "temperature"
+        ],
+        "partial": [
+          "roughness",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "kaunertal-glacier-amadee-15",
@@ -2066,13 +3215,39 @@
         "source_url": "https://en.wikipedia.org/wiki/Kaunertal"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "kaunertal-glacier-amadee-15.jpg",
+      "title": "Satellite view of Kaunertal Glacier (AMADEE-15), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=10.41,46.72,11.010000000000002,47.019999999999996",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://oewf.org/en/?p=8622",
       "https://en.wikipedia.org/wiki/Kaunertal",
       "https://meetingorganizer.copernicus.org/EGU2016/EGU2016-10367.pdf?pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "temperature"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "relief"
+        ],
+        "weak": [
+          "composition/alteration",
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "kilauea-caldera-and-ka-u-desert",
@@ -2132,7 +3307,65 @@
       "https://en.wikipedia.org/wiki/K%C4%ABlauea",
       "https://en.wikipedia.org/wiki/Ka%CA%BBu_Desert"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "relief",
+          "composition"
+        ],
+        "partial": [
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "kilauea-ka-u-desert-basalt",
+    "place": null,
+    "summary": "The barren lava desert where NASA's BASALT project rehearsed Mars EVA science.",
+    "terrain_geology": "Basalt flows, ash and sulfate-altered crusts.",
+    "climate": "Rainshadow desert.",
+    "access_and_facilities": "Hawai'i Volcanoes National Park; research permit.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "kilauea-ka-u-desert-basalt.jpg",
+      "title": "Satellite view of Kilauea Ka'u Desert (BASALT), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-155.63000000000002,19.200000000000003,-155.03,19.5",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope",
+          "roughness"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "relief"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "kilbourne-hole-and-potrillo-volcanic-field",
@@ -2197,7 +3430,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Kilbourne_Hole"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "relief",
+          "composition"
+        ],
+        "partial": [
+          "roughness",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "kolyma-lowland-permafrost",
@@ -2233,12 +3484,38 @@
         "source_url": "https://epic.awi.de/id/eprint/57708/1/Schirrmeister_et_al_2022_feart-10-929873.pdf"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "kolyma-lowland-permafrost.jpg",
+      "title": "Satellite view of Kolyma Lowland permafrost, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=157.7,68.85,158.3,69.15",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Kolyma_Lowland",
       "https://epic.awi.de/id/eprint/57708/1/Schirrmeister_et_al_2022_feart-10-929873.pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "water-ice/aridity",
+          "slope",
+          "temperature"
+        ],
+        "partial": [
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "roughness",
+          "relief",
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "kumtag-desert-yutu-rover-tests-dunhuang",
@@ -2268,14 +3545,39 @@
         "source_url": "https://europe.chinadaily.com.cn/china/2011-10/26/content_13982769.htm"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "kumtag-desert-yutu-rover-tests-dunhuang.jpg",
+      "title": "Satellite view of Kumtag Desert (Yutu rover tests, Dunhuang), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=92.2,40.15,92.8,40.449999999999996",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Kumtag_Desert",
       "https://europe.chinadaily.com.cn/china/2011-10/26/content_13982769.htm",
       "https://www.solardaily.com/reports/Chinas_most_moon_like_place_999.html",
       "https://www.planetary.org/articles/07211715-change-3-update-still-alive"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "thermal inertia"
+        ],
+        "partial": [
+          "cold-dry ground",
+          "roughness"
+        ],
+        "weak": [
+          "illumination",
+          "relief",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "kutch-matanomadh-jarosite",
@@ -2305,13 +3607,39 @@
         "source_url": "https://cosmochemistry-papers.com/2025/10/10/natrojarosite-formed-in-the-matanomadh-formation-kutch-india-a-na-analog-of-jarosite-on-mars/"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "kutch-matanomadh-jarosite.jpg",
+      "title": "Satellite view of Kutch - Matanomadh jarosite, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=68.67,23.380000000000003,69.27,23.68",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://www.thequint.com/news/india/india-scientists-find-mars-surface-replica-in-matanumadh-gujarat",
       "https://cosmochemistry-papers.com/2025/10/10/natrojarosite-formed-in-the-matanomadh-formation-kutch-india-a-na-analog-of-jarosite-on-mars/",
       "https://msaweb.org/MSA/AmMin/TOC/2025/Abstracts/AM110P1516.pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "roughness"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "ladakh-tso-kar-and-puga",
@@ -2373,7 +3701,66 @@
       "https://astrobiology.com/2025/07/28/decoding-ladakhs-hot-springs-could-help-trace-the-origins-of-life-on-early-earth-and-mars/",
       "https://neherald.com/national/isro-launches-hope-station-in-ladakhs-tso-kar-valley-to-simulate-mars-missions"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust",
+          "temperature"
+        ],
+        "partial": [
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "lake-abbe-hydrothermal-carbonate-chimneys",
+    "place": null,
+    "summary": "Tall limestone chimneys built by hot springs on a drying lake in Afar.",
+    "terrain_geology": "Carbonate and silica chimneys up to ~60 m on alkaline lake flats.",
+    "climate": "Hot arid.",
+    "access_and_facilities": "Djibouti/Ethiopia border; guided 4x4 trips from Djibouti.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "lake-abbe-hydrothermal-carbonate-chimneys.jpg",
+      "title": "Satellite view of Lake Abbe hydrothermal carbonate chimneys, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=41.53,10.98,42.129999999999995,11.280000000000001",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "roughness"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "lake-gilmore-acid-saline-lakes",
@@ -2409,13 +3796,39 @@
         "source_url": "https://exploroz.com/places/75800/wa+lake-gilmore"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "lake-gilmore-acid-saline-lakes.jpg",
+      "title": "Satellite view of Lake Gilmore acid saline lakes, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=121.45,-32.75,122.05,-32.45",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://pubs.usgs.gov/publication/70034642",
       "https://ui.adsabs.harvard.edu/abs/2014AGUFM.P33C4039N/abstract",
       "https://exploroz.com/places/75800/wa+lake-gilmore"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "lanzarote-timanfaya",
@@ -2445,13 +3858,39 @@
         "source_url": "https://en.wikipedia.org/wiki/Timanfaya_National_Park"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "lanzarote-timanfaya.jpg",
+      "title": "Satellite view of Lanzarote - Timanfaya, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-14.05,28.860000000000003,-13.45,29.16",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Timanfaya_National_Park",
       "https://gulfnews.com/amp/world/europe/like-the-moon-astronauts-flock-to-spanish-isle-to-train-1.1668240806975",
       "https://www.esa.int/ESA_Multimedia/Images/2021/03/Geological_training_in_terrestrial_Moon_and_Mars_analogue_environments"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope",
+          "roughness"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "thermal inertia/dust",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "lanzarote-timanfaya-and-la-corona-lava-tube",
@@ -2501,7 +3940,25 @@
       "https://gulfnews.com/amp/world/europe/like-the-moon-astronauts-flock-to-spanish-isle-to-train-1.1668240806975",
       "https://blogs.esa.int/caves/?p=1040"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "lava-beds-national-monument",
@@ -2556,7 +4013,25 @@
       "https://www.nasa.gov/universe/using-a-cave-rover-nasa-learns-to-search-for-life-underground/",
       "https://astrobiology.nasa.gov/news/using-a-cave-rover-nasa-learns-to-search-for-life-underground/"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "licancabur-volcano-summit-lake",
@@ -2609,7 +4084,65 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Licancabur"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "roughness",
+          "temperature"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "relief",
+          "air density (elev.)"
+        ],
+        "weak": [
+          "slope"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "lonar-crater",
+    "place": null,
+    "summary": "A 1.8 km impact crater in Deccan basalt in India, a reference for craters in lunar-type basalt.",
+    "terrain_geology": "Simple crater in flood basalt with a saline-alkaline lake, shocked basalt and ejecta.",
+    "climate": "Tropical monsoon; hot summers, wet monsoon season.",
+    "access_and_facilities": "Protected wildlife sanctuary and Ramsar site in Maharashtra; road access from Aurangabad; permission for sampling.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "lonar-crater.jpg",
+      "title": "Satellite view of Lonar crater, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=76.208,19.826,76.80799999999999,20.125999999999998",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "relief",
+          "composition"
+        ],
+        "partial": [
+          "roughness"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "lonar-crater-mars-context",
@@ -2674,7 +4207,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lonar_crater"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope",
+          "relief"
+        ],
+        "partial": [
+          "roughness"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "thermal inertia/dust",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "lop-nur-great-ear-salt-crust",
@@ -2710,11 +4262,37 @@
         "source_url": "https://en.wikipedia.org/wiki/Lop_Nur"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "lop-nur-great-ear-salt-crust.jpg",
+      "title": "Satellite view of Lop Nur 'Great Ear' salt crust, centred on the listed coordinates (VIIRS true colour, one day in 2023)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=VIIRS_SNPP_CorrectedReflectance_TrueColor&v=90.10000000000001,40.15,90.7,40.449999999999996",
+      "credit": "Imagery: NASA GIBS, VIIRS true colour, one day in 2023, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Lop_Nur"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "roughness"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "lunar-crater-volcanic-field",
@@ -2779,7 +4357,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Lunar_Crater_volcanic_field"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "lunodrom-simferopol-28-crimea",
@@ -2815,13 +4411,38 @@
         "source_url": "https://ruaviation.com/docs/15/2019/12/16/266"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "lunodrom-simferopol-28-crimea.jpg",
+      "title": "Satellite view of Lunodrom (Simferopol-28, Crimea), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=33.594,44.904,34.193999999999996,45.204",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Lunokhod_programme",
       "https://ruaviation.com/docs/15/2019/12/16/266",
       "https://www.spaceflighthistories.com/post/lunokhod"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [
+          "roughness",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "makhtesh-ramon-d-mars-amadee-20",
@@ -2882,7 +4503,66 @@
       "https://oewf.org/en/2021/10/oewf-mars-analog-mission-isolation-phase-starts-today/",
       "https://uni-bremen.de/en/perso/research/research-projects/amadee-20-mars-simulation"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "thermal inertia/dust",
+          "relief"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "slope",
+          "roughness"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "mars-base-1-jinchang",
+    "place": null,
+    "summary": "A Chinese Mars habitat simulation base in the Gobi, opened in 2019.",
+    "terrain_geology": "Gobi gravel hills and red beds.",
+    "climate": "Cold arid.",
+    "access_and_facilities": "Tourism/education facility; booking required.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "mars-base-1-jinchang.jpg",
+      "title": "Satellite view of Mars Base 1 (Jinchang), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=101.9,38.15,102.5,38.449999999999996",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "composition/alteration",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "mars-desert-research-station-hanksville",
@@ -2935,7 +4615,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Mars_Desert_Research_Station"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "mars-desert-research-station-lunar-crews",
@@ -2971,11 +4670,36 @@
         "source_url": "https://en.wikipedia.org/wiki/Mars_Desert_Research_Station"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "mars-desert-research-station-lunar-crews.jpg",
+      "title": "Satellite view of Mars Desert Research Station (lunar crews), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.092,38.256,-110.492,38.556",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Mars_Desert_Research_Station"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [
+          "roughness",
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "mauna-kea-pisces-isru-test-sites",
@@ -3037,7 +4761,25 @@
       "https://phys.org/news/2012-07-nasa-mission-simulations-hawaii.html",
       "https://phys.org/news/2008-11-nasa-lunar-rovers-oxygen-production.pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "roughness",
+          "relief",
+          "composition",
+          "thermal inertia"
+        ],
+        "partial": [
+          "slope",
+          "cold-dry ground",
+          "temperature"
+        ],
+        "weak": [
+          "illumination"
+        ]
+      }
+    }
   },
   {
     "slug": "mcmurdo-dry-valleys-taylor-wright-valleys",
@@ -3074,7 +4816,25 @@
       "https://experts.arizona.edu/en/publications/effects-of-extreme-cold-and-aridity-on-soils-and-habitability-mcm/",
       "https://www.cambridge.org/core/books/abs/life-in-antarctic-deserts-and-other-cold-dry-environments/geologic-analogies-between-the-surface-of-mars-and-the-mcmurdo-dry-valleys-microclimaterelated-geomorphic-features-and-evidence-for-climate-change/DAE9BD8F67AAF3F551C1EB63F91A57BE"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ],
+        "partial": [
+          "roughness",
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "merriam-crater-cinder-deposits",
@@ -3098,13 +4858,77 @@
         "source_url": "https://scattering.iaa.es/en/node/145"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "merriam-crater-cinder-deposits.jpg",
+      "title": "Satellite view of Merriam Crater cinder deposits, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.585,35.185,-110.985,35.485",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://scattering.iaa.es/en/node/145",
       "https://lunarpedia.org/w/JSC-1",
       "https://www.nasa.gov/sites/default/files/atoms/files/07_1_dstoeser_shortcourse2009.pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "roughness",
+          "composition",
+          "thermal inertia"
+        ],
+        "partial": [
+          "slope",
+          "relief"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "meteor-crater-barringer",
+    "place": null,
+    "summary": "A 1.2 km simple impact crater in the Arizona desert, used for Apollo crew training and NASA suit and rover trials.",
+    "terrain_geology": "Bowl-shaped crater with raised, overturned rim and blocky ejecta blanket in Coconino sandstone and Kaibab limestone; breccia lens below the floor.",
+    "climate": "Semi-arid high desert; hot summers, cold winters with occasional snow; strong winds.",
+    "access_and_facilities": "Privately owned (Meteor Crater Enterprises); research access by arrangement; paved road off Interstate 40 near Winslow.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "meteor-crater-barringer.jpg",
+      "title": "Satellite view of Meteor Crater (Barringer), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.32249999999999,34.877500000000005,-110.7225,35.1775",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "relief"
+        ],
+        "partial": [
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "mistastin-kamestastin-lake-crater",
@@ -3163,7 +4987,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Mistastin_crater"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "relief",
+          "temperature",
+          "composition"
+        ],
+        "partial": [
+          "cold-dry ground",
+          "roughness",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination"
+        ]
+      }
+    }
   },
   {
     "slug": "moses-lake-sand-dunes",
@@ -3199,13 +5041,38 @@
         "source_url": "https://www.astronomy.com/space-exploration/nasa-tests-lunar-robots-and-spacesuits-on-earthly-moonscape/"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "moses-lake-sand-dunes.jpg",
+      "title": "Satellite view of Moses Lake Sand Dunes, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-119.63,46.910000000000004,-119.03,47.21",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://emissivity.jpl.nasa.gov/validation/moses-lake-dunes",
       "https://www.astronomy.com/space-exploration/nasa-tests-lunar-robots-and-spacesuits-on-earthly-moonscape/",
       "https://www.nbcnews.com/id/wbna25936415"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "thermal inertia"
+        ],
+        "partial": [
+          "composition"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "mount-erebus-dante-i-robot",
@@ -3255,7 +5122,25 @@
       "https://www.ri.cmu.edu/publications/exploring-mount-erebus-by-walking-robot-2",
       "https://apps.dtic.mil/sti/tr/pdf/ADA273716.pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "illumination",
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "temperature",
+          "composition"
+        ],
+        "partial": [
+          "thermal inertia"
+        ],
+        "weak": [
+          "slope"
+        ]
+      }
+    }
   },
   {
     "slug": "mount-etna-summit-area-robex-arches",
@@ -3310,7 +5195,25 @@
       "https://www.dlr.de/en/research-and-transfer/projects-and-missions/arches/arches-space-analogue-demonstration-mission",
       "https://www.dlr.de/content/en/articles/news/2022/03/20220701_robotics-team-practises-lunar-exploration-on-mount-etna.html"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "roughness",
+          "relief",
+          "composition",
+          "thermal inertia"
+        ],
+        "partial": [
+          "slope"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "mount-howe-and-the-scott-glacier-moraines-southernmost-rock",
@@ -3340,11 +5243,74 @@
         "source_url": "https://en.wikipedia.org/wiki/Mount_Howe"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "mount-howe-and-the-scott-glacier-moraines-southernmost-rock.jpg",
+      "title": "Satellite view of Mount Howe and the Scott Glacier moraines (southernmost rock), centred on the listed coordinates (MODIS true colour, one southern summer day in 2023)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=MODIS_Terra_CorrectedReflectance_TrueColor&v=-149.8,-87.51700000000001,-149.2,-87.217",
+      "credit": "Imagery: NASA GIBS, MODIS true colour, one southern summer day in 2023, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Mount_Howe"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "illumination",
+          "cold-dry ground",
+          "roughness",
+          "temperature"
+        ],
+        "partial": [
+          "slope",
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "composition"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "myvatn-and-krafla-lava-fields",
+    "place": null,
+    "summary": "Young fissure-fed lava fields in northern Iceland used for Apollo training.",
+    "terrain_geology": "Basaltic fissure flows (Krafla Fires 1724-29, 1975-84), spatter ramparts, rootless cones and geothermal fields.",
+    "climate": "Cold subpolar; snowy winters, cool summers.",
+    "access_and_facilities": "Public land and nature reserve; paved roads; geothermal power plant area.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "myvatn-and-krafla-lava-fields.jpg",
+      "title": "Satellite view of Myvatn and Krafla lava fields, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-17.1,65.5,-16.5,65.80000000000001",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "illumination",
+          "cold-dry ground",
+          "relief",
+          "temperature",
+          "thermal inertia"
+        ],
+        "weak": []
+      }
+    }
   },
   {
     "slug": "myvatn-namafjall-hydrothermal-rootless-cones",
@@ -3411,7 +5377,26 @@
       "https://www.degruyterbrill.com/document/doi/10.2138/am-2022-8364/html",
       "https://en.wikipedia.org/wiki/Rootless_cone"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "slope",
+          "roughness"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "thermal inertia/dust",
+          "relief",
+          "temperature"
+        ],
+        "weak": [
+          "sunlight/thermal latitude",
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "namib-desert-gobabeb",
@@ -3465,11 +5450,37 @@
         "source_url": "https://en.wikipedia.org/wiki/Gobabeb"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "namib-desert-gobabeb.jpg",
+      "title": "Satellite view of Namib Desert (Gobabeb), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=14.739999999999998,-23.709999999999997,15.34,-23.41",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Gobabeb"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "water-ice/aridity"
+        ],
+        "weak": [
+          "composition/alteration",
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "navajo-sandstone-hematite-concretions-grand-staircase-escalante",
@@ -3513,7 +5524,26 @@
       "https://spaceref.com/?p=41062",
       "https://pmc.ncbi.nlm.nih.gov/articles/PMC6281427"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "neemo-aquarius-reef-base",
@@ -3562,7 +5592,24 @@
       "https://en.wikipedia.org/wiki/NEEMO",
       "https://ntrs.nasa.gov/citations/20110008115"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "temperature",
+          "composition",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "newberry-volcano-big-obsidian-flow-lava-river-cave",
@@ -3627,7 +5674,63 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Newberry_Volcano"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "roughness",
+          "relief"
+        ],
+        "partial": [
+          "slope",
+          "composition",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "nordlinger-ries-crater",
+    "place": null,
+    "summary": "A 24 km impact crater in Germany where Apollo 14 trained and ESA trains astronauts today.",
+    "terrain_geology": "Complex crater filled with suevite (impact melt breccia) and lake sediments; crystalline megablocks.",
+    "climate": "Temperate central European; wet, mild.",
+    "access_and_facilities": "Farmland and towns (Nördlingen); quarries and geopark visitor centre; easy road and rail access.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "nordlinger-ries-crater.jpg",
+      "title": "Satellite view of Nordlinger Ries crater, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=10.264999999999999,48.730000000000004,10.865,49.03",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "temperature",
+          "composition",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "ojos-del-salado-high-altitude-permafrost",
@@ -3692,7 +5795,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Ojos_del_Salado"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "roughness",
+          "relief",
+          "temperature"
+        ],
+        "partial": [
+          "thermal inertia/dust",
+          "air density (elev.)"
+        ],
+        "weak": [
+          "slope"
+        ]
+      }
+    }
   },
   {
     "slug": "orocopia-mountains",
@@ -3722,11 +5844,36 @@
         "source_url": "https://en.wikipedia.org/wiki/Orocopia_Mountains"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "orocopia-mountains.jpg",
+      "title": "Satellite view of Orocopia Mountains, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-116.08,33.4,-115.48,33.699999999999996",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Orocopia_Mountains"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "roughness",
+          "relief"
+        ],
+        "partial": [
+          "composition"
+        ],
+        "weak": [
+          "slope",
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "painted-desert-petrified-forest",
@@ -3785,7 +5932,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Petrified_Forest_National_Park"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "slope",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "pampas-de-la-joya",
@@ -3796,13 +5962,39 @@
     "access_and_facilities": null,
     "hazards": null,
     "facts": [],
-    "image": null,
+    "image": {
+      "file": "pampas-de-la-joya.jpg",
+      "title": "Satellite view of Pampas de La Joya, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-72.14999999999999,-16.95,-71.55,-16.650000000000002",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://ntrs.nasa.gov/api/citations/20160009111/downloads/20160009111.pdf",
       "https://cris.utec.edu.pe/en/publications/decomposition-of-sodium-formate-and-l-and-d-alanine-in-the-pampas/",
       "https://cris.utec.edu.pe/en/publications/multidisciplinary-approach-of-the-hyperarid-desert-of-pampas-de-l/"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "composition/alteration",
+          "roughness"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "payun-matru-volcanic-field-and-pampas-onduladas-flow",
@@ -3861,7 +6053,64 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Payun_Matru"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "composition"
+        ],
+        "partial": [
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "peary-land-polar-desert-central-plateau",
+    "place": null,
+    "summary": "The northernmost ice-free land on Earth, a polar desert with very little snow.",
+    "terrain_geology": "Sedimentary plateaus and valleys with permafrost; high mountains to the north.",
+    "climate": "High-Arctic polar desert; extremely dry, very cold, 24-hour daylight in summer.",
+    "access_and_facilities": "Northeast Greenland National Park; permit from the Greenland government; charter aircraft only.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "peary-land-polar-desert-central-plateau.jpg",
+      "title": "Satellite view of Peary Land polar desert (central plateau), centred on the listed coordinates (VIIRS true colour, one day in 2023)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=VIIRS_SNPP_CorrectedReflectance_TrueColor&v=-32.8,82.48299999999999,-32.2,82.783",
+      "credit": "Imagery: NASA GIBS, VIIRS true colour, one day in 2023, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ],
+        "partial": [
+          "roughness",
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "pilbara-dresser-formation-stromatolites",
@@ -3903,13 +6152,39 @@
         "source_url": "https://en.wikipedia.org/wiki/Dresser_Formation"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "pilbara-dresser-formation-stromatolites.jpg",
+      "title": "Satellite view of Pilbara - Dresser Formation stromatolites, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=119.13000000000001,-21.299999999999997,119.73,-21.0",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Dresser_Formation",
       "https://aminer.org/pub/5fcb5b25d4150a363cc97532/a-reconstructed-subaerial-hot-spring-field-in-the-similar-to-billion-year",
       "https://link.springer.com/10.1038/ncomms15263"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude"
+        ],
+        "partial": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "pinacate-and-gran-desierto-el-pinacate",
@@ -3951,12 +6226,37 @@
         "source_url": "https://en.wikipedia.org/wiki/El_Pinacate_y_Gran_Desierto_de_Altar_Biosphere_Reserve"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "pinacate-and-gran-desierto-el-pinacate.jpg",
+      "title": "Satellite view of Pinacate and Gran Desierto (El Pinacate), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-113.8,31.62,-113.2,31.919999999999998",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/El_Pinacate_y_Gran_Desierto_de_Altar_Biosphere_Reserve",
       "https://en.wikipedia.org/wiki/Pinacate_Peaks"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "relief",
+          "composition"
+        ],
+        "partial": [
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "pisgah-volcanic-field-lavic-lake",
@@ -4015,7 +6315,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Pisgah_Crater"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust",
+          "roughness"
+        ],
+        "partial": [
+          "water-ice/aridity"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "pu-u-nene-cinder-cone-jsc-mars-1-source",
@@ -4045,13 +6364,39 @@
         "source_url": "https://en.wikipedia.org/wiki/Martian_regolith_simulant"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "pu-u-nene-cinder-cone-jsc-mars-1-source.jpg",
+      "title": "Satellite view of Pu'u Nene cinder cone (JSC Mars-1 source), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-155.77,19.520000000000003,-155.17,19.82",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Martian_regolith_simulant",
       "https://scattering.iaa.csic.es/en/node/139",
       "https://sciences.ucf.edu/class/wp-content/uploads/sites/23/2019/11/Cannon2019.pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "qaidam-basin-dalangtan-playa",
@@ -4104,7 +6449,65 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Qaidam_Basin"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "roughness",
+          "temperature"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "rio-grande-gorge-taos",
+    "place": null,
+    "summary": "A basalt-walled river gorge used by the Apollo 15 crew to train for Hadley Rille.",
+    "terrain_geology": "Deep gorge (~200 m) cut through stacked basalt flows of the Taos Plateau volcanic field.",
+    "climate": "Semi-arid high plateau; cold winters, warm summers.",
+    "access_and_facilities": "Rio Grande del Norte National Monument (BLM); public access via highway bridge and trails.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "rio-grande-gorge-taos.jpg",
+      "title": "Satellite view of Rio Grande Gorge (Taos), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-106.03,36.33,-105.43,36.629999999999995",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "roughness",
+          "relief",
+          "composition"
+        ],
+        "partial": [
+          "slope"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "rio-tinto-marte",
@@ -4163,7 +6566,26 @@
     "sources": [
       "https://en.wikipedia.org/wiki/R%C3%ADo_Tinto_(river)"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude"
+        ],
+        "partial": [
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "salar-de-pajonales",
@@ -4205,11 +6627,37 @@
         "source_url": "https://en.wikipedia.org/wiki/Salar_de_Pajonales"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "salar-de-pajonales.jpg",
+      "title": "Satellite view of Salar de Pajonales, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-69.11999999999999,-25.299999999999997,-68.52,-25.0",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Salar_de_Pajonales"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "roughness",
+          "temperature"
+        ],
+        "weak": [
+          "relief",
+          "air density (elev.)"
+        ]
+      }
+    }
   },
   {
     "slug": "salar-grande",
@@ -4245,14 +6693,40 @@
         "source_url": "https://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/year/2009/docId/11427"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "salar-grande.jpg",
+      "title": "Satellite view of Salar Grande, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-70.3,-21.049999999999997,-69.7,-20.75",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://frontiersin.org/articles/10.3389/fspas.2021.810426/full",
       "https://mundomaritimo.cl/noticias/reservas-de-mas-de-200-millones-de-toneladas-de-sal-en-el-norte-de-chile",
       "https://meetingorganizer.copernicus.org/EGU2019/EGU2019-12058.pdf",
       "https://publikationen.ub.uni-frankfurt.de/frontdoor/index/index/year/2009/docId/11427"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "samail-ophiolite-wadi-tayin-massif",
@@ -4295,7 +6769,26 @@
       "https://doaj.org/article/bb707fc5d6dc4d14b1524445edf3e5a8",
       "https://dspace.mit.edu/bitstream/1721.1/133843.2/4/ast.2019.2066.pdf"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "roughness"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "thermal inertia/dust",
+          "relief"
+        ],
+        "weak": [
+          "slope",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "schirmacher-oasis-near-maitri-station",
@@ -4360,7 +6853,63 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Schirmacher_Oasis"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "cold-dry ground",
+          "temperature"
+        ],
+        "partial": [
+          "illumination",
+          "roughness",
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "composition"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "sedan-crater-nevada-national-security-site",
+    "place": null,
+    "summary": "A 390 m man-made crater from a 1962 nuclear cratering test, used to study crater scaling and ejecta.",
+    "terrain_geology": "Explosion crater ~100 m deep in desert alluvium, with raised rim and ejecta blanket.",
+    "climate": "Arid Mojave/Great Basin desert; hot summers, cold nights.",
+    "access_and_facilities": "Restricted US Department of Energy site; visits only on official tours or approved research.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "sedan-crater-nevada-national-security-site.jpg",
+      "title": "Satellite view of Sedan Crater (Nevada National Security Site), centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-116.346,37.027,-115.74600000000001,37.327",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "roughness",
+          "relief",
+          "thermal inertia"
+        ],
+        "partial": [],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "shark-bay-hamelin-pool-stromatolites",
@@ -4419,7 +6968,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Hamelin_Pool_Marine_Nature_Reserve"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [],
+        "weak": [
+          "composition/alteration",
+          "water-ice/aridity",
+          "thermal inertia/dust",
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "sittampundi-anorthosite-complex",
@@ -4443,13 +7010,37 @@
         "source_url": "https://ui.adsabs.harvard.edu/abs/2021Icar..36614511A"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "sittampundi-anorthosite-complex.jpg",
+      "title": "Satellite view of Sittampundi anorthosite complex, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=77.58,11.1,78.17999999999999,11.4",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://www.gpsdaily.com/reports/Made_in_India_moon_analog_soil_gets_patent_for_ISRO__999.html",
       "https://ui.adsabs.harvard.edu/abs/2021Icar..36614511A",
       "https://meetingorganizer.copernicus.org/EPSC2021/EPSC2021-535.html"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "composition"
+        ],
+        "partial": [],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "temperature",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "sp-crater-and-sp-lava-flow",
@@ -4491,11 +7082,36 @@
         "source_url": "https://en.wikipedia.org/wiki/S_P_Crater"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "sp-crater-and-sp-lava-flow.jpg",
+      "title": "Satellite view of SP Crater and SP lava flow, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.932,35.432,-111.33200000000001,35.732",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/S_P_Crater"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "roughness",
+          "relief",
+          "composition"
+        ],
+        "partial": [
+          "slope",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "stillwater-complex",
@@ -4557,7 +7173,25 @@
       "https://ntrs.nasa.gov/citations/20240007991",
       "https://en.wikipedia.org/wiki/Lunar_regolith_simulant"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "composition"
+        ],
+        "partial": [
+          "roughness",
+          "relief"
+        ],
+        "weak": [
+          "slope",
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "sudbury-basin",
@@ -4610,7 +7244,65 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Sudbury_Basin"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [
+          "roughness",
+          "relief",
+          "composition"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "thermal inertia"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "teide-las-canadas-caldera",
+    "place": null,
+    "summary": "A volcanic caldera on Tenerife used for ESA's ExoMars rover tests.",
+    "terrain_geology": "Large caldera with basalt and phonolite lava flows and pumice plains.",
+    "climate": "Dry high-altitude; cold winter nights.",
+    "access_and_facilities": "Teide National Park; research permits; paved roads.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "teide-las-canadas-caldera.jpg",
+      "title": "Satellite view of Teide - Las Canadas caldera, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-16.94,28.12,-16.34,28.419999999999998",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "thermal inertia/dust",
+          "roughness"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "slope",
+          "relief"
+        ],
+        "weak": [
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "tenoumer-crater",
@@ -4669,7 +7361,25 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Tenoumer_crater"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "relief"
+        ],
+        "partial": [
+          "roughness",
+          "composition",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "tirez-lake",
@@ -4699,12 +7409,38 @@
         "source_url": "https://as.cornell.edu/news/spanish-lagoon-proposed-mars-astrobiological-time-analog"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "tirez-lake.jpg",
+      "title": "Satellite view of Tirez Lake, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-3.65,39.4,-3.0500000000000003,39.699999999999996",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://as.cornell.edu/news/spanish-lagoon-proposed-mars-astrobiological-time-analog",
       "https://phys.org/news/2018-09-candy-pink-lagoon-salt-rich-diet-potential.pdf"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "tottori-sand-dunes-lunar-demonstration-field-luna-terrace",
@@ -4767,7 +7503,24 @@
       "https://univ-journal.net/?p=225639",
       "https://staradvertiser.com/?p=1218050"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "thermal inertia"
+        ],
+        "partial": [],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "umm-al-samim-sabkha",
@@ -4810,7 +7563,26 @@
       "https://www.saltworkconsultants.com/umm-al-samim-oman/",
       "https://thesiger.prm.ox.ac.uk/index.php/thesigers-journeys/19-thesigers-journeys-in-arabia-united-arab-emirates-and-oman-spring-1949.html"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope"
+        ],
+        "partial": [
+          "water-ice/aridity",
+          "thermal inertia/dust"
+        ],
+        "weak": [
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "valley-of-ten-thousand-smokes-katmai",
@@ -4863,7 +7635,63 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Valley_of_Ten_Thousand_Smokes"
     ],
-    "confidence": "medium"
+    "confidence": "medium",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "thermal inertia"
+        ],
+        "partial": [
+          "cold-dry ground",
+          "roughness",
+          "relief",
+          "temperature"
+        ],
+        "weak": [
+          "illumination",
+          "composition"
+        ]
+      }
+    }
+  },
+  {
+    "slug": "vostok-station",
+    "place": null,
+    "summary": "A Russian station holding Earth's lowest natural recorded temperature, used for extreme-cold and isolation research.",
+    "terrain_geology": "High ice plateau above subglacial Lake Vostok; no exposed rock.",
+    "climate": "Extreme polar cold, thin air at high elevation, months of darkness.",
+    "access_and_facilities": "Russian Antarctic Expedition station; access by invitation only.",
+    "hazards": null,
+    "facts": [],
+    "image": {
+      "file": "vostok-station.jpg",
+      "title": "Satellite view of Vostok Station, centred on the listed coordinates (MODIS true colour, one southern summer day in 2023)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=MODIS_Terra_CorrectedReflectance_TrueColor&v=106.54,-78.61,107.14,-78.30999999999999",
+      "credit": "Imagery: NASA GIBS, MODIS true colour, one southern summer day in 2023, public domain. Ring marks the listed point."
+    },
+    "sources": [],
+    "confidence": "teammate",
+    "origin": "teammate",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope",
+          "illumination",
+          "cold-dry ground",
+          "temperature"
+        ],
+        "partial": [],
+        "weak": [
+          "roughness",
+          "relief",
+          "composition",
+          "thermal inertia"
+        ]
+      }
+    }
   },
   {
     "slug": "white-sands-gypsum-dunes",
@@ -4930,7 +7758,26 @@
       "https://hirise.lpl.arizona.edu/ESP_045501_2605",
       "https://meetingorganizer.copernicus.org/EGU26/EGU26-21944.html"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude",
+          "slope",
+          "thermal inertia/dust"
+        ],
+        "partial": [
+          "water-ice/aridity"
+        ],
+        "weak": [
+          "roughness",
+          "relief",
+          "air density (elev.)",
+          "temperature"
+        ]
+      }
+    }
   },
   {
     "slug": "wolfe-creek-crater",
@@ -4972,11 +7819,36 @@
         "source_url": "https://en.wikipedia.org/wiki/Wolfe_Creek_Crater"
       }
     ],
-    "image": null,
+    "image": {
+      "file": "wolfe-creek-crater.jpg",
+      "title": "Satellite view of Wolfe Creek crater, centred on the listed coordinates (Landsat WELD annual composite)",
+      "author": "NASA GIBS",
+      "license": "Public domain (NASA)",
+      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=127.5,-19.32,128.1,-19.020000000000003",
+      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+    },
     "sources": [
       "https://en.wikipedia.org/wiki/Wolfe_Creek_Crater"
     ],
-    "confidence": "high"
+    "confidence": "high",
+    "parameters": {
+      "Moon": {
+        "strong": [
+          "slope"
+        ],
+        "partial": [
+          "roughness",
+          "relief",
+          "thermal inertia"
+        ],
+        "weak": [
+          "illumination",
+          "cold-dry ground",
+          "temperature",
+          "composition"
+        ]
+      }
+    }
   },
   {
     "slug": "yellowstone-norris-geyser-basin",
@@ -5020,6 +7892,25 @@
       "https://www.frommers.com/destinations/yellowstone-national-park/hikes/norris-geyser-basin/",
       "https://ouci.dntb.gov.ua/works/4KOOrdq4"
     ],
-    "confidence": "low"
+    "confidence": "low",
+    "parameters": {
+      "Mars": {
+        "strong": [
+          "composition/alteration",
+          "sunlight/thermal latitude"
+        ],
+        "partial": [
+          "slope",
+          "thermal inertia/dust",
+          "roughness",
+          "relief",
+          "temperature"
+        ],
+        "weak": [
+          "water-ice/aridity",
+          "air density (elev.)"
+        ]
+      }
+    }
   }
 ]

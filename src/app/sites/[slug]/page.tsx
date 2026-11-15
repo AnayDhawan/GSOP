@@ -30,6 +30,30 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 const link = "underline underline-offset-4 hover:text-foreground";
 const NONE = "Nothing found yet.";
 
+const PARAM_ROWS = [
+  ["strong", "Strong"],
+  ["partial", "Partial"],
+  ["weak", "Weak"],
+] as const;
+
+/** A teammate's qualitative reading of how well each parameter matches. Words, not scores, and labelled as not computed. */
+function Parameters({ par }: { par: { strong: string[]; partial: string[]; weak: string[] } }) {
+  return (
+    <div className="mt-4 space-y-2 border border-border bg-surface p-4">
+      <h4 className="font-medium">Parameters, as a teammate read them</h4>
+      <dl className="space-y-1.5 text-sm">
+        {PARAM_ROWS.map(([k, label]) => (
+          <div key={k} className="grid grid-cols-[4.5rem_1fr] gap-3">
+            <dt className="font-medium">{label}</dt>
+            <dd className="text-secondary-foreground">{par[k].length ? par[k].join(", ") : "None listed"}</dd>
+          </div>
+        ))}
+      </dl>
+      <p className="text-xs text-muted-foreground">A desk assessment against the v2 variables written by a teammate. It is not a computed result and does not come from the score.</p>
+    </div>
+  );
+}
+
 function Card({ title, text, tag }: { title: string; text: string | null; tag?: string }) {
   return (
     <section className="space-y-2 border border-border border-t-2 border-t-earth bg-surface p-5">
@@ -146,7 +170,7 @@ function SiteBody({ s, withBody }: { s: Site; withBody: boolean }) {
             About this place
           </h2>
           <p className="text-lg leading-relaxed">{p?.summary ?? s.summary ?? s.why_analog ?? NONE}</p>
-          <p className="text-xs text-muted-foreground">{p?.summary ? "Researched from public sources, unreviewed." : "Teammate-written, unreviewed."}</p>
+          <p className="text-xs text-muted-foreground">{p?.summary && p.origin !== "teammate" ? "Researched from public sources, unreviewed." : "Teammate-written, unreviewed."}</p>
           {s.list === "candidate" && <p className="border-l-2 border-border pl-3 text-secondary-foreground">This is a candidate: a suggestion that is not in our reference list.</p>}
         </section>
         <FactsTable s={s} p={p} />
@@ -172,6 +196,7 @@ function SiteBody({ s, withBody }: { s: Site; withBody: boolean }) {
             <h3 className="gsop-label">Why it is listed</h3>
             <p className="leading-relaxed">{s.why_analog ?? NONE}</p>
             {s.parameters_matched ? <p className="text-secondary-foreground">Parameters matched: {s.parameters_matched}</p> : null}
+            {p?.parameters?.[s.body] ? <Parameters par={p.parameters[s.body]!} /> : null}
           </div>
           <div className="space-y-2 border-l-2 border-control pl-5">
             <h3 className="gsop-label">Where the analogy breaks down</h3>
@@ -285,7 +310,7 @@ function SiteBody({ s, withBody }: { s: Site; withBody: boolean }) {
               ))}
             </ul>
           )}
-          {p ? <p className="text-xs text-muted-foreground">Confidence in the researched text: {p.confidence}. Nobody on the team has checked it.</p> : null}
+          {p ? <p className="text-xs text-muted-foreground">{p.origin === "teammate" ? "This profile text was written by a teammate. It was not researched from a source page, and nobody has checked it." : `Confidence in the researched text: ${p.confidence}. Nobody on the team has checked it.`}</p> : null}
         </section>
       </div>
     </div>
@@ -307,7 +332,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           ))}
           <Chip>{first.list === "known" ? "Reference site" : "Candidate, not in our reference list"}</Chip>
           {first.country ? <Chip>{first.country}</Chip> : null}
-          <Chip>{p ? "Researched from public sources, unreviewed" : "Teammate-written, unreviewed"}</Chip>
+          <Chip>{p && p.origin !== "teammate" ? "Researched from public sources, unreviewed" : "Teammate-written, unreviewed"}</Chip>
           {p?.confidence === "low" ? <Chip>Low confidence</Chip> : null}
           <li>
             <Link href="/sites" className={`px-2 py-1 text-sm ${link}`}>

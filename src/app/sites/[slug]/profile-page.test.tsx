@@ -13,6 +13,27 @@ const file = profilesFile();
 const slugs = Object.keys(file?.profiles ?? {});
 
 describe("site profile data", () => {
+  it("covers every site, each with a photo or a satellite view and a parameter reading for its body", () => {
+    const sites = sitesFile().sites;
+    for (const s of sites) {
+      const p = file?.profiles[s.slug];
+      expect(p, s.slug).toBeTruthy();
+      expect(p!.image, `${s.slug} image`).not.toBeNull();
+      const par = p!.parameters?.[s.body];
+      expect(par, `${s.slug} ${s.body} parameters`).toBeTruthy();
+      expect(par!.strong.length + par!.partial.length + par!.weak.length, `${s.slug} parameters`).toBeGreaterThan(0);
+    }
+  });
+
+  it("labels satellite views as satellite views, with the NASA credit", () => {
+    for (const [slug, p] of Object.entries(file?.profiles ?? {})) {
+      if (p.image?.author === "NASA GIBS") {
+        expect(p.image.title, slug).toMatch(/^Satellite view of /);
+        expect(p.image.credit, slug).toMatch(/NASA GIBS/);
+      }
+    }
+  });
+
   it("only names sites that exist, with no digits in prose, no dashes, no banned words and a free licence for every photo", () => {
     const known = new Set(sitesFile().sites.map((s) => s.slug));
     for (const [slug, p] of Object.entries(file?.profiles ?? {})) {
@@ -20,7 +41,7 @@ describe("site profile data", () => {
       for (const k of ["place", "summary", "terrain_geology", "climate", "access_and_facilities", "hazards"] as const) {
         const v = p[k];
         if (v === null) continue;
-        expect(v, `${slug}.${k}`).not.toMatch(/\d/);
+        if (p.origin !== "teammate") expect(v, `${slug}.${k}`).not.toMatch(/\d/); // teammate text may hold numbers; the build gives each a claims row
         expect(v, `${slug}.${k}`).not.toMatch(/[\u2014\u2013]/);
         expect(v, `${slug}.${k}`).not.toMatch(bannedRegex());
       }
