@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Loader2, LocateFixed, Maximize2, Minimize2 } from "lucide-react";
 import DashboardPanel from "./DashboardPanel";
-import { filterSites, RAMP_CSS, type DashBody, type DashboardData } from "@/lib/dashboard";
+import { filterSites, LEGEND_TITLE, RAMP_CSS, type DashBody, type DashboardData } from "@/lib/dashboard";
 import { cn } from "@/lib/utils";
 import type { Locate } from "./DashboardMap";
 
@@ -176,7 +176,7 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
             </p>
           )}
           <div className="absolute bottom-7 left-3 z-[1000] w-[220px] border border-border bg-surface/95 p-3 text-xs backdrop-blur-sm">
-            <p className="mb-1.5 font-semibold text-foreground">Similarity Score (0-100)</p>
+            <p className="mb-1.5 font-semibold text-foreground">{LEGEND_TITLE}</p>
             <div className="h-3 rounded-sm" style={{ background: RAMP_CSS }} aria-hidden />
             <div className="mt-1 flex justify-between text-secondary-foreground">
               <span>Less similar</span>

@@ -45,6 +45,9 @@ export const RAMP: { at: number; color: string }[] = [
   { at: 100, color: "#bd0026" },
 ];
 
+/** The legend title. 0 to 100 is the definition of the score axis, not a result. */
+export const LEGEND_TITLE = "Similarity Score (0-100)";
+
 export const UNSCORED_COLOR = "#8a9399";
 
 export const RAMP_CSS = `linear-gradient(to right, ${RAMP.map((r) => `${r.color} ${r.at}%`).join(", ")})`;
