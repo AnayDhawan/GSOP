@@ -93,18 +93,38 @@ export default function Page() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/data/overlays/shackleton_rim.png" alt="World map in which land tiles that have a v1 score for the Shackleton rim target are coloured from purple (low) to yellow (high). Land with no score shows as the satellite picture." width={3600} height={1383} className="absolute inset-0 h-full w-full" />
         </div>
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/data/overlays/legend.png" alt="Colour scale from a low score (dark purple) to a high score (yellow)" width={512} height={64} className="h-auto w-64 max-w-full" />
-          <figcaption className="max-w-2xl text-sm text-secondary-foreground">Where v1 produced a score for the Shackleton rim target, on the NASA Blue Marble picture. Land that shows the satellite picture was gated out or had no data, which is not the same as a low score.</figcaption>
+        {/* Legend built from the overlay's own colour stops (public/data/overlays/legend.json). */}
+        <div data-left className="mx-auto grid w-full max-w-3xl gap-4 border border-border bg-surface p-4 sm:grid-cols-[1fr_auto] sm:items-end">
+          <div>
+            <div className="h-3 w-full border border-border" style={{ background: "linear-gradient(to right, #440154 0%, #3b528b 25%, #21908c 50%, #5dc863 75%, #fde725 100%)" }} role="img" aria-label="Colour scale from a low score (dark purple) to a high score (yellow)" />
+            <div className="mt-1 flex justify-between font-mono text-xs text-secondary-foreground">
+              <span>Low score</span>
+              <span>Middle</span>
+              <span>High score</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-xs text-secondary-foreground">
+            <span aria-hidden className="inline-block h-3 w-5 border border-dashed border-muted-foreground bg-[repeating-linear-gradient(45deg,transparent_0_3px,rgba(143,153,159,0.5)_3px_4px)]" />
+            <span>No score</span>
+          </div>
         </div>
+        <figcaption className="mx-auto max-w-3xl space-y-2 text-sm text-secondary-foreground">
+          <p>
+            Where v1 produced a score for the Shackleton rim target: {group(claim("metrics.view.shackleton_rim__base.n_gated_tiles"))} of {group(claim("metrics.earth.land_tiles"))} land tiles.
+          </p>
+          <ul className="list-disc space-y-1 pl-6 text-left">
+            <li>Coloured land passed the gates and has a score.</li>
+            <li>Land that shows the satellite picture has no score. It was gated out (open water or ice, vegetated, built or cropland) or had no data. That is not a low score.</li>
+            <li>The map stops at the edge of the scored area, so Antarctica is not shown.</li>
+          </ul>
+        </figcaption>
       </figure>
 
-      <section className="mt-12 grid gap-8 md:grid-cols-[1fr_2fr]" aria-labelledby="question">
+      <section className="mt-12" aria-labelledby="question">
         <h2 id="question" className={h2}>
           The question
         </h2>
-        <ul className={ul}>
+        <ul className={`${ul} mx-auto max-w-3xl`}>
           <li>The challenge asks for Earth places that could stand in for candidate Moon-base locations or Mars landing and exploration sites.</li>
           <li>It also asks what makes a place analogous, where the analogy breaks down, and how studying it could help.</li>
           <li className="text-secondary-foreground">GSOP answers one narrow part: which Earth places have terrain like a lunar or Martian target, using open data.</li>
@@ -237,11 +257,11 @@ export default function Page() {
       </section>
 
       <Band tone="accent" labelledBy="checks">
-        <div className="grid gap-8 md:grid-cols-[1fr_2fr]">
+        <div>
           <h2 id="checks" className={h2}>
             Checks fixed before the run
           </h2>
-          <ul className={ul}>
+          <ul className={`${ul} mx-auto max-w-3xl`}>
             <li>Before results were computed, v1 fixed three criteria: the primary sites must rank high, the negative controls must rank low, and obviously unsuitable ground must be rejected by the gates.</li>
             <li>Pre-registration hashes are on the ledger. A hash identifies the plan. It does not mean the plan was met.</li>
             <li>
@@ -345,11 +365,11 @@ export default function Page() {
         <blockquote className="max-w-3xl border-l-2 border-border pl-4 text-lg">{e32Sentence()}</blockquote>
       </section>
 
-      <section className="mt-12 grid gap-8 md:grid-cols-[1fr_2fr]" aria-labelledby="data">
+      <section className="mt-12" aria-labelledby="data">
         <h2 id="data" className={h2}>
           Data and reproducibility
         </h2>
-        <ul className={ul}>
+        <ul className={`${ul} mx-auto max-w-3xl`}>
           <li>One build command turns the stored results into the data files this site reads. A second run gives identical files.</li>
           <li>Every number on a page has a row in a claims file that names its source file and hash. A check on every change fails on banned wording, an unsourced number or an altered uncertainty sentence.</li>
           <li>

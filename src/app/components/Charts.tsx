@@ -11,7 +11,7 @@ export type Row = { label: string; value: number; display: string; tone?: Tone; 
 
 function Figure({ title, caption, children }: { title: string; caption?: ReactNode; children: ReactNode }) {
   return (
-    <figure className="space-y-3">
+    <figure data-left className="space-y-3">
       <figcaption className="space-y-1">
         <span className="block font-display text-lg">{title}</span>
         {caption ? <span className="block text-sm text-secondary-foreground">{caption}</span> : null}

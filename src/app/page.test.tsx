@@ -21,6 +21,8 @@ describe("landing page", () => {
     const description = [...hero.querySelectorAll("p")].find((p) => /open screening tool/i.test(p.textContent ?? ""));
     expect(description).toBeTruthy();
     expect(hero.querySelector('a[href="/dashboard"]')).not.toBeNull();
+    // The satellite image is AI-generated, and the hero says so in plain sight.
+    expect(hero.textContent).toMatch(/AI-generated illustration/);
     expect(hero.querySelector("svg:not([data-testid])")).toBeNull();
   });
 

@@ -8,7 +8,7 @@ export default function SiteMain({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   if (pathname === "/dashboard") {
     return (
-      <main id="main" className="flex min-h-0 w-full flex-1 flex-col">
+      <main id="main" data-app className="flex min-h-0 w-full flex-1 flex-col">
         {children}
       </main>
     );

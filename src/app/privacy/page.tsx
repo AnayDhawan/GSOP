@@ -20,11 +20,11 @@ export default function Page() {
           What the site stores or sends
         </h2>
         <dl className="divide-y divide-border">
-          <div className="grid gap-2 py-5 md:grid-cols-[14rem_1fr]">
+          <div data-left className="grid gap-2 py-5 md:grid-cols-[14rem_1fr]">
             <dt className="font-display text-lg">Vercel Web Analytics</dt>
             <dd className="text-secondary-foreground">It receives page views so we can see which pages get read. It uses no cookies. The site is hosted on Vercel, whose servers log requests the way any host does.</dd>
           </div>
-          <div className="grid gap-2 py-5 md:grid-cols-[14rem_1fr]">
+          <div data-left className="grid gap-2 py-5 md:grid-cols-[14rem_1fr]">
             <dt className="font-display text-lg">Map tiles</dt>
             <dd className="text-secondary-foreground">
               The dashboard loads tiles straight from the tile provider, so that provider sees your IP address and the part of the map you look at. The provider is credited on the{" "}
@@ -34,7 +34,7 @@ export default function Page() {
               .
             </dd>
           </div>
-          <div className="grid gap-2 py-5 md:grid-cols-[14rem_1fr]">
+          <div data-left className="grid gap-2 py-5 md:grid-cols-[14rem_1fr]">
             <dt className="font-display text-lg">Location</dt>
             <dd className="text-secondary-foreground">The site never asks for it. If you press the locate button on the map, your browser shows its own prompt and the answer stays in your browser.</dd>
           </div>
