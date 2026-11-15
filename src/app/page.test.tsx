@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import { bannedRegex } from "@/lib/banned";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
@@ -10,19 +8,18 @@ vi.mock("next/link", () => ({ default: ({ href, children, className }: { href: s
 vi.mock("./components/HeroScene", () => ({ default: () => <svg data-testid="hero-scene" /> }));
 
 describe("landing page", () => {
-  const decisions = fs.readFileSync(path.join(process.cwd(), "docs/DECISIONS_SITE.md"), "utf-8");
-  const locked = (label: string) => decisions.match(new RegExp(`^${label}: \\*\\*(.+?)\\*\\*`, "m"))![1];
 
-  it("opens with the locked headline, one data-scale subline from claims, and the scene", () => {
+  it("opens with GSOP, the full name and a short description over the scene, and no competition line", () => {
     render(<Home />);
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1.textContent).toBe(locked("Headline"));
+    expect(h1.textContent).toBe("GSOP");
     const hero = h1.closest("section")!;
-    const subline = h1.nextElementSibling!;
-    expect(subline.tagName).toBe("P");
-    expect(subline.textContent).toContain(claim("landing.n_sites"));
-    expect(subline.textContent).toContain(claim("landing.n_sources"));
-    expect(within(hero).getByTestId("hero-scene")).toBeInTheDocument();
+    expect(hero.textContent).toContain("Geospatial Similarity Observation Platform");
+    expect(hero.textContent).not.toMatch(/Space Apps|NASA/);
+    // The scene is the hero's background, behind the text.
+    expect(within(hero).getByTestId("hero-scene").closest(".-z-10")).not.toBeNull();
+    const description = [...hero.querySelectorAll("p")].find((p) => /open screening tool/i.test(p.textContent ?? ""));
+    expect(description).toBeTruthy();
     expect(hero.querySelector('a[href="/dashboard"]')).not.toBeNull();
     expect(hero.querySelector("svg:not([data-testid])")).toBeNull();
   });

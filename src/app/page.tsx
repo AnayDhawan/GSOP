@@ -31,7 +31,7 @@ function Kicker({ n, children }: { n: string; children: React.ReactNode }) {
 function Stat({ value, label, note, delay }: { value: string; label: string; note: string; delay: number }) {
   return (
     <Reveal delay={delay} className="space-y-2 py-8 pl-0 pr-6 lg:py-12">
-      <p className="stat-readout font-display text-5xl md:text-6xl">{value}</p>
+      <p className="stat-readout font-display text-4xl font-medium lg:text-[2.6rem]">{value}</p>
       <p className="gsop-label text-foreground">{label}</p>
       <p className="text-sm leading-relaxed text-secondary-foreground">{note}</p>
     </Reveal>
@@ -94,22 +94,22 @@ export default function Home() {
 
   return (
     <>
-      {/* Hero: the scene fills the viewport. One headline, one subline. Always dark, like the footer. */}
-      <section data-theme="dark" aria-labelledby="hero-title" className="relative isolate flex flex-col overflow-hidden bg-[#06080a] text-foreground md:min-h-[92svh]">
-        {/* Phones: the scene is a block above the copy. Wider screens: it fills the section behind the copy. */}
-        <div className="relative h-[46svh] min-h-[300px] md:absolute md:inset-0 md:h-auto md:min-h-0">
+      {/* Hero: outer space behind everything. The name and a short description float on top, Earth rises from the bottom
+          with a satellite orbiting it. Always dark, like the footer. The header floats over the top of it. */}
+      <section data-theme="dark" aria-labelledby="hero-title" className="relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-[#06080a] text-foreground">
+        <div className="absolute inset-0 -z-10">
           <HeroScene satellite={satellite} />
         </div>
-        <div className="hero-scrim pointer-events-none absolute inset-0 max-md:hidden" aria-hidden />
-        <div className={`${container} relative z-10 flex flex-1 flex-col justify-end pb-16 pt-4 md:justify-center md:pb-24 md:pt-24`}>
-          <p className="gsop-label mb-5 text-secondary-foreground">NASA Space Apps Challenge 2026</p>
-          <h1 id="hero-title" className="max-w-2xl text-4xl leading-[1.06] md:text-6xl">
-            {h.headline}
+        <div className={`${container} relative z-10 pb-[34svh] pt-28 text-center md:pb-[46svh] md:pt-32`}>
+          {/* Letter spacing is inline: the global h1 rule is unlayered and would beat a Tailwind class. */}
+          <h1 id="hero-title" style={{ letterSpacing: "0.2em" }} className="pl-[0.2em] font-display text-6xl font-semibold md:text-8xl">
+            GSOP
           </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-secondary-foreground md:text-xl">
-            {group(c("metrics.earth.land_tiles"))} land tiles on an equal-area grid, {c("landing.n_sites")} reference sites and candidates, and {c("landing.n_thermal_values")} thermal reference values from {c("landing.n_sources")} open data sources.
+          <p className="mt-3 font-mono text-[0.62rem] font-medium uppercase tracking-[0.1em] text-secondary-foreground sm:text-xs sm:tracking-[0.18em]">Geospatial Similarity Observation Platform</p>
+          <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-secondary-foreground">
+            An open screening tool that ranks places on Earth by how closely they match Moon base and Mars sites. Every result, failures included, is published.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link href="/dashboard" className={primaryBtn}>
               Open the dashboard
             </Link>
@@ -118,7 +118,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <a href="#glance" className="hero-cue absolute bottom-5 left-1/2 z-10 -translate-x-1/2 p-3 text-secondary-foreground hover:text-foreground max-md:hidden" aria-label="Scroll to the data">
+        <a href="#glance" className="hero-cue absolute bottom-4 left-1/2 z-10 -translate-x-1/2 p-3 text-secondary-foreground hover:text-foreground max-md:hidden" aria-label="Scroll to the data">
           <span aria-hidden className="block h-3 w-3 rotate-45 border-b-2 border-r-2 border-current" />
         </a>
       </section>
