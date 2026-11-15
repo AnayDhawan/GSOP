@@ -49,7 +49,17 @@ describe("methods and limits page", () => {
     const { container } = render(<Page />);
     const text = container.textContent ?? "";
     expect(text).not.toMatch(bannedRegex());
-    expect(text).not.toMatch(/—/);
+    expect(text).not.toMatch(/[\u2014\u2013]/);
+  });
+
+  it("opens with a hero title and draws charts from claim strings", () => {
+    const { container } = render(<Page />);
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("Methods and limits");
+    expect(screen.getByText("Scored tiles per view")).toBeInTheDocument();
+    expect(screen.getByText("Moon negative controls")).toBeInTheDocument();
+    expect(container.querySelectorAll("figure").length).toBeGreaterThanOrEqual(4);
+    for (const img of container.querySelectorAll("img")) expect(img.getAttribute("alt")).toBeTruthy();
+    expect(container.querySelector("svg")).toBeNull();
   });
 
   it("renders the limits document as nested lists with code spans", () => {

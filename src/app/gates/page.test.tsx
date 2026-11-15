@@ -79,6 +79,17 @@ describe("v2 gates page", () => {
     expect(text).toMatch(/not a passed test: D1 is NOT TESTED/);
   });
 
+  it("draws the charts from claim strings", () => {
+    const { container } = render(<Page />);
+    const text = container.textContent ?? "";
+    for (const t of ["G1: how much of Earth got a thermal value", "G2(a): Moon negative controls", "G2(b): Mars analog sites that could be scored", "G2(c): terrain-only baseline", "Held-out Moon false positives", "Own-tile percentile, before and after the thermal layer"]) expect(text).toContain(t);
+    expect(text).toContain("73.4%");
+    expect(text).toContain("85%");
+    expect(text).toContain("21.4%");
+    expect(container.querySelectorAll("figure").length).toBe(6);
+    expect(container.querySelector("svg, img")).toBeNull();
+  });
+
   it("prints the E32 sentence verbatim and says the ranking is unchecked", () => {
     const { container } = render(<Page />);
     expect(screen.getByText(e32Sentence())).toBeInTheDocument();
@@ -89,7 +100,8 @@ describe("v2 gates page", () => {
     const { container } = render(<Page />);
     const text = (container.textContent ?? "").replace(e32Sentence(), "");
     expect(text).not.toMatch(bannedRegex());
-    expect(text).not.toMatch(/—/);
+    expect(text).not.toMatch(new RegExp(`[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}]`));
+    expect(screen.getByRole("heading", { level: 1 }).textContent).toBe("v2 gate results");
     for (const h of screen.getAllByRole("heading", { level: 2 })) {
       for (const w of (h.textContent ?? "").split(" ").slice(1)) expect(w, `heading "${h.textContent}"`).not.toMatch(/^[A-Z][a-z]+$/);
     }

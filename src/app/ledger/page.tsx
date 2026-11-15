@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Band from "../components/Band";
+import { BarChart } from "../components/Charts";
+import PageHero from "../components/PageHero";
 import { e32Sentence, ledgerFile, metricsFile, v2File } from "@/lib/data";
 import { shortHash, sourceName, statusLabel } from "@/lib/format";
 import { targetName, viewName } from "@/lib/names";
 import type { LedgerEntry, Metric } from "@/lib/types";
 
-export const metadata: Metadata = { title: "Failure-First Ledger" };
+export const metadata: Metadata = { title: "Failure-First Ledger", description: "What failed, where the analogy breaks down, and what is not scored, before any result." };
 
 const RUNS = [
   { id: "moon", label: "Moon" },
@@ -88,19 +91,20 @@ export default function Page() {
   }
 
   return (
-    <div className="max-w-4xl space-y-12">
-      <header className="space-y-4">
-        <h1 className="text-3xl">Failure-First Ledger</h1>
-        <ul className="list-disc space-y-1 pl-6 text-secondary-foreground">
-          <li>This page lists what failed, then where the analogy breaks down. It comes before any results on purpose.</li>
-          <li>v1 is an earlier analysis whose criteria were fixed before it ran. Several criteria failed or could not be tested.</li>
-          <li>Nothing here is a success claim. The ranking has not been checked against independent data.</li>
-        </ul>
-        <blockquote className="border-l-2 border-border pl-4">{e32Sentence()}</blockquote>
-      </header>
+    <>
+      <PageHero title="Failure-First Ledger" lede="What failed, where the analogy breaks down, and what the score never looked at. It comes before the results on purpose." />
 
-      <section className="space-y-4" aria-labelledby="failed">
-        <h2 id="failed" className="text-2xl">
+      <div className="grid gap-8 md:grid-cols-[3fr_2fr]">
+        <div className="space-y-3">
+          <p className="text-lg">v1 is an earlier analysis whose criteria were fixed before it ran. Several of them failed or could not be tested.</p>
+          <p className="text-secondary-foreground">Nothing here is a success claim. The ranking has not been checked against independent data.</p>
+        </div>
+        <blockquote className="self-start border-l-2 border-border pl-4 text-sm">{e32Sentence()}</blockquote>
+      </div>
+
+      <Band tone="plain" labelledBy="failed">
+        <div className="space-y-4">
+        <h2 id="failed" className="text-3xl">
           What failed
         </h2>
         <ul className="space-y-4">
@@ -183,11 +187,27 @@ export default function Page() {
           Mars primary site median: percentile {m("mars.primary_median_rank_pct").display}, against a pre-registered minimum of percentile{" "}
           {m("mars.criterion.primary_median_rank_pct_min").display}.
         </p>
+        <div className="grid gap-6 border border-border bg-surface p-5 md:grid-cols-2">
+          <BarChart
+            title="Moon negative controls"
+            caption="Percentile in the Moon run. These places should score low."
+            rows={CONTROLS.filter((c) => byId.get(`moon.control.${c.id}.rank_pct`)).map((c) => ({ label: c.label, value: Number(m(`moon.control.${c.id}.rank_pct`).display), display: m(`moon.control.${c.id}.rank_pct`).display, tone: "control" as const }))}
+            reference={{ value: Number(m("moon.criterion.negative_control_rank_pct_max").display), label: `the pre-registered maximum, ${m("moon.criterion.negative_control_rank_pct_max").display}` }}
+          />
+          <BarChart
+            title="Mars primary sites"
+            caption="Median percentile of the primary sites. These should score high."
+            rows={[{ label: "Median percentile", value: Number(m("mars.primary_median_rank_pct").display), display: m("mars.primary_median_rank_pct").display, tone: "mars" }]}
+            reference={{ value: Number(m("mars.criterion.primary_median_rank_pct_min").display), label: `the pre-registered minimum, ${m("mars.criterion.primary_median_rank_pct_min").display}` }}
+          />
+        </div>
         <Source file={m("moon.control.namib_sand_sea.rank_pct").source_file} sha={m("moon.control.namib_sand_sea.rank_pct").sha256} />
-      </section>
+        </div>
+      </Band>
 
-      <section className="space-y-4" aria-labelledby="terrain">
-        <h2 id="terrain" className="text-2xl">
+      <Band tone="grid" labelledBy="terrain">
+        <div className="space-y-4">
+        <h2 id="terrain" className="text-3xl">
           The Moon score is terrain only
         </h2>
         <ul className="space-y-4">
@@ -195,6 +215,20 @@ export default function Page() {
             <Entry key={e.id} e={e} />
           ))}
         </ul>
+        <div className="border border-border bg-surface p-5">
+          <BarChart
+            title="Top group with and without the illumination term"
+            caption="Share of the top tiles that stay in the top group when the illumination weight is removed. A value near one means the term changed almost nothing."
+            max={1}
+            rows={metrics
+              .filter((x) => x.id.startsWith("terrain_only.") && x.id.endsWith(".illumination_weight"))
+              .map((w) => {
+                const view = w.id.split(".")[1];
+                const d = m(`terrain_only.${view}.overlap_without_illumination`).display;
+                return { label: viewName(view), value: Number(d), display: d, tone: "moon" as const };
+              })}
+          />
+        </div>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse text-left text-sm">
             <thead>
@@ -224,30 +258,34 @@ export default function Page() {
             </tbody>
           </table>
         </div>
-      </section>
+        </div>
+      </Band>
 
-      <section className="space-y-4" aria-labelledby="breaks">
-        <h2 id="breaks" className="text-2xl">
+      <Band tone="raised" labelledBy="breaks">
+        <div className="space-y-4">
+        <h2 id="breaks" className="text-3xl">
           Where the analogy breaks down
         </h2>
         <p className="text-secondary-foreground">
           These physical differences come from the v1 limits ledger. Most entries are provisional and have not been verified by us.
         </p>
-        <ul className="space-y-4">
+        <ul className="grid gap-4 md:grid-cols-2">
           {physical.map((e) => (
             <Entry key={e.id} e={e} />
           ))}
         </ul>
-      </section>
+        </div>
+      </Band>
 
-      <section className="space-y-4" aria-labelledby="unscored">
-        <h2 id="unscored" className="text-2xl">
+      <Band tone="plain" labelledBy="unscored">
+        <div className="space-y-4">
+        <h2 id="unscored" className="text-3xl">
           What is not scored
         </h2>
         {(["moon", "mars"] as const).map((b) => (
           <div key={b} className="space-y-3">
             <h3 className="text-lg">{b === "moon" ? "Moon" : "Mars"}</h3>
-            <ul className="space-y-4">
+            <ul className="grid gap-4 md:grid-cols-2">
               {unscored
                 .filter((e) => e.body === b)
                 .map((e) => (
@@ -256,21 +294,25 @@ export default function Page() {
             </ul>
           </div>
         ))}
-      </section>
+        </div>
+      </Band>
 
-      <section className="space-y-4" aria-labelledby="other">
-        <h2 id="other" className="text-2xl">
+      <Band tone="accent" labelledBy="other">
+        <div className="space-y-4">
+        <h2 id="other" className="text-3xl">
           Other known limits
         </h2>
-        <ul className="space-y-4">
+        <ul className="grid gap-4 md:grid-cols-2">
           {otherLimits.map((e) => (
             <Entry key={e.id} e={e} />
           ))}
         </ul>
-      </section>
+        </div>
+      </Band>
 
-      <section className="space-y-4" aria-labelledby="v2">
-        <h2 id="v2" className="text-2xl">
+      <Band tone="raised" labelledBy="v2">
+        <div className="space-y-4">
+        <h2 id="v2" className="text-3xl">
           The v2 run
         </h2>
         <p className={v2.run_completed ? "" : "text-control"}>{v2.status_text}</p>
@@ -387,10 +429,12 @@ export default function Page() {
             </div>
           </div>
         )}
-      </section>
+        </div>
+      </Band>
 
-      <section className="space-y-3" aria-labelledby="prereg">
-        <h2 id="prereg" className="text-2xl">
+      <Band tone="plain" labelledBy="prereg">
+        <div className="space-y-4">
+        <h2 id="prereg" className="text-3xl">
           Pre-registration
         </h2>
         <p className="text-secondary-foreground">
@@ -410,7 +454,8 @@ export default function Page() {
           </Link>{" "}
           for what the screening does.
         </p>
-      </section>
-    </div>
+        </div>
+      </Band>
+    </>
   );
 }
