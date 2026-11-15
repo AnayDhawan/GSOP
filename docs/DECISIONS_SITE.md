@@ -21,3 +21,9 @@ The h1 is **GSOP**, with the full name under it and a two-line plain description
 
 ## Open
 - Production domain: not chosen. Current deployment: https://gsoplatform.vercel.app
+
+## India highlights layer (Anay, 2026-11-15)
+
+- Why: the site had few Indian places, so the local-impact claim was thin. Anay asked for more Indian data and highlights on the map.
+- What: `public/data/india_highlights.json`, drawn on the dashboard India extent (violet markers for places outside the reference list, violet rings for places already in it) and listed at `/india` and on the landing page.
+- Limits kept: not scored (the v1 score lookup needs the v1 results archive, which is not in the repository), not added to the reference list, labelled unreviewed, no numbers typed in page source.

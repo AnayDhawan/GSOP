@@ -2,9 +2,10 @@
 
 import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo, useRef } from "react";
-import { Circle, CircleMarker, MapContainer, TileLayer, Tooltip, useMap, ZoomControl } from "react-leaflet";
+import { Circle, CircleMarker, MapContainer, Popup, TileLayer, Tooltip, useMap, ZoomControl } from "react-leaflet";
 import { latLngBounds } from "leaflet";
 import { INDIA_BOUNDS, scoreColor, type DashExtent, type DashSite } from "@/lib/dashboard";
+import type { IndiaPlace } from "@/lib/types";
 
 export type Locate = { lat: number; lon: number } | null;
 
@@ -13,6 +14,7 @@ export type Locate = { lat: number; lon: number } | null;
 const TILE_URL = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}";
 const ATTRIBUTION = '&copy; <a href="https://www.esri.com">Esri</a>, HERE, Garmin, FAO, NOAA, USGS, OpenStreetMap contributors';
 const RADIUS_COLOR = "#E8A33D";
+const INDIA_COLOR = "#7C3AED";
 
 /** Frames the map whenever the body or the extent changes: the India window, or the sites of the active body. */
 function FitToExtent({ sites, bodyKey, extent }: { sites: DashSite[]; bodyKey: string; extent: DashExtent }) {
@@ -78,6 +80,7 @@ function MapAccessibleName({ label }: { label: string }) {
 
 export default function DashboardMap({
   sites,
+  india = [],
   bodyKey,
   extent,
   hoveredSlug,
@@ -88,6 +91,7 @@ export default function DashboardMap({
   resizeKey,
 }: {
   sites: DashSite[];
+  india?: IndiaPlace[];
   bodyKey: string;
   extent: DashExtent;
   hoveredSlug: string | null;
@@ -152,6 +156,33 @@ export default function DashboardMap({
           </CircleMarker>
         );
       })}
+      {india.map((p) =>
+        p.in_reference_list ? (
+          // A place already in the reference list keeps its own marker; the violet ring only flags it as an India highlight.
+          <CircleMarker key={p.id} center={[p.lat, p.lon]} radius={15} interactive={false} pathOptions={{ color: INDIA_COLOR, weight: 3, fill: false, opacity: 0.95 }} />
+        ) : (
+          <CircleMarker key={p.id} center={[p.lat, p.lon]} radius={9} pathOptions={{ fillColor: INDIA_COLOR, fillOpacity: 0.95, color: "#ffffff", weight: 2 }}>
+            <Tooltip direction="top" offset={[0, -6]}>
+              <strong>{p.name}</strong>
+              <br />
+              India highlight, not scored
+            </Tooltip>
+            <Popup maxWidth={260} autoPanPaddingTopLeft={[16, 90]}>
+              <strong>{p.name}</strong>
+              <br />
+              {p.state} ({p.bodies.join(" and ")})
+              <br />
+              {p.why}
+              <br />
+              <em>Gathered from public sources, unreviewed. Not scored.</em>
+              <br />
+              <a href={p.source_urls[0]} target="_blank" rel="noopener noreferrer">
+                Source
+              </a>
+            </Popup>
+          </CircleMarker>
+        ),
+      )}
       {me && <CircleMarker center={[me.lat, me.lon]} radius={6} pathOptions={{ fillColor: "#287DB5", fillOpacity: 1, color: "#ffffff", weight: 2 }} interactive={false} />}
       <FitToExtent sites={sites} bodyKey={bodyKey} extent={extent} />
       <InvalidateSize dep={resizeKey} />

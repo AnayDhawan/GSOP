@@ -1,0 +1,257 @@
+{
+  "meta": {
+    "title": "India highlights",
+    "text_label": "Gathered from public sources, unreviewed. Not scored.",
+    "note": "They are not ranked, not scored and not tests of the method. A place that is not in our reference list is a suggestion, not a finding.",
+    "marker_note": "A marker sits on the named place, or near the middle of the named area. It is approximate.",
+    "review_note": "Nobody on the team has checked these sources yet.",
+    "how_built": "Hand-curated from the cited pages. Each place has one or more source links. Coordinates come from the Wikipedia page of the place, or from the reference list for places already in it."
+  },
+  "places": [
+    {
+      "id": "lonar-crater",
+      "slug": "lonar-crater",
+      "name": "Lonar crater",
+      "state": "Maharashtra",
+      "lat": 19.976,
+      "lon": 76.508,
+      "kind": "point",
+      "bodies": ["Mars", "Moon"],
+      "in_reference_list": true,
+      "tagline": "Impact crater lake in basalt",
+      "why": "An impact crater lake cut into Deccan basalt. A review of Indian analog sites rates it ready for research, as an analog for alkaline brines and basalt terrain on Mars.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Lonar_crater",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "ladakh-tso-kar-and-puga",
+      "slug": "ladakh-tso-kar-and-puga",
+      "name": "Ladakh: Tso Kar and Puga",
+      "state": "Ladakh",
+      "lat": 33.3,
+      "lon": 77.98,
+      "kind": "area",
+      "bodies": ["Mars"],
+      "in_reference_list": true,
+      "tagline": "Cold desert with hot springs and salt lakes",
+      "why": "Ladakh is a cold, very high desert with hot springs, dunes and salt lake shores. It is the planned site of ISRO's first analog space mission. Puga is a geothermal spring area.",
+      "source_urls": [
+        "https://www.theweek.in/news/sci-tech/2024/11/01/what-makes-ladakh-best-suited-for-analog-space-mission-of-isro-which-simulates-mars-and-moon-conditions.html",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "kutch-matanomadh-jarosite",
+      "slug": "kutch-matanomadh-jarosite",
+      "name": "Kutch: Matanomadh jarosite",
+      "state": "Gujarat",
+      "lat": 23.53,
+      "lon": 68.97,
+      "kind": "point",
+      "bodies": ["Mars"],
+      "in_reference_list": true,
+      "tagline": "Jarosite, a mineral NASA found on Mars",
+      "why": "Jarosite at Matanomadh links the Kachchh basin to Mars, where a NASA rover reported the same mineral. A study proposes five Kachchh sites as Mars analogs, with volcanic and impact craters, clays, sulfates and evaporites.",
+      "source_urls": [
+        "https://digitalcommons.mtu.edu/michigantech-p/15877",
+        "https://www.inkl.com/news/five-kutch-sites-resemble-mars-surface"
+      ]
+    },
+    {
+      "id": "sittampundi-anorthosite-complex",
+      "slug": "sittampundi-anorthosite-complex",
+      "name": "Sittampundi anorthosite complex",
+      "state": "Tamil Nadu",
+      "lat": 11.25,
+      "lon": 77.88,
+      "kind": "area",
+      "bodies": ["Moon"],
+      "in_reference_list": true,
+      "tagline": "Source rock of ISRO's lunar soil simulant",
+      "why": "Anorthosite from this complex was used to make ISRO's lunar highland soil simulant. The rock is rich in calcium-bearing plagioclase, like anorthosite in the lunar highlands.",
+      "source_urls": [
+        "https://ui.adsabs.harvard.edu/abs/2021Icar..36614511A",
+        "https://business-standard.com/article/current-affairs/isro-receives-patent-for-highland-soil-simulant-for-future-lunar-missions-120051901514_1.html"
+      ]
+    },
+    {
+      "id": "isro-challakere-lunar-terrain-test-facility",
+      "slug": "isro-challakere-lunar-terrain-test-facility",
+      "name": "ISRO lunar terrain test facility",
+      "state": "Karnataka",
+      "lat": 14.2,
+      "lon": 76.6,
+      "kind": "point",
+      "bodies": ["Moon"],
+      "in_reference_list": true,
+      "tagline": "Where ISRO tests rovers on simulant soil",
+      "why": "A test bed where ISRO drives rovers over lunar soil simulant made from Indian anorthosite.",
+      "source_urls": [
+        "https://ui.adsabs.harvard.edu/abs/2021Icar..36614511A"
+      ]
+    },
+    {
+      "id": "sambhar-lake",
+      "name": "Sambhar Lake",
+      "state": "Rajasthan",
+      "lat": 26.9417,
+      "lon": 75.0764,
+      "kind": "point",
+      "bodies": ["Mars"],
+      "in_reference_list": false,
+      "tagline": "Inland salt lake, evaporite basin",
+      "why": "India's largest inland saline lake. A review of Indian analog sites lists it as a Mars analog for evaporite basins and paleolake settings, shaped by wet and dry cycles and salt crusts.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Sambhar_Lake",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "great-rann-of-kutch",
+      "name": "Great Rann of Kutch",
+      "state": "Gujarat",
+      "lat": 24.0864,
+      "lon": 70.6378,
+      "kind": "area",
+      "bodies": ["Mars"],
+      "in_reference_list": false,
+      "tagline": "Salt marsh of flat saline clay",
+      "why": "A salt marsh of flat saline clay and mudflats that fills with standing water in the monsoon. The review lists the Rann saline lakes as Mars analogs for paleolakes and evaporite basins. Their geochemistry is well constrained and their microbiology is not.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Great_Rann_of_Kutch",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full",
+        "https://books.aijr.org/index.php/press/catalog/book/177/chapter/3505"
+      ]
+    },
+    {
+      "id": "tso-moriri",
+      "name": "Tso Moriri",
+      "state": "Ladakh",
+      "lat": 32.9,
+      "lon": 78.3,
+      "kind": "point",
+      "bodies": ["Mars"],
+      "in_reference_list": false,
+      "tagline": "High lake with geothermal input",
+      "why": "A very high alkaline and saline lake with geothermal inputs. The review lists the Ladakh lakes as Mars analogs for brine-rich systems that change with the seasons. Tso Kar, another Ladakh lake, is already in our reference list.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Tso_Moriri",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "spiti-valley",
+      "name": "Spiti Valley",
+      "state": "Himachal Pradesh",
+      "lat": 32.2469,
+      "lon": 78.0522,
+      "kind": "area",
+      "bodies": ["Moon"],
+      "in_reference_list": false,
+      "tagline": "Cold desert with ice at altitude",
+      "why": "An arid cold desert in the rain shadow of the Himalayas. The review lists Spiti among high-altitude ice regions used as analogs for lunar cold traps and icy worlds.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Spiti_Valley",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "thar-desert",
+      "name": "Thar Desert",
+      "state": "Rajasthan",
+      "lat": 27.0,
+      "lon": 71.0,
+      "kind": "area",
+      "bodies": ["Mars"],
+      "in_reference_list": false,
+      "tagline": "Dust storms and dune fields",
+      "why": "A hot desert with frequent dust storms and wide dune fields. The review lists it as a Mars analog for dust and dunes, and suggests it as a test bed for rovers and remote sensing.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Thar_Desert",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "deccan-traps",
+      "name": "Deccan Traps",
+      "state": "Western and central India",
+      "lat": 18.85,
+      "lon": 73.717,
+      "kind": "area",
+      "bodies": ["Mars"],
+      "in_reference_list": false,
+      "tagline": "Flood basalt with clay-bearing soil layers",
+      "why": "Layered flood basalt with old soil beds that hold clay minerals. The review likens the terrain to Mawrth Vallis on Mars and lists it as an analog for how clay forms on basalt.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Deccan_Traps",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "baratang-mud-volcanoes",
+      "name": "Baratang mud volcanoes",
+      "state": "Andaman Islands",
+      "lat": 12.18,
+      "lon": 92.8,
+      "kind": "area",
+      "bodies": ["Mars"],
+      "in_reference_list": false,
+      "tagline": "The only mud volcanoes in India",
+      "why": "The only known mud volcanoes in India, which have erupted from time to time. The review lists Andaman mud volcanoes as Mars analogs for pitted cones and methane release.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Baratang_Island",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "borra-caves",
+      "name": "Borra Caves",
+      "state": "Andhra Pradesh",
+      "lat": 18.167,
+      "lon": 83.0,
+      "kind": "point",
+      "bodies": ["Mars", "Moon"],
+      "in_reference_list": false,
+      "tagline": "Limestone caves, a sheltered setting",
+      "why": "Karst limestone caves with stalactites and stalagmites. The review lists caves among analogs for Mars subsurface settings and lunar lava tubes. The rock is limestone, so the match is the sheltered cave and not the rock.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Borra_Caves",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "kolar-gold-fields",
+      "name": "Kolar Gold Fields",
+      "state": "Karnataka",
+      "lat": 12.962,
+      "lon": 78.271,
+      "kind": "point",
+      "bodies": ["Mars", "Moon"],
+      "in_reference_list": false,
+      "tagline": "Deep mines shielded from radiation",
+      "why": "A former gold mining area with deep mines. The review lists deep Indian mines as subsurface analogs that are shielded from surface radiation.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Kolar_Gold_Fields",
+        "https://www.frontiersin.org/articles/10.3389/fspas.2025.1712191/full"
+      ]
+    },
+    {
+      "id": "dhala-impact-structure",
+      "name": "Dhala impact structure",
+      "state": "Madhya Pradesh",
+      "lat": 25.3,
+      "lon": 78.133,
+      "kind": "point",
+      "bodies": ["Moon", "Mars"],
+      "in_reference_list": false,
+      "tagline": "Old impact structure in granite",
+      "why": "An old impact structure in granite. Size estimates differ between sources. A doctoral thesis studies it with Lonar and the Kutch jarosites as terrestrial analogs. The link to the Moon or Mars is weaker than for Lonar, which sits in basalt.",
+      "source_urls": [
+        "https://en.wikipedia.org/wiki/Dhala_impact_structure",
+        "https://etd.iisc.ac.in/handle/2005/4458"
+      ]
+    }
+  ]
+}

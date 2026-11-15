@@ -4,7 +4,7 @@ import Link from "next/link";
 import HeroScene from "./components/HeroScene";
 import Reveal from "./components/Reveal";
 import { BarChart, DumbbellChart, Meter } from "./components/Charts";
-import { claim, e32Sentence, headline, lookupFile, regionsFile, sitesFile, v2File } from "@/lib/data";
+import { claim, e32Sentence, headline, indiaFile, lookupFile, regionsFile, sitesFile, v2File } from "@/lib/data";
 import { group, statusLabel } from "@/lib/format";
 import type { GateStatus } from "@/lib/types";
 
@@ -82,6 +82,7 @@ export default function Home() {
   const india = sites.filter((s) => s.list === "known" && (s.country ?? "").startsWith("India"));
   const lookup = lookupFile();
   const regions = regionsFile().regions.filter((r) => r.n_tiles_in_india > 0);
+  const indiaPlaces = indiaFile().places;
   const baseView = (body: string) => (body === "Moon" ? "shackleton_rim__base" : "jezero__base");
   const h = headline();
   const failed = (["G1", "G2", "G3"] as const).filter((g) => gates?.[g] === "FAIL");
@@ -254,7 +255,7 @@ export default function Home() {
           <h2 id="mission-band" className="mt-3 max-w-3xl text-3xl font-semibold leading-snug md:text-4xl">
             The ranking tells you where to look first. It does not tell you a place is a good analog.
           </h2>
-          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-white/90">
+          <p className="mt-4 max-w-2xl text-center text-lg leading-relaxed text-white/90">
             We print the failed gates next to the results. The data build is one command, and a second run gives the same bytes. Every number on this site has a row in a claims file with its source file and hash.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
@@ -379,6 +380,31 @@ export default function Home() {
             <p className="text-sm text-secondary-foreground">Stored v1 values, looked up, not tested. A site with no score says nothing about how good an analog it is.</p>
           </Reveal>
           </div>
+          <Reveal className="space-y-5">
+            <p className="text-center font-display text-2xl">India highlights from public sources</p>
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {indiaPlaces.map((p) => (
+                <li key={p.id} className="space-y-1 border border-border bg-background p-4">
+                  <p className="font-display text-base leading-snug">{p.name}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {p.state} · {p.bodies.join(" and ")}
+                  </p>
+                  <p className="text-sm text-secondary-foreground">{p.tagline}</p>
+                </li>
+              ))}
+            </ul>
+            <p className="mx-auto max-w-2xl text-sm text-secondary-foreground">
+              Gathered from public sources, unreviewed, and not scored. The dashboard marks them on the India map. We hold no ground measurements for them yet.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link href="/india" className={primaryBtn}>
+                All India highlights
+              </Link>
+              <Link href="/dashboard" className={ghostBtn}>
+                See them on the map
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -390,7 +416,7 @@ export default function Home() {
             <h2 id="open" className="text-3xl md:text-4xl">
               Built in the open
             </h2>
-            <p className="leading-relaxed text-secondary-foreground">
+            <p className="text-center leading-relaxed text-secondary-foreground">
               Every scored input is open data: {c("landing.n_sources")} sources, from NASA, USGS, ESA and Natural Earth, each listed with its licence and its caveats on the{" "}
               <Link href="/data-sources" className={link}>
                 data sources

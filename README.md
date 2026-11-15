@@ -41,7 +41,7 @@ Space agencies rehearse Moon and Mars work on Earth, at places called analogs. A
 - **Open.** Open data, open code, MIT licence. No login, no server-side queries: the data is static files.
 - **Checkable.** Every number on the site has a row in a claims file that names its source file and hash.
 - **Failures first.** The pass marks were written before the run. Failed gates are printed next to the results.
-- **India first.** Indian field sites such as Ladakh sit beside the famous ones, and the site asks for ground measurements.
+- **India first.** Indian field sites such as Ladakh sit beside the famous ones, and the site asks for ground measurements. An India highlights layer marks places that public sources describe as Moon or Mars analogs, on the dashboard India map and at `/india`. They are unreviewed and not scored.
 - **A screen, not a verdict.** The ranking tells you where to look first. It does not tell you a place is a good analog.
 
 ## Where we stand
@@ -65,6 +65,7 @@ So today GSOP is a **screening aid, not a result**. Mars is a low-confidence sec
 | Page | What it does |
 |---|---|
 | [Dashboard](https://gsoplatform.vercel.app/dashboard) | Reference sites on a map and in a ranked list, Moon or Mars, World or India. Click a site for its card |
+| [India highlights](https://gsoplatform.vercel.app/india) | Indian places from public sources, with source links. Not scored |
 | [Gate results](https://gsoplatform.vercel.app/gates) | Every gate with its literal status, the numbers behind it, and six limitations |
 | [Failure-First Ledger](https://gsoplatform.vercel.app/ledger) | What failed, and where each analogy breaks down |
 | [Honest Map](https://gsoplatform.vercel.app/map) | Where v1 produced a score, on the NASA Blue Marble picture, with the failed controls in red |

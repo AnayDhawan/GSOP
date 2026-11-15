@@ -1,3 +1,4 @@
+import type { IndiaPlace } from "./types";
 // Pure helpers for the dashboard: row type, colour ramp, filtering. No file access here, so client code can import it.
 // No score is computed in this file. Scores and percentiles arrive as display strings from claims.csv.
 
@@ -50,6 +51,8 @@ export type DashboardData = {
   e32: string;
   /** v1 match radius in km (claims.csv lookup.match_radius_km): the area v1 searched around each site for its best tile. */
   matchRadiusKm?: number;
+  /** India highlights (india_highlights.json), drawn on the India extent. Not scored. */
+  india?: IndiaPlace[];
 };
 
 /** The warm ramp used by the legend and the markers, light yellow to dark red over the 0 to 100 score range. */

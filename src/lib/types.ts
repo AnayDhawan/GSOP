@@ -239,3 +239,24 @@ export type Profile = {
   /** A teammate's qualitative desk assessment per body: which v2 parameters match strongly, partly or weakly. Not a computed result. */
   parameters?: Partial<Record<"Moon" | "Mars", { strong: string[]; partial: string[]; weak: string[] }>>;
 };
+
+// public/data/india_highlights.json: Indian places that public sources describe as Moon or Mars analogs. Not scored, unreviewed.
+export type IndiaPlace = {
+  id: string;
+  /** Set when the place is already in the reference list (sites.json). */
+  slug?: string;
+  name: string;
+  state: string;
+  lat: number;
+  lon: number;
+  kind: "point" | "area";
+  bodies: string[];
+  in_reference_list: boolean;
+  tagline: string;
+  why: string;
+  source_urls: string[];
+};
+export type IndiaFile = {
+  meta: { title: string; text_label: string; note: string; marker_note: string; review_note: string; how_built: string };
+  places: IndiaPlace[];
+};

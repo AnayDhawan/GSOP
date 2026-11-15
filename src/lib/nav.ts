@@ -28,7 +28,10 @@ export const RESULTS: NavItem[] = [
 /** The plan after the hackathon. Linked from the footer, the landing page and the methodology page. */
 export const ROADMAP: NavItem = { href: "/roadmap", label: "After the hackathon", description: "The plan: a proper build, a month of simulation, a check against ground data" };
 
-export const FOOTER_QUICK: NavItem[] = [...NAV.slice(0, 4), ROADMAP];
+/** Indian places that public sources describe as Moon or Mars analogs. Not scored. Linked from the footer and the landing page. */
+export const INDIA: NavItem = { href: "/india", label: "India highlights", description: "Indian analog places from public sources, not scored" };
+
+export const FOOTER_QUICK: NavItem[] = [...NAV.slice(0, 4), INDIA, ROADMAP];
 
 export const FOOTER_LEGAL: NavItem[] = [
   { href: "/license", label: "Licence", description: "The repository licence, verbatim" },
