@@ -71,6 +71,47 @@ def iter_strings(obj, path="", skip=False):
         yield path, obj
 
 
+SOURCES_CSV = "data/sources_used.csv"
+LANDING_EXCLUDED_SOURCES = {"sites_list"}  # the site list is the thing being scored, not an input source
+LANDING_GRID_DOC = "docs/DATA_NOTES.md"
+
+
+def add_landing_claims(root, docs, add, local_sha):
+    """Counts and grid facts the landing page prints. Each row names the file it was counted from."""
+    sp = os.path.join(root, SOURCES_CSV)
+    if os.path.exists(sp):
+        with open(sp, encoding="utf-8", newline="") as fh:
+            src_rows = list(csv.DictReader(fh))
+        sha = local_sha(SOURCES_CSV)
+        inputs = [r for r in src_rows if r["body"] in ("Earth", "Moon", "Mars") and r["id"] not in LANDING_EXCLUDED_SOURCES]
+        add("landing.n_sources", d(len(inputs), 0), SOURCES_CSV, sha)
+        for r in src_rows:
+            for j, n in enumerate(text_numbers(r["resolution_or_window"])):
+                add(f"landing.src.{r['id']}.res.n{j}", n, SOURCES_CSV, sha)
+    st = docs.get("sites.json")
+    if st:
+        rel = f"{DATA}/sites.json"
+        sha = local_sha(rel)
+        sites = st["sites"]
+        add("landing.n_sites", d(len(sites), 0), rel, sha)
+        add("landing.n_known", d(sum(1 for x in sites if x["list"] == "known"), 0), rel, sha)
+        add("landing.n_candidates", d(sum(1 for x in sites if x["list"] == "candidate"), 0), rel, sha)
+        add("landing.n_india_known", d(sum(1 for x in sites if x["list"] == "known" and (x.get("country") or "").startswith("India")), 0), rel, sha)
+    v2 = docs.get("v2.json")
+    if v2 and v2.get("thermal_refs"):
+        th = v2["thermal_refs"]
+        add("landing.n_thermal_values", d(sum(1 for r in th["rows"] if r["display"] is not None), 0), th["path"], th["sha256"])
+        add("landing.n_thermal_sites", d(len({r["site"] for r in th["rows"]}), 0), th["path"], th["sha256"])
+    gp = os.path.join(root, LANDING_GRID_DOC)
+    if os.path.exists(gp):
+        text = open(gp, encoding="utf-8").read()
+        m = re.search(r"EPSG:(\d+), ([\d,]+) m cells", text)
+        if m:
+            sha = local_sha(LANDING_GRID_DOC)
+            add("landing.epsg", m.group(1), LANDING_GRID_DOC, sha)
+            add("landing.tile_km", d(int(m.group(2).replace(",", "")) / 1000, 0), LANDING_GRID_DOC, sha)
+
+
 def build_claims(root):
     """Return a sorted list of (claim, number, source_file, sha256) built only from the data files under root."""
     rows = {}
@@ -169,6 +210,8 @@ def build_claims(root):
                 n = seen.get(k, 0)
                 seen[k] = n + 1
                 add(k if n == 0 else f"{k}#{n}", m["display"], src["source_file"], src["sha256"])
+    # landing page counts (W3): derived from committed files, never typed on a page
+    add_landing_claims(root, docs, add, local_sha)
     # controls
     ct = docs.get("controls.json")
     if ct:

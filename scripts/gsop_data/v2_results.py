@@ -150,6 +150,8 @@ def build(base, v2dir):
     F.add("v2.result.g1.coverage", cov["display"], A_SRC, A_SHA)
     F.add("v2.result.g1.required", _grab(cov["what_this_means_for_the_analogy"], r"threshold is (0\.\d+)", "the G1 threshold").group(1), A_SRC, A_SHA)
     F.add("v2.result.coverage_pct", _pct(cov["value"]), A_SRC, A_SHA)
+    req = _grab(cov["what_this_means_for_the_analogy"], r"threshold is (0\.\d+)", "the G1 threshold").group(1)
+    F.add("v2.result.g1.required_pct", _pct(float(req), 0), A_SRC, A_SHA)
 
     # ---- G2(a): Moon controls against the maximum
     for site, slug in (("namib", "namib_sand_sea"), ("rak", "rub_al_khali")):

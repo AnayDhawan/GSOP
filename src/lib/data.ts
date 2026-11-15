@@ -54,7 +54,7 @@ export const OVERLAY_TARGETS = ["connecting_ridge_c1", "shackleton_rim", "jezero
 
 // ---- claims.csv
 
-function parseCsv(text: string): string[][] {
+export function parseCsv(text: string): string[][] {
   const rows: string[][] = [];
   let row: string[] = [];
   let cell = "";

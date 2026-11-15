@@ -26,3 +26,8 @@ export function shortHash(sha: string): string {
 export function sourceName(path: string): string {
   return path.replace(/^gsop_v1\//, "v1: ");
 }
+
+/** Thousands separators for a stored integer string ("3972955" becomes "3,972,955"). Anything else is returned as stored. */
+export function group(n: string): string {
+  return /^-?\d{4,}$/.test(n) ? n.replace(/\B(?=(\d{3})+(?!\d))/g, ",") : n;
+}
