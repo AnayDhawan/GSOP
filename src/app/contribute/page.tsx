@@ -85,7 +85,7 @@ export default function Page() {
           <div className="space-y-3">
             <p>
               Open an issue on{" "}
-              <a href={REPO_URL} className={link} rel="noopener noreferrer">
+              <a href={REPO_URL} className={link} target="_blank" rel="noopener noreferrer">
                 the repository
               </a>
               , or email the maintainer from the{" "}

@@ -62,7 +62,7 @@ export default function Page() {
                       </a>
                     ) : null}
                     {m.github ? (
-                      <a href={`https://github.com/${m.github}`} className={`block ${link}`} rel="noopener noreferrer">
+                      <a href={`https://github.com/${m.github}`} className={`block ${link}`} target="_blank" rel="noopener noreferrer">
                         github.com/{m.github}
                       </a>
                     ) : null}
@@ -80,7 +80,7 @@ export default function Page() {
         </h2>
         <p>
           Code, the data build and the issue tracker are at{" "}
-          <a href={REPO_URL} className={link} rel="noopener noreferrer">
+          <a href={REPO_URL} className={link} target="_blank" rel="noopener noreferrer">
             {REPO_URL.replace("https://", "")}
           </a>
           .

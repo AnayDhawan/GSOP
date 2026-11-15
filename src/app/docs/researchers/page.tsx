@@ -33,14 +33,14 @@ export default function Page() {
         <ul className="max-w-3xl list-disc space-y-3 pl-6">
           <li>
             <code className={code}>claims.csv</code>, served at{" "}
-            <a href={`${SITE_ORIGIN}/data/claims.csv`} className={link}>
+            <a href={`${SITE_ORIGIN}/data/claims.csv`} className={link} target="_blank" rel="noopener noreferrer">
               /data/claims.csv
             </a>
             , lists every number the pages print. Columns: <code className={code}>{cols.join(", ")}</code>.
           </li>
           <li>
             <code className={code}>claims_v2.csv</code> (track A, the thermal layer and gates) and <code className={code}>claims_d.csv</code> (track D, the fitted model) sit in{" "}
-            <a href={`${GITHUB_BLOB}/data/v2/runs/v2`} className={link}>
+            <a href={`${GITHUB_BLOB}/data/v2/runs/v2`} className={link} target="_blank" rel="noopener noreferrer">
               data/v2/runs/v2
             </a>
             . Their columns: <code className={code}>{cols.join(", ")}</code> and <code className={code}>{colsD.join(", ")}</code>.

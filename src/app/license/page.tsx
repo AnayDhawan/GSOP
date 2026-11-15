@@ -30,7 +30,7 @@ export default function Page() {
           </p>
           <p className="text-secondary-foreground">
             The repository is on{" "}
-            <a href={REPO_URL} className={link} rel="noopener noreferrer">
+            <a href={REPO_URL} className={link} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>
             .
