@@ -27,6 +27,7 @@ describe("footer", () => {
     expect(container.textContent).toMatch(/MOD11A2/);
     expect(container.textContent).toMatch(/Diviner/);
     expect(container.textContent).toMatch(/OpenStreetMap contributors/);
+    expect(container.textContent).toMatch(/Basemap: Esri/);
     expect(container.textContent).toMatch(/Code released under the MIT License/);
     expect(container.querySelector(`a[href="mailto:${CONTACT_EMAIL}"]`)).not.toBeNull();
     const strip = screen.getByTestId("bodies-strip");
@@ -38,6 +39,6 @@ describe("footer", () => {
 
   it("credits only sources that are in data/sources_used.csv", () => {
     const names = sourcesUsed().map((s) => s.name + s.provider).join(" ");
-    for (const term of ["MOD11A2", "Diviner", "TES", "LOLA", "MOLA", "SRTM", "Copernicus", "Natural Earth", "OpenStreetMap", "CARTO"]) expect(names).toContain(term);
+    for (const term of ["MOD11A2", "Diviner", "TES", "LOLA", "MOLA", "SRTM", "Copernicus", "Natural Earth", "OpenStreetMap", "Esri"]) expect(names).toContain(term);
   });
 });
