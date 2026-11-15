@@ -135,19 +135,19 @@ export default function Home() {
             <li className="space-y-2 border border-border bg-surface p-5">
               <p className="gsop-label">What we built</p>
               <p className="text-secondary-foreground">
-                A screening tool. Earth is cut into {c("landing.tile_km")} km tiles. The {group(c("metrics.earth.land_tiles"))} land tiles are compared with Moon base and Mars targets, and tiles that fail the land-cover gates get no score. {c("landing.n_sites")} known sites and candidates are listed on one map.
+                An open catalog of Earth places used as Moon and Mars stand-ins, with a screening map on top. Earth&apos;s {group(c("metrics.earth.land_tiles"))} land tiles ({c("landing.tile_km")} km each) are compared with Moon base and Mars targets, and tiles that fail the land-cover gates get no score. The {c("landing.n_sites")} entries, known sites and candidates not in our reference list, sit on one map.
               </p>
             </li>
             <li className="space-y-2 border border-border bg-surface p-5">
               <p className="gsop-label">What we tested</p>
               <p className="text-secondary-foreground">
-                Before the second run we wrote down {NUMBER_WORDS[SHOWN.length]} pass marks, called gates. Then we ran the test and printed every result, failures included.
+                Before the second run we wrote down {NUMBER_WORDS[SHOWN.length]} pass marks, which we call gates. Then we ran it and printed every result, failures too.
               </p>
             </li>
             <li className="space-y-2 border border-border bg-surface p-5">
               <p className="gsop-label">What we found</p>
               <p className="text-secondary-foreground">
-                {NUMBER_WORDS[gateCount("FAIL")].replace(/^./, (x) => x.toUpperCase())} gates failed, {NUMBER_WORDS[gateCount("PASS")]} passed and {NUMBER_WORDS[gateCount("NOT TESTED")]} could not be tested, so this is a screening aid and not a finding. One thing did improve: a thermal layer moved the Namib sand sea, a place that should score low, from percentile {c("v2.result.own.namib.before")} to {c("v2.result.own.namib.after")}.{" "}
+                {NUMBER_WORDS[gateCount("FAIL")].replace(/^./, (x) => x.toUpperCase())} gates failed, {NUMBER_WORDS[gateCount("PASS")]} passed and {NUMBER_WORDS[gateCount("NOT TESTED")]} could not be tested, so GSOP is a screening aid and confirms nothing. One thing did improve: with a thermal layer added, the Namib sand sea, a place that should score low, went from percentile {c("v2.result.own.namib.before")} to {c("v2.result.own.namib.after")}.{" "}
                 <Link href="/gates" className={link}>
                   Every gate result
                 </Link>
@@ -199,10 +199,10 @@ export default function Home() {
           </Reveal>
           <div className="grid gap-10 md:grid-cols-2 md:gap-x-12">
             <Layer delay={0} color={LAYER_COLORS.score} name="The score">
-              Each tile and site gets a score on a zero to one hundred scale against a Moon or Mars reference. It compares terrain and thermal layers. A high score means the layers look alike. It says nothing about gravity, dust, air or radiation.
+              Each tile and site gets a score from zero to one hundred against a Moon or Mars reference, based on terrain and temperature layers. A high score means the layers look alike. It says nothing about gravity, dust, air or radiation.
             </Layer>
             <Layer delay={80} color={LAYER_COLORS.pct} name="Two kinds of percentile">
-              We rank scores inside each world&apos;s own set. The own-tile percentile uses the one tile at the site. The best-of-radius percentile takes the best tile within {c("v2.result.audit.radius_km")} km, and it flatters: a site with random features lands near {c("v2.result.audit.chance_best")} on it.
+              Scores are ranked within each world&apos;s own set. The own-tile percentile uses the single tile at the site. The best-of-radius percentile takes the best tile within {c("v2.result.audit.radius_km")} km, which flatters the site: random features land near {c("v2.result.audit.chance_best")} on it.
             </Layer>
             <Layer delay={160} color={LAYER_COLORS.gates} name="Gates we wrote down first">
               {failed.join(", ")} failed. {gates?.G2c === "PASS" ? "G2(c) passed, and it only checks that our engine reproduces v1. " : ""}
@@ -210,7 +210,7 @@ export default function Home() {
               Every gate is listed below with its numbers.
             </Layer>
             <Layer delay={240} color={LAYER_COLORS.thermal} name="A thermal layer that helped a little">
-              Adding MODIS land surface temperature moved the Namib sand sea from the {c("v2.result.own.namib.before")}th own-tile percentile to the {c("v2.result.own.namib.after")}th. It did nothing for the Mars analogs, and it covers only {c("v2.result.coverage_pct")}% of land tiles.
+              Adding MODIS land surface temperature took the Namib sand sea from own-tile percentile {c("v2.result.own.namib.before")} to {c("v2.result.own.namib.after")}. It did nothing for the Mars analogs, and it covers only {c("v2.result.coverage_pct")}% of land tiles.
             </Layer>
           </div>
         </div>
@@ -287,7 +287,7 @@ export default function Home() {
             The ranking tells you where to look first. It does not tell you a place is a good analog.
           </h2>
           <p className="mt-4 max-w-2xl text-center text-lg leading-relaxed text-white/90">
-            We print the failed gates next to the results. The data build is one command, and a second run gives the same bytes. Every number on this site has a row in a claims file with its source file and hash.
+            The failed gates sit right next to the results. Every number on this site has a row in a claims file with its source file and hash, and one command rebuilds the data files from the v1 results archive.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Link href="/mission" className="bg-white px-5 py-3 text-sm font-semibold text-[#143a57] hover:bg-white/90">

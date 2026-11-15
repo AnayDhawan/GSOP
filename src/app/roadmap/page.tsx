@@ -165,7 +165,7 @@ export default function Page() {
             </li>
           ))}
         </ol>
-        <p className="text-sm text-muted-foreground">Dates are targets, not promises. Nothing here is funded or agreed with an agency.</p>
+        <p className="text-sm text-muted-foreground">Dates are targets. Nothing here is funded or agreed with an agency.</p>
       </section>
 
       <Band tone="grid" labelledBy="lead">
@@ -186,7 +186,7 @@ export default function Page() {
               </li>
             ))}
           </ul>
-          <p className="max-w-3xl text-secondary-foreground">The pre-registered gates decide which row we are in. We do not.</p>
+          <p className="max-w-3xl text-secondary-foreground">The pre-registered gates decide which row we land in, not us.</p>
         </div>
       </Band>
 
