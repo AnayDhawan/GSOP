@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = profileFor(slug);
   const ph = photoFor(slug);
   const description = p?.summary ?? s.why_analog ?? `${s.name}, listed as a ${s.body} analog.`;
-  return { title: s.name, description, openGraph: ph ? { images: [{ url: ph.src, alt: ph.alt }] } : undefined };
+  return { title: s.name, description, openGraph: { images: ph ? [{ url: ph.src, alt: ph.alt }] : [{ url: "/brand/og/gsop-og-image-1200x630.png", width: 1200, height: 630, alt: "The Moon, Earth and Mars" }] } };
 }
 
 const link = "underline underline-offset-4 hover:text-foreground";
