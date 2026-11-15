@@ -147,6 +147,9 @@
   --font-mono: var(--gsop-font-mono);
 }
 
+/* The page scrollbar is black in both themes, like the footer and the hero. */
+:root { scrollbar-color: #3b454b #06080a; }
+
 body {
   overflow-x: clip;
   background: var(--gsop-bg);
@@ -255,15 +258,8 @@ h1, h2, h3, h4, .gsop-display {
   background-position: right -10% center;
   background-size: auto 140%;
 }
-.hero-scrim {
-  background: linear-gradient(to top, rgba(6, 8, 10, 0.97) 0%, rgba(6, 8, 10, 0.88) 40%, rgba(6, 8, 10, 0.45) 62%, rgba(6, 8, 10, 0) 100%);
-}
-@media (min-width: 48rem) {
-  .hero-scrim {
-    background: linear-gradient(to right, rgba(6, 8, 10, 0.86) 0%, rgba(6, 8, 10, 0.55) 38%, rgba(6, 8, 10, 0) 62%);
-  }
-}
-.stat-readout { font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+/* Space Grotesk's normal (proportional) digits. Its tabular digits give the "1" a flag and a base, so they are not used. */
+.stat-readout { font-variant-numeric: normal; font-feature-settings: normal; letter-spacing: -0.02em; white-space: nowrap; }
 @media print {
   [data-reveal] { opacity: 1 !important; transform: none !important; }
 }

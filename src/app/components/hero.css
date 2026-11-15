@@ -12,32 +12,7 @@
 }
 .hero-scene[data-ready="true"] { opacity: 1; }
 
-/* The satellite floats in front of Earth: a slow drift and a gentle roll. Position is a percentage of the scene, so it
-   follows the planet on every screen size. */
-.hero-sat {
-  --sat-left: 66%;
-  --sat-top: 66%;
-  --sat-w: clamp(120px, 15vw, 220px);
-  position: absolute;
-  left: var(--sat-left);
-  top: var(--sat-top);
-  width: var(--sat-w);
-  height: auto;
-  pointer-events: none;
-  user-select: none;
-  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.55));
-  animation: hero-sat-drift 18s ease-in-out infinite alternate;
-  will-change: transform;
-}
-@keyframes hero-sat-drift {
-  from { transform: translate(-50%, -50%) translate(-14px, 8px) rotate(-8deg); }
-  to { transform: translate(-50%, -50%) translate(14px, -8px) rotate(-3deg); }
-}
-@media (max-width: 47.99rem) {
-  .hero-sat { --sat-left: 64%; --sat-top: 70%; --sat-w: 84px; }
-}
-
-/* Fallback without WebGL2: the three disc images on the brand's black, Earth in front. */
+/* Fallback without WebGL2: the Earth disc image on the brand's black. */
 .hero-fallback {
   position: absolute;
   inset: 0;
@@ -51,9 +26,7 @@
   object-fit: cover;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.6);
 }
-.hero-fallback__earth { width: 40vmin; height: 40vmin; left: 55%; top: 50%; transform: translate(-50%, -50%); }
-.hero-fallback__moon { width: 12vmin; height: 12vmin; left: 36%; top: 26%; transform: translate(-50%, -50%); filter: brightness(0.85); }
-.hero-fallback__mars { width: 16vmin; height: 16vmin; left: 84%; top: 30%; transform: translate(-50%, -50%); filter: brightness(0.9); }
+.hero-fallback__earth { width: 60vmin; height: 60vmin; left: 50%; top: 88%; transform: translate(-50%, -50%); }
 
 /* Scroll cue under the hero copy. */
 .hero-cue {
@@ -66,7 +39,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-scene { transition: none; }
-  .hero-sat { animation: none; transform: translate(-50%, -50%) rotate(-5deg); }
   .hero-cue { animation: none; }
 }
-

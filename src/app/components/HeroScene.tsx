@@ -3,19 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import "./hero.css";
 
-/* The hero scene: the Moon, Earth and Mars as lit spheres, rendered in one WebGL2 fragment shader with no library.
-   Each body is an equirectangular map wrapped on a ray-traced sphere, lit by one sun: a real terminator, night lights
-   and a cloud layer on Earth, a thin atmosphere on Earth and a dust halo on Mars. Stars are procedural.
-   Motion: slow axial rotation, pointer parallax on fine pointers. Rendering pauses off-screen and when the tab is
-   hidden. prefers-reduced-motion renders one still frame. Without WebGL2 the static disc images are shown instead. */
+/* The hero scene: Earth turning, with a satellite orbiting it. One WebGL2 fragment shader, no library.
+   Earth is an equirectangular map on a ray-traced sphere, lit by one sun: a real terminator, night lights, a cloud
+   layer and a thin atmosphere. The satellite is a sprite on a tilted orbit. It grows as it comes toward the viewer,
+   crosses in front of Earth, and goes behind it on the far side, where the planet hides it. Stars are procedural.
+   Motion: the turn of Earth, the orbit, pointer parallax on fine pointers. Rendering pauses off-screen and when the tab is
+   hidden. prefers-reduced-motion draws one still frame. Without WebGL2 the Earth disc image is shown instead. */
 
 const TEX = {
   day: "/img/tex/earth-day.jpg",
   night: "/img/tex/earth-night.jpg",
   clouds: "/img/tex/earth-clouds.jpg",
-  moon: "/img/tex/moon.jpg",
-  mars: "/img/tex/mars.jpg",
 } as const;
+const SAT_SRC = "/img/satellite.png";
 
 const VERT = `#version 300 es
 in vec2 aPos;
@@ -29,14 +29,13 @@ uniform vec2 uRes;
 uniform float uTime;
 uniform vec2 uPtr;
 uniform float uFade;
-uniform vec3 uEarth;   // x, y centre in scene units, z radius
-uniform vec3 uMoon;
-uniform vec3 uMars;
+uniform vec3 uEarth;    // x, y centre in scene units, z radius
+uniform vec4 uSat;      // x, y centre, half width, roll
+uniform vec3 uSatMeta;  // x: 1 when the satellite exists, y: 1 when it is in front of Earth, z: image width over height
 uniform sampler2D tDay;
 uniform sampler2D tNight;
 uniform sampler2D tClouds;
-uniform sampler2D tMoon;
-uniform sampler2D tMars;
+uniform sampler2D tSat;
 
 const float PI = 3.14159265;
 const vec3 SUN = normalize(vec3(-0.62, 0.38, 0.69));
@@ -85,14 +84,13 @@ vec3 tilt(vec3 n, float a) {
   return vec3(n.x * c - n.y * s, n.x * s + n.y * c, n.z);
 }
 
-// Composites one body over the scene. Returns the colour and an alpha that includes the halo.
-vec4 body(int kind, vec2 p, vec3 b, float rot) {
+// Earth over the scene. Returns the colour and an alpha that includes the atmosphere glow.
+vec4 earth(vec2 p, vec3 b, float rot) {
   vec2 q = (p - b.xy) / b.z;
   float d = length(q);
-  // Edge width from the body's size on screen, not from fwidth: screen derivatives are not reliable near an early
-  // return, and a bad width here drew a dashed ring at the halo edge.
+  // Edge width from the body's size on screen, not from fwidth: a screen derivative near the limb drew a ring.
   float aa = 1.3 / (b.z * uRes.y);
-  float halo = kind == 1 ? 0.16 : (kind == 2 ? 0.07 : 0.02);
+  float halo = 0.16;
   float inside = step(d, 1.0 + halo);
 
   vec3 col = vec3(0.0);
@@ -103,44 +101,45 @@ vec4 body(int kind, vec2 p, vec3 b, float rot) {
     float diff = dot(n, SUN);
     float lit = clamp(diff, 0.0, 1.0);
     float fres = pow(1.0 - clamp(n.z, 0.0, 1.0), 2.6);
-    if (kind == 1) {
-      vec3 nn = tilt(n, 0.41);
-      vec3 day = sampleEq(tDay, nn, rot).rgb;
-      vec3 night = sampleEq(tNight, nn, rot).rgb;
-      float cl = sampleEq(tClouds, nn, rot * 1.12 + 0.6).r;
-      float ocean = smoothstep(0.08, 0.22, day.b - day.r);
-      float spec = pow(max(dot(reflect(-SUN, n), vec3(0.0, 0.0, 1.0)), 0.0), 60.0) * 0.35 * ocean;
-      vec3 surf = day * (lit * 1.15 + 0.02) + vec3(spec) * lit;
-      surf = mix(surf, vec3(1.0) * (lit * 1.1 + 0.03), cl * 0.9);
-      float dusk = smoothstep(0.14, -0.08, diff);
-      vec3 lights = night * vec3(1.0, 0.86, 0.6) * dusk * (1.0 - cl * 0.8) * 1.3;
-      vec3 atmo = vec3(0.36, 0.62, 1.0) * fres * (lit * 0.9 + 0.12) * 1.1;
-      // Terminator warmth: a thin band of scattered light where day meets night.
-      float band = smoothstep(0.0, 0.08, diff) * (1.0 - smoothstep(0.08, 0.3, diff));
-      col = surf + lights + atmo + vec3(0.9, 0.55, 0.3) * band * 0.08;
-    } else if (kind == 2) {
-      vec3 nn = tilt(n, 0.44);
-      vec3 tex = sampleEq(tMars, nn, rot).rgb;
-      vec3 dust = vec3(0.95, 0.62, 0.45) * fres * (lit * 0.8 + 0.08) * 0.45;
-      col = tex * (lit * 1.2 + 0.015) + dust;
-    } else {
-      vec3 nn = tilt(n, 0.12);
-      vec3 tex = sampleEq(tMoon, nn, rot).rgb;
-      col = tex * vec3(1.0, 0.985, 0.96) * (pow(lit, 0.85) * 1.25 + 0.01);
-    }
+    vec3 nn = tilt(n, 0.41);
+    vec3 day = sampleEq(tDay, nn, rot).rgb;
+    vec3 night = sampleEq(tNight, nn, rot).rgb;
+    float cl = sampleEq(tClouds, nn, rot * 1.12 + 0.6).r;
+    float ocean = smoothstep(0.08, 0.22, day.b - day.r);
+    float spec = pow(max(dot(reflect(-SUN, n), vec3(0.0, 0.0, 1.0)), 0.0), 60.0) * 0.35 * ocean;
+    vec3 surf = day * (lit * 1.15 + 0.02) + vec3(spec) * lit;
+    surf = mix(surf, vec3(1.0) * (lit * 1.1 + 0.03), cl * 0.9);
+    float dusk = smoothstep(0.14, -0.08, diff);
+    vec3 lights = night * vec3(1.0, 0.86, 0.6) * dusk * (1.0 - cl * 0.8) * 1.3;
+    vec3 atmo = vec3(0.36, 0.62, 1.0) * fres * (lit * 0.9 + 0.12) * 1.1;
+    // Terminator warmth: a thin band of scattered light where day meets night.
+    float band = smoothstep(0.0, 0.08, diff) * (1.0 - smoothstep(0.08, 0.3, diff));
+    col = surf + lights + atmo + vec3(0.9, 0.55, 0.3) * band * 0.08;
     alpha = 1.0 - smoothstep(1.0 - aa, 1.0 + aa, d);
   }
 
-  // Outside the limb: the halo, brighter on the sunlit side.
+  // Outside the limb: the atmosphere glow, brighter on the sunlit side.
   if (d > 1.0 - aa) {
     float side = clamp(dot(normalize(q), SUN.xy) * 0.5 + 0.6, 0.0, 1.0);
     float g = exp(-(d - 1.0) / (halo * 0.42)) * side * (1.0 - smoothstep(1.0 + halo * 0.55, 1.0 + halo, d));
-    vec3 gc = kind == 1 ? vec3(0.3, 0.58, 1.0) : (kind == 2 ? vec3(0.9, 0.5, 0.35) : vec3(0.7, 0.72, 0.75));
-    float ga = g * (kind == 1 ? 0.75 : (kind == 2 ? 0.35 : 0.18)) * (1.0 - alpha);
-    col += gc * ga;
+    float ga = g * 0.75 * (1.0 - alpha);
+    col += vec3(0.3, 0.58, 1.0) * ga;
     alpha = alpha + ga;
   }
   return vec4(col, clamp(alpha, 0.0, 1.0)) * inside;
+}
+
+// The satellite sprite: rotated by its roll, sampled with straight alpha.
+vec4 satellite(vec2 p) {
+  if (uSatMeta.x < 0.5) return vec4(0.0);
+  vec2 d = p - uSat.xy;
+  float cr = cos(uSat.w), sr = sin(uSat.w);
+  vec2 q = vec2(cr * d.x + sr * d.y, -sr * d.x + cr * d.y);
+  vec2 uv = vec2(q.x / (2.0 * uSat.z) + 0.5, q.y / (2.0 * uSat.z / uSatMeta.z) + 0.5);
+  float inb = step(0.0, uv.x) * step(uv.x, 1.0) * step(0.0, uv.y) * step(uv.y, 1.0);
+  vec4 s = texture(tSat, clamp(uv, 0.0, 1.0));
+  s.a *= inb;
+  return s;
 }
 
 void main() {
@@ -150,13 +149,13 @@ void main() {
   col += vec3(0.05, 0.08, 0.12) * smoothstep(1.2, -0.2, length(p - vec2(0.6, -0.9))) * 0.35;
   col += stars(p + uPtr * 0.006 + vec2(uTime * 0.0006, 0.0)) * 1.1;
 
-  float t = uTime;
-  vec4 m = body(0, p, uMoon + vec3(uPtr * 0.028, 0.0), 1.2 + t * 0.031);
-  col = mix(col, m.rgb, m.a);
-  vec4 r = body(2, p, uMars + vec3(uPtr * 0.022, 0.0), 2.4 + t * 0.057);
-  col = mix(col, r.rgb, r.a);
-  vec4 e = body(1, p, uEarth + vec3(uPtr * 0.012, 0.0), 1.344 + t * 0.07);
+  vec4 s = satellite(p);
+  // Behind Earth: drawn first, so the planet covers it. In front: drawn last.
+  if (uSatMeta.y < 0.5) col = mix(col, s.rgb, s.a);
+  // Earth turns west to east, so features move to the right.
+  vec4 e = earth(p, uEarth + vec3(uPtr * 0.012, 0.0), 1.344 - uTime * 0.07);
   col = mix(col, e.rgb, e.a);
+  if (uSatMeta.y >= 0.5) col = mix(col, s.rgb, s.a);
 
   // Filmic-ish tone curve and a touch of vignette.
   col = col / (col + 0.55) * 1.42;
@@ -165,19 +164,30 @@ void main() {
   fragColor = vec4(col, 1.0);
 }`;
 
-type Layout = { earth: [number, number, number]; moon: [number, number, number]; mars: [number, number, number] };
+type Layout = { earth: [number, number, number]; orbit: { cx: number; cy: number; a: number; b: number }; satW: number };
 
-/** Body positions in scene units (y from -0.5 to 0.5, x scaled by aspect). Earth in front, Moon left, Mars right. */
+/** Scene units: y runs from -0.5 to 0.5 and x is scaled by the aspect ratio. The canvas is the whole hero. Earth rises from
+    the bottom edge so its top sits just under the text, and the orbit wraps the visible face. */
 function layoutFor(aspect: number): Layout {
-  if (aspect < 1.2) {
-    // Phones: the scene is a block above the copy, so the trio sits centred with Earth in front.
-    return { earth: [0.0, -0.04, 0.36], moon: [-0.37, 0.27, 0.09], mars: [0.37, 0.25, 0.115] };
-  }
-  if (aspect < 1.5) {
-    return { earth: [0.3, -0.06, 0.36], moon: [-0.08, 0.3, 0.1], mars: [0.66, 0.26, 0.14] };
-  }
-  const half = aspect / 2;
-  return { earth: [half * 0.58, -0.1, 0.4], moon: [half * 0.24, 0.33, 0.1], mars: [half * 0.8, 0.3, 0.15] };
+  const wide = aspect >= 1.2;
+  const r = Math.min(wide ? 0.4 : 0.3, aspect * 0.39); // Earth radius
+  const visible = wide ? 0.47 : 0.36; // how much of the canvas height the top of Earth rises into
+  const ey = -0.5 + visible - r;
+  const satW = r * 0.55;
+  const a = Math.max(r * 0.8, Math.min(r * 1.75, aspect / 2 - satW / 2 - 0.03));
+  return { earth: [0, ey, r], orbit: { cx: 0, cy: ey + r * 0.62, a, b: wide ? 0.13 : 0.09 }, satW };
+}
+
+/** The satellite's place on its orbit at phase phi: position, size factor, in front of Earth or not, and roll. */
+function orbit(L: Layout, phi: number) {
+  const tilt = -0.2;
+  const z = Math.sin(phi); // +1 nearest the viewer
+  const lx = -L.orbit.a * Math.cos(phi); // moves left to right in front, the way Earth turns
+  const ly = -L.orbit.b * z; // lower on screen when nearer
+  const x = L.orbit.cx + lx * Math.cos(tilt) - ly * Math.sin(tilt);
+  const y = L.orbit.cy + lx * Math.sin(tilt) + ly * Math.cos(tilt);
+  const scale = 0.93 + 0.23 * z;
+  return { x, y, scale, front: z > 0, roll: tilt * 0.5 + 0.08 * Math.sin(phi) };
 }
 
 function loadImage(src: string): Promise<HTMLImageElement> {
@@ -230,20 +240,19 @@ export default function HeroScene({ satellite = false }: { satellite?: boolean }
     gl.enableVertexAttribArray(aPos);
     gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
     const u = (name: string) => gl.getUniformLocation(prog, name);
-    const U = { res: u("uRes"), time: u("uTime"), ptr: u("uPtr"), fade: u("uFade"), earth: u("uEarth"), moon: u("uMoon"), mars: u("uMars") };
+    const U = { res: u("uRes"), time: u("uTime"), ptr: u("uPtr"), fade: u("uFade"), earth: u("uEarth"), sat: u("uSat"), satMeta: u("uSatMeta") };
 
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
     const fine = window.matchMedia("(pointer: fine)");
     const aniso = gl.getExtension("EXT_texture_filter_anisotropic");
 
     // One texture unit per map. A 1x1 placeholder keeps the first frames valid while the images load.
-    const names = ["tDay", "tNight", "tClouds", "tMoon", "tMars"] as const;
-    const srcs = [TEX.day, TEX.night, TEX.clouds, TEX.moon, TEX.mars];
+    const names = ["tDay", "tNight", "tClouds", "tSat"] as const;
     names.forEach((n, i) => {
       const t = gl.createTexture();
       gl.activeTexture(gl.TEXTURE0 + i);
       gl.bindTexture(gl.TEXTURE_2D, t);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, 1, 1, 0, gl.RGB, gl.UNSIGNED_BYTE, new Uint8Array([20, 24, 28]));
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([20, 24, 28, 0]));
       gl.uniform1i(u(n), i);
     });
 
@@ -251,20 +260,40 @@ export default function HeroScene({ satellite = false }: { satellite?: boolean }
     let fadeTarget = 0;
     let loaded = false;
     let disposed = false;
-    Promise.all(srcs.map(loadImage))
-      .then((imgs) => {
+    let satReady = false;
+    let satAR = 1.6;
+
+    const upload = (unit: number, img: HTMLImageElement, wrapS: number, rgba: boolean) => {
+      gl.activeTexture(gl.TEXTURE0 + unit);
+      const fmt = rgba ? gl.RGBA : gl.RGB;
+      gl.texImage2D(gl.TEXTURE_2D, 0, fmt, fmt, gl.UNSIGNED_BYTE, img);
+      gl.generateMipmap(gl.TEXTURE_2D);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, wrapS);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      if (aniso) gl.texParameterf(gl.TEXTURE_2D, aniso.TEXTURE_MAX_ANISOTROPY_EXT, 4);
+    };
+
+    Promise.all([TEX.day, TEX.night, TEX.clouds].map(loadImage))
+      .then(async (imgs) => {
         if (disposed) return;
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
-        imgs.forEach((img, i) => {
-          gl.activeTexture(gl.TEXTURE0 + i);
-          gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
-          gl.generateMipmap(gl.TEXTURE_2D);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.REPEAT);
-          gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
-          if (aniso) gl.texParameterf(gl.TEXTURE_2D, aniso.TEXTURE_MAX_ANISOTROPY_EXT, 4);
-        });
+        imgs.forEach((img, i) => upload(i, img, gl.REPEAT, false));
+        // The satellite is optional. If its file is missing or fails, Earth still turns on its own.
+        if (satellite) {
+          try {
+            const sat = await loadImage(SAT_SRC);
+            if (!disposed) {
+              upload(3, sat, gl.CLAMP_TO_EDGE, true);
+              satAR = sat.naturalWidth / sat.naturalHeight;
+              satReady = true;
+            }
+          } catch {
+            satReady = false;
+          }
+        }
+        if (disposed) return;
         loaded = true;
         fadeTarget = 1;
         canvas.setAttribute("data-ready", "true");
@@ -280,6 +309,7 @@ export default function HeroScene({ satellite = false }: { satellite?: boolean }
       });
 
     // Size: device pixels capped at 1.5x and at 1600 px wide, so phones and 4K displays both stay smooth.
+    let layout: Layout = layoutFor(1.6);
     let w = 1;
     let h = 1;
     const resize = () => {
@@ -292,10 +322,8 @@ export default function HeroScene({ satellite = false }: { satellite?: boolean }
         canvas.height = h;
       }
       gl.viewport(0, 0, w, h);
-      const L = layoutFor(rect.width / Math.max(1, rect.height));
-      gl.uniform3f(U.earth, ...L.earth);
-      gl.uniform3f(U.moon, ...L.moon);
-      gl.uniform3f(U.mars, ...L.mars);
+      layout = layoutFor(rect.width / Math.max(1, rect.height));
+      gl.uniform3f(U.earth, ...layout.earth);
       gl.uniform2f(U.res, w, h);
       if (reduce.matches && loaded) drawStill();
     };
@@ -319,13 +347,20 @@ export default function HeroScene({ satellite = false }: { satellite?: boolean }
     let raf = 0;
     let visible = true;
     const t0 = performance.now();
+    // The orbit period is about 30 s, a few times faster than Earth turns.
+    const PHI0 = 2.3;
     function draw(now: number) {
+      const t = (now - t0) / 1000;
       px += (tx - px) * 0.06;
       py += (ty - py) * 0.06;
       fade += (fadeTarget - fade) * 0.04;
-      gl!.uniform1f(U.time, (now - t0) / 1000);
+      gl!.uniform1f(U.time, t);
       gl!.uniform2f(U.ptr, px, py);
       gl!.uniform1f(U.fade, Math.min(1, fade + 0.001));
+      const o = orbit(layout, reduce.matches ? PHI0 : PHI0 + t * 0.21);
+      const satW = layout.satW * o.scale;
+      gl!.uniform4f(U.sat, o.x, o.y, satW / 2, o.roll);
+      gl!.uniform3f(U.satMeta, satReady ? 1 : 0, o.front ? 1 : 0, satAR);
       gl!.drawArrays(gl!.TRIANGLES, 0, 3);
     }
     function frame(now: number) {
@@ -378,27 +413,15 @@ export default function HeroScene({ satellite = false }: { satellite?: boolean }
       // The context is left alive on purpose: React can remount this component (StrictMode, navigation back),
       // and a context that was lost on purpose cannot compile shaders again.
     };
-  }, []);
+  }, [satellite]);
 
   if (fallback) {
     return (
-      <div className="hero-fallback" role="img" aria-label="The Moon, Earth and Mars">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/img/bodies/moon.jpg" alt="" className="hero-fallback__moon" />
+      <div className="hero-fallback" role="img" aria-label="Earth">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src="/img/bodies/earth.jpg" alt="" className="hero-fallback__earth" />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/img/bodies/mars.jpg" alt="" className="hero-fallback__mars" />
       </div>
     );
   }
-  return (
-    <>
-      <canvas ref={ref} className="hero-scene" role="img" aria-label="The Moon, Earth and Mars, lit by the Sun, slowly turning" />
-      {satellite && (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img src="/img/satellite.png" alt="" aria-hidden className="hero-sat" draggable={false} />
-      )}
-    </>
-  );
+  return <canvas ref={ref} className="hero-scene" role="img" aria-label="Earth turning, with a satellite orbiting it" />;
 }

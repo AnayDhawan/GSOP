@@ -29,6 +29,18 @@ describe("header", () => {
     for (const d of DOCS) expect(container.querySelector(`#docs-menu a[href="${d.href}"]`), d.href).not.toBeNull();
   });
 
+  it("is transparent at the top of the page and gets a background once the page scrolls", () => {
+    const { container } = render(<SiteHeader />);
+    const header = container.querySelector("header")!;
+    expect(header.getAttribute("data-solid")).toBe("false");
+    expect(header.className).toMatch(/bg-transparent/);
+    Object.defineProperty(window, "scrollY", { value: 120, configurable: true });
+    fireEvent.scroll(window);
+    expect(header.getAttribute("data-solid")).toBe("true");
+    expect(header.className).toMatch(/bg-background/);
+    Object.defineProperty(window, "scrollY", { value: 0, configurable: true });
+  });
+
   it("opens the phone menu from a hamburger with no visible text, and lists every page and guide", () => {
     const { container } = render(<SiteHeader />);
     const burger = screen.getByRole("button", { name: "Open menu" });
@@ -63,6 +75,9 @@ describe("footer", () => {
     expect(container.querySelector(`a[href="mailto:${CONTACT_EMAIL}"]`)).not.toBeNull();
     const strip = screen.getByTestId("bodies-strip");
     expect(strip.textContent).toBe("");
+    // Black in both themes, like the footer above it.
+    expect(strip.getAttribute("data-theme")).toBe("dark");
+    expect(strip.className).toMatch(/bg-black/);
     expect([...strip.querySelectorAll("img")].map((i) => i.alt)).toEqual(["Moon", "Earth", "Mars"]);
     // The strip is after the footer element, not inside it.
     expect(container.querySelector("footer")!.contains(strip)).toBe(false);
