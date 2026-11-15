@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Band from "../components/Band";
+import { DumbbellChart, Meter } from "../components/Charts";
+import PageHero from "../components/PageHero";
+import PagePhoto from "../components/PagePhoto";
 import { claim } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -8,70 +12,109 @@ export const metadata: Metadata = {
 };
 
 const link = "underline underline-offset-4";
+const n = (id: string) => parseFloat(claim(id));
 
-const POINTS = [
+const BODIES = [
+  { key: "moon", alt: "The Moon" },
+  { key: "earth", alt: "The Earth" },
+  { key: "mars", alt: "Mars" },
+];
+
+const PRACTICE = [
   {
-    title: "A screening method, not a verdict",
-    body: "GSOP scores Earth land tiles by how closely their terrain and thermal traits match a lunar or Martian target, then ranks them. The ranking tells a person where to look first. It does not say a place is a good analog.",
+    term: "Pass marks written first",
+    body: "We wrote the pass marks down before the second run started. Each result is printed with its literal status, PASS, FAIL or NOT TESTED, and the failures sit right next to the one pass.",
   },
   {
-    title: "Pre-registered gates, published as stored",
-    body: "Thresholds were written down before the v2 run. Every result is printed with a literal status, PASS, FAIL or NOT TESTED, including the failures.",
+    term: "One command builds the data",
+    body: "Run one command and every data file is rebuilt from stored results. Each number on the site has a row in a claims file that names its source file and hash. A number with no row stops the build.",
   },
   {
-    title: "A reproducible data build",
-    body: "The data files are built by one command from stored results. Every number on the site traces to a row in a claims file with a source path and a hash.",
+    term: "India first",
+    body: "Most analog work leans on a few famous sites. We list the Indian ones beside the rest and ask for ground measurements, because a layer averaged over a whole tile cannot say what a logger at Puga would.",
   },
   {
-    title: "An India focus",
-    body: "Ground data from India is thin in most analog work. The site lists Indian sites next to the global ones and invites field measurements with provenance, so local places can be compared on the same terms.",
+    term: "Candidates stay unreviewed",
+    body: "Regions the method flags are candidates not in our reference list. Nobody has reviewed them yet, and the site says so wherever they appear.",
   },
 ];
 
 export default function Page() {
   return (
-    <article className="max-w-3xl space-y-10">
-      <header className="space-y-3">
-        <h1 className="text-3xl">Mission</h1>
-        <p className="text-lg text-secondary-foreground">
-          Space agencies need places on Earth to test equipment and train crews for work on the Moon and Mars. GSOP is an open screening method that helps choose which places to look at, and says plainly how far the evidence goes.
-        </p>
-      </header>
+    <>
+      <PageHero
+        title="Mission"
+        lede="People who plan Moon and Mars missions need somewhere on Earth to try their rovers, drills and habitats first. GSOP ranks Earth land tiles by how closely they resemble a lunar or Martian target, so a team can decide where to look first."
+      />
 
-      <section className="space-y-4" aria-labelledby="what">
-        <h2 id="what" className="text-2xl">
-          What we are doing
-        </h2>
-        <ul className="space-y-3">
-          {POINTS.map((p) => (
-            <li key={p.title} className="border border-border p-4">
-              <h3 className="text-lg">{p.title}</h3>
-              <p className="mt-1 text-secondary-foreground">{p.body}</p>
-            </li>
+      <div className="grid items-center gap-10 md:grid-cols-[1.2fr_1fr]">
+        <div className="space-y-4">
+          <h2 className="text-2xl">A starting list</h2>
+          <p className="text-secondary-foreground">
+            The ranking uses terrain and, in the second run, surface temperature. It says nothing about gravity, dust, radiation or air. A person still has to go and look, and this site is built to make that first look cheaper.
+          </p>
+          <p className="text-secondary-foreground">Mars is a low-confidence secondary result. The ranking has not been checked against independent data.</p>
+        </div>
+        <div className="flex items-center justify-center gap-3">
+          {BODIES.map((b) => (
+            <PagePhoto key={b.key} src={`/img/bodies/${b.key}.jpg`} alt={b.alt} width={600} height={600} className="w-1/3 [&_img]:rounded-full [&_img]:border-0" />
           ))}
-        </ul>
-      </section>
+        </div>
+      </div>
 
-      <section className="space-y-3" aria-labelledby="honest">
-        <h2 id="honest" className="text-2xl">
-          Honesty is part of the design
+      <Band tone="grid" labelledBy="practice">
+        <h2 id="practice" className="mb-8 text-2xl">
+          How we work
         </h2>
-        <ul className="list-disc space-y-2 pl-6">
-          <li>
-            Adding an Earth thermal layer lowered the own-tile percentile of the Namib sand sea from {claim("v2.result.own.namib.before")} to {claim("v2.result.own.namib.after")}. That is the one positive result, and it comes with caveats on the{" "}
-            <Link href="/gates" className={link}>
-              gates page
-            </Link>
-            .
-          </li>
-          <li>
-            The thermal layer covers {claim("v2.result.coverage_pct")}% of land tiles in its band, below the share the plan required. Gate G1 failed.
-          </li>
-          <li>Mars is a low-confidence secondary result.</li>
-          <li>The ranking has not been checked against independent data.</li>
-        </ul>
-        <p>
-          Read the{" "}
+        <dl className="grid gap-x-10 gap-y-8 md:grid-cols-2">
+          {PRACTICE.map((p) => (
+            <div key={p.term} className="border-t-2 border-foreground pt-3">
+              <dt className="font-display text-xl">{p.term}</dt>
+              <dd className="mt-2 text-secondary-foreground">{p.body}</dd>
+            </div>
+          ))}
+        </dl>
+      </Band>
+
+      <Band tone="accent" labelledBy="result">
+        <h2 id="result" className="mb-2 text-2xl">
+          The one thing that improved
+        </h2>
+        <p className="mb-8 max-w-2xl text-secondary-foreground">
+          Adding an Earth thermal layer lowered the own-tile percentile of the Namib sand sea, a Moon negative control, from {claim("v2.result.own.namib.before")} to {claim("v2.result.own.namib.after")}. Lower is better for a control. The{" "}
+          <Link href="/gates" className={link}>
+            gates page
+          </Link>{" "}
+          lists the caveats.
+        </p>
+        <div className="grid gap-10 md:grid-cols-2">
+          <DumbbellChart
+            title="Own-tile percentile of two Moon controls"
+            fromLabel="terrain only"
+            toLabel="with the thermal layer"
+            rows={[
+              { label: "Namib sand sea", from: n("v2.result.own.namib.before"), to: n("v2.result.own.namib.after"), fromDisplay: claim("v2.result.own.namib.before"), toDisplay: claim("v2.result.own.namib.after") },
+              { label: "Rub' al Khali", from: n("v2.result.own.rak.before"), to: n("v2.result.own.rak.after"), fromDisplay: claim("v2.result.own.rak.before"), toDisplay: claim("v2.result.own.rak.after") },
+            ]}
+          />
+          <Meter
+            title="Thermal coverage of land tiles in its band"
+            caption="Gate G1 asked for more than the layer delivered, and it failed."
+            value={n("v2.result.coverage_pct")}
+            display={`${claim("v2.result.coverage_pct")}%`}
+            required={n("v2.result.g1.required_pct")}
+            requiredDisplay={`${claim("v2.result.g1.required_pct")}%`}
+            tone="mars"
+          />
+        </div>
+      </Band>
+
+      <Band tone="raised" labelledBy="next">
+        <h2 id="next" className="mb-3 text-2xl">
+          Where to go from here
+        </h2>
+        <p className="mb-5 max-w-2xl text-secondary-foreground">
+          The{" "}
           <Link href="/method" className={link}>
             methodology
           </Link>{" "}
@@ -79,18 +122,17 @@ export default function Page() {
           <Link href="/ledger" className={link}>
             failure-first ledger
           </Link>{" "}
-          for the limits in full.
+          give the limits in full.
         </p>
-      </section>
-
-      <p className="flex flex-wrap gap-x-6 gap-y-2">
-        <Link href="/dashboard" className={`font-display text-lg ${link}`}>
-          Open the dashboard
-        </Link>
-        <Link href="/contribute" className={`font-display text-lg ${link}`}>
-          Contribute
-        </Link>
-      </p>
-    </article>
+        <p className="flex flex-wrap gap-x-8 gap-y-2 font-display text-lg">
+          <Link href="/dashboard" className={link}>
+            Open the dashboard
+          </Link>
+          <Link href="/contribute" className={link}>
+            Contribute
+          </Link>
+        </p>
+      </Band>
+    </>
   );
 }

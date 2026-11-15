@@ -10,12 +10,14 @@ import ContactPage from "./contact/page";
 import MissionPage from "./mission/page";
 import ContributePage from "./contribute/page";
 import PrivacyPage from "./privacy/page";
+import NotFoundPage from "./not-found";
 import { e32Sentence } from "@/lib/data";
 import { sourcesUsed } from "@/lib/pages-data";
 
 vi.mock("next/link", () => ({ default: ({ href, children, ...r }: { href: string; children: React.ReactNode }) => <a href={href} {...r}>{children}</a> }));
 
 const BANNED = bannedRegex();
+const DASHES = new RegExp(`[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}]`);
 const PAGES: [string, ComponentType, string][] = [
   ["license", LicensePage, "License"],
   ["data-sources", DataSourcesPage, "Data sources"],
@@ -24,6 +26,7 @@ const PAGES: [string, ComponentType, string][] = [
   ["mission", MissionPage, "Mission"],
   ["contribute", ContributePage, "Contribute"],
   ["privacy", PrivacyPage, "Privacy"],
+  ["not found", NotFoundPage, "Page not found"],
 ];
 
 describe.each(PAGES)("%s page", (_name, Page, heading) => {
@@ -32,7 +35,9 @@ describe.each(PAGES)("%s page", (_name, Page, heading) => {
     expect(screen.getByRole("heading", { level: 1, name: heading })).toBeTruthy();
     const text = container.textContent ?? "";
     expect(text).not.toMatch(BANNED);
-    expect(text).not.toContain("—");
+    expect(text).not.toMatch(DASHES);
+    expect(container.querySelector("svg")).toBeNull();
+    expect(container.querySelector(".page-hero h1")).not.toBeNull();
     expect(text).not.toMatch(/\bNaN\b|\bundefined\b/);
   });
 });
@@ -81,9 +86,7 @@ describe("contact page", () => {
     expect(hrefs).toContain("https://github.com/AnayDhawan");
     expect(hrefs).toContain("https://github.com/yakew7");
     expect(hrefs).toContain("https://github.com/AnayDhawan/GSOP");
-    expect(container.textContent).toMatch(/Vihaan/);
-    expect(container.textContent).toMatch(/Shiven/);
-    expect(container.textContent).toMatch(/Shaurya/);
+    for (const name of ["Yash Kewlani", "Anay Dhawan", "Vihaan Bhagwat", "Shiven Sood", "Shaurya Jani", "Shaurya Gangrade"]) expect(container.textContent).toContain(name);
     for (const h of hrefs) expect(h).not.toMatch(/vihaan|shiven|shaurya/i);
     expect(container.textContent).not.toMatch(/simulator/i);
   });

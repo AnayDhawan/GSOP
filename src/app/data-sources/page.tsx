@@ -1,4 +1,8 @@
 import type { Metadata } from "next";
+import Band from "../components/Band";
+import { Meter } from "../components/Charts";
+import PageHero from "../components/PageHero";
+import PagePhoto from "../components/PagePhoto";
 import { claim, v2File } from "@/lib/data";
 import { sourcesUsed, type SourceRow } from "@/lib/pages-data";
 
@@ -8,13 +12,12 @@ export const metadata: Metadata = {
 };
 
 const link = "underline underline-offset-4";
-const BODY_ORDER = ["Earth", "Moon", "Mars", "Display"];
-const BODY_TITLE: Record<string, string> = {
-  Earth: "Earth",
-  Moon: "Moon",
-  Mars: "Mars",
-  Display: "Display only",
-};
+const BODIES: { body: string; title: string; edge: string }[] = [
+  { body: "Earth", title: "Earth", edge: "border-earth" },
+  { body: "Moon", title: "Moon", edge: "border-moon" },
+  { body: "Mars", title: "Mars", edge: "border-mars" },
+  { body: "Display", title: "Display only", edge: "border-border" },
+];
 
 function Table({ rows, caption }: { rows: SourceRow[]; caption: string }) {
   return (
@@ -54,41 +57,62 @@ export default function Page() {
   const v2 = v2File();
   const cov = v2.results?.limitations.find((l) => l.id === "coverage");
   return (
-    <article className="max-w-4xl space-y-10">
-      <header className="space-y-3">
-        <h1 className="text-3xl">Data sources</h1>
-        <p className="text-secondary-foreground">
-          Every source below was used in a result shown on this site, and every source used is listed. The list is one file in the repository (data/sources_used.csv); the footer credits read the same file. Each dataset keeps the licence of its provider. Raw files are not redistributed here.
-        </p>
-      </header>
+    <>
+      <PageHero
+        title="Data sources"
+        lede="Every source below fed a result shown on this site, and every source we used is listed. The list is one file in the repository, data/sources_used.csv, and the footer credits read the same file."
+      />
 
-      <section className="space-y-3 border border-control p-4" aria-labelledby="caveat">
-        <h2 id="caveat" className="text-xl">
+      <p className="max-w-3xl text-secondary-foreground">Each dataset keeps its provider&apos;s licence. We do not redistribute the raw files.</p>
+
+      <Band tone="accent" labelledBy="caveat">
+        <h2 id="caveat" className="mb-6 text-2xl">
           Quality and coverage caveat
         </h2>
-        <p>
-          Coverage share {claim("v2.result.g1.coverage")} against a required {claim("v2.result.g1.required")}. Gate G1 is <strong>{v2.results?.gate_statuses.G1 ?? "not available"}</strong>.
-        </p>
-        {cov ? <p>{cov.text}</p> : null}
-        <p className="text-secondary-foreground">
-          Tiles with no thermal value are not scored, so a place in an excluded region has no v2 score. Skin temperature at satellite overpass is not air temperature, and cloud gaps remain.
-        </p>
-      </section>
+        <div className="grid items-start gap-10 md:grid-cols-2">
+          <div className="space-y-3">
+            <p>
+              Coverage share {claim("v2.result.g1.coverage")} against a required {claim("v2.result.g1.required")}. Gate G1 is <strong>{v2.results?.gate_statuses.G1 ?? "not available"}</strong>.
+            </p>
+            {cov ? <p className="text-secondary-foreground">{cov.text}</p> : null}
+            <p className="text-secondary-foreground">
+              Tiles with no thermal value are not scored, so a place in an excluded region has no v2 score. Skin temperature at satellite overpass is not air temperature, and cloud gaps remain.
+            </p>
+          </div>
+          <Meter
+            title="Land tiles with a thermal value"
+            caption="Between the southern and northern latitude limits of the band."
+            value={parseFloat(claim("v2.result.coverage_pct"))}
+            display={`${claim("v2.result.coverage_pct")}%`}
+            required={parseFloat(claim("v2.result.g1.required_pct"))}
+            requiredDisplay={`${claim("v2.result.g1.required_pct")}%`}
+            tone="mars"
+          />
+        </div>
+      </Band>
 
-      {BODY_ORDER.map((b) => {
-        const r = rows.filter((x) => x.body === b);
+      {BODIES.map((b, i) => {
+        const r = rows.filter((x) => x.body === b.body);
         if (r.length === 0) return null;
         return (
-          <section key={b} className="space-y-3" aria-labelledby={`b-${b}`}>
-            <h2 id={`b-${b}`} className="text-2xl">
-              {BODY_TITLE[b]}
+          <section key={b.body} aria-labelledby={`b-${b.body}`} className={`mb-10 space-y-3 border-l-4 pl-5 ${b.edge}`}>
+            <h2 id={`b-${b.body}`} className="text-2xl">
+              {b.title}
             </h2>
-            <Table rows={r} caption={`${BODY_TITLE[b]} sources`} />
+            <Table rows={r} caption={`${b.title} sources`} />
+            {i === 0 ? (
+              <PagePhoto src="/data/overlays/shackleton_rim.png" alt="World map coloured by the score against the Shackleton rim target, base profile" width={3600} height={1383} dark className="pt-4" caption="One of the three score overlays built from these sources. Transparent means no v1 score, not a low one." />
+            ) : null}
           </section>
         );
       })}
 
-      <p className="text-secondary-foreground">The reference site list is teammate-written and unreviewed. Candidates not in our reference list are suggestions, not findings.</p>
-    </article>
+      <Band tone="raised" labelledBy="list-note">
+        <h2 id="list-note" className="sr-only">
+          About the site list
+        </h2>
+        <p className="max-w-3xl text-secondary-foreground">The reference site list is teammate-written and unreviewed. Candidates not in our reference list are suggestions, not findings.</p>
+      </Band>
+    </>
   );
 }

@@ -11,6 +11,7 @@ import { publicDataFiles } from "@/lib/pages-data";
 vi.mock("next/link", () => ({ default: ({ href, children, ...r }: { href: string; children: React.ReactNode }) => <a href={href} {...r}>{children}</a> }));
 
 const BANNED = bannedRegex();
+const DASHES = new RegExp(`[${String.fromCharCode(0x2014)}${String.fromCharCode(0x2013)}]`);
 const PAGES: [string, ComponentType, string][] = [
   ["docs index", DocsIndex, "Docs"],
   ["researchers", Researchers, "For independent researchers"],
@@ -30,7 +31,9 @@ describe.each(PAGES)("%s", (_n, Page, heading) => {
     expect(screen.getByRole("heading", { level: 1, name: heading })).toBeTruthy();
     const t = container.textContent ?? "";
     expect(t).not.toMatch(BANNED);
-    expect(t).not.toContain("—");
+    expect(t).not.toMatch(DASHES);
+    expect(container.querySelector("svg")).toBeNull();
+    expect(container.querySelector(".page-hero h1")).not.toBeNull();
     expect(t).not.toMatch(/\bNaN\b|\bundefined\b|REST API/);
   });
 });
