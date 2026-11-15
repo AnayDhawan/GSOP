@@ -44,7 +44,7 @@ describe("landing page", () => {
 
   it("links to the dashboard and the other results pages", () => {
     render(<Home />);
-    for (const href of ["/dashboard", "/ledger", "/map", "/sites", "/gates", "/contribute", "/docs"]) expect(document.querySelector(`a[href="${href}"]`), href).not.toBeNull();
+    for (const href of ["/dashboard", "/ledger", "/map", "/sites", "/gates", "/contribute"]) expect(document.querySelector(`a[href="${href}"]`), href).not.toBeNull();
   });
 
   it("uses none of the banned words and renders no NaN or undefined", () => {

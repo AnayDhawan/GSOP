@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 import Logo from "./Logo";
 import BodiesStrip from "./BodiesStrip";
 import { CONTACT_EMAIL, FOOTER_LEGAL, FOOTER_QUICK, REPO_URL } from "@/lib/nav";
@@ -15,12 +15,14 @@ const CREDITS =
 export default function SiteFooter() {
   return (
     <>
-      <footer className="mt-16 border-t border-border bg-background">
+      {/* The footer is black in both themes: data-theme="dark" scopes the dark tokens to it. */}
+      <footer data-theme="dark" className="mt-16 border-t border-border bg-black text-foreground">
         <div className="mx-auto w-full max-w-6xl px-6 py-12">
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-3">
-              <Link href="/" aria-label="GSOP home" className="inline-flex">
+              <Link href="/" aria-label="GSOP home" className="inline-flex items-center gap-3">
                 <Logo height={32} />
+                <span className="font-display text-2xl font-semibold tracking-wide text-foreground">GSOP</span>
               </Link>
               <p className="max-w-xs text-sm leading-relaxed text-secondary-foreground">
                 A screening index for Earth analog sites, built from open data, with its sources and limits in public.
@@ -63,7 +65,6 @@ export default function SiteFooter() {
                 </li>
                 <li>
                   <a href={`mailto:${CONTACT_EMAIL}`} className={`${LINK} gap-2`}>
-                    <Mail className="h-4 w-4" aria-hidden />
                     Email
                   </a>
                 </li>
@@ -79,9 +80,12 @@ export default function SiteFooter() {
           <div className="mt-10 space-y-3 border-t border-border pt-6 text-xs leading-relaxed text-muted-foreground">
             <p>{DISCLAIMER}</p>
             <p>{CREDITS}</p>
-            <p>
-              &copy; 2026 GSOP. Code released under the {licenseName()}.
-            </p>
+            <div className="flex flex-wrap items-center justify-between gap-4">
+              <p>
+                &copy; 2026 GSOP. Code released under the {licenseName()}.
+              </p>
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       </footer>

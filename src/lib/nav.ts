@@ -1,7 +1,14 @@
 // Single list of routes. The header, footer and tests read it, so a route cannot be missing from one of them.
 export type NavItem = { href: string; label: string; description: string };
 
-/** Header links, in order. The theme toggle sits to the right of them. */
+/** The three guides under the Docs menu in the header. */
+export const DOCS: NavItem[] = [
+  { href: "/docs/researchers", label: "For independent researchers", description: "Claim files, score trails, citation and what the data does not support" },
+  { href: "/docs/organizations", label: "For research organizations", description: "Using the exports as a candidate pre-filter" },
+  { href: "/docs/data-access", label: "Data file access", description: "Every static file, with path and schema" },
+];
+
+/** Header links, in order. Docs is a menu of its own (see DOCS). There is no theme toggle in the header; it lives in the footer. */
 export const NAV: NavItem[] = [
   { href: "/dashboard", label: "Dashboard", description: "Reference sites ranked by similarity, Moon and Mars" },
   { href: "/method", label: "Methodology", description: "How the screening works, and what it cannot tell you" },
@@ -15,7 +22,6 @@ export const RESULTS: NavItem[] = [
   { href: "/gates", label: "Gate results", description: "Which pre-registered gates failed, with the one positive result" },
   { href: "/ledger", label: "Failure-First Ledger", description: "What failed and where the analogy breaks down" },
   { href: "/sites", label: "Sites", description: "Reference sites and candidates, with the stored score at each" },
-  { href: "/docs", label: "Docs", description: "Guides for researchers and organizations, and the static data files" },
   { href: "/map", label: "Honest Map", description: "Where v1 scores high, with the controls that failed in red" },
 ];
 
