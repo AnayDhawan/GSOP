@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>GSOP demo deck</title>
+<style>
+@font-face{font-family:'Space Grotesk';font-weight:500;src:url('../../public/brand/fonts/space-grotesk-latin-500-normal.woff2')}
+@font-face{font-family:'Space Grotesk';font-weight:600;src:url('../../public/brand/fonts/space-grotesk-latin-600-normal.woff2')}
+@font-face{font-family:'Space Grotesk';font-weight:700;src:url('../../public/brand/fonts/space-grotesk-latin-700-normal.woff2')}
+@font-face{font-family:'Inter';font-weight:400;src:url('../../public/brand/fonts/inter-latin-400-normal.woff2')}
+@font-face{font-family:'Inter';font-weight:500;src:url('../../public/brand/fonts/inter-latin-500-normal.woff2')}
+@font-face{font-family:'Inter';font-weight:600;src:url('../../public/brand/fonts/inter-latin-600-normal.woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:500;src:url('../../public/brand/fonts/jetbrains-mono-latin-500-normal.woff2')}
+@page{size:1280px 720px;margin:0}
+:root{--bg:#06080A;--surface:#0D1114;--raised:#1B2024;--line:#30383D;--text:#ECEDE8;--muted:#A9ADB1;--blue:#287DB5;--red:#E8806E;--green:#43BD8B;--violet:#7C3AED}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.slide{width:1280px;height:720px;overflow:hidden;position:relative;padding:48px 64px 56px;page-break-after:always;break-after:page;background:var(--bg)}
+.slide:last-child{page-break-after:auto;break-after:auto}
+.kicker{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:14px;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+h1,h2{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.01em;line-height:1.1}
+h1{font-size:96px;letter-spacing:.09em}
+h2{font-size:44px;margin-bottom:22px}
+p,li{font-size:20px;line-height:1.45;color:var(--text)}
+.muted{color:var(--muted)}
+ul{list-style:none}
+ul.b li{padding-left:22px;position:relative;margin-bottom:12px}
+ul.b li:before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;background:var(--blue)}
+.foot{position:absolute;left:64px;right:64px;bottom:22px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:.08em;color:var(--muted)}
+.cols{display:flex;gap:40px}
+.shot{border:1px solid var(--line);display:block}
+.cap{font-size:13px;color:var(--muted);margin-top:6px}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:500;padding:2px 8px;border:1px solid currentColor}
+.fail{color:var(--red)}.pass{color:var(--green)}.nt{color:var(--muted)}
+table{border-collapse:collapse;width:100%}
+th{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);text-align:left;padding:4px 8px;border-bottom:1px solid var(--line)}
+td{font-size:17px;padding:5px 8px;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.3}
+td.g{font-weight:600;white-space:nowrap}
+.box{background:var(--surface);border:1px solid var(--line);padding:14px 16px}
+.box h3{font-family:'Space Grotesk',sans-serif;font-size:19px;margin-bottom:4px}
+.box p{font-size:15px;color:var(--muted);line-height:1.35}
+.flow{display:flex;align-items:stretch;gap:0}
+.flow .box{flex:1}
+.arrow{width:30px;display:flex;align-items:center;justify-content:center;color:var(--blue);font-size:26px}
+.ai{position:absolute;font-family:'Inter',sans-serif;font-size:13px;color:var(--text);background:rgba(6,8,10,.82);padding:4px 8px}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide" id="s1">
+  <img src="../../public/brand/logos/gsop-logo-horizontal-dark.svg" alt="GSOP" style="height:44px;margin-bottom:34px">
+  <div style="width:600px">
+    <div class="kicker">Geospatial Similarity Observation Platform</div>
+    <h1>GSOP</h1>
+    <p style="font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;line-height:1.2;margin:22px 0 14px">Which places on Earth look most like Moon and Mars sites, and how far can we trust that answer?</p>
+    <p class="muted" style="font-size:19px">A transparent, reproducible screening method with an India focus. Every result is published, failures included.</p>
+    <p class="muted" style="font-size:16px;margin-top:26px">Anay Dhawan, Yash Kewlani, Vihaan Bhagwat, Shiven Sood, Shaurya Jani, Shaurya Gangrade</p>
+    <p style="font-size:16px;margin-top:8px;font-family:'JetBrains Mono',monospace;color:var(--blue)">gsoplatform.vercel.app</p>
+  </div>
+  <img src="../img/landing.jpg" alt="GSOP landing page" class="shot" style="position:absolute;right:64px;top:90px;width:520px;height:488px;object-fit:cover;object-position:50% 40%">
+  <div class="ai" style="right:64px;top:550px">Satellite image: AI-generated illustration</div>
+  <div class="foot"><span>NASA Space Apps Challenge 2026</span><span>Screening aid, not a verdict</span></div>
+</section>
+
+<!-- 2 -->
+<section class="slide" id="s2">
+  <div class="kicker">Why it matters</div>
+  <h2>Analog sites are picked by hand. We can screen all of Earth's land.</h2>
+  <div class="cols">
+    <div style="flex:1.05">
+      <ul class="b">
+        <li><strong>The need:</strong> teams planning Moon and Mars missions need somewhere on Earth to test rovers, drills and habitats first.</li>
+        <li><strong>The gap:</strong> the usual analog sites are few and well worn, and the choice is often ad hoc.</li>
+        <li><strong>Who benefits:</strong> mission planners, students and field scientists who want a place to look first.</li>
+        <li><strong>India focus:</strong> 6 India entries are in our reference list, and one of the 20 candidate regions overlaps the India outline.</li>
+        <li><strong>The limit:</strong> a ranked screen says where to look. It does not say a place is a good analog.</li>
+      </ul>
+    </div>
+    <div style="flex:.95">
+      <img class="shot" src="../../public/brand/motifs/gsop-planetary-comparison-dark.webp" alt="Moon, Earth and Mars" style="width:100%">
+      <p class="cap">Moon, Earth and Mars. No Earth place has lunar gravity, vacuum or radiation.</p>
+    </div>
+  </div>
+  <div class="foot"><span>GSOP</span><span>Why it matters</span></div>
+</section>
+
+<!-- 3 -->
+<section class="slide" id="s3">
+  <div class="kicker">Method in one picture</div>
+  <h2>Open data in, a ledger of every number out</h2>
+  <div class="flow">
+    <div class="box"><h3>1. Open data</h3><p>12 sources: NASA MODIS, LRO LOLA and Diviner, MOLA, TES, USGS, ESA Copernicus DEM.</p></div>
+    <div class="arrow">&rarr;</div>
+    <div class="box"><h3>2. Features</h3><p>Earth cut into equal-area tiles, 6 km on a side. 3,972,955 land tiles.</p></div>
+    <div class="arrow">&rarr;</div>
+    <div class="box"><h3>3. Tile similarity</h3><p>Each tile compared with Moon and Mars reference profiles. A Monte Carlo varies the weights.</p></div>
+    <div class="arrow">&rarr;</div>
+    <div class="box"><h3>4. Pre-registered gates</h3><p>Pass marks written before the run. Every status printed as PASS, FAIL or NOT TESTED.</p></div>
+    <div class="arrow">&rarr;</div>
+    <div class="box"><h3>5. Claims ledger</h3><p>Every number on the site has a row with its source file and hash.</p></div>
+  </div>
+  <div style="margin-top:22px;display:flex;gap:28px;align-items:flex-start">
+    <div>
+      <div class="shot" style="width:690px;height:268px;overflow:hidden;position:relative"><img src="../img/methodology-map.jpg" alt="World map of v1 scores" style="position:absolute;width:899px;left:-100px;top:-47px"></div>
+      <p class="cap">Where v1 produced a score. Land without colour was gated out or had no data. That is not a low score.</p>
+    </div>
+    <ul class="b" style="flex:1">
+      <li style="font-size:18px">Terrain from Copernicus DEM and SRTM; in the second run, land surface temperature from MODIS.</li>
+      <li style="font-size:18px">No new simulation on this site: it only reads the saved results.</li>
+      <li style="font-size:18px">The ranking is a screening aid and has not been checked against independent data.</li>
+    </ul>
+  </div>
+  <div class="foot"><span>GSOP</span><span>Method</span></div>
+</section>
+
+<!-- 4 -->
+<section class="slide" id="s4">
+  <div class="kicker">What we got</div>
+  <h2>An honest map and a reference list</h2>
+  <div class="cols">
+    <div style="flex:1">
+      <img class="shot" src="../img/dashboard-india.jpg" alt="Dashboard India view" style="width:100%;height:360px;object-fit:cover;object-position:50% 40%">
+      <p class="cap">Dashboard, India view. Violet markers are public-source highlights: unreviewed, not scored.</p>
+    </div>
+    <div style="flex:1.05">
+      <ul class="b">
+        <li style="font-size:18px"><strong>Honest Map:</strong> scores for each target, with gated-out land shown as no score.</li>
+        <li style="font-size:18px"><strong>Reference list:</strong> 120 sites, 100 known and 20 candidates not in our reference list.</li>
+        <li style="font-size:18px"><strong>Regions:</strong> 20 candidate regions, all marked unreviewed.</li>
+        <li style="font-size:18px"><strong>India table:</strong> 6 India entries in the reference list, plus an India highlights layer from public sources.</li>
+        <li style="font-size:18px"><strong>What held up:</strong> adding the Earth thermal layer cut the fitted model's held-out Moon false-positive rate from 21.4% to 1.0%, against a chance range of 11.4% to 34.8%. Own-tile percentile of the Namib sand sea fell from 41.9 to 5.1, and of the Rub' al Khali from 11.5 to 3.4. Lower is better for a control.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>GSOP</span><span>Results</span></div>
+</section>
+
+<!-- 5 -->
+<section class="slide" id="s5" style="padding-top:40px">
+  <div class="kicker">What failed and why</div>
+  <h2 style="font-size:38px;margin-bottom:14px">What the v2 gates found</h2>
+  <div class="cols" style="gap:28px">
+    <div style="flex:1.45">
+      <table>
+        <tr><th>Gate</th><th>Status</th><th>Evidence</th></tr>
+        <tr><td class="g">G1 coverage</td><td><span class="tag fail">FAIL</span></td><td>Coverage 0.7340 vs required 0.85</td></tr>
+        <tr><td class="g">G2 scoring</td><td><span class="tag fail">FAIL</span></td><td>Fails because a clause failed</td></tr>
+        <tr><td class="g">G2(a) Moon controls</td><td><span class="tag fail">FAIL</span></td><td>Namib 58.2, Rub' al Khali 38.0, maximum 25</td></tr>
+        <tr><td class="g">G2(b) Mars analogs</td><td><span class="tag fail">FAIL</span></td><td>0/4 scorable sites at or above the 95th percentile</td></tr>
+        <tr><td class="g">G2(c) baseline</td><td><span class="tag pass">PASS</span></td><td>Reproduces v1: 90.19 / 75.56 / 61.29</td></tr>
+        <tr><td class="g">G3 regions</td><td><span class="tag fail">FAIL</span></td><td>2 supported regions, both Shackleton rim</td></tr>
+        <tr><td class="g">D1 held-out false positives</td><td><span class="tag nt">NOT TESTED</span></td><td>Blocked by the coverage gate</td></tr>
+        <tr><td class="g">D2 Mars recall</td><td><span class="tag nt">NOT TESTED</span></td><td>Blocked by the coverage gate</td></tr>
+        <tr><td class="g">Moon recall</td><td><span class="tag nt">NOT TESTED</span></td><td>Two Moon positives, one not scorable</td></tr>
+      </table>
+    </div>
+    <div style="flex:1">
+      <div class="box" style="margin-bottom:10px">
+        <h3 style="color:var(--red)">Negative controls scored too high</h3>
+        <p>In the terrain-only baseline the Namib sand sea scored 90.2 and the Rub' al Khali 75.6, against a maximum of 25. Mars median 61.3, against 90 needed.</p>
+      </div>
+      <div class="box" style="margin-bottom:10px">
+        <h3>Mars</h3>
+        <p>Mars is a low-confidence secondary result. Only 4 Mars analog sites could be scored, and none reached the top group.</p>
+      </div>
+      <div class="box">
+        <h3>Limit</h3>
+        <p>The thermal layer covers 73.4% of land tiles; tiles without a value are left out, so the Earth set is not a random sample. The ranking has not been checked against independent data.</p>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:15px;line-height:1.4;color:var(--muted);margin-top:14px;border-left:2px solid var(--blue);padding-left:12px">The Monte Carlo varies the weights and, for the Moon only, the slope and relief measurement error, and applies no systematic Earth bias to any of the 15 Earth columns, so the reported score bands and robust-tile counts understate the real uncertainty.</p>
+  <div class="foot"><span>GSOP</span><span>Failures shown as they are</span></div>
+</section>
+
+<!-- 6 -->
+<section class="slide" id="s6">
+  <div class="kicker">How to use it</div>
+  <h2>Look, check, download, send us ground data</h2>
+  <div class="cols">
+    <div style="flex:1">
+      <img class="shot" src="../img/dashboard-site-card.jpg" alt="Dashboard site card" style="width:100%;height:410px;object-fit:cover;object-position:50% 30%">
+      <p class="cap">Dashboard: pick Moon, Mars, World or India, then open a site card.</p>
+    </div>
+    <div style="flex:1">
+      <ul class="b">
+        <li style="font-size:20px"><strong>Site pages:</strong> dashboard, methodology, mission, India highlights.</li>
+        <li style="font-size:18px"><strong>Evidence layer:</strong> /gates shows every gate status, /ledger shows every claim and its source.</li>
+        <li style="font-size:18px"><strong>Downloads:</strong> the data is static open files; no login, no server queries.</li>
+        <li style="font-size:18px"><strong>Open code:</strong> github.com/AnayDhawan/GSOP (MIT).</li>
+        <li style="font-size:18px"><strong>Send us data:</strong> measurements with a date, a place and an instrument go to /contribute. Ground data from India is the first thing we want.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="muted" style="font-size:16px;margin-top:14px">Candidate and site text is labelled unreviewed. Nobody on the team has checked those sources yet.</p>
+  <div class="foot"><span>GSOP</span><span>gsoplatform.vercel.app</span></div>
+</section>
+
+<!-- 7 -->
+<section class="slide" id="s7" style="padding-top:40px">
+  <div class="kicker">Next, credits and AI use</div>
+  <h2 style="font-size:38px;margin-bottom:16px">Next: a longer run, checked on the ground</h2>
+  <div class="cols" style="gap:32px">
+    <div style="flex:1">
+      <ul class="b">
+        <li style="font-size:19px;margin-bottom:10px"><strong>Build it properly:</strong> one package, typed inputs, tests, every step cached and hashed.</li>
+        <li style="font-size:19px;margin-bottom:10px"><strong>A longer run:</strong> full Monte Carlo over every land tile and target, more Moon and Mars targets, drop-one-layer checks, a fresh negative set, held-out sites.</li>
+        <li style="font-size:19px;margin-bottom:10px"><strong>Ground check, India first:</strong> Ladakh, Kutch, Lonar. Then score the pre-registered gates and publish every result.</li>
+        <li style="font-size:19px;margin-bottom:10px"><strong>If gates fail again,</strong> we publish the negative result. Dates are targets; nothing is funded or agreed with an agency.</li>
+      </ul>
+      <p style="font-size:15px;font-weight:600;margin:14px 0 4px">Data credits</p>
+      <p class="muted" style="font-size:16px;line-height:1.4">NASA MODIS, LRO LOLA and Diviner, MOLA, TES; USGS; ESA Copernicus DEM; Natural Earth; NASA Blue Marble. Earth textures in the site hero from Solar System Scope (CC BY 4.0).</p>
+    </div>
+    <div style="flex:1">
+      <div class="box">
+        <h3>How AI was used</h3>
+        <ul class="b" style="margin-top:6px">
+          <li style="font-size:16px;line-height:1.35;margin-bottom:8px">The site, scripts and docs were written with Claude Code under human direction, and checked by automated tests.</li>
+          <li style="font-size:16px;line-height:1.35;margin-bottom:8px">The hero satellite was generated with ChatGPT's image tool and is labelled "Satellite image: AI-generated illustration".</li>
+          <li style="font-size:16px;line-height:1.35;margin-bottom:8px">Descriptive text for analog sites came from a spreadsheet made with an AI model and is labelled unreviewed.</li>
+          <li style="font-size:16px;line-height:1.35;margin-bottom:0">No number is generated by AI at build time or in the browser.</li>
+        </ul>
+      </div>
+      <div class="box" style="margin-top:12px">
+        <h3>Links</h3>
+        <p style="color:var(--text);font-family:'JetBrains Mono',monospace;font-size:16px;line-height:1.6">Site: gsoplatform.vercel.app<br>Code: github.com/AnayDhawan/GSOP<br>Gates: /gates &nbsp; Ledger: /ledger<br>Roadmap: /roadmap &nbsp; India: /india</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>GSOP</span><span>Open code, open data, failures shown</span></div>
+</section>
+
+</body>
+</html>
