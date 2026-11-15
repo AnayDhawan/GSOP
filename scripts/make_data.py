@@ -17,6 +17,7 @@ from gsop_data import fmt  # noqa: E402
 from gsop_data.v1 import V1  # noqa: E402
 
 REPO = os.path.dirname(HERE)
+V1_ZIP_SHA256 = "0c634823629cb3e1719feafd053f99cc3eea1aabc974316fa1a7fefcf7a4076a"  # recorded in docs/DATA_NOTES.md
 
 
 class Ctx:
@@ -130,6 +131,17 @@ def main(argv=None):
                 print(f"supabase export failed ({e}); using the committed snapshot", file=sys.stderr)
         else:
             print("supabase export: no keys set, using the committed snapshot (or the CSV if there is none)")
+    if not os.path.isfile(a.zip):
+        print(
+            f"make_data: the v1 results zip was not found at {a.zip}.\n"
+            "It is not committed (it is too large). Expected file: gsop_v1_results_2026-11-14.zip, "
+            f"sha256 {V1_ZIP_SHA256}.\n"
+            "Ask the team for it (see the README, section Rebuild the data) and pass its path with --zip.\n"
+            "Without it, the committed files under public/data are the reference: "
+            "python3 scripts/check_claims.py checks every number and hash against them.",
+            file=sys.stderr,
+        )
+        return 2
     v1 = V1(a.zip)
     ctx = Ctx(v1, a.csv, a.root)
     if not a.skip_verify:
