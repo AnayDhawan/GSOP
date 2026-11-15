@@ -14,6 +14,8 @@ const primaryBtn =
   "inline-flex min-h-12 shrink-0 items-center whitespace-nowrap bg-[color-mix(in_srgb,var(--gsop-earth-blue)_80%,black)] px-6 font-display text-lg font-semibold text-white transition-opacity hover:opacity-90";
 const ghostBtn = "inline-flex min-h-12 items-center whitespace-nowrap border border-current/40 px-5 font-display text-lg transition-colors hover:border-current";
 const num = (id: string) => parseFloat(claim(id));
+// Counts printed in prose are words, read from the stored gate statuses, so no number is typed into the page.
+const NUMBER_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight"];
 
 const LAYER_COLORS = { score: "#e8a33d", pct: "#287db5", gates: "#b84b3a", thermal: "#24865f" };
 
@@ -22,7 +24,6 @@ function Kicker({ n, children }: { n: string; children: React.ReactNode }) {
   return (
     <p className="gsop-label flex items-center gap-3">
       <span className="text-foreground">{n}</span>
-      <span aria-hidden className="h-px w-8 bg-border" />
       <span>{children}</span>
     </p>
   );
@@ -125,6 +126,39 @@ export default function Home() {
         <a href="#glance" className="hero-cue absolute bottom-4 left-1/2 z-10 -translate-x-1/2 p-3 text-secondary-foreground hover:text-foreground max-md:hidden" aria-label="Scroll to the data">
           <span aria-hidden className="block h-3 w-3 rotate-45 border-b-2 border-r-2 border-current" />
         </a>
+      </section>
+
+      {/* The short version, in plain words, for a visitor with one minute: what was built, what was tested, what was found. */}
+      <section aria-labelledby="short" className={`${container} py-14 md:py-20`}>
+        <Reveal className="space-y-8">
+          <h2 id="short" className="text-3xl md:text-4xl">
+            The short version
+          </h2>
+          <ul className="grid gap-4 md:grid-cols-3">
+            <li className="space-y-2 border border-border bg-surface p-5">
+              <p className="gsop-label">What we built</p>
+              <p className="text-secondary-foreground">
+                A screening tool. Earth is cut into {c("landing.tile_km")} km tiles. The {group(c("metrics.earth.land_tiles"))} land tiles are compared with Moon base and Mars targets, and tiles that fail the land-cover gates get no score. {c("landing.n_sites")} known sites and candidates are listed on one map.
+              </p>
+            </li>
+            <li className="space-y-2 border border-border bg-surface p-5">
+              <p className="gsop-label">What we tested</p>
+              <p className="text-secondary-foreground">
+                Before the second run we wrote down {NUMBER_WORDS[SHOWN.length]} pass marks, called gates. Then we ran the test and printed every result, failures included.
+              </p>
+            </li>
+            <li className="space-y-2 border border-border bg-surface p-5">
+              <p className="gsop-label">What we found</p>
+              <p className="text-secondary-foreground">
+                {NUMBER_WORDS[gateCount("FAIL")].replace(/^./, (x) => x.toUpperCase())} gates failed, {NUMBER_WORDS[gateCount("PASS")]} passed and {NUMBER_WORDS[gateCount("NOT TESTED")]} could not be tested, so this is a screening aid and not a finding. One thing did improve: a thermal layer moved the Namib sand sea, a place that should score low, from percentile {c("v2.result.own.namib.before")} to {c("v2.result.own.namib.after")}.{" "}
+                <Link href="/gates" className={link}>
+                  Every gate result
+                </Link>
+                .
+              </p>
+            </li>
+          </ul>
+        </Reveal>
       </section>
 
       {/* The product, as a link to it. */}
