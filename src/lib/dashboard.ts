@@ -26,7 +26,20 @@ export type DashSite = {
   tag: string;
   /** Longer explanation for the tag, shown as a tooltip. */
   tagTitle: string;
+  /** Descriptive fields from sites.json for the map card. Teammate-written, unreviewed, may be missing. */
+  elevationText?: string | null;
+  whyAnalog?: string | null;
+  experiments?: string | null;
 };
+
+/** Map extent: the whole world, or the India window (the local-data focus of the project). */
+export type DashExtent = "World" | "India";
+export const EXTENTS: DashExtent[] = ["World", "India"];
+/** South-west and north-east corners of the India window, in degrees. */
+export const INDIA_BOUNDS: [[number, number], [number, number]] = [
+  [6.0, 68.0],
+  [37.5, 97.5],
+];
 
 export type DashboardData = {
   sites: DashSite[];
@@ -35,6 +48,8 @@ export type DashboardData = {
   refreshed: string;
   window: string;
   e32: string;
+  /** v1 match radius in km (claims.csv lookup.match_radius_km): the area v1 searched around each site for its best tile. */
+  matchRadiusKm?: number;
 };
 
 /** The warm ramp used by the legend and the markers, light yellow to dark red over the 0 to 100 score range. */

@@ -2,9 +2,9 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
 import DashboardPanel from "./DashboardPanel";
-import { filterSites, LEGEND_TITLE, RAMP_CSS, type DashBody, type DashboardData } from "@/lib/dashboard";
+import SiteCard from "./SiteCard";
+import { EXTENTS, filterSites, LEGEND_TITLE, RAMP_CSS, type DashBody, type DashExtent, type DashSite, type DashboardData } from "@/lib/dashboard";
 import { cn } from "@/lib/utils";
 import type { Locate } from "./DashboardMap";
 
@@ -19,13 +19,15 @@ function MapPlaceholder() {
 const DashboardMap = dynamic(() => import("./DashboardMap"), { ssr: false, loading: () => <MapPlaceholder /> });
 
 const BODIES: DashBody[] = ["Moon", "Mars"];
+const DEFAULT_RADIUS_KM = 20;
 
 const barButton =
   "flex min-h-10 shrink-0 items-center justify-center px-3 text-sm text-secondary-foreground hover:bg-surface-raised hover:text-foreground disabled:opacity-60 md:min-h-9";
 
 export default function DashboardClient({ data }: { data: DashboardData }) {
-  const router = useRouter();
   const [body, setBody] = useState<DashBody>("Moon");
+  const [extent, setExtent] = useState<DashExtent>("World");
+  const [selected, setSelected] = useState<DashSite | null>(null);
   const [query, setQuery] = useState("");
   const [hovered, setHovered] = useState<string | null>(null);
   const [fullscreen, setFullscreen] = useState(false);
@@ -40,11 +42,10 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
     for (const s of bodySites) if (s.scoreValue !== null) m.set(s.id, ++n);
     return m;
   }, [bodySites]);
-  const rows = useMemo(() => {
-    return filterSites(bodySites, query);
-  }, [bodySites, query]);
+  const rows = useMemo(() => filterSites(bodySites, query), [bodySites, query]);
 
-  const open = useCallback((slug: string) => router.push(`/sites/${slug}`), [router]);
+  const select = useCallback((s: DashSite) => setSelected(s), []);
+  const radiusKm = data.matchRadiusKm ?? DEFAULT_RADIUS_KM;
 
   function locate() {
     if (!navigator.geolocation) {
@@ -66,14 +67,17 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
     );
   }
 
+  // Escape closes the site card first, then leaves fullscreen.
   useEffect(() => {
-    if (!fullscreen) return;
+    if (!fullscreen && !selected) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setFullscreen(false);
+      if (e.key !== "Escape") return;
+      if (selected) setSelected(null);
+      else setFullscreen(false);
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [fullscreen]);
+  }, [fullscreen, selected]);
 
   const helperTitle = `Each site shows its higher stored v1 score against ${data.viewsByBody[body].join(" and ")}. Hover a row to see which target it came from.`;
   const note = body === "Mars" ? "Mars is a low-confidence secondary result. Sites are compared with the Jezero target only." : null;
@@ -86,7 +90,7 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
       <div className="flex min-h-0 flex-1 flex-col md:flex-row">
         <section aria-label="Map" className="relative isolate min-h-[60vh] flex-1 md:min-h-0">
           <div className="absolute inset-0">
-            <DashboardMap sites={bodySites} bodyKey={body} hoveredSlug={hovered} onOpen={open} me={me} resizeKey={fullscreen} />
+            <DashboardMap sites={bodySites} bodyKey={body} extent={extent} hoveredSlug={hovered} selected={selected} onSelect={select} radiusKm={radiusKm} me={me} resizeKey={fullscreen} />
           </div>
           <div className="absolute left-1/2 top-3 z-[1000] flex max-w-[calc(100%-1.5rem)] -translate-x-1/2 items-center gap-0.5 rounded-full border border-border bg-surface/95 p-1 shadow-sm backdrop-blur-sm">
             <div role="group" aria-label="Reference body" className="flex items-center gap-0.5">
@@ -98,6 +102,7 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
                   onClick={() => {
                     setBody(b);
                     setQuery("");
+                    setSelected(null);
                   }}
                   className={cn(
                     "min-h-10 rounded-full px-4 text-sm font-medium md:min-h-9",
@@ -109,24 +114,42 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
               ))}
             </div>
             <span className="mx-1 h-5 w-px shrink-0 bg-border" aria-hidden />
-            <button type="button" onClick={locate} disabled={locating} className={cn(barButton, "rounded-full")} title="Show my location on the map">
+            <div role="group" aria-label="Map extent" className="flex items-center gap-0.5">
+              {EXTENTS.map((x) => (
+                <button
+                  key={x}
+                  type="button"
+                  aria-pressed={extent === x}
+                  onClick={() => setExtent(x)}
+                  className={cn(
+                    "min-h-10 rounded-full px-3 text-sm font-medium md:min-h-9",
+                    extent === x ? "bg-surface-raised text-foreground ring-1 ring-border" : "text-secondary-foreground hover:bg-surface-raised hover:text-foreground",
+                  )}
+                >
+                  {x}
+                </button>
+              ))}
+            </div>
+            <span className="mx-1 h-5 w-px shrink-0 bg-border max-sm:hidden" aria-hidden />
+            <button type="button" onClick={locate} disabled={locating} className={cn(barButton, "rounded-full max-sm:hidden")} title="Show my location on the map">
               {locating ? "Locating..." : "Locate"}
             </button>
             <button
               type="button"
               onClick={() => setFullscreen((v) => !v)}
-              className={cn(barButton, "rounded-full")}
+              className={cn(barButton, "rounded-full max-md:hidden")}
               title={fullscreen ? "Exit fullscreen (Esc)" : "View the map fullscreen"}
             >
               {fullscreen ? "Exit fullscreen" : "Fullscreen"}
             </button>
           </div>
+          {selected && <SiteCard site={selected} radiusKm={radiusKm} onClose={() => setSelected(null)} />}
           {locateError && (
             <p role="status" className="absolute left-1/2 top-16 z-[1000] -translate-x-1/2 border border-border bg-surface/95 px-3 py-1 text-sm text-foreground">
               {locateError}
             </p>
           )}
-          <div className="absolute bottom-7 left-3 z-[1000] w-[220px] border border-border bg-surface/95 p-3 text-xs backdrop-blur-sm">
+          <div className={cn("absolute bottom-7 left-3 z-[1000] w-[220px] border border-border bg-surface/95 p-3 text-xs backdrop-blur-sm", selected && "max-md:hidden")}>
             <p className="mb-1.5 font-semibold text-foreground">{LEGEND_TITLE}</p>
             <div className="h-3 rounded-sm" style={{ background: RAMP_CSS }} aria-hidden />
             <div className="mt-1 flex justify-between text-secondary-foreground">

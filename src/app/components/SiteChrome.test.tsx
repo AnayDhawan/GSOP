@@ -28,6 +28,22 @@ describe("header", () => {
     expect(docsBtn.getAttribute("aria-expanded")).toBe("true");
     for (const d of DOCS) expect(container.querySelector(`#docs-menu a[href="${d.href}"]`), d.href).not.toBeNull();
   });
+
+  it("opens the phone menu from a hamburger with no visible text, and lists every page and guide", () => {
+    const { container } = render(<SiteHeader />);
+    const burger = screen.getByRole("button", { name: "Open menu" });
+    expect(burger.textContent).toBe("");
+    expect(burger.getAttribute("aria-expanded")).toBe("false");
+    expect(container.querySelector("#mobile-menu")?.hasAttribute("hidden")).toBe(true);
+    fireEvent.click(burger);
+    const close = screen.getByRole("button", { name: "Close menu" });
+    expect(close.getAttribute("aria-expanded")).toBe("true");
+    const menu = container.querySelector("#mobile-menu")!;
+    expect(menu.hasAttribute("hidden")).toBe(false);
+    for (const n of NAV) expect(menu.querySelector(`a[href="${n.href}"]`), n.href).not.toBeNull();
+    for (const d of DOCS) expect(menu.querySelector(`a[href="${d.href}"]`), d.href).not.toBeNull();
+    expect(menu.querySelector('a[aria-current="page"]')?.textContent).toBe("Methodology");
+  });
 });
 
 describe("footer", () => {

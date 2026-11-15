@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { bannedRegex } from "@/lib/banned";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
@@ -6,18 +8,22 @@ import { claim, e32Sentence } from "@/lib/data";
 
 vi.mock("next/link", () => ({ default: ({ href, children, className }: { href: string; children: React.ReactNode; className?: string }) => <a href={href} className={className}>{children}</a> }));
 vi.mock("./components/HeroScene", () => ({ default: () => <svg data-testid="hero-scene" /> }));
-vi.mock("./components/HeroSpace", () => ({ default: () => <div data-testid="hero-space" /> }));
 
 describe("landing page", () => {
-  it("opens with GSOP and a one-line description, centred, over the space backdrop", () => {
+  const decisions = fs.readFileSync(path.join(process.cwd(), "docs/DECISIONS_SITE.md"), "utf-8");
+  const locked = (label: string) => decisions.match(new RegExp(`^${label}: \\*\\*(.+?)\\*\\*`, "m"))![1];
+
+  it("opens with the locked headline, one data-scale subline from claims, and the scene", () => {
     render(<Home />);
     const h1 = screen.getByRole("heading", { level: 1 });
-    expect(h1.textContent).toBe("GSOP");
+    expect(h1.textContent).toBe(locked("Headline"));
     const hero = h1.closest("section")!;
-    expect(hero.querySelectorAll("p")).toHaveLength(1);
-    expect(h1.parentElement!.className).toMatch(/text-center/);
-    expect(screen.getByTestId("hero-scene")).toBeInTheDocument();
-    expect(screen.getByTestId("hero-space")).toBeInTheDocument();
+    const subline = h1.nextElementSibling!;
+    expect(subline.tagName).toBe("P");
+    expect(subline.textContent).toContain(claim("landing.n_sites"));
+    expect(subline.textContent).toContain(claim("landing.n_sources"));
+    expect(within(hero).getByTestId("hero-scene")).toBeInTheDocument();
+    expect(hero.querySelector('a[href="/dashboard"]')).not.toBeNull();
     expect(hero.querySelector("svg:not([data-testid])")).toBeNull();
   });
 
@@ -35,7 +41,7 @@ describe("landing page", () => {
     for (let i = 1; i < els.length; i++) expect(els[i - 1].compareDocumentPosition(els[i]) & Node.DOCUMENT_POSITION_FOLLOWING, names[i]).toBeTruthy();
   });
 
-  it("prints the gate results literally and the E32 sentence verbatim", () => {
+  it("prints the gate results literally, a tally, and the E32 sentence verbatim", () => {
     render(<Home />);
     const section = screen.getByRole("heading", { name: "Gate results, as reported" }).closest("section")!;
     const t = (gate: string) => within(section).getByText(gate, { exact: true }).parentElement!.textContent;
@@ -44,6 +50,7 @@ describe("landing page", () => {
     expect(t("G2(c)")).toMatch(/PASS/);
     expect(t("G3")).toMatch(/FAIL/);
     for (const g of ["D1", "D2", "Moon recall"]) expect(t(g)).toMatch(/NOT TESTED/);
+    expect(within(section).getByLabelText("Gate tally").textContent).toMatch(/3\s*fail\s*1\s*pass\s*3\s*not tested/i);
     expect(within(section).getByText(new RegExp(`${claim("v2.result.coverage_pct")}% vs ${claim("v2.result.g1.required_pct")}%`))).toBeInTheDocument();
     expect(within(section).getByText(e32Sentence())).toBeInTheDocument();
     expect(section.querySelector('a[href="/gates"]')).not.toBeNull();

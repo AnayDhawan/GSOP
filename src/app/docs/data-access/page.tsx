@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 const link = "underline underline-offset-4";
-const code = "gsop-mono bg-surface px-1";
+const code = "gsop-mono bg-surface px-1 break-all";
 
 export default function Page() {
   const files = publicDataFiles();
@@ -22,7 +22,7 @@ export default function Page() {
     <>
       <PageHero title="Data file access" lede="GSOP has no server-side interface. The data is a set of static files that you fetch by URL, and nothing is queried or filtered on our side." />
 
-      <div className="grid items-start gap-10 md:grid-cols-2">
+      <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-2">
         <section aria-labelledby="terms" className="space-y-3">
           <h2 id="terms" className="text-2xl">
             Terms of access

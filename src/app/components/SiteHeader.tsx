@@ -88,30 +88,41 @@ export default function SiteHeader() {
 
         <button
           type="button"
-          className="inline-flex h-10 min-w-16 items-center justify-center border border-border px-3 text-sm text-secondary-foreground md:hidden"
+          className="group relative -mr-2 inline-flex size-11 items-center justify-center text-foreground md:hidden"
           aria-expanded={open}
           aria-controls={MENU_ID}
+          aria-label={open ? "Close menu" : "Open menu"}
           onClick={() => setOpen((v) => !v)}
         >
-          {open ? "Close" : "Menu"}
+          {/* Three bars that turn into an X. Plain spans, so the header carries no icon svg. */}
+          <span aria-hidden className="relative block h-3.5 w-6">
+            <span className={`absolute left-0 h-0.5 w-full bg-current transition-all duration-200 ${open ? "top-1.5 rotate-45" : "top-0"}`} />
+            <span className={`absolute left-0 top-1.5 h-0.5 w-full bg-current transition-opacity duration-150 ${open ? "opacity-0" : "opacity-100"}`} />
+            <span className={`absolute left-0 h-0.5 w-full bg-current transition-all duration-200 ${open ? "top-1.5 -rotate-45" : "top-3"}`} />
+          </span>
         </button>
       </div>
 
-      <nav id={MENU_ID} aria-label="Main (menu)" hidden={!open} className="border-t border-border bg-background md:hidden">
+      <nav id={MENU_ID} aria-label="Main (menu)" hidden={!open} className="max-h-[calc(100svh-4rem)] overflow-y-auto border-t border-border bg-background md:hidden">
         <ul className="mx-auto max-w-6xl px-6 py-2">
           {NAV.map((n) => (
-            <li key={n.href}>
-              <Link href={n.href} aria-current={isActive(pathname, n.href) ? "page" : undefined} className="flex min-h-11 items-center text-base text-foreground">
+            <li key={n.href} className="border-b border-border last:border-b-0">
+              <Link
+                href={n.href}
+                aria-current={isActive(pathname, n.href) ? "page" : undefined}
+                className={`flex min-h-12 items-center justify-between text-lg ${isActive(pathname, n.href) ? "font-semibold text-foreground" : "text-secondary-foreground"}`}
+              >
                 {n.label}
+                {isActive(pathname, n.href) ? <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-earth" /> : null}
               </Link>
             </li>
           ))}
-          <li className="border-t border-border pt-2">
+          <li className="border-t border-border pb-2 pt-3">
             <p className="gsop-label py-1">Docs</p>
             <ul>
               {DOCS.map((d) => (
                 <li key={d.href}>
-                  <Link href={d.href} className="flex min-h-11 items-center text-base text-foreground">
+                  <Link href={d.href} aria-current={isActive(pathname, d.href) ? "page" : undefined} className="flex min-h-12 items-center text-base text-secondary-foreground">
                     {d.label}
                   </Link>
                 </li>
