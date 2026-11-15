@@ -2210,13 +2210,13 @@
         "label": "Typical time spent underground per course",
         "value": "6",
         "unit": "days",
-        "source_url": "https://m.esa.int/Our_Activities/Human_and_Robotic_Exploration/Caves/CAVES_exploring_inner_space_for_outer_space"
+        "source_url": "https://web.archive.org/web/20190115121220/http://m.esa.int:80/Our_Activities/Human_and_Robotic_Exploration/Caves/CAVES_exploring_inner_space_for_outer_space"
       },
       {
         "label": "Nights underground in the 2016 course",
         "value": "6",
         "unit": "nights",
-        "source_url": "https://www.esa.int/Our_Activities/Human_Spaceflight/Going_underground"
+        "source_url": "https://web.archive.org/web/20181217160529/http://www.esa.int/Our_Activities/Human_Spaceflight/Going_underground"
       }
     ],
     "image": {
@@ -2228,8 +2228,8 @@
       "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
     },
     "sources": [
-      "https://www.esa.int/Our_Activities/Human_Spaceflight/Going_underground",
-      "https://m.esa.int/Our_Activities/Human_and_Robotic_Exploration/Caves/CAVES_exploring_inner_space_for_outer_space",
+      "https://web.archive.org/web/20181217160529/http://www.esa.int/Our_Activities/Human_Spaceflight/Going_underground",
+      "https://web.archive.org/web/20190115121220/http://m.esa.int:80/Our_Activities/Human_and_Robotic_Exploration/Caves/CAVES_exploring_inner_space_for_outer_space",
       "https://phys.org/news/2012-09-astronauts-underground.html"
     ],
     "confidence": "low",
@@ -3095,7 +3095,7 @@
         "label": "Early Apollo suit tests",
         "value": "1965 and 1966",
         "unit": "year",
-        "source_url": "https://www.nasa.gov/wp-content/uploads/static/history/alsj/of2005-1190_figs_040-059.pdf"
+        "source_url": "https://web.archive.org/web/20250501041034/https://www.nasa.gov/wp-content/uploads/static/history/alsj/of2005-1190_figs_040-059.pdf"
       }
     ],
     "image": {
@@ -3108,7 +3108,7 @@
     },
     "sources": [
       "https://en.wikipedia.org/wiki/Hopi_Buttes_volcanic_field",
-      "https://www.nasa.gov/wp-content/uploads/static/history/alsj/of2005-1190_figs_040-059.pdf",
+      "https://web.archive.org/web/20250501041034/https://www.nasa.gov/wp-content/uploads/static/history/alsj/of2005-1190_figs_040-059.pdf",
       "https://www.phoenixnewtimes.com/arts/arizona-prepared-apollo-astronauts-for-moon-50th-anniversary-11328808"
     ],
     "confidence": "medium",
@@ -3309,7 +3309,7 @@
     "sources": [
       "https://en.wikipedia.org/wiki/Tolbachik",
       "https://www.planetary.org/space-images/planet-kamchatka",
-      "https://www.brown.edu/Departments/Engineering/Workshops/Microrover/slides/Lunokhod_talk_Microrover_workshop.pdf",
+      "https://web.archive.org/web/20231222204339/https://www.brown.edu/Departments/Engineering/Workshops/Microrover/slides/Lunokhod_talk_Microrover_workshop.pdf",
       "https://eugene.kaspersky.com/2021/10/26/some-do-politics-i-prefer-the-tolbachiks/"
     ],
     "confidence": "low",
@@ -3879,7 +3879,7 @@
         "label": "Rover test site distance from Dunhuang (2011 report)",
         "value": "about 200",
         "unit": "km",
-        "source_url": "https://europe.chinadaily.com.cn/china/2011-10/26/content_13982769.htm"
+        "source_url": "https://web.archive.org/web/20120526003130/http://europe.chinadaily.com.cn/china/2011-10/26/content_13982769.htm"
       }
     ],
     "image": {
@@ -3892,7 +3892,7 @@
     },
     "sources": [
       "https://en.wikipedia.org/wiki/Kumtag_Desert",
-      "https://europe.chinadaily.com.cn/china/2011-10/26/content_13982769.htm",
+      "https://web.archive.org/web/20120526003130/http://europe.chinadaily.com.cn/china/2011-10/26/content_13982769.htm",
       "https://www.solardaily.com/reports/Chinas_most_moon_like_place_999.html",
       "https://www.planetary.org/articles/07211715-change-3-update-still-alive"
     ],
