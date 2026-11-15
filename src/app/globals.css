@@ -286,3 +286,29 @@ h1, h2, h3, h4, .gsop-display {
 [data-theme="dark"] .text-earth { color: #5AAEE6; }
 [data-theme="dark"] .text-positive { color: #43BD8B; }
 [data-theme="light"] .text-earth { color: #1F6EA3; }
+
+/* ---- Page text (Anay, 2026-11-15): section titles and text are centred. Tables, code, charts, forms and the long
+   reference notes stay left-aligned, because data reads better that way. The dashboard is an app and is left alone. ---- */
+main:not([data-app]) { text-align: center; }
+main:not([data-app]) :is(table, pre, details, form, [data-left], [role="search"], input, select, textarea, label) { text-align: left; }
+main:not([data-app]) :is([class*="max-w-xl"], [class*="max-w-2xl"], [class*="max-w-3xl"], [class*="max-w-4xl"]) { margin-inline: auto; }
+/* Lists keep their bullets, set inline so a centred line does not leave the marker stranded at the edge. */
+main:not([data-app]) :is(ul, ol) { list-style-position: inside; padding-left: 0; }
+main:not([data-app]) :is(table, pre, details, form, [data-left]) :is(ul, ol) { list-style-position: outside; padding-left: 1.5rem; }
+
+/* A section title: Space Grotesk, centred, with a short accent rule under it and room before the body. */
+main:not([data-app]) h2 {
+  font-family: var(--gsop-font-display);
+  text-align: center;
+  margin-inline: auto;
+  margin-bottom: 1.5rem;
+}
+main:not([data-app]) h2::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 3px;
+  margin: 0.9rem auto 0;
+  background: var(--gsop-earth-blue);
+}
+main:not([data-app]) details h2::after, main:not([data-app]) [data-left] h2::after { margin-inline: 0; }
