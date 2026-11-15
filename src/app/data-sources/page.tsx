@@ -95,7 +95,7 @@ export default function Page() {
         const r = rows.filter((x) => x.body === b.body);
         if (r.length === 0) return null;
         return (
-          <section key={b.body} aria-labelledby={`b-${b.body}`} className={`mb-10 space-y-3 border-l-4 pl-5 ${b.edge}`}>
+          <section key={b.body} aria-labelledby={`b-${b.body}`} className={`mb-10 space-y-3 border-t-4 pt-5 ${b.edge}`}>
             <h2 id={`b-${b.body}`} className="text-2xl">
               {b.title}
             </h2>

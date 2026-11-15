@@ -239,4 +239,4 @@ h1, h2, h3, h4, .gsop-display {
     linear-gradient(to bottom, color-mix(in srgb, var(--gsop-border) 55%, transparent) 1px, transparent 1px);
   background-size: 36px 36px;
 }
-.band-accent { box-shadow: inset 4px 0 0 var(--gsop-earth-blue); }
+.band-accent { box-shadow: inset 0 4px 0 var(--gsop-earth-blue); }

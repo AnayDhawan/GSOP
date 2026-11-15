@@ -42,13 +42,13 @@ export default function Page() {
       </Band>
 
       <div className="grid gap-10 md:grid-cols-2">
-        <section aria-labelledby="stays" className="space-y-3 border-l-4 border-earth pl-5">
+        <section aria-labelledby="stays" className="space-y-3 border-t-4 border-earth pt-5">
           <h2 id="stays" className="text-xl">
             Stays on your device
           </h2>
           <p className="text-secondary-foreground">Your theme choice, dark or light, sits in your browser&apos;s local storage so the site remembers it. Nothing sends it anywhere.</p>
         </section>
-        <section aria-labelledby="ours" className="space-y-3 border-l-4 border-mars pl-5">
+        <section aria-labelledby="ours" className="space-y-3 border-t-4 border-mars pt-5">
           <h2 id="ours" className="text-xl">
             Served from this site
           </h2>
