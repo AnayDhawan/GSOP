@@ -1,3 +1,4 @@
+import { bannedRegex } from "@/lib/banned";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import Page from "./page";
@@ -87,7 +88,7 @@ describe("v2 gates page", () => {
   it("has no banned words, no dashes used as punctuation and sentence-case headings", () => {
     const { container } = render(<Page />);
     const text = (container.textContent ?? "").replace(e32Sentence(), "");
-    expect(text).not.toMatch(/\b(validated|discovered|undiscovered|new sites)\b/i);
+    expect(text).not.toMatch(bannedRegex());
     expect(text).not.toMatch(/—/);
     for (const h of screen.getAllByRole("heading", { level: 2 })) {
       for (const w of (h.textContent ?? "").split(" ").slice(1)) expect(w, `heading "${h.textContent}"`).not.toMatch(/^[A-Z][a-z]+$/);

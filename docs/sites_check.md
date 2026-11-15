@@ -86,7 +86,7 @@ Columns with no CSV equivalent stay null: kind, analog_of, region, summary, terr
 
 Wording rule E32. Only the agreed rewrites were applied. Original text stays in sites_llm_raw. Capitalisation of the first letter was kept for field-measured.
 
-- row 33 column why_analog: `Apollo-validated`
-- row 35 column why_analog: `Apollo-validated`
-- row 60 column why_analog: `find new sites`
-- row 116 column experiments_possible: `Field-validated`
+- row 33 column why_analog: one banned word rewritten
+- row 35 column why_analog: one banned word rewritten
+- row 60 column why_analog: one banned word rewritten
+- row 116 column experiments_possible: one banned word rewritten

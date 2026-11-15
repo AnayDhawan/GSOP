@@ -248,7 +248,7 @@ def check_doc(rows, sites, rewrites):
     L += ["", "## Banned-word rewrites applied to public columns", "",
           "Wording rule E32. Only the agreed rewrites were applied. Original text stays in sites_llm_raw. Capitalisation of the first letter was kept for field-measured.", ""]
     if rewrites:
-        L += [f"- row {i} column {c}: `{h}`" for i, c, h in rewrites]
+        L += [f"- row {i} column {c}: one banned word rewritten" for i, c, h in rewrites]
     else:
         L.append("- none")
     return "\n".join(L) + "\n"

@@ -1,3 +1,4 @@
+import { bannedRegex } from "@/lib/banned";
 import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import type { ComponentType } from "react";
@@ -9,7 +10,7 @@ import { publicDataFiles } from "@/lib/pages-data";
 
 vi.mock("next/link", () => ({ default: ({ href, children, ...r }: { href: string; children: React.ReactNode }) => <a href={href} {...r}>{children}</a> }));
 
-const BANNED = /\b(validated|discovered|undiscovered|new sites)\b/i;
+const BANNED = bannedRegex();
 const PAGES: [string, ComponentType, string][] = [
   ["docs index", DocsIndex, "Docs"],
   ["researchers", Researchers, "For independent researchers"],
