@@ -123,8 +123,8 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
                   aria-pressed={extent === x}
                   onClick={() => setExtent(x)}
                   className={cn(
-                    "min-h-10 rounded-full px-3 text-sm font-medium md:min-h-9",
-                    extent === x ? "bg-surface-raised text-foreground ring-1 ring-border" : "text-secondary-foreground hover:bg-surface-raised hover:text-foreground",
+                    "min-h-10 rounded-full px-4 text-sm font-medium md:min-h-9",
+                    extent === x ? "bg-foreground text-background" : "text-secondary-foreground hover:bg-surface-raised hover:text-foreground",
                   )}
                 >
                   {x}
@@ -133,15 +133,16 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
             </div>
             <span className="mx-1 h-5 w-px shrink-0 bg-border max-sm:hidden" aria-hidden />
             <button type="button" onClick={locate} disabled={locating} className={cn(barButton, "rounded-full max-sm:hidden")} title="Show my location on the map">
-              {locating ? "Locating..." : "Locate"}
+              {locating ? "Locating..." : "My location"}
             </button>
             <button
               type="button"
               onClick={() => setFullscreen((v) => !v)}
               className={cn(barButton, "rounded-full max-md:hidden")}
+              aria-label={fullscreen ? "Exit fullscreen" : "Fullscreen"}
               title={fullscreen ? "Exit fullscreen (Esc)" : "View the map fullscreen"}
             >
-              {fullscreen ? "Exit fullscreen" : "Fullscreen"}
+              {fullscreen ? "Exit" : "Fullscreen"}
             </button>
           </div>
           {selected && <SiteCard site={selected} radiusKm={radiusKm} onClose={() => setSelected(null)} />}

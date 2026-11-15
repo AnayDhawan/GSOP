@@ -21,7 +21,7 @@ export default function SiteMain({ children }: { children: React.ReactNode }) {
     );
   }
   return (
-    <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-6 py-10">
+    <main id="main" className="mx-auto w-full max-w-6xl flex-1 px-6 pb-16 pt-10 [&>section.w-screen:last-child]:-mb-16">
       {children}
     </main>
   );
