@@ -17,7 +17,7 @@ SITES_CSV = "data/reference/sites.csv"
 # Keys whose string values are identifiers, paths, hashes or citations, not statements with numbers.
 SKIP_KEYS = {"id", "claim", "source_file", "sha256", "file", "image", "legend", "hex", "nearest_reference_site", "unit", "source", "group", "crs", "colour_scale", "limits_source", "slug", "site_id",
              "version", "product", "source_url", "doi_or_url", "date_range", "product_id", "units", "path", "url", "doi", "deviations_file",
-             "recorded_sha256", "actual_sha256", "source_sha256", "preregistration_hashes",
+             "source_urls", "recorded_sha256", "actual_sha256", "source_sha256", "preregistration_hashes",
              "commit", "engine_commit", "updated_ist", "branch"}  # commit hashes and the sim's own timestamps are identifiers
 SKIP_META = {"sources", "facts"}
 NUM_RE = re.compile(r"(?<![\w.])-?\d[\d,]*(?:\.\d+)?")

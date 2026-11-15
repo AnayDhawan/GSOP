@@ -219,3 +219,19 @@ export type Measurement = {
   value: number | null;
   display: string | null;
 };
+
+// public/data/site_profiles.json: researched text, facts and one photo per site (W8). Unreviewed.
+export type ProfileFact = { label: string; value: string; unit: string; source_url: string };
+export type ProfileImage = { file: string; title: string; author: string; license: string; source_url: string; credit: string };
+export type Profile = {
+  place: string | null;
+  summary: string | null;
+  terrain_geology: string | null;
+  climate: string | null;
+  access_and_facilities: string | null;
+  hazards: string | null;
+  facts: ProfileFact[];
+  image: ProfileImage | null;
+  source_urls: string[];
+  confidence: "high" | "medium" | "low";
+};
