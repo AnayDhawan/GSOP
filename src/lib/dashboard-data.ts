@@ -4,7 +4,7 @@
 // Score rule (one score per site): the Moon list is compared with both Moon targets and the Mars list with Jezero,
 // all on the base profile. When a Moon site has a stored score for both targets, the higher one is shown and its view is
 // named in the row's title. A site with a score for one target shows that one.
-import { claim, hasClaim, lookupFile, sitesFile, v2File } from "./data";
+import { chipFor, claim, hasClaim, lookupFile, sitesFile, v2File } from "./data";
 import { formatRunDate, rankSites, type DashBody, type DashSite, type DashboardData } from "./dashboard";
 import { e32Sentence } from "./data";
 import { viewName } from "./names";
@@ -48,7 +48,7 @@ export function dashboardData(): DashboardData {
       .filter((x) => x.e!.status === "scored")
       .map((x) => ({ view: x.view, e: x.e as Extract<NonNullable<typeof x.e>, { status: "scored" }> }))
       .sort((a, b) => b.e.score - a.e.score || a.view.localeCompare(b.view));
-    const base = { id: s.id, slug: s.slug, name: s.name, body: s.body, list: s.list, country: s.country ?? "", lat: s.lat, lon: s.lon };
+    const base = { id: s.id, slug: s.slug, name: s.name, body: s.body, list: s.list, country: s.country ?? "", photo: chipFor(s.slug)?.src ?? null, lat: s.lat, lon: s.lon };
 
     if (scored.length > 0) {
       const best = scored[0];
@@ -61,7 +61,7 @@ export function dashboardData(): DashboardData {
           scoreValue: best.e.score,
           viewLabel: viewName(best.view),
           tagKind: "own-tile" as const,
-          tag: `own-tile ${claim(ownClaim)}`,
+          tag: `Own-tile percentile ${claim(ownClaim)}`,
           tagTitle: "Own-tile percentile of the v2 headline run (terrain plus thermal) at the tile nearest this site. The score on the right is the v1 terrain score.",
         };
       }
@@ -71,8 +71,8 @@ export function dashboardData(): DashboardData {
         scoreValue: best.e.score,
         viewLabel: viewName(best.view),
         tagKind: "best-of-radius" as const,
-        tag: `v1 best-of-radius ${claim(`lookup.${s.id}.${best.view}.percentile`)}`,
-        tagTitle: "v1 percentile of the best tile within the match radius. A site with random features also scores high on this statistic, so read it as a lookup, not a test.",
+        tag: `Best nearby tile, percentile ${claim(`lookup.${s.id}.${best.view}.percentile`)}`,
+        tagTitle: "The v1 percentile of the best tile near this site. A site with random features also scores high on this statistic, so read it as a lookup, not a test.",
       };
     }
     // Not scored for any of this body's views: say why, using the stored reason of the first view.
@@ -84,7 +84,7 @@ export function dashboardData(): DashboardData {
       scoreValue: null,
       viewLabel: null,
       tagKind: "gated" as const,
-      tag: `gated: ${reason}`,
+      tag: `No score: ${reason}`,
       tagTitle: "v1 gave this site no score. A missing score says nothing about how good an analog the site is.",
     };
   });

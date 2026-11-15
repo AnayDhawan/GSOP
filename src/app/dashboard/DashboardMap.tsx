@@ -8,13 +8,9 @@ import { scoreColor, type DashSite } from "@/lib/dashboard";
 
 export type Locate = { lat: number; lon: number } | null;
 
-// Esri Canvas tiles need no key. CARTO's free tiles now serve a watermarked placeholder (the same finding as the UCIP
-// dashboard, which moved to Esri), so both themes use the Esri gray canvases.
-const ESRI = "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas";
-const TILES = {
-  light: { base: `${ESRI}/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}`, labels: `${ESRI}/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}` },
-  dark: { base: `${ESRI}/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}`, labels: `${ESRI}/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}` },
-} as const;
+// Esri World Street Map: a normal coloured web map, no key needed. CARTO's free tiles now serve a watermarked placeholder
+// (the same finding as the UCIP dashboard, which moved to Esri). Both themes use the same map.
+const TILE_URL = "https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}";
 const ATTRIBUTION = '&copy; <a href="https://www.esri.com">Esri</a>, HERE, Garmin, FAO, NOAA, USGS, OpenStreetMap contributors';
 
 /** Frames the map to the sites of the active body whenever the body changes. */
@@ -66,7 +62,6 @@ function MapAccessibleName({ label }: { label: string }) {
 export default function DashboardMap({
   sites,
   bodyKey,
-  theme,
   hoveredSlug,
   onOpen,
   me,
@@ -74,7 +69,6 @@ export default function DashboardMap({
 }: {
   sites: DashSite[];
   bodyKey: string;
-  theme: "light" | "dark";
   hoveredSlug: string | null;
   onOpen: (slug: string) => void;
   me: Locate;
@@ -82,20 +76,17 @@ export default function DashboardMap({
 }) {
   // Draw the lowest scores first so the highest sit on top, and unscored sites underneath everything.
   const drawOrder = useMemo(() => [...sites].reverse(), [sites]);
-  const stroke = theme === "dark" ? "#ecede8" : "#171c20";
-  const tiles = TILES[theme];
   return (
     <MapContainer center={[20, 10]} zoom={2} minZoom={2} worldCopyJump zoomSnap={0.5} style={{ height: "100%", width: "100%" }} attributionControl>
-      <TileLayer key={`${theme}-base`} attribution={ATTRIBUTION} url={tiles.base} />
-      <TileLayer key={`${theme}-labels`} url={tiles.labels} />
+      <TileLayer attribution={ATTRIBUTION} url={TILE_URL} />
       {drawOrder.map((s) => {
         const hovered = s.slug === hoveredSlug;
         return (
           <CircleMarker
             key={s.id}
             center={[s.lat, s.lon]}
-            radius={hovered ? 11 : 7}
-            pathOptions={{ fillColor: scoreColor(s.scoreValue), fillOpacity: s.scoreValue === null ? 0.55 : 0.9, color: stroke, weight: hovered ? 2.5 : 1 }}
+            radius={hovered ? 12 : 8}
+            pathOptions={{ fillColor: scoreColor(s.scoreValue), fillOpacity: s.scoreValue === null ? 0.7 : 0.95, color: "#ffffff", weight: hovered ? 3 : 2 }}
             eventHandlers={{
               click: () => onOpen(s.slug),
               add: (e) => {
