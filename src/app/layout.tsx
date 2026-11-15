@@ -3,6 +3,7 @@ import "./globals.css";
 import ThemeProvider from "./components/ThemeProvider";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import { Analytics } from "@vercel/analytics/next";
 
 const title = "GSOP: Geospatial Similarity Observation Platform";
 const description =
@@ -61,6 +62,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </main>
           <SiteFooter />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
