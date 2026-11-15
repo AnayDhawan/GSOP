@@ -10,7 +10,7 @@ const KICKER = "gsop-label";
 
 const DISCLAIMER = "GSOP is a research prototype, built independently for the NASA Space Apps Challenge 2026. It is not affiliated with or endorsed by NASA or any government body.";
 const CREDITS =
-  "Data credits: NASA MODIS MOD11A2 via LP DAAC and Google Earth Engine; LRO Diviner and MGS TES via the NASA PDS Geosciences Node; LOLA via NASA PGDA; MOLA via USGS Astrogeology; SRTM and Copernicus DEM; Natural Earth; OpenStreetMap contributors. Basemap: Esri, HERE, Garmin, FAO, NOAA, USGS.";
+  "Data credits: NASA MODIS MOD11A2 via LP DAAC and Google Earth Engine; LRO Diviner and MGS TES via the NASA PDS Geosciences Node; LOLA via NASA PGDA; MOLA via USGS Astrogeology; SRTM and Copernicus DEM; Natural Earth; NASA Blue Marble; OpenStreetMap contributors. Basemap: Esri, HERE, Garmin, FAO, NOAA, USGS.";
 
 export default function SiteFooter() {
   return (

@@ -54,6 +54,6 @@ describe("footer", () => {
 
   it("credits only sources that are in data/sources_used.csv", () => {
     const names = sourcesUsed().map((s) => s.name + s.provider).join(" ");
-    for (const term of ["MOD11A2", "Diviner", "TES", "LOLA", "MOLA", "SRTM", "Copernicus", "Natural Earth", "OpenStreetMap", "Esri"]) expect(names).toContain(term);
+    for (const term of ["MOD11A2", "Diviner", "TES", "LOLA", "MOLA", "SRTM", "Copernicus", "Natural Earth", "OpenStreetMap", "Esri", "Blue Marble"]) expect(names).toContain(term);
   });
 });
