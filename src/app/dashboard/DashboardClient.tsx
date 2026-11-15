@@ -87,6 +87,7 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
       data-dashboard-root
       className={cn("flex min-h-0 flex-1 flex-col bg-background", fullscreen && "fixed inset-0 z-[100]")}
     >
+      <h1 className="sr-only">Dashboard: reference sites ranked by similarity</h1>
       <div className="flex min-h-0 flex-1 flex-col md:flex-row">
         <section aria-label="Map" className="relative isolate min-h-[60vh] flex-1 md:min-h-0">
           <div className="absolute inset-0">

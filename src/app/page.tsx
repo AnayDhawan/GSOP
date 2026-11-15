@@ -229,6 +229,9 @@ export default function Home() {
           </ul>
           <Reveal className="max-w-3xl space-y-4">
             <blockquote className="border-l-2 border-border pl-4 text-secondary-foreground">{e32Sentence()}</blockquote>
+            <p className="text-secondary-foreground">
+              The ranking has not been checked against independent data. Mars is a low-confidence secondary result. The negative-control test failed: the Moon controls scored above the pre-registered maximum.
+            </p>
             <p className="flex flex-wrap gap-x-6 gap-y-2 font-display text-lg">
               <Link href="/gates" className={link}>
                 Read every gate result
