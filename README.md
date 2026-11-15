@@ -130,7 +130,7 @@ python3 scripts/check_claims.py
 `make_data.py` needs the v1 results zip, which is not committed (it is too large for the repository).
 
 - **The file:** `gsop_v1_results_2026-11-14.zip`, sha256 `0c634823629cb3e1719feafd053f99cc3eea1aabc974316fa1a7fefcf7a4076a`. Check your copy with `shasum -a 256 gsop_v1_results_2026-11-14.zip`.
-- **Where to get it:** it is not published at a public address yet. Ask the team (contact page on the site). The Monte Carlo seed and settings are in `config/run.yaml` inside the zip.
+- **Where to get it:** it is not published at a public address yet. Ask the team (contact page on the site). The Monte Carlo master seed is 20261114 (`master_seed` in `config/run.yaml` inside the zip, with the other settings).
 - **Using it:** put it in the repository root, or pass `--zip PATH`. `make_data.py` first checks every file in the zip against the zip's own `FILES.sha256`, then rebuilds every data file. Run it twice: the output is identical.
 - **Without it:** the committed files are the reference. `python3 scripts/check_claims.py` verifies every claim against them, and every file in `data/MANIFEST.csv` matches its recorded hash.
 
