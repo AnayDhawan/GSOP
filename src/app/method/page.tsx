@@ -98,9 +98,9 @@ export default function Page() {
           <div>
             <div className="h-3 w-full border border-border" style={{ background: "linear-gradient(to right, #440154 0%, #3b528b 25%, #21908c 50%, #5dc863 75%, #fde725 100%)" }} role="img" aria-label="Colour scale from a low score (dark purple) to a high score (yellow)" />
             <div className="mt-1 flex justify-between font-mono text-xs text-secondary-foreground">
-              <span>0 low</span>
-              <span>50</span>
-              <span>100 high</span>
+              <span>Low score</span>
+              <span>Middle</span>
+              <span>High score</span>
             </div>
           </div>
           <div className="flex items-center gap-2 text-xs text-secondary-foreground">
