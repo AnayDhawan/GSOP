@@ -60,7 +60,7 @@ export default function Page() {
     <>
       <PageHero
         title="Data sources"
-        lede="Every source below fed a result shown on this site, and every source we used is listed. The list is one file in the repository, data/sources_used.csv, and the footer credits read the same file."
+        lede="Every source we used is listed below, and each one fed a result shown on this site. The list is one file in the repository, data/sources_used.csv, and the footer credits read the same file."
       />
 
       <p className="max-w-3xl text-secondary-foreground">Each dataset keeps its provider&apos;s licence. We do not redistribute the raw files.</p>

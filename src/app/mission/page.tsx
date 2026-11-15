@@ -8,7 +8,7 @@ import { claim } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Mission",
-  description: "Why GSOP exists: a transparent, reproducible screening method for Earth places that resemble Moon and Mars targets, with an India focus and its failures published.",
+  description: "Why GSOP exists: a catalog of Earth places that stand in for Moon and Mars sites, with an India focus and every failure published.",
 };
 
 const link = "underline underline-offset-4";
@@ -27,7 +27,7 @@ const PRACTICE = [
   },
   {
     term: "One command builds the data",
-    body: "Run one command and every data file is rebuilt from stored results. Each number on the site has a row in a claims file that names its source file and hash. A number with no row stops the build.",
+    body: "One command rebuilds every data file from the v1 results archive. Each number on the site has a row in a claims file that names its source file and hash, and a number with no row stops the build.",
   },
   {
     term: "India first",
@@ -79,14 +79,14 @@ export default function Page() {
     <>
       <PageHero
         title="Mission"
-        lede="People who plan Moon and Mars missions need somewhere on Earth to try their rovers, drills and habitats first. GSOP ranks Earth land tiles by how closely they resemble a lunar or Martian target, so a team can decide where to look first."
+        lede="People who plan Moon and Mars missions need somewhere on Earth to try rovers, drills and habitats first. GSOP is a catalog of those places, with a ranking of Earth land tiles by how closely they resemble a lunar or Martian target, so a team can decide where to look first."
       />
 
       <h2 className="text-2xl">A starting list</h2>
       <div className="grid items-center gap-10 md:grid-cols-[1.2fr_1fr]">
         <div className="space-y-4">
           <p className="text-secondary-foreground">
-            The ranking uses terrain and, in the second run, surface temperature. It says nothing about gravity, dust, radiation or air. A person still has to go and look, and this site is built to make that first look cheaper.
+            The ranking uses terrain and, in the second run, surface temperature. It says nothing about gravity, dust, radiation or air. A person still has to go and look. The site only makes that first look cheaper.
           </p>
           <p className="text-secondary-foreground">Mars is a low-confidence secondary result. The ranking has not been checked against independent data.</p>
         </div>
@@ -149,7 +149,7 @@ export default function Page() {
           <h2 id="fit" className="text-2xl">
             How far GSOP gets
           </h2>
-          <p className="mx-auto max-w-2xl text-secondary-foreground">Measured against what a Moon and Mars analog finder should do. The gaps are listed on purpose.</p>
+          <p className="mx-auto max-w-2xl text-secondary-foreground">Here is how far GSOP gets on each thing a Moon and Mars analog finder should do. The gaps are listed too.</p>
         </div>
         <ul data-left className="grid gap-4 md:grid-cols-2">
           {FIT.map((f) => (

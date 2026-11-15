@@ -28,7 +28,7 @@ describe("roadmap page", () => {
     expect(list.textContent).toMatch(/G1.*FAIL/);
     expect(list.textContent).toMatch(/G2\(c\).*PASS/);
     expect(list.textContent).toMatch(/D1.*NOT TESTED/);
-    expect(container.textContent).toMatch(/targets, not promises/);
+    expect(container.textContent).toMatch(/Dates are targets/);
     expect(container.textContent).toMatch(/Three gates failed, one passed and three could not be tested/);
   });
 
