@@ -77,7 +77,7 @@ export default function HeroScene() {
   const earth = BODIES[1];
 
   return (
-    <svg ref={ref} className="hero-scene" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="The Moon, Earth and Mars, with a tile grid scanning across Earth" preserveAspectRatio="xMidYMid meet">
+    <svg ref={ref} className="hero-scene" data-space="true" viewBox={`0 0 ${W} ${H}`} role="img" aria-label="The Moon, Earth and Mars, with a tile grid scanning across Earth" preserveAspectRatio="xMidYMid meet">
       <defs>
         {BODIES.map((b) => (
           <clipPath key={b.key} id={`${uid}-clip-${b.key}`}>
