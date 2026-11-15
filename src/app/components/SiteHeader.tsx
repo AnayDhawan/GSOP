@@ -1,15 +1,53 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X } from "lucide-react";
 import Logo from "./Logo";
-import ThemeToggle from "./ThemeToggle";
-import { NAV, isActive } from "@/lib/nav";
+import { DOCS, NAV, isActive } from "@/lib/nav";
 import { cn } from "@/lib/utils";
 
 const MENU_ID = "mobile-menu";
+const DOCS_ID = "docs-menu";
+
+const linkClass = (active: boolean) =>
+  cn("px-3 py-2 text-sm transition-colors", active ? "text-foreground underline underline-offset-8 decoration-2" : "text-secondary-foreground hover:text-foreground");
+
+function DocsMenu({ pathname }: { pathname: string }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const active = isActive(pathname, "/docs");
+
+  useEffect(() => {
+    if (!open) return;
+    const onDown = (e: MouseEvent) => !ref.current?.contains(e.target as Node) && setOpen(false);
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    document.addEventListener("mousedown", onDown);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onDown);
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  return (
+    <div ref={ref} className="relative">
+      <button type="button" aria-expanded={open} aria-controls={DOCS_ID} aria-haspopup="true" onClick={() => setOpen((v) => !v)} className={linkClass(active || open)}>
+        Docs
+      </button>
+      <ul id={DOCS_ID} hidden={!open} className="absolute left-0 top-full z-50 mt-2 w-72 border border-border bg-surface py-1 shadow-lg">
+        {DOCS.map((d) => (
+          <li key={d.href}>
+            <Link href={d.href} onClick={() => setOpen(false)} aria-current={isActive(pathname, d.href) ? "page" : undefined} className="block px-4 py-2.5 text-sm hover:bg-surface-raised">
+              <span className="block text-foreground">{d.label}</span>
+              <span className="block text-xs text-muted-foreground">{d.description}</span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function SiteHeader() {
   const pathname = usePathname();
@@ -35,37 +73,28 @@ export default function SiteHeader() {
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 md:flex">
-          {NAV.map((n) => {
-            const active = isActive(pathname, n.href);
-            return (
-              <Link
-                key={n.href}
-                href={n.href}
-                aria-current={active ? "page" : undefined}
-                className={cn(
-                  "px-3 py-2 text-sm transition-colors",
-                  active ? "text-foreground underline underline-offset-8 decoration-2" : "text-secondary-foreground hover:text-foreground",
-                )}
-              >
-                {n.label}
-              </Link>
-            );
-          })}
+          {NAV.slice(0, 2).map((n) => (
+            <Link key={n.href} href={n.href} aria-current={isActive(pathname, n.href) ? "page" : undefined} className={linkClass(isActive(pathname, n.href))}>
+              {n.label}
+            </Link>
+          ))}
+          <DocsMenu pathname={pathname} />
+          {NAV.slice(2).map((n) => (
+            <Link key={n.href} href={n.href} aria-current={isActive(pathname, n.href) ? "page" : undefined} className={linkClass(isActive(pathname, n.href))}>
+              {n.label}
+            </Link>
+          ))}
         </nav>
 
-        <div className="flex items-center gap-3">
-          <ThemeToggle />
-          <button
-            type="button"
-            className="inline-flex h-10 w-10 items-center justify-center border border-border text-secondary-foreground md:hidden"
-            aria-expanded={open}
-            aria-controls={MENU_ID}
-            aria-label={open ? "Close menu" : "Open menu"}
-            onClick={() => setOpen((v) => !v)}
-          >
-            {open ? <X className="h-5 w-5" aria-hidden /> : <Menu className="h-5 w-5" aria-hidden />}
-          </button>
-        </div>
+        <button
+          type="button"
+          className="inline-flex h-10 min-w-16 items-center justify-center border border-border px-3 text-sm text-secondary-foreground md:hidden"
+          aria-expanded={open}
+          aria-controls={MENU_ID}
+          onClick={() => setOpen((v) => !v)}
+        >
+          {open ? "Close" : "Menu"}
+        </button>
       </div>
 
       <nav id={MENU_ID} aria-label="Main (menu)" hidden={!open} className="border-t border-border bg-background md:hidden">
@@ -77,6 +106,18 @@ export default function SiteHeader() {
               </Link>
             </li>
           ))}
+          <li className="border-t border-border pt-2">
+            <p className="gsop-label py-1">Docs</p>
+            <ul>
+              {DOCS.map((d) => (
+                <li key={d.href}>
+                  <Link href={d.href} className="flex min-h-11 items-center text-base text-foreground">
+                    {d.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>

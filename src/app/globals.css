@@ -148,6 +148,7 @@
 }
 
 body {
+  overflow-x: clip;
   background: var(--gsop-bg);
   color: var(--gsop-text);
   font-family: var(--gsop-font-body);
@@ -180,6 +181,9 @@ h1, h2, h3, h4, .gsop-display {
 .gsop-logo--light { display: none; }
 [data-theme="light"] .gsop-logo--dark { display: none; }
 [data-theme="light"] .gsop-logo--light { display: inline-block; }
+/* A dark-scoped region inside the light theme (the footer) keeps the dark logo. */
+[data-theme="light"] [data-theme="dark"] .gsop-logo--dark { display: inline-block; }
+[data-theme="light"] [data-theme="dark"] .gsop-logo--light { display: none; }
 
 /* Icons inherit text colour, fixed 1.5px stroke */
 .gsop-icon {
@@ -220,3 +224,19 @@ h1, h2, h3, h4, .gsop-display {
 .leaflet-tooltip { background: var(--gsop-surface); color: var(--gsop-text); border: 1px solid var(--gsop-border); border-radius: 0; box-shadow: none; }
 .leaflet-tooltip-top::before { border-top-color: var(--gsop-border); }
 .leaflet-interactive:focus-visible { outline: 2px solid var(--gsop-focus-ring); }
+
+/* Page title band and section bands (see PageHero.tsx and Band.tsx) */
+.page-hero {
+  background-color: var(--gsop-surface);
+  background-image: var(--gsop-pattern-topographic);
+  background-size: 640px auto;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.band-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--gsop-border) 55%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--gsop-border) 55%, transparent) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+.band-accent { box-shadow: inset 4px 0 0 var(--gsop-earth-blue); }
