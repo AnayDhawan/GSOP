@@ -2,7 +2,7 @@
 
 import "leaflet/dist/leaflet.css";
 import { useEffect, useMemo, useRef } from "react";
-import { Circle, CircleMarker, MapContainer, TileLayer, Tooltip, useMap } from "react-leaflet";
+import { Circle, CircleMarker, MapContainer, TileLayer, Tooltip, useMap, ZoomControl } from "react-leaflet";
 import { latLngBounds } from "leaflet";
 import { INDIA_BOUNDS, scoreColor, type DashExtent, type DashSite } from "@/lib/dashboard";
 
@@ -100,7 +100,9 @@ export default function DashboardMap({
   // Draw the lowest scores first so the highest sit on top, and unscored sites underneath everything.
   const drawOrder = useMemo(() => [...sites].reverse(), [sites]);
   return (
-    <MapContainer center={[20, 10]} zoom={2} minZoom={2} worldCopyJump zoomSnap={0.5} style={{ height: "100%", width: "100%" }} attributionControl>
+    <MapContainer center={[20, 10]} zoom={2} minZoom={2} worldCopyJump zoomSnap={0.5} zoomControl={false} style={{ height: "100%", width: "100%" }} attributionControl>
+      {/* Bottom right, so the control bar at the top never covers it on a phone. */}
+      <ZoomControl position="bottomright" />
       <TileLayer attribution={ATTRIBUTION} url={TILE_URL} />
       {selected && (
         // The v1 match radius: the area v1 searched around the site for its best tile. A search window, not a site boundary.

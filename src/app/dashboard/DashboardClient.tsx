@@ -130,8 +130,8 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
                 </button>
               ))}
             </div>
-            <span className="mx-1 h-5 w-px shrink-0 bg-border" aria-hidden />
-            <button type="button" onClick={locate} disabled={locating} className={cn(barButton, "rounded-full")} title="Show my location on the map">
+            <span className="mx-1 h-5 w-px shrink-0 bg-border max-sm:hidden" aria-hidden />
+            <button type="button" onClick={locate} disabled={locating} className={cn(barButton, "rounded-full max-sm:hidden")} title="Show my location on the map">
               {locating ? "Locating..." : "Locate"}
             </button>
             <button
