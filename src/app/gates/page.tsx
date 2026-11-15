@@ -244,7 +244,7 @@ export default function Page() {
         </ol>
         <p>
           Source for the audit values:{" "}
-          <a href={`${REPO_URL}/blob/main/${r.engine_audit.path}`} className={link}>
+          <a href={`${REPO_URL}/blob/main/${r.engine_audit.path}`} className={link} target="_blank" rel="noopener noreferrer">
             engine audit
           </a>{" "}
           <span className="gsop-mono text-xs text-muted-foreground">({shortHash(r.engine_audit.sha256)})</span>.

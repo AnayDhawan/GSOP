@@ -40,7 +40,7 @@ const CONTROLS = [
 
 function Source({ file, sha }: { file: string; sha: string }) {
   return (
-    <p className="gsop-mono text-xs text-muted-foreground">
+    <p className="gsop-mono text-xs text-muted-foreground [overflow-wrap:anywhere]">
       Source: {sourceName(file)} ({shortHash(sha)})
     </p>
   );

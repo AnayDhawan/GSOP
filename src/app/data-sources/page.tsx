@@ -36,7 +36,7 @@ function Table({ rows, caption }: { rows: SourceRow[]; caption: string }) {
           {rows.map((r) => (
             <tr key={r.id} className="border-b border-border align-top">
               <th scope="row" className="py-2 pr-4 font-medium">
-                <a href={r.url} className={link} rel="noopener noreferrer">
+                <a href={r.url} className={link} target="_blank" rel="noopener noreferrer">
                   {r.name}
                 </a>
                 <span className="block font-normal text-secondary-foreground">{r.provider}</span>
