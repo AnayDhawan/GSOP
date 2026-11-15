@@ -29,7 +29,7 @@ export default function Page() {
           </Link>{" "}
           before you trust a colour.
         </p>
-        <p className="border-t-4 border-positive pt-3">Regions and tiles are candidates not in our reference list. They are unreviewed.</p>
+        <p className="border-t-4 border-positive pt-3">Regions and tiles are candidates not in our reference list. They are a reason to look, not a finding.</p>
         <p className="border-t-4 border-border pt-3">The Moon score is effectively terrain only. Mars is a low-confidence secondary result. The ranking has not been checked against independent data.</p>
       </div>
 

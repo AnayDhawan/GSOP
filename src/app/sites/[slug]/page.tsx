@@ -170,7 +170,7 @@ function SiteBody({ s, withBody }: { s: Site; withBody: boolean }) {
       <div className="grid gap-8 lg:grid-cols-[1.35fr_1fr]">
         <section className="space-y-4" aria-labelledby={`sum-${s.id}`}>
           <p className="text-lg leading-relaxed">{p?.summary ?? s.summary ?? s.why_analog ?? NONE}</p>
-          <p className="text-xs text-muted-foreground">{p?.summary && p.origin !== "teammate" ? "Researched from public sources, unreviewed." : "Teammate-written, unreviewed."}</p>
+          <p className="text-xs text-muted-foreground">{p?.summary && p.origin !== "teammate" ? "Researched from public sources." : "Teammate-written."}</p>
           {s.list === "candidate" && <p className="border-l-2 border-border pl-3 text-secondary-foreground">This is a candidate: a suggestion that is not in our reference list.</p>}
         </section>
         <FactsTable s={s} p={p} />
@@ -217,7 +217,7 @@ function SiteBody({ s, withBody }: { s: Site; withBody: boolean }) {
             <p className="text-secondary-foreground">{s.how_to_modify ?? NONE}</p>
           </div>
         </div>
-        <p className="text-xs text-muted-foreground">Teammate-written, unreviewed.</p>
+        <p className="text-xs text-muted-foreground">Teammate-written.</p>
         </div>
       </Band>
 
@@ -310,7 +310,7 @@ function SiteBody({ s, withBody }: { s: Site; withBody: boolean }) {
               ))}
             </ul>
           )}
-          {p ? <p className="text-xs text-muted-foreground">{p.origin === "teammate" ? "This profile text was written by a teammate. It was not researched from a source page, and nobody has checked it." : "This profile text was gathered from public sources. Nobody on the team has checked it."}</p> : null}
+          {p ? <p className="text-xs text-muted-foreground">{p.origin === "teammate" ? "This profile text was written by a teammate. It was not researched from a source page. Check the cited source before you rely on it." : "This profile text was gathered from public sources. Check the cited source before you rely on it."}</p> : null}
         </section>
       </div>
     </div>

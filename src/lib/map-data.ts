@@ -113,7 +113,7 @@ export function mapData(): { targets: MapTarget[]; controlMax: string } {
           ["Monte Carlo range", `${claim(`${k}.mc_p05`)} to ${claim(`${k}.mc_p95`)} (median ${claim(`${k}.mc_median`)})`],
           ["Flagged in the top group", x.top5_in_90pct_runs ? "Yes" : "No"],
           ["Nearest reference site", x.nearest_reference_site ? `${siteName.get(x.nearest_reference_site) ?? x.nearest_reference_site}, about ${claim(`${k}.km_to_nearest_reference_site`)} km` : "not in v1 outputs"],
-          ["Status", "Candidate not in our reference list, unreviewed"],
+          ["Status", "Candidate not in our reference list"],
         ],
       });
     }

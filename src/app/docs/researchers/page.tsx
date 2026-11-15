@@ -123,7 +123,7 @@ export default function Page() {
             <li>The ranking has not been checked against independent data, so it is no evidence that a place is a good analog.</li>
             <li>G2 FAIL: Moon negative controls scored too high, so the score does not separate analogs from non-analogs.</li>
             <li>G1 FAIL with D1 and D2 NOT TESTED: no claim about the fitted model, and none about places outside the thermal coverage.</li>
-            <li>G3 FAIL: flagged regions are unreviewed candidates.</li>
+            <li>G3 FAIL: flagged regions are candidates not in our reference list.</li>
             <li>Moon recall NOT TESTED, and Mars is a low-confidence secondary result.</li>
           </ul>
         </div>

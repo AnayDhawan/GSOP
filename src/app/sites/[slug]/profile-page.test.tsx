@@ -62,7 +62,7 @@ describe("site detail page", () => {
     const ui = await Page({ params: Promise.resolve({ slug: withPhoto }) });
     const { container } = render(ui);
     expect(container.querySelector("h1")?.textContent).toBe(site.name);
-    expect(container.textContent).toContain("Researched from public sources, unreviewed");
+    expect(container.textContent).toContain("Researched from public sources.");
     expect(container.textContent).toContain("Key facts");
     if (p.facts[0]) expect(container.textContent).toContain(p.facts[0].value);
     if (p.image) expect(container.textContent).toContain(p.image.credit);
@@ -79,6 +79,6 @@ describe("site detail page", () => {
     const { container } = render(await Page({ params: Promise.resolve({ slug: bare.slug }) }));
     expect(container.querySelector("h1")?.textContent).toBe(bare.name);
     expect(container.textContent).toContain("We have not found a freely licensed photo");
-    expect(container.textContent).toContain("Teammate-written, unreviewed");
+    expect(container.textContent).toContain("Teammate-written.");
   });
 });

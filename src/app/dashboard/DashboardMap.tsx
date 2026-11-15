@@ -174,7 +174,7 @@ export default function DashboardMap({
               <br />
               {p.why}
               <br />
-              <em>Gathered from public sources, unreviewed. Not scored.</em>
+              <em>Gathered from public sources. Not scored.</em>
               <br />
               <a href={p.source_urls[0]} target="_blank" rel="noopener noreferrer">
                 Source

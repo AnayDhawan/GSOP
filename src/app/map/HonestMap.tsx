@@ -188,7 +188,7 @@ export default function HonestMap({ targets, sentence, controlMax }: { targets: 
               </li>
               <li>
                 <span className="mr-2 inline-block h-3 w-3 border-2 border-positive align-middle" />
-                Region, unreviewed
+                Region, a candidate
               </li>
               <li>
                 <span className="mr-2 inline-block h-1.5 w-1.5 rounded-full bg-foreground align-middle" />

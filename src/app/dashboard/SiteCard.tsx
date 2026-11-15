@@ -79,7 +79,7 @@ export default function SiteCard({ site, radiusKm, onClose }: { site: DashSite; 
               <p className="text-secondary-foreground">{site.experiments}</p>
             </div>
           )}
-          <p className="text-muted-foreground">Teammate-written notes, unreviewed. Sources have not been checked.</p>
+          <p className="text-muted-foreground">Teammate-written notes. Check the cited source before you rely on them.</p>
         </div>
       )}
 

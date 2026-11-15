@@ -111,7 +111,7 @@ export default function Page() {
         <h2 id="list-note" className="sr-only">
           About the site list
         </h2>
-        <p className="max-w-3xl text-secondary-foreground">The reference site list is teammate-written and unreviewed. Candidates not in our reference list are suggestions, not findings.</p>
+        <p className="max-w-3xl text-secondary-foreground">The reference site list is teammate-written. Candidates not in our reference list are suggestions, not findings.</p>
       </Band>
     </>
   );

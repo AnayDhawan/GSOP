@@ -272,7 +272,7 @@ SITES_LIMITS = [
     "Sites are places named as analogs in a teammate-supplied list. They are not scored results.",
     "Coordinates come from a teammate-supplied CSV; many are approximate.",
     "The CSV gave no source links, so none are shown and no site has passed a sources check.",
-    "All descriptive text (why it is an analog, where the analogy breaks, experiments) is teammate-written and unreviewed.",
+    "All descriptive text (why it is an analog, where the analogy breaks, experiments) is teammate-written.",
     "Candidate rows are suggestions only. They are not in our reference list.",
     "The v1 used flag is a coordinate match against the v1 site list, not a name match.",
     "Earth sites differ from the Moon and Mars in gravity, air, radiation and dust; see the ledger.",
@@ -403,7 +403,7 @@ def build(ctx):
         label,
         SITES_LIMITS,
         [primary, ctx.v1.src("config/known_sites.yaml")] + ([{"source_file": CSV_REF, "sha256": csv_sha}] if snap is not None else []),
-        text_label="teammate-written, unreviewed",
+        text_label="teammate-written",
         columns_note="all columns of public.sites except id, notes and created_at; id here is a build key (slug plus body), not the database id",
         v1_used_rule=(
             "true: within the v1 site match radius of a v1 site run for the same body. "

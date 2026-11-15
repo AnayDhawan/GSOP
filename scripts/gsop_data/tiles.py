@@ -22,7 +22,7 @@ TILES_LIMITS = [
     "Mars is a low-confidence secondary result with four families only: sunlight, slope, relief and air density.",
     "Scores say nothing about gravity, air pressure, dust, radiation or regolith. See the ledger.",
     "Only tiles that passed the land-cover and data gates have a score.",
-    "Tiles listed here are candidates not in our reference list. They are unreviewed.",
+    "Tiles listed here are candidates not in our reference list. They are a reason to look, not a finding.",
     "v1 failed its negative controls, and the ranking is not checked against independent data.",
     "Slope, roughness and relief family scores per tile are not in v1 outputs, so only the lighting family is shown.",
     "Only the base profile of each target is listed. The other profiles are not ranked here.",
@@ -93,7 +93,7 @@ def build(ctx):
             uniq.append(s)
     meta = make_meta(
         "public/data/tiles_top.json",
-        "Top tiles per target (base profile) from v1's stored Monte Carlo summary. Candidates not in our reference list, unreviewed.",
+        "Top tiles per target (base profile) from v1's stored Monte Carlo summary. Candidates not in our reference list.",
         TILES_LIMITS,
         uniq,
         order="tiles with the stability flag first, then by Monte Carlo median score, then by tile id",

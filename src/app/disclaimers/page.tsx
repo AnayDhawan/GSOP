@@ -72,9 +72,9 @@ export default function Page() {
           Things to keep in mind
         </h2>
         <ul className="grid gap-4 md:grid-cols-3">
-          <li className="border border-border bg-background p-4">Tiles and regions the method flags are candidates not in our reference list. They are unreviewed.</li>
+          <li className="border border-border bg-background p-4">Tiles and regions the method flags are candidates not in our reference list. They are a reason to look, not a finding.</li>
           <li className="border border-border bg-background p-4">The land surface temperature used for Earth is the skin temperature a satellite sees, not the air temperature a person feels.</li>
-          <li className="border border-border bg-background p-4">Site descriptions are teammate-written and unreviewed. Check the cited source before you rely on a row.</li>
+          <li className="border border-border bg-background p-4">Site descriptions are teammate-written. Check the cited source before you rely on a row.</li>
         </ul>
         <blockquote className="mt-8 max-w-3xl border-l-2 border-foreground pl-4">{e32Sentence()}</blockquote>
       </Band>

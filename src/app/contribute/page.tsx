@@ -25,7 +25,7 @@ const OTHER = [
   {
     title: "Source corrections",
     tone: "border-moon",
-    body: "Each site row cites sources, and the site list is unreviewed. If a coordinate, description or link is wrong, open an issue on the repository with the page and the better source.",
+    body: "Each site row cites sources. If a coordinate, description or link is wrong, open an issue on the repository with the page and the better source.",
   },
   {
     title: "Questions about the method",

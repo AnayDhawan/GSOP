@@ -19,7 +19,7 @@ TOP_REGIONS = 10  # decided for B12: top 10 regions per target, ranked by median
 REGION_TARGETS = [("moon", "connecting_ridge_c1"), ("moon", "shackleton_rim"), ("mars", "jezero")]
 
 CAVEAT = (
-    "Flagged by v1 on Earth terrain only. Not reviewed. Not checked against independent data. "
+    "Flagged by v1 on Earth terrain only. Not checked against independent data. "
     "v1 failed its negative controls, so a flag here is a reason to look, not a finding."
 )
 CAVEAT_MARS = " Mars is a low-confidence secondary result with four families only."
@@ -151,7 +151,7 @@ def build(ctx):
                     "km_to_nearest_reference_site": num(km, 1),
                     "nearest_reference_site": s_id[j],
                     "n_tiles_in_india": int(in_polys(sub.lon.values, sub.lat.values, polys).sum()),
-                    "status": "Unreviewed",
+                    "status": "Candidate",
                     "caveat": CAVEAT + (CAVEAT_MARS if body == "mars" else ""),
                     "source_file": src_mc["source_file"],
                     "sha256": src_mc["sha256"],
@@ -200,7 +200,7 @@ def build(ctx):
             uniq.append(s)
     meta = make_meta(
         "public/data/regions.json",
-        "Groups of neighbouring tiles that v1 flagged on terrain. Candidates not in our reference list, unreviewed.",
+        "Groups of neighbouring tiles that v1 flagged on terrain. Candidates not in our reference list.",
         limits,
         uniq,
         facts=facts,

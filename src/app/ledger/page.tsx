@@ -267,7 +267,7 @@ export default function Page() {
           Where the analogy breaks down
         </h2>
         <p className="text-secondary-foreground">
-          These physical differences come from the v1 limits ledger. Most entries are provisional and have not been verified by us.
+          These physical differences come from the v1 limits ledger. Most entries are provisional: read each as a lead, not a settled result.
         </p>
         <ul className="grid gap-4 md:grid-cols-2">
           {physical.map((e) => (

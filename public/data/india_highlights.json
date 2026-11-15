@@ -1,10 +1,10 @@
 {
   "meta": {
     "title": "India highlights",
-    "text_label": "Gathered from public sources, unreviewed. Not scored.",
+    "text_label": "Gathered from public sources. Not scored.",
     "note": "They are not ranked, not scored and not tests of the method. A place that is not in our reference list is a suggestion, not a finding.",
     "marker_note": "A marker sits on the named place, or near the middle of the named area. It is approximate.",
-    "review_note": "Nobody on the team has checked these sources yet.",
+    "review_note": "Check each source before you rely on it.",
     "how_built": "Hand-curated from the cited pages. Each place has one or more source links. Coordinates come from the Wikipedia page of the place, or from the reference list for places already in it."
   },
   "places": [

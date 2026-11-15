@@ -25,9 +25,9 @@ CONFIDENCE = {"high", "medium", "low", "teammate"}  # "teammate": text written b
 LICENSE = re.compile(r"^(CC0(?: \d\.\d)?|CC BY(?:-SA)?(?: \d\.\d)?(?: [A-Za-z]{2,3})?|PD(?:-[\w-]+)?|Public domain.*)$", re.I)
 DASH = re.compile("[—–−]")
 URL = re.compile(r"^https?://\S+$")
-LABEL = "Researched from public sources, unreviewed. Text, facts and photos for each site, with the source behind each fact."
+LABEL = "Researched from public sources. Text, facts and photos for each site, with the source behind each fact."
 LIMITS = [
-    "Researched from public web pages and unreviewed. Each fact names the page it came from; a person has not checked them.",
+    "Researched from public web pages. Each fact names the page it came from. Check the page before you rely on a fact.",
     "A fact describes the place. It says nothing about how well the place matches a Moon or Mars target.",
     "Photos are of the place or of satellite views of it, used under the licence named beside each one.",
     "A missing field means no source was found for it.",
@@ -132,6 +132,6 @@ def build(ctx):
         p["source_urls"] = list(e.get("sources") or [])
         p["confidence"] = e["confidence"]
         profiles[slug] = p
-    meta = make_meta(OUT, LABEL, LIMITS, [{"source_file": ENRICH, "sha256": sha}], facts=facts, text_label="researched from public sources, unreviewed")
+    meta = make_meta(OUT, LABEL, LIMITS, [{"source_file": ENRICH, "sha256": sha}], facts=facts, text_label="researched from public sources")
     write_json(ctx.path(OUT), {"meta": meta, "profiles": profiles})
     ctx.log(f"profiles: {len(profiles)} sites, {sum(1 for p in profiles.values() if p['image'])} photos, {len(facts)} fact numbers")
