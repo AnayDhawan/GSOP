@@ -265,11 +265,11 @@ h1, h2, h3, h4, .gsop-display {
   z-index: -1;
   background-image: var(--gsop-ribbon);
   background-repeat: no-repeat;
-  background-position: right -10% center;
-  background-size: auto 140%;
-  /* Fade out toward the text column on the left, so the dots never sit behind a sentence. */
-  -webkit-mask-image: linear-gradient(to right, transparent 38%, #000 78%);
-  mask-image: linear-gradient(to right, transparent 38%, #000 78%);
+  /* The ribbon runs the full width of the band. It is dimmed behind the centred text so no sentence sits on bright dots. */
+  background-position: center;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.3) 28%, rgba(0, 0, 0, 0.3) 72%, #000 100%);
+  mask-image: linear-gradient(to right, #000 0%, rgba(0, 0, 0, 0.3) 28%, rgba(0, 0, 0, 0.3) 72%, #000 100%);
 }
 /* Space Grotesk's normal (proportional) digits. Its tabular digits give the "1" a flag and a base, so they are not used. */
 .stat-readout { font-variant-numeric: normal; font-feature-settings: normal; letter-spacing: -0.02em; white-space: nowrap; }

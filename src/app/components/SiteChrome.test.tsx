@@ -67,6 +67,8 @@ describe("footer", () => {
     expect(container.textContent).toMatch(/Diviner/);
     expect(container.textContent).toMatch(/OpenStreetMap contributors/);
     expect(container.textContent).toMatch(/Basemap: Esri/);
+    // The AI-made hero satellite is disclosed here, on every page, not over the hero.
+    expect(container.textContent).toMatch(/Hero satellite image: AI-generated illustration/);
     expect(container.textContent).toMatch(/Code released under the MIT License/);
     expect(container.querySelector("footer")!.getAttribute("data-theme")).toBe("dark");
     expect(container.querySelector('footer [aria-label="Colour theme"]')).not.toBeNull();
