@@ -145,24 +145,76 @@
   },
   {
     "slug": "atacama-desert-cmu-nomad-rover-traverse",
-    "place": null,
-    "summary": "The hyper-arid Chilean desert where Carnegie Mellon's Nomad rover drove ~200 km in 1997 to rehearse lunar exploration.",
-    "terrain_geology": "Gravel plains, salt flats and low hills of volcanic and sedimentary debris.",
-    "climate": "Hyper-arid; almost no rain; large day-night temperature swing.",
-    "access_and_facilities": "Public and mining-company land in northern Chile; road access from Antofagasta.",
-    "hazards": null,
-    "facts": [],
+    "place": "Atacama Desert, northern Chile (area of the Nomad rover trek)",
+    "summary": "The Atacama Desert is a desert plateau on the Pacific coast of northern Chile and is the driest nonpolar desert in the world. Carnegie Mellon University drove its Nomad rover across it, remotely from the United States, as a field test of technology for planetary exploration. The desert is also used for Mars expedition simulations because of its similarities to the Martian environment.",
+    "terrain_geology": "The desert is a low-relief bench between the Andes and the Chilean Coast Range, with salt flats such as the Salar de Atacama and basins that have no outflow to the sea. Soft sand was one of the surfaces Nomad had to cross.",
+    "climate": "It is hyperarid, with some weather stations never recording rain. Temperatures stay mild through most of the year, with only a few freezing periods in winter.",
+    "access_and_facilities": "Coastal towns such as Antofagasta and the inland town of Calama serve the region, and most visitors to the interior stay in San Pedro de Atacama. Nomad is now on display at the Atacama Desert Museum in Antofagasta.",
+    "hazards": "Extreme aridity and long distances from supply towns make field work demanding.",
+    "facts": [
+      {
+        "label": "Nomad distance travelled",
+        "value": "215",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Nomad_rover"
+      },
+      {
+        "label": "Nomad trek duration",
+        "value": "45",
+        "unit": "days",
+        "source_url": "https://en.wikipedia.org/wiki/Nomad_rover"
+      },
+      {
+        "label": "Nomad trek year",
+        "value": "1997",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Nomad_rover"
+      },
+      {
+        "label": "Nomad mass",
+        "value": "550",
+        "unit": "kg",
+        "source_url": "https://en.wikipedia.org/wiki/Nomad_rover"
+      },
+      {
+        "label": "Simulated communication delay",
+        "value": "4 to 15",
+        "unit": "minutes",
+        "source_url": "https://en.wikipedia.org/wiki/Nomad_rover"
+      },
+      {
+        "label": "Desert area",
+        "value": "105,000",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/Atacama_Desert"
+      },
+      {
+        "label": "Mean annual rainfall",
+        "value": "15",
+        "unit": "mm",
+        "source_url": "https://en.wikipedia.org/wiki/Atacama_Desert"
+      },
+      {
+        "label": "Desert length",
+        "value": "1,600",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Atacama_Desert"
+      }
+    ],
     "image": {
-      "file": "atacama-desert-cmu-nomad-rover-traverse.jpg",
-      "title": "Satellite view of Atacama Desert (CMU Nomad rover traverse), centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-70.2,-23.15,-69.60000000000001,-22.85",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Atacama Desert Landscape (iced moment 870-CC)",
+      "author": "L. Honnorat/ESO",
+      "license": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Atacama_Desert_Landscape_(iced_moment_870-CC).jpg",
+      "credit": "Photo: L. Honnorat/ESO, CC BY 4.0, via Wikimedia Commons",
+      "file": "atacama-desert-cmu-nomad-rover-traverse.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Nomad_rover",
+      "https://en.wikipedia.org/wiki/Atacama_Desert",
+      "https://www-robotics.jpl.nasa.gov/media/documents/98ras.nomad.pdf"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -565,24 +617,52 @@
   },
   {
     "slug": "black-point-lava-flow",
-    "place": null,
-    "summary": "A Pleistocene basalt flow north of Flagstaff where NASA's Desert RATS tested pressurised rovers and crew procedures.",
-    "terrain_geology": "Flat-topped basalt flow capping softer Moenkopi sedimentary rocks; rubbly flow margins; scattered cinder cones.",
-    "climate": "Semi-arid desert; hot summers, cold windy winters.",
-    "access_and_facilities": "Navajo Nation and federal land near the Little Colorado River; permits needed; dirt roads off US-89.",
-    "hazards": null,
-    "facts": [],
+    "place": "Black Point Lava Flow, near Flagstaff, northern Arizona, USA",
+    "summary": "Black Point Lava Flow is a broad band of dark basalt in northern Arizona. It was first identified as a candidate lunar analog in the Apollo era, and NASA's Desert Research and Technology Studies group holds a technology test there every year, including Lunar Electric Rover trials and a simulated mission to the Malapert Massif region of the Moon. It is a testing ground for equipment, operations and human factors.",
+    "terrain_geology": "Thick black basaltic lava pooled against the Little Colorado River and formed a ridge. The surrounding high desert has lava flows, volcanic cones and rough ground that resembles the Moon and Mars in shape.",
+    "climate": "It is a high-elevation desert with hot summers. Test crews worked in summer heat during the simulated mission.",
+    "access_and_facilities": "The site is close to Flagstaff, so crews and vehicles avoid the cost and travel time of reaching real planetary sites. Aerospace firms and university students are within reach.",
+    "hazards": "Test slopes were steep, the ground is rough, and rovers can break down.",
+    "facts": [
+      {
+        "label": "Desert RATS Lunar Electric Rover tests year",
+        "value": "2008",
+        "unit": "",
+        "source_url": "https://www.nasa.gov/image-article/preparing-another-world"
+      },
+      {
+        "label": "Simulated mission test year",
+        "value": "2010",
+        "unit": "",
+        "source_url": "https://news.asu.edu/content/arizona-stands-moon-and-mars"
+      },
+      {
+        "label": "Steepest slopes in 2010 test",
+        "value": "30",
+        "unit": "degrees",
+        "source_url": "https://news.asu.edu/content/arizona-stands-moon-and-mars"
+      },
+      {
+        "label": "Annual field test length",
+        "value": "2",
+        "unit": "weeks",
+        "source_url": "https://news.asu.edu/content/arizona-stands-moon-and-mars"
+      }
+    ],
     "image": {
-      "file": "black-point-lava-flow.jpg",
-      "title": "Satellite view of Black Point Lava Flow, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.67999999999999,35.54,-111.08,35.839999999999996",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Black Point Lava Flow, Arizona",
+      "author": "NASA Expedition 20 crew",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Black_Point_Lava_Flow,_Arizona.jpg",
+      "credit": "Photo: NASA Expedition 20 crew, public domain, via Wikimedia Commons",
+      "file": "black-point-lava-flow.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://news.asu.edu/content/arizona-stands-moon-and-mars",
+      "https://www.nasa.gov/image-article/preparing-another-world",
+      "https://www.space.com/technology/nasas-lunar-electric-rover-rolls-across-arizona-space-photo-of-the-day-for-oct-9-2025"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -967,24 +1047,52 @@
   },
   {
     "slug": "cinder-lake-crater-field",
-    "place": null,
-    "summary": "Hundreds of explosive craters blasted into volcanic cinder in 1967-68 to copy an Apollo landing site, used to train astronauts.",
-    "terrain_geology": "Flat basaltic cinder (tephra) blanket from Sunset Crater; artificial craters a few metres to ~25 m across.",
+    "place": "Cinder Lake crater fields, near Sunset Crater, northeast of Flagstaff, Arizona, USA",
+    "summary": "The Cinder Lake crater fields are artificial craters that the USGS Astrogeology branch blasted into cinder-covered ground in the Apollo era. They were built to match a Lunar Orbiter image of the Moon so astronauts could rehearse driving, navigation and sampling. Crews also tested lunar module and rover trainers there.",
+    "terrain_geology": "Engineers dug into basaltic cinder and fired charges in sequence so the ejecta layered in the same order as on the Moon. The cinder layer is only a few feet deep, with orange-tan soil beneath.",
     "climate": "Semi-arid, cool high plateau; snow in winter; monsoon storms in late summer.",
-    "access_and_facilities": "Coconino National Forest (US Forest Service); open public land with off-highway vehicle area nearby; road access from Flagstaff.",
-    "hazards": null,
-    "facts": [],
+    "access_and_facilities": "The fields lie off the Forest Service road signed as the Cinder Hills off-road vehicle area, just south of the Sunset Crater turnoff from the main highway. Visiting on weekdays is suggested because the area is busy with off-road vehicles.",
+    "hazards": "Wind and off-road driving have badly worn the craters; the first field is farther from the main riding areas and is better preserved.",
+    "facts": [
+      {
+        "label": "Craters in Crater Field 1",
+        "value": "143",
+        "unit": "craters",
+        "source_url": "https://woub.org/2014/09/29/cant-make-it-moon-head-arizona-instead/"
+      },
+      {
+        "label": "Crater Field 1 first blasted",
+        "value": "1967",
+        "unit": "",
+        "source_url": "https://woub.org/2014/09/29/cant-make-it-moon-head-arizona-instead/"
+      },
+      {
+        "label": "Charges fired for Crater Field 2",
+        "value": "426",
+        "unit": "charges",
+        "source_url": "https://woub.org/2014/09/29/cant-make-it-moon-head-arizona-instead/"
+      },
+      {
+        "label": "Last Apollo training simulation",
+        "value": "1972",
+        "unit": "",
+        "source_url": "https://woub.org/2014/09/29/cant-make-it-moon-head-arizona-instead/"
+      }
+    ],
     "image": {
-      "file": "cinder-lake-crater-field.jpg",
-      "title": "Satellite view of Cinder Lake Crater Field, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.8,35.160000000000004,-111.2,35.46",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Cinder Lake Crater Field (creation of Crater Field 2)",
+      "author": "U.S. Geological Survey",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cinder_Lake_Crater_Field.jpg",
+      "credit": "Photo: U.S. Geological Survey, public domain, via Wikimedia Commons",
+      "file": "cinder-lake-crater-field.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://woub.org/2014/09/29/cant-make-it-moon-head-arizona-instead/",
+      "https://pirlwww.lpl.arizona.edu/~jscotti/cinderlake.html",
+      "https://www.usgs.gov/media/images/cinder-lake-crater-field-2jpg"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -1401,24 +1509,70 @@
   },
   {
     "slug": "dasht-e-lut-kalut-yardang-field",
-    "place": null,
-    "summary": "A field of giant wind-carved ridges in Iran's Lut Desert, one of the hottest surfaces on Earth.",
-    "terrain_geology": "Mega-yardangs in playa clays, with mega-ripples and dunes.",
-    "climate": "Extremely hot hyper-arid.",
-    "access_and_facilities": "World Heritage site; Iranian permits; access from Shahdad.",
-    "hazards": null,
-    "facts": [],
+    "place": "Dasht-e Lut (Lut Desert), Kerman and Sistan-Baluchestan provinces, southeastern Iran",
+    "summary": "The Lut Desert is a large salt desert in southeastern Iran with some of the largest wind-carved ridges (yardangs, locally called kaluts) on Earth. Published remote-sensing work compares its yardangs and its ripple-like dunes (transverse aeolian ridges) with those on Mars. No field campaign for planetary operations is described in the sources read here.",
+    "terrain_geology": "More than half the surface is volcanic rock, with parallel ridges and furrows in the centre and very tall dunes in the southeast. Mega-yardangs are easy to pick out on satellite images and run in line with a strong regional wind.",
+    "climate": "The desert is extremely dry and very hot, and satellite instruments have measured some of the highest ground-surface temperatures on Earth there. There are no permanent weather stations inside it.",
+    "access_and_facilities": "The desert is a World Heritage Site. The sources read here give no access routes or facilities.",
+    "hazards": "Extreme surface heat and the lack of weather stations make conditions hard to predict.",
+    "facts": [
+      {
+        "label": "Desert area",
+        "value": "51,800",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/Lut_Desert"
+      },
+      {
+        "label": "Length",
+        "value": "480",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Lut_Desert"
+      },
+      {
+        "label": "Width",
+        "value": "320",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Lut_Desert"
+      },
+      {
+        "label": "Floor elevation",
+        "value": "108",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Lut_Desert"
+      },
+      {
+        "label": "Estimated annual rainfall",
+        "value": "under 30",
+        "unit": "mm",
+        "source_url": "https://en.wikipedia.org/wiki/Lut_Desert"
+      },
+      {
+        "label": "Satellite land surface temperature (2005)",
+        "value": "70.7",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Lut_Desert"
+      },
+      {
+        "label": "World Heritage inscription year",
+        "value": "2016",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Lut_Desert"
+      }
+    ],
     "image": {
-      "file": "dasht-e-lut-kalut-yardang-field.jpg",
-      "title": "Satellite view of Dasht-e Lut - Kalut yardang field, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=57.800000000000004,30.25,58.4,30.549999999999997",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Kaluts in Lut Desert, Kavire Lut, Iran",
+      "author": "JulianLas",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kaluts_in_Lut_Desert,_Kavire_Lut,_Iran.jpg",
+      "credit": "Photo: JulianLas, CC BY-SA 4.0, via Wikimedia Commons",
+      "file": "dasht-e-lut-kalut-yardang-field.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lut_Desert",
+      "https://prism.ucalgary.ca/handle/11023/3645",
+      "https://www.earthobservatory.nasa.gov/images/7016/diverse-terrain-of-irans-dasht-e-lut"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Mars": {
         "strong": [
@@ -1802,24 +1956,68 @@
   },
   {
     "slug": "el-tatio-geyser-field",
-    "place": null,
-    "summary": "A high-altitude geyser field in Chile whose silica matches deposits found by the Spirit rover.",
-    "terrain_geology": "Hydrothermal opaline silica sinter mounds and terraces.",
-    "climate": "Cold high-altitude desert; strong UV.",
-    "access_and_facilities": "Community-managed site; entry fee; road from San Pedro de Atacama.",
-    "hazards": null,
-    "facts": [],
+    "place": "El Tatio geyser field, Antofagasta Region, Andes of northern Chile",
+    "summary": "El Tatio is a high-altitude geothermal field with geysers, hot springs and silica sinter deposits in the Andes of northern Chile. It is the largest geyser field in the Southern Hemisphere. Scientists use it as an analogue for early Earth and possible past life on Mars, and its low air pressure and strong ultraviolet light are cited as Mars-like conditions.",
+    "terrain_geology": "The field lies at the western foot of a line of stratovolcanoes on the Chile and Bolivia border. Its silica sinter holds microbial textures, and microstructures in the Columbia Hills at the Home Plate landform on Mars resemble biogenic structures found at El Tatio, though the source notes this does not mean the Martian ones are biogenic.",
+    "climate": "Air is cold and thin, with large day to night swings, and most rain falls in the summer months. Wind and ultraviolet exposure are strong.",
+    "access_and_facilities": "A regional road links the field to San Pedro de Atacama, and unpaved roads lead into it. The local Atacameno community administers the site, which is a major tourist destination.",
+    "hazards": "Hot spring water carries very high arsenic, the pool edges have acidic mud, and an old well blew out in a steam column in a past year.",
+    "facts": [
+      {
+        "label": "Elevation",
+        "value": "4,320",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/El_Tatio"
+      },
+      {
+        "label": "Geothermal area",
+        "value": "30",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/El_Tatio"
+      },
+      {
+        "label": "Distance north of San Pedro de Atacama",
+        "value": "80 to 89",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/El_Tatio"
+      },
+      {
+        "label": "Average air temperature (weather station)",
+        "value": "3.6",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/El_Tatio"
+      },
+      {
+        "label": "Geyser water temperature",
+        "value": "80 to 85",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/El_Tatio"
+      },
+      {
+        "label": "Water boiling point at site",
+        "value": "86",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/El_Tatio"
+      },
+      {
+        "label": "Arsenic in hot spring water (up to)",
+        "value": "50",
+        "unit": "mg/L",
+        "source_url": "https://en.wikipedia.org/wiki/El_Tatio"
+      }
+    ],
     "image": {
-      "file": "el-tatio-geyser-field.jpg",
-      "title": "Satellite view of El Tatio geyser field, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-68.31,-22.479999999999997,-67.71000000000001,-22.18",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "El Tatio geothermal field in Chile",
+      "author": "Alexarje",
+      "license": "CC0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:El_Tatio_geothermal_field_in_Chile.jpg",
+      "credit": "Photo: Alexarje, CC0, via Wikimedia Commons",
+      "file": "el-tatio-geyser-field.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/El_Tatio"
+    ],
+    "confidence": "high",
     "parameters": {
       "Mars": {
         "strong": [
@@ -2178,24 +2376,63 @@
   },
   {
     "slug": "gilf-kebir-plateau-and-wadis",
-    "place": null,
-    "summary": "A sandstone plateau in Egypt cut by branching dry valleys.",
-    "terrain_geology": "Nubian sandstone plateau with dendritic wadis.",
-    "climate": "Hyper-arid.",
-    "access_and_facilities": "Remote southwest Egypt; military permit; expedition logistics.",
+    "place": "Gilf Kebir plateau, Western Desert, southwest Egypt",
+    "summary": "Gilf Kebir is a large sandstone plateau in the Libyan Desert of southwest Egypt, cut by dry seasonal valleys called wadis. A NASA technical report used landforms in southwest Egypt as a basis for comparison with Mars. The sources read here do not describe a modern analog field campaign at the plateau itself.",
+    "terrain_geology": "The plateau is sandstone and rises well above the surrounding desert floor, with wadis crossing it. The only way up from the southern plains is the Aqaba Pass.",
+    "climate": "The climate is extremely hyperarid, with rainfall that barely registers over a year. July days are the hottest and January nights the coolest.",
+    "access_and_facilities": "The plateau lies inside Gilf Kebir National Park. The sources read here give no road, station or permit details.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Plateau area",
+        "value": "7,770",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/Gilf_Kebir"
+      },
+      {
+        "label": "Highest point",
+        "value": "1,014",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Gilf_Kebir"
+      },
+      {
+        "label": "Rise above desert floor",
+        "value": "300",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Gilf_Kebir"
+      },
+      {
+        "label": "Average annual precipitation",
+        "value": "under 0.1",
+        "unit": "mm",
+        "source_url": "https://en.wikipedia.org/wiki/Gilf_Kebir"
+      },
+      {
+        "label": "Mean daily high in July",
+        "value": "38.7",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Gilf_Kebir"
+      },
+      {
+        "label": "Mean daily low in January",
+        "value": "7.7",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Gilf_Kebir"
+      }
+    ],
     "image": {
-      "file": "gilf-kebir-plateau-and-wadis.jpg",
-      "title": "Satellite view of Gilf Kebir plateau and wadis, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=25.599999999999998,23.150000000000002,26.2,23.45",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "View from the Gilf Kebir ridge south into Wadi Sura",
+      "author": "Clemens Schmillen",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:GilfKebir1.jpg",
+      "credit": "Photo: Clemens Schmillen, CC BY-SA 4.0, via Wikimedia Commons",
+      "file": "gilf-kebir-plateau-and-wadis.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Gilf_Kebir",
+      "https://ntrs.nasa.gov/citations/19830008725"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Mars": {
         "strong": [
@@ -2597,24 +2834,64 @@
   },
   {
     "slug": "henbury-craters",
-    "place": null,
-    "summary": "A cluster of 13 small young meteorite craters in central Australia.",
-    "terrain_geology": "Small simple craters (up to ~180 m) in sandstone and shale with iron meteorite fragments.",
+    "place": "Henbury Meteorites Conservation Reserve, southwest of Alice Springs, Northern Territory, Australia",
+    "summary": "Henbury is a cluster of small, closely spaced impact craters formed when an iron meteorite broke up before it hit the ground. The Mars Society Australia lists it among its planetary analogue sites and notes that the craters were studied to give context to the Apollo program. It is a protected reserve, so field work needs permission.",
+    "terrain_geology": "The craters formed in desert ground from the fall of iron-nickel meteorite fragments, and several tonnes of those fragments have been recovered. Studies of crater erosion and infill are described as having analogue value.",
     "climate": "Hot arid desert.",
-    "access_and_facilities": "Henbury Meteorites Conservation Reserve; dirt road south of Alice Springs; no sampling without permit.",
+    "access_and_facilities": "The reserve lies southwest of Alice Springs and is managed by the Northern Territory parks authority. Research needs permission from that authority, and Aboriginal heritage issues may apply.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Number of craters",
+        "value": "13 to 14",
+        "unit": "craters",
+        "source_url": "https://en.wikipedia.org/wiki/Henbury_craters"
+      },
+      {
+        "label": "Crater diameter range",
+        "value": "7 to 180",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Henbury_craters"
+      },
+      {
+        "label": "Maximum crater depth",
+        "value": "15",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Henbury_craters"
+      },
+      {
+        "label": "Reserve area",
+        "value": "16",
+        "unit": "ha",
+        "source_url": "https://en.wikipedia.org/wiki/Henbury_craters"
+      },
+      {
+        "label": "Reserve established",
+        "value": "1964",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Henbury_craters"
+      },
+      {
+        "label": "Approximate impact age",
+        "value": "4,200 to 4,700",
+        "unit": "years",
+        "source_url": "https://marssociety.org.au/node/1845"
+      }
+    ],
     "image": {
-      "file": "henbury-craters.jpg",
-      "title": "Satellite view of Henbury craters, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=132.85,-24.72,133.45000000000002,-24.42",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Henbury Meteorite Crater",
+      "author": "W & S Roddom",
+      "license": "CC BY 2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Henbury_Meteorite_Crater.jpg",
+      "credit": "Photo: W & S Roddom, CC BY 2.0, via Wikimedia Commons",
+      "file": "henbury-craters.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Henbury_craters",
+      "https://marssociety.org.au/node/1845",
+      "https://northernterritory.com/alice-springs-and-surrounds/see-and-do/henbury-meteorites-conservation-reserve"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -2917,13 +3194,38 @@
   },
   {
     "slug": "isro-challakere-lunar-terrain-test-facility",
-    "place": null,
-    "summary": "Artificial lunar craters built by ISRO near Challakere to test Chandrayaan lander sensors.",
+    "place": "Challakere, Chitradurga district, Karnataka, India",
+    "summary": "At Challakere, ISRO's satellite centre made artificial craters so the terrain would resemble the lunar surface, and used them to test the landing sensors of ISRO's second lunar lander. A small ISRO aircraft carrying the sensors flew over the craters several times. This is a built test site for sensor and landing tests, not a natural terrain.",
     "terrain_geology": "Dug and shaped craters on flat granitic-gneiss terrain covered with simulant soil.",
     "climate": "Semi-arid tropical; hot, with monsoon rains.",
-    "access_and_facilities": "ISRO/DRDO research campus at Challakere, Chitradurga; restricted, official access only.",
+    "access_and_facilities": "Challakere is in a science township in Chitradurga district that is shared by ISRO, DRDO, IISc and BARC. Other scientific and strategic agencies also hold land there.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Artificial craters made",
+        "value": "8 to 10",
+        "unit": "craters",
+        "source_url": "https://satnews.com/2016/10/26/isro-ground-tests-a-mock-moon-in-india-chandrayaan-2-preps-lunar-landing/"
+      },
+      {
+        "label": "Sensor test campaign started",
+        "value": "2016",
+        "unit": "",
+        "source_url": "https://satnews.com/2016/10/26/isro-ground-tests-a-mock-moon-in-india-chandrayaan-2-preps-lunar-landing/"
+      },
+      {
+        "label": "Town average elevation",
+        "value": "585",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Challakere"
+      },
+      {
+        "label": "Township area",
+        "value": "32",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/Challakere"
+      }
+    ],
     "image": {
       "file": "isro-challakere-lunar-terrain-test-facility.jpg",
       "title": "Satellite view of ISRO Challakere lunar terrain test facility, centred on the listed coordinates (Landsat WELD annual composite)",
@@ -2932,9 +3234,11 @@
       "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=76.3,14.049999999999999,76.89999999999999,14.35",
       "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://satnews.com/2016/10/26/isro-ground-tests-a-mock-moon-in-india-chandrayaan-2-preps-lunar-landing/",
+      "https://en.wikipedia.org/wiki/Challakere"
+    ],
+    "confidence": "low",
     "parameters": {
       "Moon": {
         "strong": [
@@ -3329,24 +3633,57 @@
   },
   {
     "slug": "kilauea-ka-u-desert-basalt",
-    "place": null,
-    "summary": "The barren lava desert where NASA's BASALT project rehearsed Mars EVA science.",
-    "terrain_geology": "Basalt flows, ash and sulfate-altered crusts.",
-    "climate": "Rainshadow desert.",
-    "access_and_facilities": "Hawai'i Volcanoes National Park; research permit.",
-    "hazards": null,
-    "facts": [],
+    "place": "Kilauea summit region (including the Ka'u Desert), Hawaii Volcanoes National Park, Hawaii, USA",
+    "summary": "Kilauea is an active shield volcano whose basalt terrain hosted fieldwork for the BASALT program, a NASA-funded study of how astronauts might work on Mars. The program chose Hawaii and Idaho because both have volcanic terrain similar to Mars, and it ran simulated missions with delayed communications. The Hawaii sites are treated as analogs for wetter and more volcanically active periods of early Mars.",
+    "terrain_geology": "Hawaiian lavas are mostly primitive basalt, with low-relief ropy and vesicular flows at Mauna Ulu and a lava lake at Kilauea Iki. Several of these lava types match compositions found by Mars rovers and in meteorites.",
+    "climate": "The summit area is mild and wet, with rain or sun on any given day and no snow.",
+    "access_and_facilities": "Access and permits through the national park strongly shaped which sites were chosen. Some trail sites must be kept away from tourist traffic.",
+    "hazards": "The volcano is active, rim collapses at the caldera have likely compromised one study site, and fumarole areas have hot, acidic gas.",
+    "facts": [
+      {
+        "label": "Kilauea summit elevation",
+        "value": "1,220",
+        "unit": "m",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6442300"
+      },
+      {
+        "label": "Average July high temperature",
+        "value": "28",
+        "unit": "C",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6442300"
+      },
+      {
+        "label": "Average January low temperature",
+        "value": "18",
+        "unit": "C",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6442300"
+      },
+      {
+        "label": "Annual precipitation",
+        "value": "1,750",
+        "unit": "mm",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6442300"
+      },
+      {
+        "label": "BASALT Hawaii field seasons",
+        "value": "2016 and 2017",
+        "unit": "",
+        "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6442300"
+      }
+    ],
     "image": {
-      "file": "kilauea-ka-u-desert-basalt.jpg",
-      "title": "Satellite view of Kilauea Ka'u Desert (BASALT), centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-155.63000000000002,19.200000000000003,-155.03,19.5",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Ka'u Desert near Halema'uma'u, Kilauea",
+      "author": "S.R. Brantley, USGS",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kau_desert.jpg",
+      "credit": "Photo: S.R. Brantley, USGS, public domain, via Wikimedia Commons",
+      "file": "kilauea-ka-u-desert-basalt.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC6442300",
+      "https://www.westhawaiitoday.com/2015/10/22/hawaii-news/nasa-team-scouting-for-mars-simulation-sites/"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Mars": {
         "strong": [
@@ -3724,24 +4061,63 @@
   },
   {
     "slug": "lake-abbe-hydrothermal-carbonate-chimneys",
-    "place": null,
-    "summary": "Tall limestone chimneys built by hot springs on a drying lake in Afar.",
-    "terrain_geology": "Carbonate and silica chimneys up to ~60 m on alkaline lake flats.",
-    "climate": "Hot arid.",
-    "access_and_facilities": "Djibouti/Ethiopia border; guided 4x4 trips from Djibouti.",
-    "hazards": null,
-    "facts": [],
+    "place": "Lake Abbe (Abhe Bad), Afar Depression, on the Djibouti and Ethiopia border",
+    "summary": "Lake Abbe is a salt lake in the Afar Depression, where tall carbonate chimneys rise from the shore and steam comes out of them. The chimneys form where lake water mixes with hot deeper fluid. The sources read here describe the geology but do not describe any use of the site as a planetary analog.",
+    "terrain_geology": "Limestone (carbonate) chimneys form where hydrothermal fluid meets lake water, in alternating layers of calcite and silica-bearing calcite. The lake sits at the Afar triple junction, with a dormant volcano on its northwest shore.",
+    "climate": "The climate is hot, dry and sunny all year, with summer temperatures in the thirties and forties.",
+    "access_and_facilities": "The area is described as one of the most inaccessible on Earth. The sources read here name no road or station details.",
+    "hazards": "Lake level swings sharply with small climate changes, and the surroundings are very hot.",
+    "facts": [
+      {
+        "label": "Lake surface elevation",
+        "value": "243",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Lake_Abbe"
+      },
+      {
+        "label": "Lake surface area",
+        "value": "320",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/Lake_Abbe"
+      },
+      {
+        "label": "Chimney height (up to)",
+        "value": "50",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Lake_Abbe"
+      },
+      {
+        "label": "Mean annual rainfall",
+        "value": "under 172",
+        "unit": "mm",
+        "source_url": "https://en.wikipedia.org/wiki/Lake_Abbe"
+      },
+      {
+        "label": "Annual mean daily maximum temperature",
+        "value": "35.1",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Lake_Abbe"
+      },
+      {
+        "label": "Maximum depth",
+        "value": "37",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Lake_Abbe"
+      }
+    ],
     "image": {
-      "file": "lake-abbe-hydrothermal-carbonate-chimneys.jpg",
-      "title": "Satellite view of Lake Abbe hydrothermal carbonate chimneys, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=41.53,10.98,42.129999999999995,11.280000000000001",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Sulphuric chimneys at Lac Abbe (Lake Abbe), Ethiopia/Djibouti",
+      "author": "Rolf Cosar",
+      "license": "CC BY 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lac_Abbe-01.JPG",
+      "credit": "Photo: Rolf Cosar, CC BY 3.0, via Wikimedia Commons",
+      "file": "lake-abbe-hydrothermal-carbonate-chimneys.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lake_Abbe",
+      "https://www.fzd.de/publications/Publ-20714"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Mars": {
         "strong": [
@@ -4107,24 +4483,62 @@
   },
   {
     "slug": "lonar-crater",
-    "place": null,
-    "summary": "A 1.8 km impact crater in Deccan basalt in India, a reference for craters in lunar-type basalt.",
-    "terrain_geology": "Simple crater in flood basalt with a saline-alkaline lake, shocked basalt and ejecta.",
+    "place": "Lonar Lake crater, Buldhana district, Maharashtra, India",
+    "summary": "Lonar Lake is a saline, highly alkaline lake that fills a meteorite impact crater in the Deccan Plateau of Maharashtra. Wikipedia describes it as the only terrestrial impact crater in the world formed entirely within basalt. That is why it is compared with basaltic lunar terrain, and a study by IIT Bombay reported that minerals in soil from the crater were similar to lunar rocks brought back by the Apollo missions.",
+    "terrain_geology": "The crater is cut into Deccan Traps basalt, with layered lava flows exposed in the crater wall and an ejecta blanket around the rim. Drill cores beneath the floor contain breccia with shatter cones, which is evidence of shock metamorphism.",
     "climate": "Tropical monsoon; hot summers, wet monsoon season.",
-    "access_and_facilities": "Protected wildlife sanctuary and Ramsar site in Maharashtra; road access from Aurangabad; permission for sampling.",
+    "access_and_facilities": "The lake is a National Geological Monument and a Ramsar site, located near the town of Lonar.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Crater diameter",
+        "value": "1.83",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Lonar_Lake"
+      },
+      {
+        "label": "Crater depth",
+        "value": "150",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Lonar_Lake"
+      },
+      {
+        "label": "Elevation of lake",
+        "value": "480",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Lonar_Lake"
+      },
+      {
+        "label": "Rim height above surroundings",
+        "value": "20",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Lonar_Lake"
+      },
+      {
+        "label": "Age of the Deccan basalt target",
+        "value": "66",
+        "unit": "million years",
+        "source_url": "https://en.wikipedia.org/wiki/Lonar_Lake"
+      },
+      {
+        "label": "Crater age (two published estimates, the later one is disputed)",
+        "value": "52 and 570",
+        "unit": "thousand years",
+        "source_url": "https://en.wikipedia.org/wiki/Lonar_Lake"
+      }
+    ],
     "image": {
-      "file": "lonar-crater.jpg",
-      "title": "Satellite view of Lonar crater, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=76.208,19.826,76.80799999999999,20.125999999999998",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Lonar Crater, Panorama",
+      "author": "Aditya Laghate",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lonar_Crater,_Panorama.jpg",
+      "credit": "Photo: Aditya Laghate, CC BY-SA 3.0, via Wikimedia Commons",
+      "file": "lonar-crater.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Lonar_Lake"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -4526,13 +4940,38 @@
   },
   {
     "slug": "mars-base-1-jinchang",
-    "place": null,
-    "summary": "A Chinese Mars habitat simulation base in the Gobi, opened in 2019.",
-    "terrain_geology": "Gobi gravel hills and red beds.",
-    "climate": "Cold arid.",
-    "access_and_facilities": "Tourism/education facility; booking required.",
+    "place": "Mars analog base near Jinchang, Gansu, China (Hexi Corridor, Gobi Desert)",
+    "summary": "This is a Mars simulation and education base built by the company C-Space in barren Gobi Desert hills near Jinchang. Its core area has a master control compartment, an air-lock compartment and a crew compartment, and it is used for astronaut-style training and public education. The founder said the site was chosen because its landform is the closest match to Mars that the team could find on Earth, while a Peking University professor said the building and desert are not representative of the hostile conditions on Mars.",
+    "terrain_geology": "The wider area is higher in the south and lower in the north, alternating between Gobi Desert and mountain areas.",
+    "climate": "The climate is arid with wind all year round, with large daily and seasonal temperature swings.",
+    "access_and_facilities": "The nearest town is Jinchang. The base has living quarters, a control room, a greenhouse and an air lock.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Planned overall area",
+        "value": "67",
+        "unit": "km2",
+        "source_url": "https://www.yicaiglobal.com/news/visit-china-first-mars-survival-simulation-base"
+      },
+      {
+        "label": "Core constructed area",
+        "value": "5",
+        "unit": "km2",
+        "source_url": "https://www.yicaiglobal.com/news/visit-china-first-mars-survival-simulation-base"
+      },
+      {
+        "label": "Year opened",
+        "value": "2019",
+        "unit": "",
+        "source_url": "https://phys.org/news/2019-04-small-china-mars-base-teens.html"
+      },
+      {
+        "label": "Distance from Jinchang (as reported by AFP, other reports differ)",
+        "value": "40",
+        "unit": "km",
+        "source_url": "https://phys.org/news/2019-04-small-china-mars-base-teens.html"
+      }
+    ],
     "image": {
       "file": "mars-base-1-jinchang.jpg",
       "title": "Satellite view of Mars Base 1 (Jinchang), centred on the listed coordinates (Landsat WELD annual composite)",
@@ -4541,9 +4980,11 @@
       "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=101.9,38.15,102.5,38.449999999999996",
       "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://www.yicaiglobal.com/news/visit-china-first-mars-survival-simulation-base",
+      "https://phys.org/news/2019-04-small-china-mars-base-teens.html"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Mars": {
         "strong": [
@@ -4893,24 +5334,68 @@
   },
   {
     "slug": "meteor-crater-barringer",
-    "place": null,
-    "summary": "A 1.2 km simple impact crater in the Arizona desert, used for Apollo crew training and NASA suit and rover trials.",
-    "terrain_geology": "Bowl-shaped crater with raised, overturned rim and blocky ejecta blanket in Coconino sandstone and Kaibab limestone; breccia lens below the floor.",
-    "climate": "Semi-arid high desert; hot summers, cold winters with occasional snow; strong winds.",
-    "access_and_facilities": "Privately owned (Meteor Crater Enterprises); research access by arrangement; paved road off Interstate 40 near Winslow.",
+    "place": "Meteor Crater (Barringer Crater), near Flagstaff and Winslow, Arizona, USA",
+    "summary": "Meteor Crater is an impact crater in the northern Arizona desert, between Flagstaff and Winslow. The Lunar and Planetary Institute and other science institutes call it the best-preserved meteorite crater on Earth. NASA astronauts trained in the crater before the Apollo missions to the Moon, and field training for astronauts continues there.",
+    "terrain_geology": "The crater has a squared-off outline thought to follow regional jointing in the rock layers. The centre is filled with rubble above the crater bedrock.",
+    "climate": "The dry Arizona climate and the crater's relatively young age are given as the reason it has changed little since it formed.",
+    "access_and_facilities": "The crater is privately owned by the Barringer Crater Company. A visitor center sits on the north rim and guided rim tours run daily, weather permitting.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Elevation",
+        "value": "1,719",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Meteor_Crater"
+      },
+      {
+        "label": "Crater diameter",
+        "value": "1,200",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Meteor_Crater"
+      },
+      {
+        "label": "Crater depth",
+        "value": "170",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Meteor_Crater"
+      },
+      {
+        "label": "Rim height above plains",
+        "value": "45",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Meteor_Crater"
+      },
+      {
+        "label": "Approximate age",
+        "value": "50,000",
+        "unit": "years",
+        "source_url": "https://en.wikipedia.org/wiki/Meteor_Crater"
+      },
+      {
+        "label": "Distance east of Flagstaff",
+        "value": "60",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Meteor_Crater"
+      },
+      {
+        "label": "Distance west of Winslow",
+        "value": "29",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Meteor_Crater"
+      }
+    ],
     "image": {
-      "file": "meteor-crater-barringer.jpg",
-      "title": "Satellite view of Meteor Crater (Barringer), centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-111.32249999999999,34.877500000000005,-110.7225,35.1775",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Meteor Crater - Arizona",
+      "author": "National Map Seamless Server (USGS)",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Meteor_Crater_-_Arizona.jpg",
+      "credit": "Aerial image: National Map Seamless Server (USGS), public domain, via Wikimedia Commons",
+      "file": "meteor-crater-barringer.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Meteor_Crater"
+    ],
+    "confidence": "high",
     "parameters": {
       "Moon": {
         "strong": [
@@ -5276,24 +5761,76 @@
   },
   {
     "slug": "myvatn-and-krafla-lava-fields",
-    "place": null,
-    "summary": "Young fissure-fed lava fields in northern Iceland used for Apollo training.",
-    "terrain_geology": "Basaltic fissure flows (Krafla Fires 1724-29, 1975-84), spatter ramparts, rootless cones and geothermal fields.",
-    "climate": "Cold subpolar; snowy winters, cool summers.",
+    "place": "Mývatn and Krafla lava fields, northern Iceland",
+    "summary": "Mývatn is a shallow lake in an area of active volcanism in northern Iceland, next to the Krafla volcano. The ground around it is young basalt from fissure eruptions. Apollo astronaut groups did geology field training in Iceland, and the Exploration Museum lists Mývatn among the places the later group visited.",
+    "terrain_geology": "Mývatn formed in a large basaltic fissure eruption, and Dimmuborgir is a forest of rock pillars left where temporary lava lakes drained. Krafla is a caldera on the Mid-Atlantic Ridge with a long fissure zone.",
+    "climate": "The climate is tundra bordering on subarctic, with cool summers and very long, cold winters.",
     "access_and_facilities": "Public land and nature reserve; paved roads; geothermal power plant area.",
-    "hazards": null,
-    "facts": [],
+    "hazards": "Krafla is volcanically active and has erupted many times in recorded history.",
+    "facts": [
+      {
+        "label": "Lake surface elevation",
+        "value": "288",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/M%C3%BDvatn"
+      },
+      {
+        "label": "Lake surface area",
+        "value": "37",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/M%C3%BDvatn"
+      },
+      {
+        "label": "Mean annual temperature (Reykjahlid, 1961 to 1990)",
+        "value": "1.4",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/M%C3%BDvatn"
+      },
+      {
+        "label": "Annual precipitation (Reykjahlid, 1961 to 1990)",
+        "value": "435",
+        "unit": "mm",
+        "source_url": "https://en.wikipedia.org/wiki/M%C3%BDvatn"
+      },
+      {
+        "label": "Krafla caldera diameter",
+        "value": "10",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Krafla"
+      },
+      {
+        "label": "Krafla fissure zone length",
+        "value": "90",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Krafla"
+      },
+      {
+        "label": "Krafla eruption episode",
+        "value": "1975 to 1984",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Krafla"
+      },
+      {
+        "label": "Apollo astronaut geology trips to Iceland",
+        "value": "1965 and 1967",
+        "unit": "",
+        "source_url": "https://www.explorationmuseum.com/astronaut-training/"
+      }
+    ],
     "image": {
-      "file": "myvatn-and-krafla-lava-fields.jpg",
-      "title": "Satellite view of Myvatn and Krafla lava fields, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-17.1,65.5,-16.5,65.80000000000001",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Aerial View of Krafla and Leirhnjúkur 21.05.2008",
+      "author": "Hansueli Krapf",
+      "license": "CC BY-SA 3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Aerial_View_of_Krafla_and_Leirhnj%C3%BAkur_21.05.2008_16-08-27.JPG",
+      "credit": "Photo: Hansueli Krapf, CC BY-SA 3.0, via Wikimedia Commons",
+      "file": "myvatn-and-krafla-lava-fields.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/M%C3%BDvatn",
+      "https://en.wikipedia.org/wiki/Krafla",
+      "https://www.explorationmuseum.com/astronaut-training/"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -5696,24 +6233,70 @@
   },
   {
     "slug": "nordlinger-ries-crater",
-    "place": null,
-    "summary": "A 24 km impact crater in Germany where Apollo 14 trained and ESA trains astronauts today.",
-    "terrain_geology": "Complex crater filled with suevite (impact melt breccia) and lake sediments; crystalline megablocks.",
+    "place": "Nördlinger Ries impact crater, Bavaria and Baden-Württemberg, Germany",
+    "summary": "The Ries is a large meteorite impact crater in southern Germany, with the town of Nördlingen close to its centre. Its ejecta deposits, including suevite and the Bunte Breccia, are well exposed. Wikipedia reports that an Apollo crew did geology field training there, and the Ries geopark says ESA astronauts have held field sessions there more recently.",
+    "terrain_geology": "The suevite formed from shocked sedimentary rock, and the Bunte Breccia ejecta extends well beyond the crater rim. The impactor reached into the crystalline basement.",
     "climate": "Temperate central European; wet, mild.",
-    "access_and_facilities": "Farmland and towns (Nördlingen); quarries and geopark visitor centre; easy road and rail access.",
+    "access_and_facilities": "Nördlingen lies just south-west of the crater centre. The Ries Crater Museum in Nördlingen and the Ries Geopark are the main visitor resources.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Original crater rim diameter (estimated)",
+        "value": "24",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/N%C3%B6rdlinger_Ries"
+      },
+      {
+        "label": "Age (Wikipedia gives two close values)",
+        "value": "14.6 to 14.8",
+        "unit": "million years",
+        "source_url": "https://en.wikipedia.org/wiki/N%C3%B6rdlinger_Ries"
+      },
+      {
+        "label": "Crater floor below eroded rim remains",
+        "value": "100 to 150",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/N%C3%B6rdlinger_Ries"
+      },
+      {
+        "label": "Reach of Bunte Breccia ejecta",
+        "value": "up to 40",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/N%C3%B6rdlinger_Ries"
+      },
+      {
+        "label": "Distance from Nördlingen to crater centre",
+        "value": "about 6",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/N%C3%B6rdlinger_Ries"
+      },
+      {
+        "label": "Apollo geology training at the Ries (Apollo 14 crew documented)",
+        "value": "August 1970",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/N%C3%B6rdlinger_Ries"
+      },
+      {
+        "label": "ESA astronaut field sessions at the Ries",
+        "value": "2017 and 2018",
+        "unit": "",
+        "source_url": "https://www.geopark-ries.de/en/wissenschaft/"
+      }
+    ],
     "image": {
-      "file": "nordlinger-ries-crater.jpg",
-      "title": "Satellite view of Nordlinger Ries crater, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=10.264999999999999,48.730000000000004,10.865,49.03",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Apollo 14 geology training, Nördlingen Ries Crater, Germany, August 1970",
+      "author": "NASA",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Apollo_14_geology_training_N%C3%B6rdlingen_Ries_Crater_Germany_10-15_August_1970.jpg",
+      "credit": "Photo: NASA (author listed as unknown), public domain, via Wikimedia Commons",
+      "file": "nordlinger-ries-crater.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/N%C3%B6rdlinger_Ries",
+      "https://www.geopark-ries.de/en/wissenschaft/",
+      "https://blogs.esa.int/caves/?p=1147"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -6075,24 +6658,62 @@
   },
   {
     "slug": "peary-land-polar-desert-central-plateau",
-    "place": null,
-    "summary": "The northernmost ice-free land on Earth, a polar desert with very little snow.",
-    "terrain_geology": "Sedimentary plateaus and valleys with permafrost; high mountains to the north.",
-    "climate": "High-Arctic polar desert; extremely dry, very cold, 24-hour daylight in summer.",
-    "access_and_facilities": "Northeast Greenland National Park; permit from the Greenland government; charter aircraft only.",
-    "hazards": null,
-    "facts": [],
+    "place": "Peary Land, northern Greenland (Denmark)",
+    "summary": "Peary Land is a peninsula in northeast Greenland that includes the most northerly ice-free land in the world. Most of its surface is polar desert, because the air is too dry to produce snow. Wikipedia does not describe it as a Moon or Mars analog; it is on our list as a candidate from our screening scores, not because an agency has used it that way.",
+    "terrain_geology": "The peninsula is cut by long fjords and rivers, with a heavily glaciated mountain range and an ice cap in the west. Zinc and lead deposits are known at Citronen Fjord.",
+    "climate": "Precipitation is very low, and the area was not glaciated in the most recent ice age. Plants cover only a small part of the surface.",
+    "access_and_facilities": "Two small research stations stand on Jørgen Brønlund Fjord, run by the Peary Land Foundation. In summer, travel between them is by boat, depending on ice conditions.",
+    "hazards": "Polar bears live in the area.",
+    "facts": [
+      {
+        "label": "Area",
+        "value": "57,000",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/Peary_Land"
+      },
+      {
+        "label": "Annual precipitation",
+        "value": "about 25",
+        "unit": "mm",
+        "source_url": "https://en.wikipedia.org/wiki/Peary_Land"
+      },
+      {
+        "label": "Distance from the North Pole",
+        "value": "a little over 700",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Peary_Land"
+      },
+      {
+        "label": "Highest point (Helvetia Tinde)",
+        "value": "1,929",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Peary_Land"
+      },
+      {
+        "label": "Surface covered by vegetation",
+        "value": "about 5",
+        "unit": "%",
+        "source_url": "https://en.wikipedia.org/wiki/Peary_Land"
+      },
+      {
+        "label": "Year Brønlundhus station was built",
+        "value": "1948",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Peary_Land"
+      }
+    ],
     "image": {
-      "file": "peary-land-polar-desert-central-plateau.jpg",
-      "title": "Satellite view of Peary Land polar desert (central plateau), centred on the listed coordinates (VIIRS true colour, one day in 2023)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=VIIRS_SNPP_CorrectedReflectance_TrueColor&v=-32.8,82.48299999999999,-32.2,82.783",
-      "credit": "Imagery: NASA GIBS, VIIRS true colour, one day in 2023, public domain. Ring marks the listed point."
+      "title": "Peary Land, Greenland aerial photo",
+      "author": "Szczureq",
+      "license": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peary_Land,_Greenland_aerial_photo.jpg",
+      "credit": "Photo: Szczureq, CC BY 4.0, via Wikimedia Commons",
+      "file": "peary-land-polar-desert-central-plateau.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Peary_Land"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -6472,24 +7093,68 @@
   },
   {
     "slug": "rio-grande-gorge-taos",
-    "place": null,
-    "summary": "A basalt-walled river gorge used by the Apollo 15 crew to train for Hadley Rille.",
-    "terrain_geology": "Deep gorge (~200 m) cut through stacked basalt flows of the Taos Plateau volcanic field.",
-    "climate": "Semi-arid high plateau; cold winters, warm summers.",
-    "access_and_facilities": "Rio Grande del Norte National Monument (BLM); public access via highway bridge and trails.",
+    "place": "Rio Grande Gorge, near Taos, Taos County, New Mexico, USA",
+    "summary": "The Rio Grande Gorge is a deep canyon in northern New Mexico cut through basalt flows of the Taos Plateau volcanic field. Wikipedia reports that NASA gave Apollo astronauts geology training there, citing similarities to an Apollo landing site. That page does not call it a rille analog; the rille label comes from our own list.",
+    "terrain_geology": "The gorge lies within the Rio Grande Rift and cuts through stacked basalt flows. It was carved by erosion over several million years.",
+    "climate": "The climate is semi-arid, with summer thunderstorms in July and August and possible snow from November through March.",
+    "access_and_facilities": "The Rio Grande Gorge Bridge crosses the gorge northwest of Taos.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Gorge length",
+        "value": "about 80",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Rio_Grande_Gorge"
+      },
+      {
+        "label": "Depth below rim near the bridge",
+        "value": "240",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Rio_Grande_Gorge"
+      },
+      {
+        "label": "Summer temperature range",
+        "value": "7 to 32",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Rio_Grande_Gorge"
+      },
+      {
+        "label": "Winter temperature range",
+        "value": "-26 to 7",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Rio_Grande_Gorge"
+      },
+      {
+        "label": "Distance of the gorge bridge northwest of Taos",
+        "value": "16",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Rio_Grande_Gorge"
+      },
+      {
+        "label": "Apollo geology training at the gorge",
+        "value": "March and September 1971",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Rio_Grande_Gorge"
+      },
+      {
+        "label": "Apollo landing site cited as similar",
+        "value": "Apollo 15",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Rio_Grande_Gorge"
+      }
+    ],
     "image": {
-      "file": "rio-grande-gorge-taos.jpg",
-      "title": "Satellite view of Rio Grande Gorge (Taos), centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-106.03,36.33,-105.43,36.629999999999995",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Rio Grande Gorge pano",
+      "author": "Daniel Schwen",
+      "license": "CC BY-SA 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Rio_Grande_Gorge_pano.jpg",
+      "credit": "Photo: Daniel Schwen, CC BY-SA 4.0, via Wikimedia Commons",
+      "file": "rio-grande-gorge-taos.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Rio_Grande_Gorge"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -6875,24 +7540,70 @@
   },
   {
     "slug": "sedan-crater-nevada-national-security-site",
-    "place": null,
-    "summary": "A 390 m man-made crater from a 1962 nuclear cratering test, used to study crater scaling and ejecta.",
-    "terrain_geology": "Explosion crater ~100 m deep in desert alluvium, with raised rim and ejecta blanket.",
+    "place": "Sedan Crater, Yucca Flat, Nevada National Security Site, Nevada, USA",
+    "summary": "Sedan Crater is a large crater made by an underground nuclear explosion test in the Plowshare programme, in Yucca Flat at the Nevada National Security Site. NASA used craters at the Nevada test site, including Sedan, to train Apollo astronauts, with Sedan serving as a stand-in for an impact crater. Because the yield and geometry of the explosion are documented, it is also used as a reference crater.",
+    "terrain_geology": "The explosive was placed in a shaft in deep desert alluvium, so the crater was dug into loose sediment, not hard rock.",
     "climate": "Arid Mojave/Great Basin desert; hot summers, cold nights.",
-    "access_and_facilities": "Restricted US Department of Energy site; visits only on official tours or approved research.",
+    "access_and_facilities": "The nearest city is Mercury. The U.S. Department of Energy offers free monthly tours, and the crater is on the National Register of Historic Places.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Test date",
+        "value": "6 July 1962",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Sedan_(nuclear_test)"
+      },
+      {
+        "label": "Yield",
+        "value": "104",
+        "unit": "kilotons of TNT",
+        "source_url": "https://en.wikipedia.org/wiki/Sedan_(nuclear_test)"
+      },
+      {
+        "label": "Crater diameter",
+        "value": "about 390",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Sedan_(nuclear_test)"
+      },
+      {
+        "label": "Crater depth (article gives about 100 m and 98 m)",
+        "value": "about 100",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Sedan_(nuclear_test)"
+      },
+      {
+        "label": "Alluvium depth at the shot point",
+        "value": "194",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Sedan_(nuclear_test)"
+      },
+      {
+        "label": "First NASA training trip featuring Sedan",
+        "value": "February 1965",
+        "unit": "",
+        "source_url": "https://st.llnl.gov/news/look-back/apollo-astronauts-train-nevada-test-site"
+      },
+      {
+        "label": "Apollo 14 crew visit to Sedan",
+        "value": "November 1970",
+        "unit": "",
+        "source_url": "https://st.llnl.gov/news/look-back/apollo-astronauts-train-nevada-test-site"
+      }
+    ],
     "image": {
-      "file": "sedan-crater-nevada-national-security-site.jpg",
-      "title": "Satellite view of Sedan Crater (Nevada National Security Site), centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-116.346,37.027,-115.74600000000001,37.327",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Sedan Plowshare Crater",
+      "author": "Federal Government of the United States",
+      "license": "Public domain",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sedan_Plowshare_Crater.jpg",
+      "credit": "Photo: U.S. Federal Government, public domain, via Wikimedia Commons",
+      "file": "sedan-crater-nevada-national-security-site.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Sedan_(nuclear_test)",
+      "https://en.wikipedia.org/wiki/Sedan_Crater",
+      "https://st.llnl.gov/news/look-back/apollo-astronauts-train-nevada-test-site"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
@@ -7266,24 +7977,68 @@
   },
   {
     "slug": "teide-las-canadas-caldera",
-    "place": null,
-    "summary": "A volcanic caldera on Tenerife used for ESA's ExoMars rover tests.",
-    "terrain_geology": "Large caldera with basalt and phonolite lava flows and pumice plains.",
-    "climate": "Dry high-altitude; cold winter nights.",
-    "access_and_facilities": "Teide National Park; research permits; paved roads.",
+    "place": "Las Cañadas caldera and Teide, Teide National Park, Tenerife, Spain",
+    "summary": "Las Cañadas is a large volcanic caldera on Tenerife with the Teide volcano rising from it. Wikipedia says Teide National Park is a useful volcanic reference point for studies related to Mars. Instrument teams have tested equipment there, including a Raman instrument tried out before its use on the ESA-NASA ExoMars mission.",
+    "terrain_geology": "The caldera is a horseshoe-shaped depression that opens to the north, with a high southern rim of cliffs. It is a volcanic terrain of lava and pumice.",
+    "climate": "Daily temperature swings are large, and precipitation is low, with part of it falling as snow.",
+    "access_and_facilities": "A public road crosses the caldera, and a cable car runs from the roadside most of the way to the summit. A free permit is needed to climb the last section to the top.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Caldera diameter",
+        "value": "15",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Teide"
+      },
+      {
+        "label": "Caldera floor elevation",
+        "value": "2,000 to 2,200",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Teide"
+      },
+      {
+        "label": "Southern rim high point (Mount Guajara)",
+        "value": "2,717",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Teide"
+      },
+      {
+        "label": "Annual precipitation in the caldera",
+        "value": "less than 500",
+        "unit": "mm",
+        "source_url": "https://en.wikipedia.org/wiki/Teide"
+      },
+      {
+        "label": "Temperature range, winter to summer",
+        "value": "-15 to 30",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Teide"
+      },
+      {
+        "label": "Cable car top station elevation",
+        "value": "3,555",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Teide"
+      },
+      {
+        "label": "Raman instrument test for ExoMars",
+        "value": "2010",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Teide"
+      }
+    ],
     "image": {
-      "file": "teide-las-canadas-caldera.jpg",
-      "title": "Satellite view of Teide - Las Canadas caldera, centred on the listed coordinates (Landsat WELD annual composite)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=Landsat_WELD_CorrectedReflectance_TrueColor_Global_Annual&v=-16.94,28.12,-16.34,28.419999999999998",
-      "credit": "Imagery: NASA GIBS, Landsat WELD annual composite, public domain. Ring marks the listed point."
+      "title": "Roque Cinchado und Teide",
+      "author": "Thomas Wolf, www.foto-tw.de",
+      "license": "CC BY-SA 3.0 DE",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Roque_Cinchado_und_Teide.jpg",
+      "credit": "Photo: Thomas Wolf, CC BY-SA 3.0 DE, via Wikimedia Commons",
+      "file": "teide-las-canadas-caldera.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Teide"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Mars": {
         "strong": [
@@ -7657,24 +8412,68 @@
   },
   {
     "slug": "vostok-station",
-    "place": null,
-    "summary": "A Russian station holding Earth's lowest natural recorded temperature, used for extreme-cold and isolation research.",
-    "terrain_geology": "High ice plateau above subglacial Lake Vostok; no exposed rock.",
-    "climate": "Extreme polar cold, thin air at high elevation, months of darkness.",
-    "access_and_facilities": "Russian Antarctic Expedition station; access by invitation only.",
+    "place": "Vostok Station, Princess Elizabeth Land, East Antarctica",
+    "summary": "Vostok is a Russian research station on the East Antarctic plateau, near the southern Pole of Cold. It holds the lowest air temperature ever recorded on Earth. Wikipedia does not describe it as a Moon or Mars analog; on our list it is a cold reference point, based on its temperature record.",
+    "terrain_geology": "The station sits on thick ice, and Lake Vostok lies far below the surface.",
+    "climate": "It is extremely cold all year, with very little precipitation that falls entirely as snow.",
+    "access_and_facilities": "The station was supplied from Mirny Station on the Antarctic coast.",
     "hazards": null,
-    "facts": [],
+    "facts": [
+      {
+        "label": "Elevation",
+        "value": "3,488",
+        "unit": "m",
+        "source_url": "https://en.wikipedia.org/wiki/Vostok_Station"
+      },
+      {
+        "label": "Lowest recorded air temperature (21 July 1983)",
+        "value": "-89.2",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Vostok_Station"
+      },
+      {
+        "label": "Annual mean temperature",
+        "value": "-55.2",
+        "unit": "C",
+        "source_url": "https://en.wikipedia.org/wiki/Vostok_Station"
+      },
+      {
+        "label": "Annual precipitation",
+        "value": "22",
+        "unit": "mm",
+        "source_url": "https://en.wikipedia.org/wiki/Vostok_Station"
+      },
+      {
+        "label": "Distance from the geographic South Pole",
+        "value": "1,301",
+        "unit": "km",
+        "source_url": "https://en.wikipedia.org/wiki/Vostok_Station"
+      },
+      {
+        "label": "Year the station was established",
+        "value": "1957",
+        "unit": "",
+        "source_url": "https://en.wikipedia.org/wiki/Vostok_Station"
+      },
+      {
+        "label": "Lake Vostok area",
+        "value": "14,000",
+        "unit": "km2",
+        "source_url": "https://en.wikipedia.org/wiki/Vostok_Station"
+      }
+    ],
     "image": {
-      "file": "vostok-station.jpg",
-      "title": "Satellite view of Vostok Station, centred on the listed coordinates (MODIS true colour, one southern summer day in 2023)",
-      "author": "NASA GIBS",
-      "license": "Public domain (NASA)",
-      "source_url": "https://worldview.earthdata.nasa.gov/?l=MODIS_Terra_CorrectedReflectance_TrueColor&v=106.54,-78.61,107.14,-78.30999999999999",
-      "credit": "Imagery: NASA GIBS, MODIS true colour, one southern summer day in 2023, public domain. Ring marks the listed point."
+      "title": "Vostok Station 2024",
+      "author": "Arctic and Antarctic Research Institute",
+      "license": "CC BY 4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Vostok_Station_2024.png",
+      "credit": "Photo: Arctic and Antarctic Research Institute, CC BY 4.0, via Wikimedia Commons",
+      "file": "vostok-station.jpg"
     },
-    "sources": [],
-    "confidence": "teammate",
-    "origin": "teammate",
+    "sources": [
+      "https://en.wikipedia.org/wiki/Vostok_Station"
+    ],
+    "confidence": "medium",
     "parameters": {
       "Moon": {
         "strong": [
