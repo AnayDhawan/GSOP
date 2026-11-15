@@ -196,3 +196,10 @@ The build fails if a limit is exceeded. No file approaches 50 MB.
 - Source URLs for the site CSV rows.
 - A percentile among all land tiles (gated-out tiles have no score); v1's gated-tile percentile is used.
 - Any Moon temperature, composition or thermal inertia score; any Mars water, silica, dust or temperature score.
+
+## public/data/india_highlights.json
+
+- Hand-curated list of Indian places that public sources describe as Moon or Mars analogs. Not produced by `make_data.py`, not scored, not part of the ranking.
+- Shape: `meta` (`title`, `text_label`, `note`, `marker_note`, `review_note`, `how_built`) and `places[]` with `id`, `slug` (only when the place is already in `sites.json`), `name`, `state`, `lat`, `lon`, `kind` (`point` or `area`), `bodies`, `in_reference_list`, `tagline`, `why`, `source_urls`.
+- Rules: prose holds no digits and no banned word; every place has at least one source link; coordinates come from the place's Wikipedia page or from `sites.json`; an `area` marker sits near the middle of the named area and is approximate.
+- The text is labelled "Gathered from public sources, unreviewed. Not scored." wherever it is shown. Listed in `data/MANIFEST.csv`.

@@ -91,8 +91,14 @@ export default function DashboardClient({ data }: { data: DashboardData }) {
       <div className="flex min-h-0 flex-1 flex-col md:flex-row">
         <section aria-label="Map" className="relative isolate min-h-[60vh] flex-1 md:min-h-0">
           <div className="absolute inset-0">
-            <DashboardMap sites={bodySites} bodyKey={body} extent={extent} hoveredSlug={hovered} selected={selected} onSelect={select} radiusKm={radiusKm} me={me} resizeKey={fullscreen} />
+            <DashboardMap sites={bodySites} india={extent === "India" ? (data.india ?? []) : []} bodyKey={body} extent={extent} hoveredSlug={hovered} selected={selected} onSelect={select} radiusKm={radiusKm} me={me} resizeKey={fullscreen} />
           </div>
+          {extent === "India" && (data.india?.length ?? 0) > 0 && (
+            <p className="absolute left-3 top-16 z-[1000] flex max-w-[calc(100%-1.5rem)] items-center gap-2 rounded border border-border bg-surface/95 px-2.5 py-1.5 text-xs text-secondary-foreground shadow-sm backdrop-blur-sm">
+              <span aria-hidden className="inline-block h-3 w-3 shrink-0 rounded-full border-2 border-white bg-[#7C3AED]" />
+              India highlight: public sources, not scored
+            </p>
+          )}
           <div className="absolute left-1/2 top-3 z-[1000] flex max-w-[calc(100%-1.5rem)] -translate-x-1/2 items-center gap-0.5 rounded-full border border-border bg-surface/95 p-1 shadow-sm backdrop-blur-sm">
             <div role="group" aria-label="Reference body" className="flex items-center gap-0.5">
               {BODIES.map((b) => (

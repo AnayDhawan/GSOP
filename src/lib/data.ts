@@ -2,7 +2,7 @@
 // Every number a page prints comes from claim(): a missing claim stops the build instead of printing a typed value.
 import fs from "node:fs";
 import path from "node:path";
-import type { Control, LedgerEntry, LookupEntry, Measurement, Meta, Metric, Overlay, Profile, Region, Site, SummaryGroup, V2File, View } from "./types";
+import type { Control, IndiaFile, LedgerEntry, LookupEntry, Measurement, Meta, Metric, Overlay, Profile, Region, Site, SummaryGroup, V2File, View } from "./types";
 
 const ROOT = process.cwd();
 const cache = new Map<string, unknown>();
@@ -28,6 +28,7 @@ export const metricsFile = () => readJson<{ meta: Meta; metrics: Metric[] }>("pu
 export const ledgerFile = () => readJson<{ meta: Meta; entries: LedgerEntry[] }>("public/data/ledger.json");
 export const controlsFile = () => readJson<{ meta: Meta; controls: Control[] }>("public/data/controls.json");
 export const v2File = () => readJson<V2File>("public/data/v2.json");
+export const indiaFile = () => readJson<IndiaFile>("public/data/india_highlights.json");
 
 function exists(rel: string): boolean {
   return fs.existsSync(path.join(/* turbopackIgnore: true */ ROOT, rel));

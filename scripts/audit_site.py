@@ -92,8 +92,8 @@ def audit_page(route, page, rx, e32, is_site_page):
     h1 = [h for lv, h in heads if lv == 1]
     if len(h1) != 1:
         p.append(f"expected one h1, found {len(h1)}")
-    # The sites gallery lists place names (Mauna Kea, Hopi Buttes), which are proper nouns and not sentence-case errors.
-    if route != "/sites":
+    # The sites gallery and the India highlights list place names (Mauna Kea, Hopi Buttes, Spiti Valley), which are proper nouns and not sentence-case errors.
+    if route not in ("/sites", "/india"):
         p += sentence_case_problems(heads, skip_h1=True)
     if route in E32_PAGES and e32 not in text:
         p.append("E32 sentence not printed word for word")

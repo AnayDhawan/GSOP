@@ -113,6 +113,14 @@ describe("DashboardClient", () => {
     expect(screen.getByTestId("map")).toHaveAttribute("data-radius", "20");
   });
 
+  it("hands the India highlights to the map and names them in a legend only on the India extent", () => {
+    const place = { id: "p", name: "Sambhar Lake", state: "Rajasthan", lat: 26.9, lon: 75.1, kind: "point" as const, bodies: ["Mars"], in_reference_list: false, tagline: "Inland salt lake", why: "A saline lake.", source_urls: ["https://example.org/a"] };
+    render(<DashboardClient data={{ ...data, india: [place] }} />);
+    expect(screen.queryByText(/India highlight: public sources, not scored/)).not.toBeInTheDocument();
+    fireEvent.click(within(screen.getByRole("group", { name: "Map extent" })).getByRole("button", { name: "India" }));
+    expect(screen.getByText(/India highlight: public sources, not scored/)).toBeInTheDocument();
+  });
+
   it("opens a site card from a map marker with the stored facts, the honest tag and a profile link", () => {
     const { container } = render(<DashboardClient data={data} />);
     expect(screen.queryByTestId("site-card")).not.toBeInTheDocument();

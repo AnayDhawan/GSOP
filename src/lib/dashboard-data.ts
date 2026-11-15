@@ -4,7 +4,7 @@
 // Score rule (one score per site): the Moon list is compared with both Moon targets and the Mars list with Jezero,
 // all on the base profile. When a Moon site has a stored score for both targets, the higher one is shown and its view is
 // named in the row's title. A site with a score for one target shows that one.
-import { chipFor, thumbFor, claim, hasClaim, lookupFile, sitesFile, v2File } from "./data";
+import { chipFor, thumbFor, claim, hasClaim, indiaFile, lookupFile, sitesFile, v2File } from "./data";
 import { formatRunDate, rankSites, type DashBody, type DashSite, type DashboardData } from "./dashboard";
 import { e32Sentence } from "./data";
 import { viewName } from "./names";
@@ -112,5 +112,6 @@ export function dashboardData(): DashboardData {
     window: `${years ? `MODIS land surface temperature ${years}, ` : ""}v1 6 km tiles`,
     e32: e32Sentence(),
     matchRadiusKm: Number(claim("lookup.match_radius_km")),
+    india: indiaFile().places,
   };
 }
