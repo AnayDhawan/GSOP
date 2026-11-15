@@ -35,7 +35,7 @@ class Ctx:
 
 
 def write_manifest(ctx):
-    """data/MANIFEST.csv: path, bytes, sha256 for public/data/**, data/reference/sites.csv, data/reference/raw/*, data/v2/** and public/img/sites/**."""
+    """data/MANIFEST.csv: path, bytes, sha256 for public/data/**, data/reference/sites.csv, data/reference/raw/*, data/v2/** , public/img/sites/** and public/img/places/**."""
     rels = []
     base = ctx.path("public/data")
     for dp, _, fs in os.walk(base):
@@ -44,7 +44,7 @@ def write_manifest(ctx):
     for f in ("data/reference/sites.csv", "data/reference/sites_export.json"):
         if os.path.exists(ctx.path(f)):
             rels.append(f)
-    for extra in ("data/v2", "public/img/sites"):
+    for extra in ("data/v2", "public/img/sites", "public/img/places"):
         d = ctx.path(extra)
         for dp, _, fs in os.walk(d):
             for f in fs:
@@ -70,6 +70,7 @@ SIZE_LIMITS = {
     "public/data/ledger.json": 60 * KB,
     "public/data/controls.json": 20 * KB,
     "public/data/v2.json": 250 * KB,
+    "public/data/site_profiles.json": 600 * KB,
     "public/data/site_measurements.json": 2 * MB,
     "public/data/claims.csv": 3 * MB,
 }
@@ -106,9 +107,9 @@ def write_claims(ctx):
 
 
 def steps():
-    from gsop_data import controls, ledger, lookup, overlays, regions, sites, tiles, v2
+    from gsop_data import controls, ledger, lookup, overlays, profiles, regions, sites, tiles, v2
 
-    return [("sites", sites.build), ("overlays", overlays.build), ("tiles", tiles.build), ("lookup", lookup.build), ("ledger", ledger.build), ("regions", regions.build), ("controls", controls.build), ("v2", v2.build)]
+    return [("sites", sites.build), ("overlays", overlays.build), ("tiles", tiles.build), ("lookup", lookup.build), ("ledger", ledger.build), ("regions", regions.build), ("controls", controls.build), ("v2", v2.build), ("profiles", profiles.build)]
 
 
 def main(argv=None):

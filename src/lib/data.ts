@@ -2,7 +2,7 @@
 // Every number a page prints comes from claim(): a missing claim stops the build instead of printing a typed value.
 import fs from "node:fs";
 import path from "node:path";
-import type { Control, LedgerEntry, LookupEntry, Measurement, Meta, Metric, Overlay, Region, Site, SummaryGroup, V2File, View } from "./types";
+import type { Control, LedgerEntry, LookupEntry, Measurement, Meta, Metric, Overlay, Profile, Region, Site, SummaryGroup, V2File, View } from "./types";
 
 const ROOT = process.cwd();
 const cache = new Map<string, unknown>();
@@ -31,6 +31,22 @@ export const v2File = () => readJson<V2File>("public/data/v2.json");
 
 function exists(rel: string): boolean {
   return fs.existsSync(path.join(/* turbopackIgnore: true */ ROOT, rel));
+}
+
+/** Researched text, facts and one photo per site. Null when the file is absent; pages then show only the stored list text. */
+export function profilesFile(): { meta: Meta; profiles: Record<string, Profile> } | null {
+  return exists("public/data/site_profiles.json") ? readJson("public/data/site_profiles.json") : null;
+}
+
+export function profileFor(slug: string): Profile | null {
+  return profilesFile()?.profiles[slug] ?? null;
+}
+
+/** Photo under /img/places for a site, with the credit line that must be shown beside it. */
+export function photoFor(slug: string): { src: string; alt: string; credit: string; sourceUrl: string } | null {
+  const p = profileFor(slug);
+  if (!p?.image) return null;
+  return { src: `/img/places/${p.image.file}`, alt: p.image.title, credit: p.image.credit, sourceUrl: p.image.source_url };
 }
 
 /** Site measurements from the optional v2 evidence run. Null when the file is absent, and the page then shows nothing. */
