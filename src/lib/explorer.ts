@@ -13,8 +13,9 @@ export type ExplorerRow = {
   v1_used: boolean | null;
   cells: Record<string, Cell>; // by view, strings come from claims.csv
   pct: Record<string, number>; // by view, used only to sort
-  photo?: { src: string; credit: string } | null; // from site_profiles.json
+  photo?: { src: string; credit: string; title?: string } | null; // from site_profiles.json
   place?: string | null; // researched one-line place name, when there is one
+  lowConfidence?: boolean; // the researched text is marked low confidence
 };
 
 export type Filters = {

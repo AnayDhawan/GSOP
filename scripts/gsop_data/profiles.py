@@ -58,10 +58,12 @@ def problems(entries, site_slugs, root):
             texts.append((k, v))
         for i, f in enumerate(e.get("facts") or []):
             for key in ("label", "value", "unit"):
-                if not isinstance(f.get(key), str) or not f[key].strip():
+                v = f.get(key)
+                # A unit may be empty (a year, a count, a name); label and value may not.
+                if not isinstance(v, str) or (key != "unit" and not v.strip()):
                     out.append(f"{slug}.facts[{i}].{key}: must be text")
                 else:
-                    texts.append((f"facts[{i}].{key}", f[key]))
+                    texts.append((f"facts[{i}].{key}", v))
             if not URL.match(f.get("source_url") or ""):
                 out.append(f"{slug}.facts[{i}].source_url: needs a URL")
         for k, v in texts:

@@ -27,7 +27,7 @@ export function explorerData(): { rows: ExplorerRow[]; views: { Moon: string[]; 
       }
     }
     const ph = photoFor(s.slug);
-    return { id: s.id, slug: s.slug, name: s.name, body: s.body, list: s.list, country: s.country, v1_used: s.v1_used, cells, pct, photo: ph ? { src: ph.src, credit: ph.credit } : null, place: profileFor(s.slug)?.place ?? null };
+    return { id: s.id, slug: s.slug, name: s.name, body: s.body, list: s.list, country: s.country, v1_used: s.v1_used, cells, pct, photo: ph ? { src: ph.src, credit: ph.credit, title: ph.alt } : null, place: profileFor(s.slug)?.place ?? null, lowConfidence: profileFor(s.slug)?.confidence === "low" };
   });
   return { rows, views };
 }

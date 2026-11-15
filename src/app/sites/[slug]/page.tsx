@@ -64,7 +64,7 @@ function Photo({ slug, body, name }: { slug: string; body: string; name: string 
         <img src={ph.src} alt={`${ph.alt}: ${name}`} className="h-full w-full object-cover" decoding="async" />
       </div>
       <figcaption className="text-xs text-muted-foreground">
-        {ph.credit}.{" "}
+        {ph.alt}. {ph.credit}.{" "}
         <a href={ph.sourceUrl} className={link} target="_blank" rel="noopener noreferrer">
           Original file
         </a>
@@ -308,6 +308,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
           <Chip>{first.list === "known" ? "Reference site" : "Candidate, not in our reference list"}</Chip>
           {first.country ? <Chip>{first.country}</Chip> : null}
           <Chip>{p ? "Researched from public sources, unreviewed" : "Teammate-written, unreviewed"}</Chip>
+          {p?.confidence === "low" ? <Chip>Low confidence</Chip> : null}
           <li>
             <Link href="/sites" className={`px-2 py-1 text-sm ${link}`}>
               All sites
