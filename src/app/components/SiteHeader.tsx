@@ -74,16 +74,17 @@ export default function SiteHeader() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  const home = pathname === "/";
+  // Every page except the dashboard opens with a dark space hero, so the header floats over it.
+  const home = pathname !== "/dashboard";
   const solid = scrolled || open;
-  // On the landing page the header floats over the dark hero, so at the top it uses the dark tokens whatever the theme.
+  // Over a hero the header uses the dark tokens at the top, whatever the theme.
   const overHero = home && !solid;
   return (
     <header
       data-theme={overHero ? "dark" : undefined}
       data-solid={solid ? "true" : "false"}
       className={`top-0 z-50 w-full border-b transition-colors duration-300 ${home ? "fixed inset-x-0" : "sticky"} ${
-        solid ? "border-border bg-background/90 backdrop-blur supports-[backdrop-filter]:bg-background/75" : "border-transparent bg-transparent"
+        solid ? "border-border bg-background/95 backdrop-blur" : "border-transparent bg-transparent"
       }`}
     >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-6 py-3">

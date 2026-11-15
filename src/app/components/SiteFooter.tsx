@@ -16,7 +16,7 @@ export default function SiteFooter() {
   return (
     <>
       {/* The footer is black in both themes: data-theme="dark" scopes the dark tokens to it. */}
-      <footer data-theme="dark" className="mt-16 border-t border-border bg-black text-foreground">
+      <footer data-theme="dark" className="border-t border-border bg-black text-foreground">
         <div className="mx-auto w-full max-w-6xl px-6 py-12">
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             <div className="space-y-3">

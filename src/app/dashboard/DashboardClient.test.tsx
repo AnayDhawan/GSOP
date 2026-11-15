@@ -98,7 +98,7 @@ describe("DashboardClient", () => {
     expect(container.querySelector("svg")).toBeNull();
     expect(screen.queryByRole("button", { name: /star/i })).toBeNull();
     expect(container.textContent).not.toMatch(/[–—]/);
-    expect(screen.getByRole("button", { name: "Locate" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "My location" })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("button", { name: "Fullscreen" }));
     expect(screen.getByRole("button", { name: "Exit fullscreen" })).toBeInTheDocument();
   });
