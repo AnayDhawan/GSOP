@@ -1,0 +1,15 @@
+id,body,name,provider,url,contributes,resolution_or_window,used_in
+srtm,Earth,SRTM elevation (CGIAR-CSI version),NASA and CGIAR-CSI,https://srtm.csi.cgiar.org/,Slope and relief for Earth tiles,Void-filled 90 m elevation,v1 terrain layer
+copernicus_dem,Earth,Copernicus DEM GLO30,"ESA, DLR and Airbus",https://dataspace.copernicus.eu/explore-data/data-collections/copernicus-contributing-missions/collections-description/COP-DEM,Elevation where SRTM does not reach,30 m,v1 terrain layer
+modis_landcover,Earth,MODIS MCD12Q1 land cover and MOD13A2 vegetation index via Google Earth Engine,NASA LP DAAC,https://lpdaac.usgs.gov/,Land cover and vegetation gates,500 m and 1 km,v1 gates
+modis_lst,Earth,MODIS MOD11A2 version 061 land surface temperature via Google Earth Engine,NASA LP DAAC,https://lpdaac.usgs.gov/products/mod11a2v061/,Earth thermal layer: mean and day to night difference,"1 km, 8-day, 2019 to 2023 averaged to 6 km tiles",v2 thermal layer
+glenn_atmosphere,Earth,NASA Glenn atmosphere model,NASA Glenn Research Center,https://www.grc.nasa.gov/www/k-12/airplane/atmosmet.html,Air density,Altitude model,v1 gates
+natural_earth,Earth,Natural Earth outline and place names,Natural Earth (public domain),https://www.naturalearthdata.com/,India outline for labels and region names,1:10m,Map labels and regions
+lola,Moon,LOLA south polar elevation and permanently shadowed region maps,NASA PGDA and Barker et al.,https://pgda.gsfc.nasa.gov/,Lunar target terrain,South polar grids,v1 Moon targets
+glaser_lighting,Moon,Lighting and shadow statistics for the two lunar targets,Glaser et al. 2018,https://ui.adsabs.harvard.edu/search/q=author%3A%22Glaser%22%20year%3A2018%20lunar%20polar%20illumination,Lunar illumination values,Target-level statistics,v1 Moon targets
+diviner_prp,Moon,LRO Diviner South Polar Resource Product,NASA PDS Geosciences Node,https://pds-geosciences.wustl.edu/lro/urn-nasa-pds-lro_diviner_derived1/data_derived_prp/dlre_prp_south.tab,Lunar thermal reference values at the two lunar targets,About 500 m triangles,v2 thermal layer
+mola,Mars,MOLA elevation,USGS Astrogeology Science Center,https://astrogeology.usgs.gov/,Martian target terrain,Global grid,v1 Mars target
+tes_thermal_inertia,Mars,MGS TES thermal inertia map,NASA PDS Geosciences Node,https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-5-timap-v1/mgst_9001/data/global_ti_day_2007.img,Martian thermal reference values at Jezero and Arcadia,Global map,v2 thermal layer
+mars_models,Mars,NASA Mars fact sheet and Glenn Mars atmosphere model,NASA,https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html,Solar constant and atmosphere values for the Mars run,Fact sheet values,v1 Mars target
+sites_list,Earth,Reference site list,GSOP team (unreviewed),https://github.com/AnayDhawan/GSOP,The reference sites and candidates shown on the dashboard,One row per site,Dashboard and site pages
+osm_carto,Display,OpenStreetMap contributors and CARTO basemap,OpenStreetMap and CARTO,https://www.openstreetmap.org/copyright,Basemap tiles on the dashboard (display only),Web map tiles,Dashboard
