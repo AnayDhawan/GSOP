@@ -12,22 +12,29 @@
 }
 .hero-scene[data-ready="true"] { opacity: 1; }
 
-/* The satellite rides over Earth's limb: a slow drift along its orbit and a gentle roll. */
+/* The satellite floats in front of Earth: a slow drift and a gentle roll. Position is a percentage of the scene, so it
+   follows the planet on every screen size. */
 .hero-sat {
+  --sat-left: 66%;
+  --sat-top: 66%;
+  --sat-w: clamp(120px, 15vw, 220px);
   position: absolute;
-  left: 50%;
-  top: 50%;
-  width: clamp(120px, 18vw, 260px);
+  left: var(--sat-left);
+  top: var(--sat-top);
+  width: var(--sat-w);
   height: auto;
   pointer-events: none;
   user-select: none;
   filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.55));
-  animation: hero-sat-drift 26s ease-in-out infinite alternate;
+  animation: hero-sat-drift 18s ease-in-out infinite alternate;
   will-change: transform;
 }
 @keyframes hero-sat-drift {
-  from { transform: translate(var(--sat-x0), var(--sat-y0)) rotate(-7deg); }
-  to { transform: translate(var(--sat-x1), var(--sat-y1)) rotate(-3deg); }
+  from { transform: translate(-50%, -50%) translate(-14px, 8px) rotate(-8deg); }
+  to { transform: translate(-50%, -50%) translate(14px, -8px) rotate(-3deg); }
+}
+@media (max-width: 47.99rem) {
+  .hero-sat { --sat-left: 64%; --sat-top: 70%; --sat-w: 84px; }
 }
 
 /* Fallback without WebGL2: the three disc images on the brand's black, Earth in front. */
@@ -59,12 +66,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .hero-scene { transition: none; }
-  .hero-sat { animation: none; transform: translate(var(--sat-x0), var(--sat-y0)) rotate(-5deg); }
+  .hero-sat { animation: none; transform: translate(-50%, -50%) rotate(-5deg); }
   .hero-cue { animation: none; }
 }
 
-/* Satellite placement: over Earth's upper-left limb on wide screens, upper-right on phones. */
-.hero-sat { --sat-x0: -210%; --sat-y0: -190%; --sat-x1: -175%; --sat-y1: -205%; }
-@media (max-width: 47.99rem) {
-  .hero-sat { --sat-x0: 40%; --sat-y0: -300%; --sat-x1: 70%; --sat-y1: -315%; }
-}
