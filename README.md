@@ -28,7 +28,7 @@ Every result, failures included, is published.
 
 <img src="docs/img/landing.jpg" alt="The GSOP landing page: the name over a field of stars, Earth turning with a satellite orbiting it" width="100%">
 
-<!-- Demo GIF of the dashboard goes here: issue #102 -->
+<img src="docs/img/how-to-use.gif" alt="A 27 second screen recording of the live site: the landing page, then Open the dashboard, the Moon and Mars toggle, the World and India toggle, a click on a site card showing its name, score and status, Open the full profile, and the gate results page with the failed gates listed" width="720">
 
 </div>
 
