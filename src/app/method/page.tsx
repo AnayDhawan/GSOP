@@ -131,7 +131,7 @@ export default function Page() {
               <li>The coordinates of {unconfirmed} of the sites v1 used are not confirmed from a primary source.</li>
             </ul>
           </div>
-          <div className="space-y-3 border-l-4 border-control bg-surface-raised p-5">
+          <div className="space-y-3 border-t-4 border-control bg-surface-raised p-5">
             <h3 className={h3}>Result limits</h3>
             <ul className={ul}>
               <li>
