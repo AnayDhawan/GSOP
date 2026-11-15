@@ -69,6 +69,15 @@ describe("HonestMap", () => {
     expect(screen.queryByRole("button", { name: /Askja/ })).not.toBeInTheDocument();
   });
 
+  it("draws the satellite basemap and lets the score colours be switched off", () => {
+    view();
+    expect(screen.getByRole("img", { name: /NASA Blue Marble satellite picture of Earth/ })).toBeInTheDocument();
+    expect(screen.getByRole("img", { name: /Score overlay for Shackleton rim/ })).toBeInTheDocument();
+    fireEvent.click(screen.getByLabelText("Show score colours"));
+    expect(screen.queryByRole("img", { name: /Score overlay for Shackleton rim/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("img", { name: /NASA Blue Marble/ })).toBeInTheDocument();
+  });
+
   it("offers the same items as a table", () => {
     view();
     fireEvent.click(screen.getByRole("button", { name: "Table" }));

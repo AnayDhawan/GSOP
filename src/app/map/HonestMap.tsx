@@ -51,6 +51,7 @@ export default function HonestMap({ targets, sentence, controlMax }: { targets: 
   const [targetId, setTargetId] = useState(targets.find((t) => t.target === "shackleton_rim")?.target ?? targets[0].target);
   const [toggles, setToggles] = useState<Toggles>(DEFAULT_TOGGLES);
   const [zoom, setZoom] = useState(0);
+  const [showScores, setShowScores] = useState(true);
   const [mode, setMode] = useState<"map" | "table">("map");
   const [selected, setSelected] = useState<string | null>(null);
   const target = targets.find((t) => t.target === targetId)!;
@@ -85,6 +86,10 @@ export default function HonestMap({ targets, sentence, controlMax }: { targets: 
             ))}
           </div>
         </fieldset>
+        <label className="flex items-center gap-1 self-end text-sm">
+          <input type="checkbox" checked={showScores} onChange={(e) => setShowScores(e.target.checked)} />
+          Show score colours
+        </label>
         <div role="group" aria-label="View" className="flex self-end border border-border">
           {(["map", "table"] as const).map((m) => (
             <button key={m} type="button" aria-pressed={mode === m} onClick={() => setMode(m)} className={cn("gsop-label px-3 py-1", mode === m ? "bg-surface-raised text-foreground" : "hover:text-foreground")}>
@@ -108,23 +113,24 @@ export default function HonestMap({ targets, sentence, controlMax }: { targets: 
                 Fit
               </button>
             </div>
-            <div className="max-h-[75vh] overflow-auto border border-border bg-surface" tabIndex={0} role="region" aria-label={`Map of ${target.name} scores. Scroll to pan.`}>
+            <div className="max-h-[75vh] overflow-auto border border-border bg-[#000a30]" tabIndex={0} role="region" aria-label={`Map of ${target.name} scores. Scroll to pan.`}>
               <div className="relative" style={{ width: `${ZOOMS[zoom] * 100}%`, aspectRatio: `${target.width} / ${target.height}` }}>
-                <Image src={target.image} alt={`Score overlay for ${target.name}. Coloured land has a v1 score; transparent has none.`} width={target.width} height={target.height} unoptimized className="absolute inset-0 h-full w-full" priority />
+                <Image src="/img/maps/blue-marble-crop.jpg" alt="NASA Blue Marble satellite picture of Earth, used as the basemap" width={2048} height={787} unoptimized className="absolute inset-0 h-full w-full" priority />
+                {showScores && <Image src={target.image} alt={`Score overlay for ${target.name}. Coloured land has a v1 score; transparent has none.`} width={target.width} height={target.height} unoptimized className="absolute inset-0 h-full w-full opacity-90" priority />}
                 <svg className="pointer-events-none absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden>
                   {[-150, -120, -90, -60, -30, 0, 30, 60, 90, 120, 150].map((lon) => {
                     const x = project(0, lon, target.bounds).x;
-                    return <line key={`lo${lon}`} x1={x} x2={x} y1={0} y2={100} stroke="currentColor" strokeOpacity={lon === 0 ? 0.5 : 0.2} strokeWidth={1} vectorEffect="non-scaling-stroke" />;
+                    return <line key={`lo${lon}`} x1={x} x2={x} y1={0} y2={100} stroke="#fff" strokeOpacity={lon === 0 ? 0.6 : 0.25} strokeWidth={1} vectorEffect="non-scaling-stroke" />;
                   })}
                   {[-60, -30, 0, 30, 60].map((lat) => {
                     const y = project(lat, 0, target.bounds).y;
-                    return y >= 0 && y <= 100 ? <line key={`la${lat}`} x1={0} x2={100} y1={y} y2={y} stroke="currentColor" strokeOpacity={lat === 0 ? 0.5 : 0.2} strokeWidth={1} vectorEffect="non-scaling-stroke" /> : null;
+                    return y >= 0 && y <= 100 ? <line key={`la${lat}`} x1={0} x2={100} y1={y} y2={y} stroke="#fff" strokeOpacity={lat === 0 ? 0.6 : 0.25} strokeWidth={1} vectorEffect="non-scaling-stroke" /> : null;
                   })}
                 </svg>
-                <span className="gsop-label pointer-events-none absolute left-1 text-[10px]" style={{ top: `${project(0, 0, target.bounds).y}%` }}>
+                <span className="gsop-label pointer-events-none absolute left-1 text-[10px] !text-white" style={{ top: `${project(0, 0, target.bounds).y}%` }}>
                   Equator
                 </span>
-                <span className="gsop-label pointer-events-none absolute top-1 text-[10px]" style={{ left: `${project(0, 0, target.bounds).x + 0.3}%` }}>
+                <span className="gsop-label pointer-events-none absolute top-1 text-[10px] !text-white" style={{ left: `${project(0, 0, target.bounds).x + 0.3}%` }}>
                   Prime meridian
                 </span>
                 {shown.map((i) => (
@@ -132,7 +138,7 @@ export default function HonestMap({ targets, sentence, controlMax }: { targets: 
                 ))}
               </div>
             </div>
-            <p className="text-xs text-muted-foreground">Graticule lines are every thirty degrees. No coastline is drawn: the coloured land is the only context, and it shows only where v1 produced a score.</p>
+            <p className="text-xs text-muted-foreground">Graticule lines are every thirty degrees. The picture underneath is the NASA Blue Marble image of Earth (public domain, via Wikimedia Commons), only there so you can find your way. The coloured land is the score, and it exists only where v1 produced one.</p>
           </div>
 
           <aside className="space-y-4" aria-label="Details and legend">
