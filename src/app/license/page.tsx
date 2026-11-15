@@ -19,7 +19,7 @@ export default function Page() {
         <pre className="overflow-x-auto whitespace-pre-wrap border border-border bg-surface p-5 font-mono text-sm leading-relaxed" data-testid="license-text">
           {licenseText()}
         </pre>
-        <aside className="space-y-4 border-l-4 border-earth pl-5">
+        <aside className="space-y-4 border-t-4 border-earth pt-5">
           <h2 className="text-xl">Data from other sources</h2>
           <p className="text-secondary-foreground">
             The licence covers our code and the data build. Data we pull from outside keeps the licence of its provider. The{" "}
